@@ -1,12 +1,12 @@
 {
   "pdf": "output/pdf/comp580-yw251-report.pdf",
-  "sha256": "28f3aad72f3c92824eccc4f0cc6dddcbc350ded662281242572721a36c770c49",
+  "sha256": "daed86678f8890ad3a33731753f2a0f56034c86a69ef212ed0a495c50f47b7c7",
   "pages": 6,
   "page_size": "US Letter",
   "sections_0_through_9": true,
   "author_netid_present": true,
   "main_figure_present": true,
-  "visual_qa": "All 6 rendered pages inspected after simplifying the title block and relocating the repository link; tables and figure are legible, with no clipping or unreadable glyphs.",
+  "visual_qa": "All six pages previously inspected; revised appendix page re-rendered and inspected after shortening its introduction. No clipping or unreadable glyphs.",
   "text_extraction_checks": true,
   "renderer_sha256": "4b4f0a3c7716617747254868e30eb63c13c529df3132a7b55ad3c8c82382ae2f",
   "numerical_tables_and_verbatim_development_prompts_unchanged": true

@@ -14,6 +14,6 @@
   "report_extracted_text_identical": true,
   "wheel_rebuild_then_analysis_passed": true,
   "dependency_environment": "Pinned project analysis/build requirements; original runtime itself uses only the standard library",
-  "note": "Core tests, analysis and wheel rebuild were checked before the prose revision. That six-page report was rebuilt from a fresh ZIP extraction and its extracted text matched. The subsequent title-block cleanup and repository-link relocation were rebuilt and visually checked in both PDF formats; all frozen code and trial evidence are unchanged.",
+  "note": "Core tests, analysis and wheel rebuild were checked before the prose revision. That six-page report was rebuilt from a fresh ZIP extraction and its extracted text matched. Subsequent title and appendix edits were rebuilt and visually checked in both PDF formats; all frozen code and trial evidence are unchanged.",
   "prose_revision_package_files_verified": 1836
 }

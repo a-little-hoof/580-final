@@ -125,13 +125,11 @@ The two failures were both in full mode. Cipher repetition 2 returned the correc
 
 Compact JSON saved some input tokens, but it did not make these tasks consistently faster. Path showed the clearest benefit: about 4.1% fewer input tokens with the same tool sequence. Regex showed about 5% savings when both modes used two calls. Cipher changed little, while extra reads complicated the Log and Stat results. Compact passed 25/25 compared with full's 23/25, but two failures in this small study are not enough to claim better reliability. My conclusion is limited to these five cases and one model: compact formatting is a small token-saving change for structured results, with no demonstrated general speedup.
 
-## Appendix: Reproduction and validator prompts
+## Appendix
 
-Code and data are available at <https://github.com/a-little-hoof/580-final>.
+The [GitHub repository](https://github.com/a-little-hoof/580-final) includes the code, run results and instructions for rerunning the experiments. The code requires Python 3.12 or later.
 
-The CLI requires Python 3.12 or newer and uses only the standard library at runtime. The [reproduction guide](../docs/REPRODUCE.md) explains how to install it, run the offline tests, regenerate the analysis and build this report through the [Makefile](../Makefile). The repository contains the frozen wheel, code and input hashes, run order, raw evidence and plotting script. There are 121 offline tests; without the optional upstream checkouts, one fixture-rebuild test is skipped. The source ZIP provides the assignment's fallback code package.
-
-The following are the actual prompts used to implement and review the validators. They are preserved verbatim, including their shorthand wording. The [prompt record](../study/controlled/development/prompts.jsonl) also includes the user's choice of compact formatting.
+I used coding assistance to write and test the validators. Below are the prompts from the [development log](../study/controlled/development/prompts.jsonl).
 
 > User approved lossless compact formatting. Implement public fixtures + private deterministic validators and meaningful tests, exclusively under study/controlled/{fixtures,validators,tests} and docs/ADAPTERS.md. Read draft and contracts. Use AST literal extraction explicit allowlist; no plugin execution or model calls. Each case directory input.json plus prompt.txt with public task definitions/schema/case exact data. Same tasks/cases as pilots; clearly fullgraph/rawstats adaptation. Keep private validator reference data outside publicfixtures/package. Validate typed answer and integrity, reproduce upstream acceptance nuances. Need manifest input hashes/source versions/extraction provenance/license. Do not edit projectroot plan/README. Communicate interface/files for baselineagent. Do not include known answer/hiddenlabels in prompts or fixture files.
 

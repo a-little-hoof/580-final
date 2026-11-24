@@ -1,18 +1,18 @@
 {
   "project_url": "https://www.overleaf.com/project/6b051ec3b81f0800eab0c10f",
-  "overleaf_git_revision": "c44cfa1743b748a9b39619ddc53f5d186979ac29",
+  "overleaf_git_revision": "80ab249931a2303a42353d84878499c45f90ca1c",
   "files_sha256": {
-    "main.tex": "e62fd4b37844ac80ba2dfc7ffe2669d744823a1119289c341953f25632d20d79",
+    "main.tex": "30a430e2f23cb375295bf95749c5749cd7f30087d1f6c515c4fe396c01d5ce2a",
     "main-comparison.pdf": "69101f417883313428a65d463009efa83b26964396efd579811d03b8e1f3a1df"
   },
-  "git_push_result": "Accepted: 6e72cb3..c44cfa1 HEAD -> main",
+  "git_push_result": "Accepted: c44cfa1..80ab249 HEAD -> main",
   "local_check": {
     "engine": "Tectonic",
     "pages": 5,
-    "source_sha256": "e62fd4b37844ac80ba2dfc7ffe2669d744823a1119289c341953f25632d20d79",
-    "pdf_sha256": "7718e869eb133ab99fa727738850e56e0c88f3739f6df63d7c9ebf6a4f229189",
-    "visual_review": "All five pages inspected after the header change; tables and figure fit, with no clipping.",
-    "content_review": "Simplified author/course header and moved repository link to appendix. All tables, section headings and three verbatim development prompts remain unchanged.",
+    "source_sha256": "30a430e2f23cb375295bf95749c5749cd7f30087d1f6c515c4fe396c01d5ce2a",
+    "pdf_sha256": "5a40da8d28bfa8c7bfa1479b2917aab5676ee928432b4abc9dc9aeace865c3f5",
+    "visual_review": "All five pages previously inspected; revised appendix page re-rendered and checked after shortening its introduction. No clipping.",
+    "content_review": "Only appendix heading and introduction changed. Sections 0\u20139, all tables and three original prompt quotations remain unchanged.",
     "underfull_alignment_messages": 16,
     "overfull_boxes": 0
   },
