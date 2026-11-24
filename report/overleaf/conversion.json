@@ -1,7 +1,7 @@
 {
   "source": "report/report.md",
-  "source_sha256": "6efbe5acd18a126deb035c0791b6de6685f03279fe83e1cac87a373a90bab27c",
-  "main_tex_sha256": "2bba4ddd522f23bb8d54bf36177e91d42f0a2c9723a6134fe34133df943222ae",
+  "source_sha256": "1ed0957ae45c6e878865b448255da8be17837141e14c415507e948468117a5bb",
+  "main_tex_sha256": "e62fd4b37844ac80ba2dfc7ffe2669d744823a1119289c341953f25632d20d79",
   "figure_sha256": "69101f417883313428a65d463009efa83b26964396efd579811d03b8e1f3a1df",
   "sections": [
     "0. Explore and Evaluate the App",

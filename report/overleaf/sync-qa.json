@@ -1,23 +1,28 @@
 {
   "project_url": "https://www.overleaf.com/project/6b051ec3b81f0800eab0c10f",
-  "overleaf_git_revision": "6e72cb378e526529de47acb63a754206131c823c",
+  "overleaf_git_revision": "c44cfa1743b748a9b39619ddc53f5d186979ac29",
   "files_sha256": {
-    "main.tex": "2bba4ddd522f23bb8d54bf36177e91d42f0a2c9723a6134fe34133df943222ae",
+    "main.tex": "e62fd4b37844ac80ba2dfc7ffe2669d744823a1119289c341953f25632d20d79",
     "main-comparison.pdf": "69101f417883313428a65d463009efa83b26964396efd579811d03b8e1f3a1df"
   },
-  "git_readback_matches_local": true,
-  "git_push_result": "Everything up-to-date",
-  "overleaf_compilation": {
-    "pages": 5,
-    "errors": 0,
-    "warnings": 0,
-    "typesetting_info": 16
-  },
+  "git_push_result": "Accepted: 6e72cb3..c44cfa1 HEAD -> main",
   "local_check": {
     "engine": "Tectonic",
     "pages": 5,
-    "visual_review": "All five rendered pages inspected; tables and figure fit, with no clipped text.",
-    "content_review": "All headings, 35 prose paragraphs, 140 table cells and three verbatim development prompts match the Markdown source."
+    "source_sha256": "e62fd4b37844ac80ba2dfc7ffe2669d744823a1119289c341953f25632d20d79",
+    "pdf_sha256": "7718e869eb133ab99fa727738850e56e0c88f3739f6df63d7c9ebf6a4f229189",
+    "visual_review": "All five pages inspected after the header change; tables and figure fit, with no clipping.",
+    "content_review": "Simplified author/course header and moved repository link to appendix. All tables, section headings and three verbatim development prompts remain unchanged.",
+    "underfull_alignment_messages": 16,
+    "overfull_boxes": 0
   },
-  "credentials_saved_in_repository": false
+  "credentials_saved_in_repository": false,
+  "previous_overleaf_compilation": {
+    "pages": 5,
+    "errors": 0,
+    "warnings": 0,
+    "typesetting_info": 16,
+    "source_sha256": "2bba4ddd522f23bb8d54bf36177e91d42f0a2c9723a6134fe34133df943222ae"
+  },
+  "pushed_commit_matches_local": true
 }

@@ -1,8 +1,7 @@
 # Less Formatting, Same Information
 
-Yifei Wang | **NetID: yw251** | Solo submission  
-COMP 580 final project | November 23, 2026  
-Code and data: <https://github.com/a-little-hoof/580-final>
+Yifei Wang (yw251)  
+COMP 580 Final Project
 
 ## 0. Explore and Evaluate the App
 
@@ -127,6 +126,8 @@ The two failures were both in full mode. Cipher repetition 2 returned the correc
 Compact JSON saved some input tokens, but it did not make these tasks consistently faster. Path showed the clearest benefit: about 4.1% fewer input tokens with the same tool sequence. Regex showed about 5% savings when both modes used two calls. Cipher changed little, while extra reads complicated the Log and Stat results. Compact passed 25/25 compared with full's 23/25, but two failures in this small study are not enough to claim better reliability. My conclusion is limited to these five cases and one model: compact formatting is a small token-saving change for structured results, with no demonstrated general speedup.
 
 ## Appendix: Reproduction and validator prompts
+
+Code and data are available at <https://github.com/a-little-hoof/580-final>.
 
 The CLI requires Python 3.12 or newer and uses only the standard library at runtime. The [reproduction guide](../docs/REPRODUCE.md) explains how to install it, run the offline tests, regenerate the analysis and build this report through the [Makefile](../Makefile). The repository contains the frozen wheel, code and input hashes, run order, raw evidence and plotting script. There are 121 offline tests; without the optional upstream checkouts, one fixture-rebuild test is skipped. The source ZIP provides the assignment's fallback code package.
 
