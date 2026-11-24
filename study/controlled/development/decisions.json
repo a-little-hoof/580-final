@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-11-24T04:13:13Z",
+  "phase": "development; not frozen final evaluation",
+  "user_approved": "Test lossless compact formatting (recommended)",
+  "first_treatment": "JSON whitespace minification only; same parsed values and insertion order; no table encoding",
+  "baseline_first": true,
+  "harness_runtime": {
+    "observed_via": "official rushlab nanoagent harness CLI joined existing own terminal session",
+    "session_id": "2f2c8d4c-186c-4cf3-8379-a5124e0d5428",
+    "workspace": "/rush/workspace",
+    "python": "3.12.16",
+    "pip": "26.3",
+    "setuptools": "84.2.1",
+    "wheel": "0.46.3",
+    "platform": "Linux-6.12.117-aarch64-with-glibc2.36",
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "max_output_tokens_environment": 32768
+  },
+  "host_python": "3.13.7",
+  "current_status": "Full v0.1.0 and compact v0.2.0 development terminal smokes captured and independently passed; native benchmark publication blocked before model dispatch by enum-only output schema skeleton error; no final trials yet"
+}

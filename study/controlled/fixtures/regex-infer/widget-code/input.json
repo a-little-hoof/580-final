@@ -1,0 +1,57 @@
+{
+  "case": "widget-code",
+  "examples": [
+    {
+      "text": "AB-123",
+      "matches": true
+    },
+    {
+      "text": "ZZ-000",
+      "matches": true
+    },
+    {
+      "text": "QT-456-R",
+      "matches": true
+    },
+    {
+      "text": "MN-789",
+      "matches": true
+    },
+    {
+      "text": "XY-001-R",
+      "matches": true
+    },
+    {
+      "text": "A-123",
+      "matches": false
+    },
+    {
+      "text": "ABC-123",
+      "matches": false
+    },
+    {
+      "text": "AB-12",
+      "matches": false
+    },
+    {
+      "text": "AB-1234",
+      "matches": false
+    },
+    {
+      "text": "ab-123",
+      "matches": false
+    },
+    {
+      "text": "AB-123-X",
+      "matches": false
+    },
+    {
+      "text": "AB123",
+      "matches": false
+    },
+    {
+      "text": "AB-123-R-R",
+      "matches": false
+    }
+  ]
+}

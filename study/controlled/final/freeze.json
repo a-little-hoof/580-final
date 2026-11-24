@@ -1,0 +1,2056 @@
+{
+  "schema_version": 1,
+  "kind": "comp580-frozen-experiment",
+  "created_at": "2026-11-24T04:39:38.007318+00:00",
+  "project_root": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project",
+  "seed": 580,
+  "randomization": "sha256-sort-pairs-v1",
+  "logical_trial_count": 50,
+  "paired_blocks": 25,
+  "conditions": [
+    "full",
+    "compact"
+  ],
+  "source_revision": null,
+  "source_tree": {
+    "inputs": [
+      "src",
+      "pyproject.toml",
+      "build-requirements.txt",
+      "study/controlled/fixtures",
+      "study/controlled/validators",
+      "study/controlled/limits.json",
+      "study/controlled/rush_benchmark.py",
+      "study/controlled/run_experiments.py",
+      "study/controlled/development/platform-fix/scalar-enum-skeleton.patch",
+      "study/controlled/development/platform-fix/applied.json"
+    ],
+    "files": {
+      "src/comp580_agent/__init__.py": "a6dc0561092e90ffe84b614bd88fd4c17bc702440ef0d707061713c609088d29",
+      "src/comp580_agent/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "src/comp580_agent/agent.py": "73d9afb7afea24c8796bf7ca6e57503eae48d82f512a9e6e87887a31e6e0064b",
+      "src/comp580_agent/cli.py": "f820079098ee2c292b72fce1e74264bf9b7f7dddbf3e6b5195c3568f178e01d9",
+      "src/comp580_agent/common.py": "bc286024060177ece73d1e1aa4a6b1f793dc0fe291b13580298fe1fbc51cd289",
+      "src/comp580_agent/gateway.py": "e3a64541dc20a4ee31c62b9967cf23d59359eb5805965b57b2296609acbf7a9b",
+      "src/comp580_agent/telemetry.py": "b77726ec44e36be1b86c5b64a359668ea492c80af1a4e34911824850e7fd1d75",
+      "src/comp580_agent/tools.py": "f2a78ab8e8f17b9eb23bba9fcc89aa556763f59531edcc3ba6154cca7fe58c74",
+      "src/comp580_agent.egg-info/PKG-INFO": "22b9ea4386319b57bc621631a3bc45a2c7c9450d8d9b46b7e8ec8b183549c29f",
+      "src/comp580_agent.egg-info/SOURCES.txt": "f3490b9a16eaf37cae57fcce8e998240aebe5b0fa0ccd65857b1d7a02b6b2689",
+      "src/comp580_agent.egg-info/dependency_links.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "src/comp580_agent.egg-info/entry_points.txt": "4098c794d0d6ce6ca96f5b5dd0ace18725ac046abdf18ef09aec7d318af8514d",
+      "src/comp580_agent.egg-info/top_level.txt": "6cf75022cae2f2b359d3dd5df945cf4fe97d6837566d2689f12d17ae442f3044",
+      "pyproject.toml": "ddcc24d49095d8028140bc5c55bc779f94f39f75851526f9b327d7bb7f998169",
+      "build-requirements.txt": "6cbf99546a87261f3cd5310edf88e516b67030d730c1f6892e792b6010fa74c4",
+      "study/controlled/fixtures/LICENSE.upstream-MIT.txt": "06341ee5d5d068f148b0d655aec15df353c750022160572de0334ae2b5a63871",
+      "study/controlled/fixtures/cipher-crack/telegram/input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+      "study/controlled/fixtures/cipher-crack/telegram/prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+      "study/controlled/fixtures/log-triage/edge-proxy/input.json": "73d636c474274b07fa9ebf161e1db9587552bedaa31344dbbde984ec10111ad1",
+      "study/controlled/fixtures/log-triage/edge-proxy/prompt.txt": "f7ca68a0d5ab767c637d96cdceae2b2ec57fbbb306e9f40b775b0eef750a4dbe",
+      "study/controlled/fixtures/manifest.json": "79249a05a242bccd2980eb4d8a7b041f06f42031dc3e9fb9f275c7f8e2d14df6",
+      "study/controlled/fixtures/path-probe/quarry/input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+      "study/controlled/fixtures/path-probe/quarry/prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+      "study/controlled/fixtures/regex-infer/widget-code/input.json": "b6c0834a4145c03ecb3753c85855db6fc6308e285a976bb986c70d773f0e2772",
+      "study/controlled/fixtures/regex-infer/widget-code/prompt.txt": "28f9d4f6a27fdea1d8317153d7c1ebe50c1d05a0cc0d1352ad35595197c792bd",
+      "study/controlled/fixtures/stat-pick/sensor-drift/input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+      "study/controlled/fixtures/stat-pick/sensor-drift/prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+      "study/controlled/validators/DEVELOPMENT.md": "d63d1b2639b4d7d3157ae05c84ddf77ae9b98b7750fb6d8d58dfd63c1cfa2f4b",
+      "study/controlled/validators/build_fixtures.py": "d63be81c3d6c8d1e6fe37eb431e76c2a49c15adbb3e794d1bc40de0daf2f5272",
+      "study/controlled/validators/references.json": "21a2a62bc64998d55da524bfa9668cf183437dbead5adec8ededde6f60e4615b",
+      "study/controlled/validators/regex_worker.py": "2c0bd25aad5e9c83039793272631ec237e7dbcb68a16bcf90f81cd33209a242b",
+      "study/controlled/validators/validate.py": "985c026405c890b8d746c6e9da64dd5989289c7865bf3b7985b927c9ca16c710",
+      "study/controlled/limits.json": "ff682653d37f8ca33b6e5bf0f20423dbee40b08b98060146892e74b7e2bc20e4",
+      "study/controlled/rush_benchmark.py": "0596d85fab0dc36d897b16925936f4972bd003c869ba63c6933191eb3f64336d",
+      "study/controlled/run_experiments.py": "7adb86a0ed6169fe85c2a1125e4a23fdb151510033946262235f1a03a80813fe",
+      "study/controlled/development/platform-fix/scalar-enum-skeleton.patch": "149dca7282ae71bab31a45f829e2b1c8fa279a1539ae528a9077ac3c44c6a3b5",
+      "study/controlled/development/platform-fix/applied.json": "c4b371fa99ba3486b430a3633bdc45b24f877fd9db27b8dd76b3ec495e3d0310"
+    },
+    "sha256": "9475e7bf3674aa43facff41e9e3d845ddce1df9032cd408f365231d5df0726b2"
+  },
+  "wheel": {
+    "path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/dist/comp580_agent-0.2.0-py3-none-any.whl",
+    "sha256": "0575291280cfcc1dbb1b6898741b5edcd831796aad141cc4a48a41116b0a4aa8",
+    "package_modules_sha256": {
+      "__init__.py": "a6dc0561092e90ffe84b614bd88fd4c17bc702440ef0d707061713c609088d29",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "agent.py": "73d9afb7afea24c8796bf7ca6e57503eae48d82f512a9e6e87887a31e6e0064b",
+      "cli.py": "f820079098ee2c292b72fce1e74264bf9b7f7dddbf3e6b5195c3568f178e01d9",
+      "common.py": "bc286024060177ece73d1e1aa4a6b1f793dc0fe291b13580298fe1fbc51cd289",
+      "gateway.py": "e3a64541dc20a4ee31c62b9967cf23d59359eb5805965b57b2296609acbf7a9b",
+      "telemetry.py": "b77726ec44e36be1b86c5b64a359668ea492c80af1a4e34911824850e7fd1d75",
+      "tools.py": "f2a78ab8e8f17b9eb23bba9fcc89aa556763f59531edcc3ba6154cca7fe58c74"
+    },
+    "code_sha256": "b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+  },
+  "configuration": {
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "endpoint_profile": "openrouter",
+    "providers": [
+      "deepinfra",
+      "nebius"
+    ],
+    "limits": {
+      "cpus": 1,
+      "pids": 256,
+      "memory_mb": 1024,
+      "tmp_bytes": 67108864,
+      "build_files": 100000,
+      "max_cost_usd": 0.05,
+      "wall_time_ms": 180000,
+      "build_wall_ms": 600000,
+      "build_memory_mb": 3072,
+      "build_tmp_bytes": 536870912,
+      "internet_access": false,
+      "max_model_calls": 12,
+      "workspace_bytes": 268435456,
+      "workspace_files": 20000,
+      "build_output_bytes": 1073741824,
+      "max_output_tokens_per_call": 32768
+    }
+  },
+  "source_identity_note": "Revision may be absent/dirty; tree digest and wheel/module hashes are authoritative. Native agent is command text; attempt.started source_sha256 identifies platform shell, not this package.",
+  "excluded_run_ids": [
+    "2f2c8d4c-186c-4cf3-8379-a5124e0d5428",
+    "b8c33b34-30f8-4884-a576-37995327cdc8"
+  ],
+  "cases": [
+    {
+      "case_id": "log-triage/edge-proxy",
+      "plan_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/plans/log-triage.json",
+      "state_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/state/log-triage.json",
+      "plan_file_sha256": "c82222ee650ff8e901f1f18a6692f048dbc14c3663d4d3ade819d8220678c3d0",
+      "plan_sha256": "5db979fa4c0db2ce259dc2d561a10413b3cbecc973a491c8f39ad5f995cbd234",
+      "prompt_sha256": "f7ca68a0d5ab767c637d96cdceae2b2ec57fbbb306e9f40b775b0eef750a4dbe",
+      "public_file_sha256": {
+        "input.json": "73d636c474274b07fa9ebf161e1db9587552bedaa31344dbbde984ec10111ad1",
+        "prompt.txt": "f7ca68a0d5ab767c637d96cdceae2b2ec57fbbb306e9f40b775b0eef750a4dbe"
+      },
+      "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+      "benchmark": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "name": "comp580-yw251-compact-v1-log-triage-edge-proxy-90a4eaebd1ea29b4",
+        "plugin": {
+          "id": "log-triage",
+          "name": "Log Triage",
+          "version": "0.1.0",
+          "sha256": "80bf25bc65eb72c4cd31fefb4dc98c78ddbad2cd474ea16b5e3c9ce11cb8219f"
+        },
+        "task_id": "triage-log",
+        "task_kind": "decide",
+        "publisher": {
+          "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+          "name": "Yifei Wang",
+          "github": "a-little-hoof"
+        },
+        "case_set_id": "0f68017502458c7e0490f59a74c3a8fbead9c718f3b288f2247cd2bb7d695663",
+        "case_set_digest": "0f68017502458c7e0490f59a74c3a8fbead9c718f3b288f2247cd2bb7d695663",
+        "digest": "3ff4a73f60ab3d3d755213d9263062430904f0701b3a20b5980fc9422607f4d3",
+        "model": "deepseek/deepseek-v4-flash-0731",
+        "endpoint_profile": "openrouter",
+        "providers": [
+          "deepinfra",
+          "nebius"
+        ],
+        "limits": {
+          "cpus": 1,
+          "pids": 256,
+          "memory_mb": 1024,
+          "tmp_bytes": 67108864,
+          "build_files": 100000,
+          "max_cost_usd": 0.05,
+          "wall_time_ms": 180000,
+          "build_wall_ms": 600000,
+          "build_memory_mb": 3072,
+          "build_tmp_bytes": 536870912,
+          "internet_access": false,
+          "max_model_calls": 12,
+          "workspace_bytes": 268435456,
+          "workspace_files": 20000,
+          "build_output_bytes": 1073741824,
+          "max_output_tokens_per_call": 32768
+        },
+        "published_at": "2026-11-24T04:37:23.189Z",
+        "case_count": 1,
+        "answer_count": 1,
+        "refuse_count": 0,
+        "task": {
+          "kind": "decide",
+          "egress_hosts": [],
+          "description": "Read an incident's log, say which fault it shows, and cite the line that shows it",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "night-batch",
+                  "api-gateway",
+                  "report-worker",
+                  "edge-proxy"
+                ],
+                "description": "Which incident's log to look at"
+              }
+            },
+            "required": [
+              "case"
+            ],
+            "additionalProperties": false
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "night-batch",
+                  "api-gateway",
+                  "report-worker",
+                  "edge-proxy"
+                ],
+                "description": "The incident triaged, as the task gave it"
+              },
+              "fault": {
+                "enum": [
+                  "disk-full",
+                  "auth-rejected",
+                  "timeout",
+                  "bad-config",
+                  "rate-limited",
+                  "out-of-memory"
+                ],
+                "description": "What actually went wrong. disk-full: a write failed because the volume is full. auth-rejected: credentials were refused. timeout: something waited and gave up, and nothing else explains why. bad-config: the service was given a configuration it could not accept. rate-limited: a quota or request limit was reached. out-of-memory: the process grew past what it was allowed and was stopped."
+              },
+              "evidence": {
+                "type": "string",
+                "description": "The one log line that shows the fault, copied exactly as read_log returned it"
+              }
+            },
+            "required": [
+              "case",
+              "fault",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          "tools": [
+            {
+              "name": "read_log",
+              "description": "Read an incident's log, one line per entry, in the order they were written",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "night-batch",
+                      "api-gateway",
+                      "report-worker",
+                      "edge-proxy"
+                    ],
+                    "description": "Which incident's log to look at"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "night-batch",
+                      "api-gateway",
+                      "report-worker",
+                      "edge-proxy"
+                    ],
+                    "description": "The incident the log belongs to"
+                  },
+                  "lines": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The log, one line per entry, in the order they were written"
+                  },
+                  "count": {
+                    "type": "integer",
+                    "description": "How many lines the log holds"
+                  }
+                },
+                "required": [
+                  "case",
+                  "lines",
+                  "count"
+                ],
+                "additionalProperties": false
+              },
+              "writes": true
+            }
+          ]
+        },
+        "cases": [
+          {
+            "case_id": "log-triage-01",
+            "position": 0,
+            "kind": "answer",
+            "prompt": "Task: triage-log; case: edge-proxy.\n\nDiagnose the cause shown by the log in input.json, rather than merely naming a downstream symptom. Each line is true. Select one fault: disk-full (a write failed because a volume is full), auth-rejected (credentials were refused), timeout (something waited and gave up, with no other cause), bad-config (a service rejected its configuration), rate-limited (a quota or request limit was reached), or out-of-memory (a process exceeded its memory allowance). Cite one diagnostic log line exactly, including timestamp and level. The full original log is supplied as a readable input file.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"edge-proxy\"]},\"fault\":{\"type\":\"string\",\"enum\":[\"disk-full\",\"auth-rejected\",\"timeout\",\"bad-config\",\"rate-limited\",\"out-of-memory\"]},\"evidence\":{\"type\":\"string\"}},\"required\":[\"case\",\"fault\",\"evidence\"],\"additionalProperties\":false}",
+            "prompt_sha256": "f7ca68a0d5ab767c637d96cdceae2b2ec57fbbb306e9f40b775b0eef750a4dbe",
+            "arguments": {
+              "case": "edge-proxy"
+            },
+            "expected_error": null,
+            "content_digest": "59a34aa61cd4be38dd23b05d7706a65e05b5754b784417199d42845dd7d0696a",
+            "fixtures": {
+              "sha256": "975d84d0b312d4f0cd3f3b35c32ebe246370268db0aff6a0e216bb757fa17df8",
+              "files": {
+                "input.json": "73d636c474274b07fa9ebf161e1db9587552bedaa31344dbbde984ec10111ad1",
+                "prompt.txt": "f7ca68a0d5ab767c637d96cdceae2b2ec57fbbb306e9f40b775b0eef750a4dbe"
+              }
+            }
+          }
+        ]
+      },
+      "prefix": "/api/workspaces/qsicB5hMcRxdFG3km2ix3FSSIDhgslIa"
+    },
+    {
+      "case_id": "cipher-crack/telegram",
+      "plan_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/plans/cipher-crack.json",
+      "state_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/state/cipher-crack.json",
+      "plan_file_sha256": "e9463f521d5818d745fcc85173af84bf16a8769e5b7f0084dd789aa70a42cc97",
+      "plan_sha256": "e04d6e72065bf4d5144281c4fe37876016fee108e05dce5bbea28e4ddcc47e73",
+      "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+      "public_file_sha256": {
+        "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+        "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+      },
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "benchmark": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+        "plugin": {
+          "id": "cipher-crack",
+          "name": "Cipher Crack",
+          "version": "0.1.0",
+          "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+        },
+        "task_id": "crack-cipher",
+        "task_kind": "agent",
+        "publisher": {
+          "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+          "name": "Yifei Wang",
+          "github": "a-little-hoof"
+        },
+        "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+        "case_set_digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+        "digest": "b6f12a6b2dcc86a6a5114d4a6cf180ea30928cf512c2df1481a9bc4cb105f2f8",
+        "model": "deepseek/deepseek-v4-flash-0731",
+        "endpoint_profile": "openrouter",
+        "providers": [
+          "deepinfra",
+          "nebius"
+        ],
+        "limits": {
+          "cpus": 1,
+          "pids": 256,
+          "memory_mb": 1024,
+          "tmp_bytes": 67108864,
+          "build_files": 100000,
+          "max_cost_usd": 0.05,
+          "wall_time_ms": 180000,
+          "build_wall_ms": 600000,
+          "build_memory_mb": 3072,
+          "build_tmp_bytes": 536870912,
+          "internet_access": false,
+          "max_model_calls": 12,
+          "workspace_bytes": 268435456,
+          "workspace_files": 20000,
+          "build_output_bytes": 1073741824,
+          "max_output_tokens_per_call": 32768
+        },
+        "published_at": "2026-11-24T04:38:55.437Z",
+        "case_count": 1,
+        "answer_count": 1,
+        "refuse_count": 0,
+        "task": {
+          "kind": "agent",
+          "egress_hosts": [],
+          "description": "Find the key a case's message was enciphered with and read the message",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "postcard",
+                  "dispatch",
+                  "ledger",
+                  "telegram"
+                ],
+                "description": "Which intercepted message to work on; each one was shifted by a different letter"
+              }
+            },
+            "required": [
+              "case"
+            ],
+            "additionalProperties": false
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "postcard",
+                  "dispatch",
+                  "ledger",
+                  "telegram"
+                ],
+                "description": "The case the message belongs to, as the task gave it"
+              },
+              "key": {
+                "type": "string",
+                "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+              },
+              "plaintext": {
+                "type": "string",
+                "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+              }
+            },
+            "required": [
+              "case",
+              "key",
+              "plaintext"
+            ],
+            "additionalProperties": false
+          },
+          "tools": [
+            {
+              "name": "read_cipher",
+              "description": "Read a case's intercepted message, still enciphered",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to"
+                  },
+                  "ciphertext": {
+                    "type": "string",
+                    "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                  }
+                },
+                "required": [
+                  "case",
+                  "ciphertext"
+                ],
+                "additionalProperties": false
+              },
+              "writes": true
+            },
+            {
+              "name": "decrypt",
+              "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter to try, A to Z"
+                  }
+                },
+                "required": [
+                  "case",
+                  "key"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to"
+                  },
+                  "ciphertext": {
+                    "type": "string",
+                    "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter that was tried, as given without surrounding spaces"
+                  },
+                  "plaintext": {
+                    "type": "string",
+                    "description": "What the ciphertext reads as under that key; only one key reads as English"
+                  }
+                },
+                "required": [
+                  "case",
+                  "ciphertext",
+                  "key",
+                  "plaintext"
+                ],
+                "additionalProperties": false
+              },
+              "writes": true
+            }
+          ]
+        },
+        "cases": [
+          {
+            "case_id": "cipher-crack-01",
+            "position": 0,
+            "kind": "answer",
+            "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+            "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+            "arguments": {
+              "case": "telegram"
+            },
+            "expected_error": null,
+            "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+            "fixtures": {
+              "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+              "files": {
+                "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+                "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+              }
+            }
+          }
+        ]
+      },
+      "prefix": "/api/workspaces/qsicB5hMcRxdFG3km2ix3FSSIDhgslIa"
+    },
+    {
+      "case_id": "path-probe/quarry",
+      "plan_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/plans/path-probe.json",
+      "state_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/state/path-probe.json",
+      "plan_file_sha256": "42a06411172886a605d981237e38df1f28b6f88e6b361c9fe9e7b99297472fd5",
+      "plan_sha256": "651b14a7292716457469c150bd3a09dc33d277803c20c10d6c72255d1d34898c",
+      "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+      "public_file_sha256": {
+        "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+        "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+      },
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "benchmark": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+        "plugin": {
+          "id": "path-probe",
+          "name": "Path Probe",
+          "version": "0.1.0",
+          "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+        },
+        "task_id": "find-route",
+        "task_kind": "agent",
+        "publisher": {
+          "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+          "name": "Yifei Wang",
+          "github": "a-little-hoof"
+        },
+        "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+        "case_set_digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+        "digest": "7c215de59ef25b3dadbb917a9f7eff6c1e92c2ebca265c7689bfef120614acb6",
+        "model": "deepseek/deepseek-v4-flash-0731",
+        "endpoint_profile": "openrouter",
+        "providers": [
+          "deepinfra",
+          "nebius"
+        ],
+        "limits": {
+          "cpus": 1,
+          "pids": 256,
+          "memory_mb": 1024,
+          "tmp_bytes": 67108864,
+          "build_files": 100000,
+          "max_cost_usd": 0.05,
+          "wall_time_ms": 180000,
+          "build_wall_ms": 600000,
+          "build_memory_mb": 3072,
+          "build_tmp_bytes": 536870912,
+          "internet_access": false,
+          "max_model_calls": 12,
+          "workspace_bytes": 268435456,
+          "workspace_files": 20000,
+          "build_output_bytes": 1073741824,
+          "max_output_tokens_per_call": 32768
+        },
+        "published_at": "2026-11-24T04:39:01.010Z",
+        "case_count": 1,
+        "answer_count": 1,
+        "refuse_count": 0,
+        "task": {
+          "kind": "agent",
+          "egress_hosts": [],
+          "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "orchard",
+                  "quarry",
+                  "foundry",
+                  "harbour"
+                ],
+                "description": "Which map to work on; the map is never shown whole, only a node at a time"
+              }
+            },
+            "required": [
+              "case"
+            ],
+            "additionalProperties": false
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "orchard",
+                  "quarry",
+                  "foundry",
+                  "harbour"
+                ],
+                "description": "The map the route crosses, as the task gave it"
+              },
+              "route": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+              },
+              "cost": {
+                "type": "integer",
+                "description": "What the whole route costs: the costs of the links it travels, added up"
+              }
+            },
+            "required": [
+              "case",
+              "route",
+              "cost"
+            ],
+            "additionalProperties": false
+          },
+          "tools": [
+            {
+              "name": "read_map",
+              "description": "Read where a route must start and end, and how many nodes the map holds",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map this describes"
+                  },
+                  "start": {
+                    "type": "string",
+                    "description": "The node a route starts at"
+                  },
+                  "goal": {
+                    "type": "string",
+                    "description": "The node a route must reach"
+                  },
+                  "nodes": {
+                    "type": "integer",
+                    "description": "How many nodes the map holds in all, so you know when you have seen them"
+                  }
+                },
+                "required": [
+                  "case",
+                  "start",
+                  "goal",
+                  "nodes"
+                ],
+                "additionalProperties": false
+              },
+              "writes": true
+            },
+            {
+              "name": "neighbours",
+              "description": "Read every link touching the nodes asked about, and nothing else on the map",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  },
+                  "nodes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The nodes to look at, one or more; ask about several at once"
+                  }
+                },
+                "required": [
+                  "case",
+                  "nodes"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map this comes from"
+                  },
+                  "links": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "start": {
+                          "type": "string",
+                          "description": "One end of the link"
+                        },
+                        "end": {
+                          "type": "string",
+                          "description": "The other end; links can be travelled either way"
+                        },
+                        "cost": {
+                          "type": "integer",
+                          "description": "What travelling this link costs, always more than zero"
+                        }
+                      },
+                      "required": [
+                        "start",
+                        "end",
+                        "cost"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "description": "Every link touching the nodes asked about, each one named once"
+                  }
+                },
+                "required": [
+                  "case",
+                  "links"
+                ],
+                "additionalProperties": false
+              },
+              "writes": true
+            }
+          ]
+        },
+        "cases": [
+          {
+            "case_id": "path-probe-01",
+            "position": 0,
+            "kind": "answer",
+            "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+            "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+            "arguments": {
+              "case": "quarry"
+            },
+            "expected_error": null,
+            "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+            "fixtures": {
+              "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+              "files": {
+                "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+                "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+              }
+            }
+          }
+        ]
+      },
+      "prefix": "/api/workspaces/qsicB5hMcRxdFG3km2ix3FSSIDhgslIa"
+    },
+    {
+      "case_id": "regex-infer/widget-code",
+      "plan_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/plans/regex-infer.json",
+      "state_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/state/regex-infer.json",
+      "plan_file_sha256": "ec903fe8a8f853102420b012bf15129bba5a1b2471c0ecbb0939541c24e3e3f3",
+      "plan_sha256": "81a9dc57be006a8b5d968c7b74d8885649ae96814faec1fef45eb1e43b4b6cdc",
+      "prompt_sha256": "28f9d4f6a27fdea1d8317153d7c1ebe50c1d05a0cc0d1352ad35595197c792bd",
+      "public_file_sha256": {
+        "input.json": "b6c0834a4145c03ecb3753c85855db6fc6308e285a976bb986c70d773f0e2772",
+        "prompt.txt": "28f9d4f6a27fdea1d8317153d7c1ebe50c1d05a0cc0d1352ad35595197c792bd"
+      },
+      "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+      "benchmark": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "name": "comp580-yw251-compact-v1-regex-infer-widget-code-f223fcd9077ce88f",
+        "plugin": {
+          "id": "regex-infer",
+          "name": "Regex From Examples",
+          "version": "0.1.0",
+          "sha256": "11cd0380ffdc47229a4d40909dcd89f88a871ef98b58e964e3efebc2fe1736b1"
+        },
+        "task_id": "infer-pattern",
+        "task_kind": "agent",
+        "publisher": {
+          "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+          "name": "Yifei Wang",
+          "github": "a-little-hoof"
+        },
+        "case_set_id": "17afd13a135a93b7d6d50c8c1b6d2a0321d8255b542d1110fec65deea79d1582",
+        "case_set_digest": "17afd13a135a93b7d6d50c8c1b6d2a0321d8255b542d1110fec65deea79d1582",
+        "digest": "dbcefa0d126bd90bcf4b0982d28bf447deb04f7c15b00a46a5dd8ecf8d9fda88",
+        "model": "deepseek/deepseek-v4-flash-0731",
+        "endpoint_profile": "openrouter",
+        "providers": [
+          "deepinfra",
+          "nebius"
+        ],
+        "limits": {
+          "cpus": 1,
+          "pids": 256,
+          "memory_mb": 1024,
+          "tmp_bytes": 67108864,
+          "build_files": 100000,
+          "max_cost_usd": 0.05,
+          "wall_time_ms": 180000,
+          "build_wall_ms": 600000,
+          "build_memory_mb": 3072,
+          "build_tmp_bytes": 536870912,
+          "internet_access": false,
+          "max_model_calls": 12,
+          "workspace_bytes": 268435456,
+          "workspace_files": 20000,
+          "build_output_bytes": 1073741824,
+          "max_output_tokens_per_call": 32768
+        },
+        "published_at": "2026-11-24T04:39:06.115Z",
+        "case_count": 1,
+        "answer_count": 1,
+        "refuse_count": 0,
+        "task": {
+          "kind": "agent",
+          "egress_hosts": [],
+          "description": "Infer a case's hidden rule from labelled examples and write a regular expression for it",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "widget-code",
+                  "shelf-tag",
+                  "batch-ref",
+                  "seat-label"
+                ],
+                "description": "Which labelled example set to work from; each case hides a different rule"
+              }
+            },
+            "required": [
+              "case"
+            ],
+            "additionalProperties": false
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "widget-code",
+                  "shelf-tag",
+                  "batch-ref",
+                  "seat-label"
+                ],
+                "description": "The case the pattern is for, as the task gave it"
+              },
+              "pattern": {
+                "type": "string",
+                "description": "A Python regular expression for the case's hidden rule, matched whole with re.fullmatch, e.g. [A-Z]{2}-[0-9]{3}"
+              }
+            },
+            "required": [
+              "case",
+              "pattern"
+            ],
+            "additionalProperties": false
+          },
+          "tools": [
+            {
+              "name": "sample_examples",
+              "description": "Read a case's visible labelled examples, accepted strings first",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "widget-code",
+                      "shelf-tag",
+                      "batch-ref",
+                      "seat-label"
+                    ],
+                    "description": "Which labelled example set to work from; each case hides a different rule"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "widget-code",
+                      "shelf-tag",
+                      "batch-ref",
+                      "seat-label"
+                    ],
+                    "description": "The case the examples come from"
+                  },
+                  "examples": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string",
+                          "description": "The example string"
+                        },
+                        "matches": {
+                          "type": "boolean",
+                          "description": "Whether the case's hidden rule accepts this string"
+                        }
+                      },
+                      "required": [
+                        "text",
+                        "matches"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "description": "The labelled examples, accepted ones first"
+                  }
+                },
+                "required": [
+                  "case",
+                  "examples"
+                ],
+                "additionalProperties": false
+              },
+              "writes": true
+            },
+            {
+              "name": "try_pattern",
+              "description": "Run a candidate pattern over a case's visible examples and report the ones it labels wrongly",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "widget-code",
+                      "shelf-tag",
+                      "batch-ref",
+                      "seat-label"
+                    ],
+                    "description": "Which labelled example set to work from; each case hides a different rule"
+                  },
+                  "pattern": {
+                    "type": "string",
+                    "description": "A Python regular expression for the case's hidden rule, matched whole with re.fullmatch, e.g. [A-Z]{2}-[0-9]{3}"
+                  }
+                },
+                "required": [
+                  "case",
+                  "pattern"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "widget-code",
+                      "shelf-tag",
+                      "batch-ref",
+                      "seat-label"
+                    ],
+                    "description": "The case the pattern was tested on"
+                  },
+                  "pattern": {
+                    "type": "string",
+                    "description": "The pattern, as given without surrounding spaces"
+                  },
+                  "wrong": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string",
+                          "description": "The example string"
+                        },
+                        "matches": {
+                          "type": "boolean",
+                          "description": "Whether the case's hidden rule accepts this string"
+                        }
+                      },
+                      "required": [
+                        "text",
+                        "matches"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "description": "The visible examples the pattern labels wrongly, with the rule's own label"
+                  },
+                  "right": {
+                    "type": "integer",
+                    "description": "How many visible examples the pattern labels correctly"
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "How many visible examples the pattern was tested on"
+                  },
+                  "all_right": {
+                    "type": "boolean",
+                    "description": "Whether the pattern labels every visible example correctly"
+                  }
+                },
+                "required": [
+                  "case",
+                  "pattern",
+                  "wrong",
+                  "right",
+                  "total",
+                  "all_right"
+                ],
+                "additionalProperties": false
+              },
+              "writes": true
+            }
+          ]
+        },
+        "cases": [
+          {
+            "case_id": "regex-infer-01",
+            "position": 0,
+            "kind": "answer",
+            "prompt": "Task: infer-pattern; case: widget-code.\n\nInfer the hidden string rule from the labelled visible examples in input.json. Return a Python regular expression, evaluated with re.fullmatch, which describes the entire string. Anchors are optional. Do not simply list the accepted examples: grading uses a separate held-out set. You may test a candidate on the visible examples. The pattern must be nonblank, have no surrounding whitespace, and contain at most 120 characters. The verifier also rejects a group containing a quantifier when that group is itself quantified with *, +, or a counted repetition. The hidden rule and held-out examples are not supplied.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"widget-code\"]},\"pattern\":{\"type\":\"string\"}},\"required\":[\"case\",\"pattern\"],\"additionalProperties\":false}",
+            "prompt_sha256": "28f9d4f6a27fdea1d8317153d7c1ebe50c1d05a0cc0d1352ad35595197c792bd",
+            "arguments": {
+              "case": "widget-code"
+            },
+            "expected_error": null,
+            "content_digest": "21d1e05113a2ee4e9ecdb02e68eea908035a4ade687c9de2216a692c7591553e",
+            "fixtures": {
+              "sha256": "7a11e8fdb76a4225177ea73006765c8ff5224aeebca9e44200415f4c8795afff",
+              "files": {
+                "input.json": "b6c0834a4145c03ecb3753c85855db6fc6308e285a976bb986c70d773f0e2772",
+                "prompt.txt": "28f9d4f6a27fdea1d8317153d7c1ebe50c1d05a0cc0d1352ad35595197c792bd"
+              }
+            }
+          }
+        ]
+      },
+      "prefix": "/api/workspaces/qsicB5hMcRxdFG3km2ix3FSSIDhgslIa"
+    },
+    {
+      "case_id": "stat-pick/sensor-drift",
+      "plan_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/plans/stat-pick.json",
+      "state_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/state/stat-pick.json",
+      "plan_file_sha256": "f80063c54c578faddeb34a0ba34de64e66791560dc93dd9f1e8750c679ceae12",
+      "plan_sha256": "1aa4409cbaf3ff38aed133c4fc6f7e477dfae8dff3100f54366cfcae1ab6bce3",
+      "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+      "public_file_sha256": {
+        "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+        "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+      },
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "benchmark": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+        "plugin": {
+          "id": "stat-pick",
+          "name": "Stat Pick",
+          "version": "0.1.0",
+          "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+        },
+        "task_id": "answer-question",
+        "task_kind": "decide",
+        "publisher": {
+          "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+          "name": "Yifei Wang",
+          "github": "a-little-hoof"
+        },
+        "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+        "case_set_digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+        "digest": "aed96b21b785f975804c6c0e5fd0d1dcf42e3cd31aec23beb36a681f1974c7d1",
+        "model": "deepseek/deepseek-v4-flash-0731",
+        "endpoint_profile": "openrouter",
+        "providers": [
+          "deepinfra",
+          "nebius"
+        ],
+        "limits": {
+          "cpus": 1,
+          "pids": 256,
+          "memory_mb": 1024,
+          "tmp_bytes": 67108864,
+          "build_files": 100000,
+          "max_cost_usd": 0.05,
+          "wall_time_ms": 180000,
+          "build_wall_ms": 600000,
+          "build_memory_mb": 3072,
+          "build_tmp_bytes": 536870912,
+          "internet_access": false,
+          "max_model_calls": 12,
+          "workspace_bytes": 268435456,
+          "workspace_files": 20000,
+          "build_output_bytes": 1073741824,
+          "max_output_tokens_per_call": 32768
+        },
+        "published_at": "2026-11-24T04:39:11.088Z",
+        "case_count": 1,
+        "answer_count": 1,
+        "refuse_count": 0,
+        "task": {
+          "kind": "decide",
+          "egress_hosts": [],
+          "description": "Choose which summary of a column answers a question asked in words, and give its value",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "delivery-delays",
+                  "class-sizes",
+                  "sensor-drift",
+                  "rainfall"
+                ],
+                "description": "Which question to answer"
+              }
+            },
+            "required": [
+              "case"
+            ],
+            "additionalProperties": false
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "delivery-delays",
+                  "class-sizes",
+                  "sensor-drift",
+                  "rainfall"
+                ],
+                "description": "The case answered, as the task gave it"
+              },
+              "statistic": {
+                "enum": [
+                  "mean",
+                  "median",
+                  "mode",
+                  "range",
+                  "spread",
+                  "smallest",
+                  "largest",
+                  "total"
+                ],
+                "description": "The summary that answers the question"
+              },
+              "value": {
+                "type": "number",
+                "description": "What that summary comes to for that column"
+              }
+            },
+            "required": [
+              "case",
+              "statistic",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          "tools": [
+            {
+              "name": "read_question",
+              "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case this question belongs to"
+                  },
+                  "question": {
+                    "type": "string",
+                    "description": "What is being asked, in words; the readings themselves are not shown"
+                  },
+                  "column": {
+                    "type": "string",
+                    "description": "The column of readings the question is about"
+                  },
+                  "readings": {
+                    "type": "integer",
+                    "description": "How many readings the column holds"
+                  }
+                },
+                "required": [
+                  "case",
+                  "question",
+                  "column",
+                  "readings"
+                ],
+                "additionalProperties": false
+              },
+              "writes": true
+            },
+            {
+              "name": "summarise",
+              "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  },
+                  "column": {
+                    "type": "string",
+                    "description": "The column of readings the question is about"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+                  }
+                },
+                "required": [
+                  "case",
+                  "column",
+                  "statistic"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case the column belongs to"
+                  },
+                  "column": {
+                    "type": "string",
+                    "description": "The column summarised, as given"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "The summary that was worked out"
+                  },
+                  "value": {
+                    "type": "number",
+                    "description": "What that summary comes to for that column"
+                  },
+                  "readings": {
+                    "type": "integer",
+                    "description": "How many readings went into it"
+                  }
+                },
+                "required": [
+                  "case",
+                  "column",
+                  "statistic",
+                  "value",
+                  "readings"
+                ],
+                "additionalProperties": false
+              },
+              "writes": true
+            }
+          ]
+        },
+        "cases": [
+          {
+            "case_id": "stat-pick-01",
+            "position": 0,
+            "kind": "answer",
+            "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+            "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+            "arguments": {
+              "case": "sensor-drift"
+            },
+            "expected_error": null,
+            "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+            "fixtures": {
+              "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+              "files": {
+                "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+                "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+              }
+            }
+          }
+        ]
+      },
+      "prefix": "/api/workspaces/qsicB5hMcRxdFG3km2ix3FSSIDhgslIa"
+    }
+  ],
+  "trials": [
+    {
+      "position": 1,
+      "trial_id": "stat-pick/sensor-drift/compact/rep04",
+      "case_id": "stat-pick/sensor-drift",
+      "condition": "compact",
+      "replicate": "final-rep04",
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-8242419fdd1f6b5ee255d01ea5f711fa835792e3e779e544b9c20a53d831153b"
+      }
+    },
+    {
+      "position": 2,
+      "trial_id": "stat-pick/sensor-drift/full/rep04",
+      "case_id": "stat-pick/sensor-drift",
+      "condition": "full",
+      "replicate": "final-rep04",
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-9ce3eac5afff69e38e3dba0751efbb846714d92aea3debd10639db1f22be3fb2"
+      }
+    },
+    {
+      "position": 3,
+      "trial_id": "log-triage/edge-proxy/compact/rep01",
+      "case_id": "log-triage/edge-proxy",
+      "condition": "compact",
+      "replicate": "final-rep01",
+      "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-6c48e76bd2e8238e4235a2dc3273b69faf55ee8c3823da0a0fb32982a6979dfd"
+      }
+    },
+    {
+      "position": 4,
+      "trial_id": "log-triage/edge-proxy/full/rep01",
+      "case_id": "log-triage/edge-proxy",
+      "condition": "full",
+      "replicate": "final-rep01",
+      "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-5716e8052ead90784ff3d7a2fa4d0b4bf0f67f078daf206ccafa258530acc843"
+      }
+    },
+    {
+      "position": 5,
+      "trial_id": "log-triage/edge-proxy/full/rep05",
+      "case_id": "log-triage/edge-proxy",
+      "condition": "full",
+      "replicate": "final-rep05",
+      "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-f4241f4fee7426dbb21a297f9e3968edd4d91c5e549d4080b9e0ec327819a016"
+      }
+    },
+    {
+      "position": 6,
+      "trial_id": "log-triage/edge-proxy/compact/rep05",
+      "case_id": "log-triage/edge-proxy",
+      "condition": "compact",
+      "replicate": "final-rep05",
+      "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-749c7d9a77af48e0d581551b6ffdb455a35fa42ddd79de56a70f672f6b641134"
+      }
+    },
+    {
+      "position": 7,
+      "trial_id": "log-triage/edge-proxy/full/rep03",
+      "case_id": "log-triage/edge-proxy",
+      "condition": "full",
+      "replicate": "final-rep03",
+      "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-8ff72820962d2bb99843cc943f45cfb1deb8f2e4f678575bfe756e0e4d5787d0"
+      }
+    },
+    {
+      "position": 8,
+      "trial_id": "log-triage/edge-proxy/compact/rep03",
+      "case_id": "log-triage/edge-proxy",
+      "condition": "compact",
+      "replicate": "final-rep03",
+      "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-67ce5ce57b14c147652899b52292aa4c2eac079d3157c39941d2781c07a43261"
+      }
+    },
+    {
+      "position": 9,
+      "trial_id": "path-probe/quarry/compact/rep05",
+      "case_id": "path-probe/quarry",
+      "condition": "compact",
+      "replicate": "final-rep05",
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-670fda504e0ecef2dd455207686f59264905bbdcb1a9006b712319e12f10a5b3"
+      }
+    },
+    {
+      "position": 10,
+      "trial_id": "path-probe/quarry/full/rep05",
+      "case_id": "path-probe/quarry",
+      "condition": "full",
+      "replicate": "final-rep05",
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-83b56ebed270134dd90405b53722122fea5cf7bebbb9adc7266dd124ccea1c30"
+      }
+    },
+    {
+      "position": 11,
+      "trial_id": "regex-infer/widget-code/full/rep04",
+      "case_id": "regex-infer/widget-code",
+      "condition": "full",
+      "replicate": "final-rep04",
+      "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-3e7c876513fac126f283fe19990e3ba50ac8b391a0eacc56d31bf12372f6e2aa"
+      }
+    },
+    {
+      "position": 12,
+      "trial_id": "regex-infer/widget-code/compact/rep04",
+      "case_id": "regex-infer/widget-code",
+      "condition": "compact",
+      "replicate": "final-rep04",
+      "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-5af7e85e7addb1fd743cea4ee122084887b9bb40d7a5e639d6859ea23c02ec3d"
+      }
+    },
+    {
+      "position": 13,
+      "trial_id": "stat-pick/sensor-drift/compact/rep01",
+      "case_id": "stat-pick/sensor-drift",
+      "condition": "compact",
+      "replicate": "final-rep01",
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-88d6e83d6cd4eeaa6b1372d56bc264be25865f8525bcf712b3ab7d37c0c9e147"
+      }
+    },
+    {
+      "position": 14,
+      "trial_id": "stat-pick/sensor-drift/full/rep01",
+      "case_id": "stat-pick/sensor-drift",
+      "condition": "full",
+      "replicate": "final-rep01",
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-f0d5d8b5d0b97180ea87342b9edf7a994bc6f0f7d74792b9afcd9a1f266dfb7c"
+      }
+    },
+    {
+      "position": 15,
+      "trial_id": "regex-infer/widget-code/full/rep01",
+      "case_id": "regex-infer/widget-code",
+      "condition": "full",
+      "replicate": "final-rep01",
+      "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a836f0e5cc1c314b64bdf4772ef2d59a8766878a0329733f753f5a3ba39bb038"
+      }
+    },
+    {
+      "position": 16,
+      "trial_id": "regex-infer/widget-code/compact/rep01",
+      "case_id": "regex-infer/widget-code",
+      "condition": "compact",
+      "replicate": "final-rep01",
+      "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-6e432e7f03f86649bfb52e7a2090042e675548a11132cb7cf1f16ac757abc3b3"
+      }
+    },
+    {
+      "position": 17,
+      "trial_id": "cipher-crack/telegram/full/rep01",
+      "case_id": "cipher-crack/telegram",
+      "condition": "full",
+      "replicate": "final-rep01",
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-e3c0b2ebfee871323807f2fe98edb820eba9ff11e9677132a6c951265fa8b6c3"
+      }
+    },
+    {
+      "position": 18,
+      "trial_id": "cipher-crack/telegram/compact/rep01",
+      "case_id": "cipher-crack/telegram",
+      "condition": "compact",
+      "replicate": "final-rep01",
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a8df8f32c66f112fea32f86d94776b859167cada75714f7fb9a72fa59e5377c2"
+      }
+    },
+    {
+      "position": 19,
+      "trial_id": "path-probe/quarry/full/rep02",
+      "case_id": "path-probe/quarry",
+      "condition": "full",
+      "replicate": "final-rep02",
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-8d4cbe3619d3d3035a04857242de8d9f6d0e47283671d2fcc61d70f8bc556122"
+      }
+    },
+    {
+      "position": 20,
+      "trial_id": "path-probe/quarry/compact/rep02",
+      "case_id": "path-probe/quarry",
+      "condition": "compact",
+      "replicate": "final-rep02",
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-17556bb2b77ad3f8172f48d5d4a251c8656c851176543ae450fabae8bd005309"
+      }
+    },
+    {
+      "position": 21,
+      "trial_id": "stat-pick/sensor-drift/full/rep03",
+      "case_id": "stat-pick/sensor-drift",
+      "condition": "full",
+      "replicate": "final-rep03",
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-128c94c8709cb272ff89d4341b83d93233604d6b637af095fcfc3d5867e75056"
+      }
+    },
+    {
+      "position": 22,
+      "trial_id": "stat-pick/sensor-drift/compact/rep03",
+      "case_id": "stat-pick/sensor-drift",
+      "condition": "compact",
+      "replicate": "final-rep03",
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-55d5ca49c00dec0805f77db669132ce8aebe6a86d1364783d37c348f4c507e96"
+      }
+    },
+    {
+      "position": 23,
+      "trial_id": "path-probe/quarry/compact/rep04",
+      "case_id": "path-probe/quarry",
+      "condition": "compact",
+      "replicate": "final-rep04",
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-afe57eef3a46bbc2b115df037409b02f438fd3da45f537dbddcebc56426ee920"
+      }
+    },
+    {
+      "position": 24,
+      "trial_id": "path-probe/quarry/full/rep04",
+      "case_id": "path-probe/quarry",
+      "condition": "full",
+      "replicate": "final-rep04",
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-1e0af61b0065bb7d31ae04fd3a790cdabb77f015e57b62fd34d995a6617cd958"
+      }
+    },
+    {
+      "position": 25,
+      "trial_id": "cipher-crack/telegram/full/rep04",
+      "case_id": "cipher-crack/telegram",
+      "condition": "full",
+      "replicate": "final-rep04",
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-4b7ebb877107500f1a12bdb0c4615053c6052b3d2b8b68fde5d161363e1ecbb9"
+      }
+    },
+    {
+      "position": 26,
+      "trial_id": "cipher-crack/telegram/compact/rep04",
+      "case_id": "cipher-crack/telegram",
+      "condition": "compact",
+      "replicate": "final-rep04",
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-8ff7f41223fd9a8f401e3760b0440252e4d72cda99e9727e7d3e719283160b37"
+      }
+    },
+    {
+      "position": 27,
+      "trial_id": "regex-infer/widget-code/full/rep02",
+      "case_id": "regex-infer/widget-code",
+      "condition": "full",
+      "replicate": "final-rep02",
+      "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a20f0d92b7746b1b5e396aa2de2fdbdb82ab2592c0d7b4a5a3b25d2ca91f994a"
+      }
+    },
+    {
+      "position": 28,
+      "trial_id": "regex-infer/widget-code/compact/rep02",
+      "case_id": "regex-infer/widget-code",
+      "condition": "compact",
+      "replicate": "final-rep02",
+      "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-495c7c56c860a9d48207ae0ba0dd35fbb49ac0ee776a07df8c00902b9016d30d"
+      }
+    },
+    {
+      "position": 29,
+      "trial_id": "path-probe/quarry/compact/rep03",
+      "case_id": "path-probe/quarry",
+      "condition": "compact",
+      "replicate": "final-rep03",
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a14389a449ed976a32ce9e7027ba284e4bba7f7dd78648fc96b63ec64e146236"
+      }
+    },
+    {
+      "position": 30,
+      "trial_id": "path-probe/quarry/full/rep03",
+      "case_id": "path-probe/quarry",
+      "condition": "full",
+      "replicate": "final-rep03",
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-0a7c6bfdebdf2c8ac9cf6124300b4e23471f04a11841854346949f2cc5441ee5"
+      }
+    },
+    {
+      "position": 31,
+      "trial_id": "log-triage/edge-proxy/full/rep04",
+      "case_id": "log-triage/edge-proxy",
+      "condition": "full",
+      "replicate": "final-rep04",
+      "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-78ca8f0ec01f3868ba8464baa239bcbcae7675c6d82b4cb4b22db3deb7805174"
+      }
+    },
+    {
+      "position": 32,
+      "trial_id": "log-triage/edge-proxy/compact/rep04",
+      "case_id": "log-triage/edge-proxy",
+      "condition": "compact",
+      "replicate": "final-rep04",
+      "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-082bf8fc1226c2f4b1e54b7a66c494a748390a05bfb32c75180b9ae2624acc84"
+      }
+    },
+    {
+      "position": 33,
+      "trial_id": "cipher-crack/telegram/compact/rep03",
+      "case_id": "cipher-crack/telegram",
+      "condition": "compact",
+      "replicate": "final-rep03",
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-abf9ecb47651aa46d81e6a052b10c8915d119c94d3cc6f38595cd4c105289e9d"
+      }
+    },
+    {
+      "position": 34,
+      "trial_id": "cipher-crack/telegram/full/rep03",
+      "case_id": "cipher-crack/telegram",
+      "condition": "full",
+      "replicate": "final-rep03",
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-b43ed597b40cc65fb5250f564221e2e61700f129ba27f0757d55d3b0c758af08"
+      }
+    },
+    {
+      "position": 35,
+      "trial_id": "regex-infer/widget-code/full/rep03",
+      "case_id": "regex-infer/widget-code",
+      "condition": "full",
+      "replicate": "final-rep03",
+      "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-e0aa1498d11618336529e5b66011b88b4de3ae765ca6054448181a96f2521ec0"
+      }
+    },
+    {
+      "position": 36,
+      "trial_id": "regex-infer/widget-code/compact/rep03",
+      "case_id": "regex-infer/widget-code",
+      "condition": "compact",
+      "replicate": "final-rep03",
+      "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-0a00b273f1e4cf1a3d65a3922f8da30af5518c860d62cf74da031e4d758ff134"
+      }
+    },
+    {
+      "position": 37,
+      "trial_id": "regex-infer/widget-code/compact/rep05",
+      "case_id": "regex-infer/widget-code",
+      "condition": "compact",
+      "replicate": "final-rep05",
+      "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-ddee54f61dc5c173882be0fdf3d141b4ed2c4bb20657728efb6cee25016eda3d"
+      }
+    },
+    {
+      "position": 38,
+      "trial_id": "regex-infer/widget-code/full/rep05",
+      "case_id": "regex-infer/widget-code",
+      "condition": "full",
+      "replicate": "final-rep05",
+      "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a1a31cd2db4683d6cd92cd8709163b87ff0d5fe258535c1c7bf3c24d9bb19994"
+      }
+    },
+    {
+      "position": 39,
+      "trial_id": "cipher-crack/telegram/full/rep05",
+      "case_id": "cipher-crack/telegram",
+      "condition": "full",
+      "replicate": "final-rep05",
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a00f1cb37e5c4d5d1944ed015d31f890b3fa76d2d1e33e697a42747ae48265ce"
+      }
+    },
+    {
+      "position": 40,
+      "trial_id": "cipher-crack/telegram/compact/rep05",
+      "case_id": "cipher-crack/telegram",
+      "condition": "compact",
+      "replicate": "final-rep05",
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-f8bf54be11ed55baf262410e927e5b8692f07f869ef4ceec6b34a80aaa93eea7"
+      }
+    },
+    {
+      "position": 41,
+      "trial_id": "stat-pick/sensor-drift/full/rep02",
+      "case_id": "stat-pick/sensor-drift",
+      "condition": "full",
+      "replicate": "final-rep02",
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-c390f71643c2258cda13810ee824a0b72de10f604828867889a9aab260771617"
+      }
+    },
+    {
+      "position": 42,
+      "trial_id": "stat-pick/sensor-drift/compact/rep02",
+      "case_id": "stat-pick/sensor-drift",
+      "condition": "compact",
+      "replicate": "final-rep02",
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-5cc632300efabc924d6152815a9d8e3d539bb8ac7ae4ec7a6a36a75596648d95"
+      }
+    },
+    {
+      "position": 43,
+      "trial_id": "stat-pick/sensor-drift/compact/rep05",
+      "case_id": "stat-pick/sensor-drift",
+      "condition": "compact",
+      "replicate": "final-rep05",
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-7407ef271fe6f51136730a703a77116291db2485ee8c6fd939552556de44ed79"
+      }
+    },
+    {
+      "position": 44,
+      "trial_id": "stat-pick/sensor-drift/full/rep05",
+      "case_id": "stat-pick/sensor-drift",
+      "condition": "full",
+      "replicate": "final-rep05",
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-ea2a08013b7508b9becbe1c6e06f54e81eed28d7c21669f09c3c2e4d75cf7ed9"
+      }
+    },
+    {
+      "position": 45,
+      "trial_id": "path-probe/quarry/full/rep01",
+      "case_id": "path-probe/quarry",
+      "condition": "full",
+      "replicate": "final-rep01",
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-89b808a1ed3ad7867263231536e16b9f198c0c6d6a66d03c5b7931a4d23e0871"
+      }
+    },
+    {
+      "position": 46,
+      "trial_id": "path-probe/quarry/compact/rep01",
+      "case_id": "path-probe/quarry",
+      "condition": "compact",
+      "replicate": "final-rep01",
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-3368c91ccb869257d5d11a35d28f42ed1792b44ffed42c64974d1dc6e8a62aac"
+      }
+    },
+    {
+      "position": 47,
+      "trial_id": "log-triage/edge-proxy/full/rep02",
+      "case_id": "log-triage/edge-proxy",
+      "condition": "full",
+      "replicate": "final-rep02",
+      "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-21403a8d7eb115fb0289b21ca398853131fae97796d1e8f68498c40e089aea9f"
+      }
+    },
+    {
+      "position": 48,
+      "trial_id": "log-triage/edge-proxy/compact/rep02",
+      "case_id": "log-triage/edge-proxy",
+      "condition": "compact",
+      "replicate": "final-rep02",
+      "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-7cad3ce7b9f7da6c1665a8840f46713f85f10cdba365f00f3267bd6cbbd502f9"
+      }
+    },
+    {
+      "position": 49,
+      "trial_id": "cipher-crack/telegram/full/rep02",
+      "case_id": "cipher-crack/telegram",
+      "condition": "full",
+      "replicate": "final-rep02",
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-96e10432565c7d8e163d9581097aef2d23cc9fc90fcbc7631a8b75cd197b5fa2"
+      }
+    },
+    {
+      "position": 50,
+      "trial_id": "cipher-crack/telegram/compact/rep02",
+      "case_id": "cipher-crack/telegram",
+      "condition": "compact",
+      "replicate": "final-rep02",
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-38a4e21fc782805fd22888223b9c4ef2a33071144c71c061b9151e80697007fd"
+      }
+    }
+  ],
+  "freeze_sha256": "7301cf30de5307b76458758b5d8c6df778737684024440ca5f163c419374214a"
+}

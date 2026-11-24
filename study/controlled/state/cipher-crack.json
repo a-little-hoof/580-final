@@ -1,0 +1,4302 @@
+{
+  "schema_version": 1,
+  "plan_sha256": "e04d6e72065bf4d5144281c4fe37876016fee108e05dce5bbea28e4ddcc47e73",
+  "runs": {
+    "comp580-e3c0b2ebfee871323807f2fe98edb820eba9ff11e9677132a6c951265fa8b6c3": {
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-e3c0b2ebfee871323807f2fe98edb820eba9ff11e9677132a6c951265fa8b6c3"
+      },
+      "replicate": "final-rep01",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "1e610185-75b7-45d6-b699-b7b883b4c966",
+          "status": "queued",
+          "created_at": "2026-11-24T04:47:07.416Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+            "digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "cipher-crack",
+              "name": "Cipher Crack",
+              "version": "0.1.0",
+              "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+            },
+            "task_id": "crack-cipher",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Find the key a case's message was enciphered with and read the message",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to, as the task gave it"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+                  },
+                  "plaintext": {
+                    "type": "string",
+                    "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+                  }
+                },
+                "required": [
+                  "case",
+                  "key",
+                  "plaintext"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_cipher",
+                  "description": "Read a case's intercepted message, still enciphered",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "decrypt",
+                  "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter to try, A to Z"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "key"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter that was tried, as given without surrounding spaces"
+                      },
+                      "plaintext": {
+                        "type": "string",
+                        "description": "What the ciphertext reads as under that key; only one key reads as English"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext",
+                      "key",
+                      "plaintext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "cipher-crack-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+              "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+              "arguments": {
+                "case": "telegram"
+              },
+              "fixtures": {
+                "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+                "files": {
+                  "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+                  "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+              "latest_attempt_id": "c9bad1ca-63da-447f-a6f2-7ec96e19430b",
+              "attempts": [
+                {
+                  "attempt_id": "c9bad1ca-63da-447f-a6f2-7ec96e19430b",
+                  "run_id": "1e610185-75b7-45d6-b699-b7b883b4c966",
+                  "case_id": "cipher-crack-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:47:07.416Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "1e610185-75b7-45d6-b699-b7b883b4c966",
+      "last_observation": {
+        "at": "2026-11-24T04:47:33.138973+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "c9bad1ca-63da-447f-a6f2-7ec96e19430b",
+            "run_id": "1e610185-75b7-45d6-b699-b7b883b4c966",
+            "case_id": "cipher-crack-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 404025708,
+              "elapsed_ms": 10408,
+              "elapsed_ns": 10407753208,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4402,
+              "total_tokens": 4682,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5988823166,
+              "output_tokens": 280,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 2048,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:47:07.416Z",
+            "claimed_at": "2026-11-24T04:47:07.582Z",
+            "finalized_at": "2026-11-24T04:47:32.504Z",
+            "workspace": {
+              "bytes": 7698
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/1e610185-75b7-45d6-b699-b7b883b4c966/20261124T044733142677Z/capture.json"
+      ]
+    },
+    "comp580-a8df8f32c66f112fea32f86d94776b859167cada75714f7fb9a72fa59e5377c2": {
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a8df8f32c66f112fea32f86d94776b859167cada75714f7fb9a72fa59e5377c2"
+      },
+      "replicate": "final-rep01",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "32cbd202-f25a-4aba-aa4e-3b812534dd42",
+          "status": "queued",
+          "created_at": "2026-11-24T04:47:36.841Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+            "digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "cipher-crack",
+              "name": "Cipher Crack",
+              "version": "0.1.0",
+              "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+            },
+            "task_id": "crack-cipher",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Find the key a case's message was enciphered with and read the message",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to, as the task gave it"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+                  },
+                  "plaintext": {
+                    "type": "string",
+                    "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+                  }
+                },
+                "required": [
+                  "case",
+                  "key",
+                  "plaintext"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_cipher",
+                  "description": "Read a case's intercepted message, still enciphered",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "decrypt",
+                  "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter to try, A to Z"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "key"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter that was tried, as given without surrounding spaces"
+                      },
+                      "plaintext": {
+                        "type": "string",
+                        "description": "What the ciphertext reads as under that key; only one key reads as English"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext",
+                      "key",
+                      "plaintext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "cipher-crack-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+              "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+              "arguments": {
+                "case": "telegram"
+              },
+              "fixtures": {
+                "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+                "files": {
+                  "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+                  "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+              "latest_attempt_id": "3aab1142-f681-4860-8f90-69e9a89d6e41",
+              "attempts": [
+                {
+                  "attempt_id": "3aab1142-f681-4860-8f90-69e9a89d6e41",
+                  "run_id": "32cbd202-f25a-4aba-aa4e-3b812534dd42",
+                  "case_id": "cipher-crack-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:47:36.841Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "32cbd202-f25a-4aba-aa4e-3b812534dd42",
+      "last_observation": {
+        "at": "2026-11-24T04:48:00.152171+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "3aab1142-f681-4860-8f90-69e9a89d6e41",
+            "run_id": "32cbd202-f25a-4aba-aa4e-3b812534dd42",
+            "case_id": "cipher-crack-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 428370708,
+              "elapsed_ms": 10826,
+              "elapsed_ns": 10826392833,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4416,
+              "total_tokens": 4749,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5800620333,
+              "output_tokens": 333,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 2048,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:47:36.841Z",
+            "claimed_at": "2026-11-24T04:47:37.000Z",
+            "finalized_at": "2026-11-24T04:47:58.386Z",
+            "workspace": {
+              "bytes": 7970
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/32cbd202-f25a-4aba-aa4e-3b812534dd42/20261124T044800156080Z/capture.json"
+      ]
+    },
+    "comp580-4b7ebb877107500f1a12bdb0c4615053c6052b3d2b8b68fde5d161363e1ecbb9": {
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-4b7ebb877107500f1a12bdb0c4615053c6052b3d2b8b68fde5d161363e1ecbb9"
+      },
+      "replicate": "final-rep04",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "679156c3-dedd-4bf6-af2c-ea0713bee599",
+          "status": "queued",
+          "created_at": "2026-11-24T04:50:45.145Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+            "digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "cipher-crack",
+              "name": "Cipher Crack",
+              "version": "0.1.0",
+              "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+            },
+            "task_id": "crack-cipher",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Find the key a case's message was enciphered with and read the message",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to, as the task gave it"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+                  },
+                  "plaintext": {
+                    "type": "string",
+                    "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+                  }
+                },
+                "required": [
+                  "case",
+                  "key",
+                  "plaintext"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_cipher",
+                  "description": "Read a case's intercepted message, still enciphered",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "decrypt",
+                  "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter to try, A to Z"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "key"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter that was tried, as given without surrounding spaces"
+                      },
+                      "plaintext": {
+                        "type": "string",
+                        "description": "What the ciphertext reads as under that key; only one key reads as English"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext",
+                      "key",
+                      "plaintext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "cipher-crack-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+              "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+              "arguments": {
+                "case": "telegram"
+              },
+              "fixtures": {
+                "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+                "files": {
+                  "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+                  "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+              "latest_attempt_id": "a29ce7aa-d64c-4c2a-b6f9-334f2ebf808c",
+              "attempts": [
+                {
+                  "attempt_id": "a29ce7aa-d64c-4c2a-b6f9-334f2ebf808c",
+                  "run_id": "679156c3-dedd-4bf6-af2c-ea0713bee599",
+                  "case_id": "cipher-crack-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:50:45.145Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "679156c3-dedd-4bf6-af2c-ea0713bee599",
+      "last_observation": {
+        "at": "2026-11-24T04:51:13.046350+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "a29ce7aa-d64c-4c2a-b6f9-334f2ebf808c",
+            "run_id": "679156c3-dedd-4bf6-af2c-ea0713bee599",
+            "case_id": "cipher-crack-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 455337208,
+              "elapsed_ms": 14330,
+              "elapsed_ns": 14330495791,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4406,
+              "total_tokens": 4717,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5204801624,
+              "output_tokens": 311,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3072,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:50:45.145Z",
+            "claimed_at": "2026-11-24T04:50:45.301Z",
+            "finalized_at": "2026-11-24T04:51:10.723Z",
+            "workspace": {
+              "bytes": 7684
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/679156c3-dedd-4bf6-af2c-ea0713bee599/20261124T045113051289Z/capture.json"
+      ]
+    },
+    "comp580-8ff7f41223fd9a8f401e3760b0440252e4d72cda99e9727e7d3e719283160b37": {
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-8ff7f41223fd9a8f401e3760b0440252e4d72cda99e9727e7d3e719283160b37"
+      },
+      "replicate": "final-rep04",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "eb6f0a89-be1b-40de-b4cb-69c763bb4367",
+          "status": "queued",
+          "created_at": "2026-11-24T04:51:16.854Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+            "digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "cipher-crack",
+              "name": "Cipher Crack",
+              "version": "0.1.0",
+              "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+            },
+            "task_id": "crack-cipher",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Find the key a case's message was enciphered with and read the message",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to, as the task gave it"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+                  },
+                  "plaintext": {
+                    "type": "string",
+                    "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+                  }
+                },
+                "required": [
+                  "case",
+                  "key",
+                  "plaintext"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_cipher",
+                  "description": "Read a case's intercepted message, still enciphered",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "decrypt",
+                  "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter to try, A to Z"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "key"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter that was tried, as given without surrounding spaces"
+                      },
+                      "plaintext": {
+                        "type": "string",
+                        "description": "What the ciphertext reads as under that key; only one key reads as English"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext",
+                      "key",
+                      "plaintext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "cipher-crack-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+              "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+              "arguments": {
+                "case": "telegram"
+              },
+              "fixtures": {
+                "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+                "files": {
+                  "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+                  "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+              "latest_attempt_id": "3759c56d-3bd2-48ab-bc55-b1b304a165fe",
+              "attempts": [
+                {
+                  "attempt_id": "3759c56d-3bd2-48ab-bc55-b1b304a165fe",
+                  "run_id": "eb6f0a89-be1b-40de-b4cb-69c763bb4367",
+                  "case_id": "cipher-crack-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:51:16.854Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "eb6f0a89-be1b-40de-b4cb-69c763bb4367",
+      "last_observation": {
+        "at": "2026-11-24T04:51:47.026080+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "3759c56d-3bd2-48ab-bc55-b1b304a165fe",
+            "run_id": "eb6f0a89-be1b-40de-b4cb-69c763bb4367",
+            "case_id": "cipher-crack-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 425082208,
+              "elapsed_ms": 18604,
+              "elapsed_ns": 18603644750,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4365,
+              "total_tokens": 4713,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5058814582,
+              "output_tokens": 348,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3072,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:51:16.854Z",
+            "claimed_at": "2026-11-24T04:51:17.010Z",
+            "finalized_at": "2026-11-24T04:51:46.634Z",
+            "workspace": {
+              "bytes": 7973
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/eb6f0a89-be1b-40de-b4cb-69c763bb4367/20261124T045147030986Z/capture.json"
+      ]
+    },
+    "comp580-abf9ecb47651aa46d81e6a052b10c8915d119c94d3cc6f38595cd4c105289e9d": {
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-abf9ecb47651aa46d81e6a052b10c8915d119c94d3cc6f38595cd4c105289e9d"
+      },
+      "replicate": "final-rep03",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "58ed0a60-086d-44ec-81c5-76d8c1a294f3",
+          "status": "queued",
+          "created_at": "2026-11-24T04:54:14.996Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+            "digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "cipher-crack",
+              "name": "Cipher Crack",
+              "version": "0.1.0",
+              "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+            },
+            "task_id": "crack-cipher",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Find the key a case's message was enciphered with and read the message",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to, as the task gave it"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+                  },
+                  "plaintext": {
+                    "type": "string",
+                    "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+                  }
+                },
+                "required": [
+                  "case",
+                  "key",
+                  "plaintext"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_cipher",
+                  "description": "Read a case's intercepted message, still enciphered",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "decrypt",
+                  "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter to try, A to Z"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "key"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter that was tried, as given without surrounding spaces"
+                      },
+                      "plaintext": {
+                        "type": "string",
+                        "description": "What the ciphertext reads as under that key; only one key reads as English"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext",
+                      "key",
+                      "plaintext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "cipher-crack-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+              "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+              "arguments": {
+                "case": "telegram"
+              },
+              "fixtures": {
+                "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+                "files": {
+                  "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+                  "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+              "latest_attempt_id": "a9a8d5df-6b39-40a8-a672-3ca60acf5c09",
+              "attempts": [
+                {
+                  "attempt_id": "a9a8d5df-6b39-40a8-a672-3ca60acf5c09",
+                  "run_id": "58ed0a60-086d-44ec-81c5-76d8c1a294f3",
+                  "case_id": "cipher-crack-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:54:14.996Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "58ed0a60-086d-44ec-81c5-76d8c1a294f3",
+      "last_observation": {
+        "at": "2026-11-24T04:54:38.259001+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "a9a8d5df-6b39-40a8-a672-3ca60acf5c09",
+            "run_id": "58ed0a60-086d-44ec-81c5-76d8c1a294f3",
+            "case_id": "cipher-crack-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 408289291,
+              "elapsed_ms": 10358,
+              "elapsed_ns": 10357584750,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4396,
+              "total_tokens": 4725,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5942611417,
+              "output_tokens": 329,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3072,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:54:14.996Z",
+            "claimed_at": "2026-11-24T04:54:15.148Z",
+            "finalized_at": "2026-11-24T04:54:36.102Z",
+            "workspace": {
+              "bytes": 7933
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/58ed0a60-086d-44ec-81c5-76d8c1a294f3/20261124T045438262427Z/capture.json"
+      ]
+    },
+    "comp580-b43ed597b40cc65fb5250f564221e2e61700f129ba27f0757d55d3b0c758af08": {
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-b43ed597b40cc65fb5250f564221e2e61700f129ba27f0757d55d3b0c758af08"
+      },
+      "replicate": "final-rep03",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "509128f3-a8eb-45ea-b75c-9508d0962cff",
+          "status": "queued",
+          "created_at": "2026-11-24T04:54:41.867Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+            "digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "cipher-crack",
+              "name": "Cipher Crack",
+              "version": "0.1.0",
+              "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+            },
+            "task_id": "crack-cipher",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Find the key a case's message was enciphered with and read the message",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to, as the task gave it"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+                  },
+                  "plaintext": {
+                    "type": "string",
+                    "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+                  }
+                },
+                "required": [
+                  "case",
+                  "key",
+                  "plaintext"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_cipher",
+                  "description": "Read a case's intercepted message, still enciphered",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "decrypt",
+                  "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter to try, A to Z"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "key"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter that was tried, as given without surrounding spaces"
+                      },
+                      "plaintext": {
+                        "type": "string",
+                        "description": "What the ciphertext reads as under that key; only one key reads as English"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext",
+                      "key",
+                      "plaintext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "cipher-crack-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+              "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+              "arguments": {
+                "case": "telegram"
+              },
+              "fixtures": {
+                "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+                "files": {
+                  "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+                  "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+              "latest_attempt_id": "3990c428-c2f7-401a-9347-5ec764dd0401",
+              "attempts": [
+                {
+                  "attempt_id": "3990c428-c2f7-401a-9347-5ec764dd0401",
+                  "run_id": "509128f3-a8eb-45ea-b75c-9508d0962cff",
+                  "case_id": "cipher-crack-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:54:41.867Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "509128f3-a8eb-45ea-b75c-9508d0962cff",
+      "last_observation": {
+        "at": "2026-11-24T04:55:05.124370+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "3990c428-c2f7-401a-9347-5ec764dd0401",
+            "run_id": "509128f3-a8eb-45ea-b75c-9508d0962cff",
+            "case_id": "cipher-crack-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 427376458,
+              "elapsed_ms": 10648,
+              "elapsed_ns": 10648193708,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4433,
+              "total_tokens": 4775,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 6457096333,
+              "output_tokens": 342,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3072,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:54:41.867Z",
+            "claimed_at": "2026-11-24T04:54:42.019Z",
+            "finalized_at": "2026-11-24T04:55:03.181Z",
+            "workspace": {
+              "bytes": 7800
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/509128f3-a8eb-45ea-b75c-9508d0962cff/20261124T045505128599Z/capture.json"
+      ]
+    },
+    "comp580-a00f1cb37e5c4d5d1944ed015d31f890b3fa76d2d1e33e697a42747ae48265ce": {
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a00f1cb37e5c4d5d1944ed015d31f890b3fa76d2d1e33e697a42747ae48265ce"
+      },
+      "replicate": "final-rep05",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "92ca6600-6ae9-4b19-ac16-74bee0ee63b2",
+          "status": "queued",
+          "created_at": "2026-11-24T04:58:44.030Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+            "digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "cipher-crack",
+              "name": "Cipher Crack",
+              "version": "0.1.0",
+              "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+            },
+            "task_id": "crack-cipher",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Find the key a case's message was enciphered with and read the message",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to, as the task gave it"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+                  },
+                  "plaintext": {
+                    "type": "string",
+                    "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+                  }
+                },
+                "required": [
+                  "case",
+                  "key",
+                  "plaintext"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_cipher",
+                  "description": "Read a case's intercepted message, still enciphered",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "decrypt",
+                  "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter to try, A to Z"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "key"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter that was tried, as given without surrounding spaces"
+                      },
+                      "plaintext": {
+                        "type": "string",
+                        "description": "What the ciphertext reads as under that key; only one key reads as English"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext",
+                      "key",
+                      "plaintext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "cipher-crack-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+              "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+              "arguments": {
+                "case": "telegram"
+              },
+              "fixtures": {
+                "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+                "files": {
+                  "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+                  "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+              "latest_attempt_id": "8ea5f603-2df4-42fd-b585-2501e35c4099",
+              "attempts": [
+                {
+                  "attempt_id": "8ea5f603-2df4-42fd-b585-2501e35c4099",
+                  "run_id": "92ca6600-6ae9-4b19-ac16-74bee0ee63b2",
+                  "case_id": "cipher-crack-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:58:44.030Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "92ca6600-6ae9-4b19-ac16-74bee0ee63b2",
+      "last_observation": {
+        "at": "2026-11-24T04:59:07.600437+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "8ea5f603-2df4-42fd-b585-2501e35c4099",
+            "run_id": "92ca6600-6ae9-4b19-ac16-74bee0ee63b2",
+            "case_id": "cipher-crack-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 427081833,
+              "elapsed_ms": 10355,
+              "elapsed_ns": 10355250291,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4433,
+              "total_tokens": 4720,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5460914832,
+              "output_tokens": 287,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3072,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:58:44.030Z",
+            "claimed_at": "2026-11-24T04:58:44.197Z",
+            "finalized_at": "2026-11-24T04:59:05.784Z",
+            "workspace": {
+              "bytes": 7703
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/92ca6600-6ae9-4b19-ac16-74bee0ee63b2/20261124T045907607815Z/capture.json"
+      ]
+    },
+    "comp580-f8bf54be11ed55baf262410e927e5b8692f07f869ef4ceec6b34a80aaa93eea7": {
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-f8bf54be11ed55baf262410e927e5b8692f07f869ef4ceec6b34a80aaa93eea7"
+      },
+      "replicate": "final-rep05",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "c792fdb0-ae3a-4522-b056-a55345007232",
+          "status": "queued",
+          "created_at": "2026-11-24T04:59:11.554Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+            "digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "cipher-crack",
+              "name": "Cipher Crack",
+              "version": "0.1.0",
+              "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+            },
+            "task_id": "crack-cipher",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Find the key a case's message was enciphered with and read the message",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to, as the task gave it"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+                  },
+                  "plaintext": {
+                    "type": "string",
+                    "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+                  }
+                },
+                "required": [
+                  "case",
+                  "key",
+                  "plaintext"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_cipher",
+                  "description": "Read a case's intercepted message, still enciphered",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "decrypt",
+                  "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter to try, A to Z"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "key"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter that was tried, as given without surrounding spaces"
+                      },
+                      "plaintext": {
+                        "type": "string",
+                        "description": "What the ciphertext reads as under that key; only one key reads as English"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext",
+                      "key",
+                      "plaintext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "cipher-crack-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+              "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+              "arguments": {
+                "case": "telegram"
+              },
+              "fixtures": {
+                "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+                "files": {
+                  "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+                  "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+              "latest_attempt_id": "576acd5e-c66d-429a-b7d8-e6b060136066",
+              "attempts": [
+                {
+                  "attempt_id": "576acd5e-c66d-429a-b7d8-e6b060136066",
+                  "run_id": "c792fdb0-ae3a-4522-b056-a55345007232",
+                  "case_id": "cipher-crack-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:59:11.554Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "c792fdb0-ae3a-4522-b056-a55345007232",
+      "last_observation": {
+        "at": "2026-11-24T04:59:35.135276+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "576acd5e-c66d-429a-b7d8-e6b060136066",
+            "run_id": "c792fdb0-ae3a-4522-b056-a55345007232",
+            "case_id": "cipher-crack-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 435249541,
+              "elapsed_ms": 12196,
+              "elapsed_ns": 12195694833,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4365,
+              "total_tokens": 4693,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 6413937500,
+              "output_tokens": 328,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3072,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:59:11.554Z",
+            "claimed_at": "2026-11-24T04:59:11.728Z",
+            "finalized_at": "2026-11-24T04:59:34.637Z",
+            "workspace": {
+              "bytes": 7959
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/c792fdb0-ae3a-4522-b056-a55345007232/20261124T045935142422Z/capture.json"
+      ]
+    },
+    "comp580-96e10432565c7d8e163d9581097aef2d23cc9fc90fcbc7631a8b75cd197b5fa2": {
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-96e10432565c7d8e163d9581097aef2d23cc9fc90fcbc7631a8b75cd197b5fa2"
+      },
+      "replicate": "final-rep02",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "89c109f9-6010-4e67-a90b-9a04416b0f81",
+          "status": "queued",
+          "created_at": "2026-11-24T05:03:10.621Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+            "digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "cipher-crack",
+              "name": "Cipher Crack",
+              "version": "0.1.0",
+              "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+            },
+            "task_id": "crack-cipher",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Find the key a case's message was enciphered with and read the message",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to, as the task gave it"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+                  },
+                  "plaintext": {
+                    "type": "string",
+                    "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+                  }
+                },
+                "required": [
+                  "case",
+                  "key",
+                  "plaintext"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_cipher",
+                  "description": "Read a case's intercepted message, still enciphered",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "decrypt",
+                  "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter to try, A to Z"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "key"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter that was tried, as given without surrounding spaces"
+                      },
+                      "plaintext": {
+                        "type": "string",
+                        "description": "What the ciphertext reads as under that key; only one key reads as English"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext",
+                      "key",
+                      "plaintext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "cipher-crack-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+              "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+              "arguments": {
+                "case": "telegram"
+              },
+              "fixtures": {
+                "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+                "files": {
+                  "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+                  "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+              "latest_attempt_id": "6f6d28e7-9662-4380-bbc6-9d276153f859",
+              "attempts": [
+                {
+                  "attempt_id": "6f6d28e7-9662-4380-bbc6-9d276153f859",
+                  "run_id": "89c109f9-6010-4e67-a90b-9a04416b0f81",
+                  "case_id": "cipher-crack-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T05:03:10.621Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "89c109f9-6010-4e67-a90b-9a04416b0f81",
+      "last_observation": {
+        "at": "2026-11-24T05:03:34.273420+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "6f6d28e7-9662-4380-bbc6-9d276153f859",
+            "run_id": "89c109f9-6010-4e67-a90b-9a04416b0f81",
+            "case_id": "cipher-crack-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "fail",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 404211416,
+              "elapsed_ms": 10417,
+              "elapsed_ns": 10416862583,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4433,
+              "total_tokens": 4726,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5550138374,
+              "output_tokens": 293,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3328,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T05:03:10.621Z",
+            "claimed_at": "2026-11-24T05:03:10.787Z",
+            "finalized_at": "2026-11-24T05:03:32.099Z",
+            "workspace": {
+              "bytes": 7791
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/89c109f9-6010-4e67-a90b-9a04416b0f81/20261124T050334276293Z/capture.json"
+      ]
+    },
+    "comp580-38a4e21fc782805fd22888223b9c4ef2a33071144c71c061b9151e80697007fd": {
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-38a4e21fc782805fd22888223b9c4ef2a33071144c71c061b9151e80697007fd"
+      },
+      "replicate": "final-rep02",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "271e03d4-c669-4c7c-b444-9c2e720bb531",
+          "status": "queued",
+          "created_at": "2026-11-24T05:03:37.885Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+            "digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "cipher-crack",
+              "name": "Cipher Crack",
+              "version": "0.1.0",
+              "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+            },
+            "task_id": "crack-cipher",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Find the key a case's message was enciphered with and read the message",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "postcard",
+                      "dispatch",
+                      "ledger",
+                      "telegram"
+                    ],
+                    "description": "The case the message belongs to, as the task gave it"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+                  },
+                  "plaintext": {
+                    "type": "string",
+                    "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+                  }
+                },
+                "required": [
+                  "case",
+                  "key",
+                  "plaintext"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_cipher",
+                  "description": "Read a case's intercepted message, still enciphered",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "decrypt",
+                  "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "Which intercepted message to work on; each one was shifted by a different letter"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter to try, A to Z"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "key"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "postcard",
+                          "dispatch",
+                          "ledger",
+                          "telegram"
+                        ],
+                        "description": "The case the message belongs to"
+                      },
+                      "ciphertext": {
+                        "type": "string",
+                        "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+                      },
+                      "key": {
+                        "type": "string",
+                        "description": "The key letter that was tried, as given without surrounding spaces"
+                      },
+                      "plaintext": {
+                        "type": "string",
+                        "description": "What the ciphertext reads as under that key; only one key reads as English"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "ciphertext",
+                      "key",
+                      "plaintext"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "cipher-crack-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+              "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+              "arguments": {
+                "case": "telegram"
+              },
+              "fixtures": {
+                "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+                "files": {
+                  "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+                  "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+              "latest_attempt_id": "61c2c8b7-2a04-48a2-8a05-2e86fe568ca3",
+              "attempts": [
+                {
+                  "attempt_id": "61c2c8b7-2a04-48a2-8a05-2e86fe568ca3",
+                  "run_id": "271e03d4-c669-4c7c-b444-9c2e720bb531",
+                  "case_id": "cipher-crack-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T05:03:37.885Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "271e03d4-c669-4c7c-b444-9c2e720bb531",
+      "last_observation": {
+        "at": "2026-11-24T05:04:01.294469+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "61c2c8b7-2a04-48a2-8a05-2e86fe568ca3",
+            "run_id": "271e03d4-c669-4c7c-b444-9c2e720bb531",
+            "case_id": "cipher-crack-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 438939166,
+              "elapsed_ms": 10798,
+              "elapsed_ns": 10797752833,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4396,
+              "total_tokens": 4681,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5174385166,
+              "output_tokens": 285,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3072,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T05:03:37.885Z",
+            "claimed_at": "2026-11-24T05:03:38.036Z",
+            "finalized_at": "2026-11-24T05:03:59.488Z",
+            "workspace": {
+              "bytes": 7895
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/271e03d4-c669-4c7c-b444-9c2e720bb531/20261124T050401306464Z/capture.json"
+      ]
+    }
+  },
+  "prefix": "/api/workspaces/qsicB5hMcRxdFG3km2ix3FSSIDhgslIa",
+  "publication_request": {
+    "payload_sha256": "e04d6e72065bf4d5144281c4fe37876016fee108e05dce5bbea28e4ddcc47e73",
+    "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434"
+  },
+  "publication_response": {
+    "created": true,
+    "benchmark": {
+      "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+      "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+      "plugin": {
+        "id": "cipher-crack",
+        "name": "Cipher Crack",
+        "version": "0.1.0",
+        "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+      },
+      "task_id": "crack-cipher",
+      "task_kind": "agent",
+      "publisher": {
+        "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+        "name": "Yifei Wang",
+        "github": "a-little-hoof"
+      },
+      "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+      "case_set_digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+      "digest": "b6f12a6b2dcc86a6a5114d4a6cf180ea30928cf512c2df1481a9bc4cb105f2f8",
+      "model": "deepseek/deepseek-v4-flash-0731",
+      "endpoint_profile": "openrouter",
+      "providers": [
+        "deepinfra",
+        "nebius"
+      ],
+      "limits": {
+        "cpus": 1,
+        "pids": 256,
+        "memory_mb": 1024,
+        "tmp_bytes": 67108864,
+        "build_files": 100000,
+        "max_cost_usd": 0.05,
+        "wall_time_ms": 180000,
+        "build_wall_ms": 600000,
+        "build_memory_mb": 3072,
+        "build_tmp_bytes": 536870912,
+        "internet_access": false,
+        "max_model_calls": 12,
+        "workspace_bytes": 268435456,
+        "workspace_files": 20000,
+        "build_output_bytes": 1073741824,
+        "max_output_tokens_per_call": 32768
+      },
+      "published_at": "2026-11-24T04:38:55.437Z",
+      "case_count": 1,
+      "answer_count": 1,
+      "refuse_count": 0
+    }
+  },
+  "benchmark": {
+    "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+    "name": "comp580-yw251-compact-v1-cipher-crack-telegram-d9b9ba55f005c434",
+    "plugin": {
+      "id": "cipher-crack",
+      "name": "Cipher Crack",
+      "version": "0.1.0",
+      "sha256": "7747f7bf2320acef32083e072258d5f0de796e5a02726c6786f7212d4d5e8d39"
+    },
+    "task_id": "crack-cipher",
+    "task_kind": "agent",
+    "publisher": {
+      "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+      "name": "Yifei Wang",
+      "github": "a-little-hoof"
+    },
+    "case_set_id": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+    "case_set_digest": "5d82a5085039a809a96b6a9ceaa7a4f2ba383f290fc23ff41bf99825e5919370",
+    "digest": "b6f12a6b2dcc86a6a5114d4a6cf180ea30928cf512c2df1481a9bc4cb105f2f8",
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "endpoint_profile": "openrouter",
+    "providers": [
+      "deepinfra",
+      "nebius"
+    ],
+    "limits": {
+      "cpus": 1,
+      "pids": 256,
+      "memory_mb": 1024,
+      "tmp_bytes": 67108864,
+      "build_files": 100000,
+      "max_cost_usd": 0.05,
+      "wall_time_ms": 180000,
+      "build_wall_ms": 600000,
+      "build_memory_mb": 3072,
+      "build_tmp_bytes": 536870912,
+      "internet_access": false,
+      "max_model_calls": 12,
+      "workspace_bytes": 268435456,
+      "workspace_files": 20000,
+      "build_output_bytes": 1073741824,
+      "max_output_tokens_per_call": 32768
+    },
+    "published_at": "2026-11-24T04:38:55.437Z",
+    "case_count": 1,
+    "answer_count": 1,
+    "refuse_count": 0,
+    "task": {
+      "kind": "agent",
+      "egress_hosts": [],
+      "description": "Find the key a case's message was enciphered with and read the message",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "enum": [
+              "postcard",
+              "dispatch",
+              "ledger",
+              "telegram"
+            ],
+            "description": "Which intercepted message to work on; each one was shifted by a different letter"
+          }
+        },
+        "required": [
+          "case"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "enum": [
+              "postcard",
+              "dispatch",
+              "ledger",
+              "telegram"
+            ],
+            "description": "The case the message belongs to, as the task gave it"
+          },
+          "key": {
+            "type": "string",
+            "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+          },
+          "plaintext": {
+            "type": "string",
+            "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+          }
+        },
+        "required": [
+          "case",
+          "key",
+          "plaintext"
+        ],
+        "additionalProperties": false
+      },
+      "tools": [
+        {
+          "name": "read_cipher",
+          "description": "Read a case's intercepted message, still enciphered",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "postcard",
+                  "dispatch",
+                  "ledger",
+                  "telegram"
+                ],
+                "description": "Which intercepted message to work on; each one was shifted by a different letter"
+              }
+            },
+            "required": [
+              "case"
+            ],
+            "additionalProperties": false
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "postcard",
+                  "dispatch",
+                  "ledger",
+                  "telegram"
+                ],
+                "description": "The case the message belongs to"
+              },
+              "ciphertext": {
+                "type": "string",
+                "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+              }
+            },
+            "required": [
+              "case",
+              "ciphertext"
+            ],
+            "additionalProperties": false
+          },
+          "writes": true
+        },
+        {
+          "name": "decrypt",
+          "description": "Read what a case's message says under one key letter, whether or not that key is the right one",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "postcard",
+                  "dispatch",
+                  "ledger",
+                  "telegram"
+                ],
+                "description": "Which intercepted message to work on; each one was shifted by a different letter"
+              },
+              "key": {
+                "type": "string",
+                "description": "The key letter to try, A to Z"
+              }
+            },
+            "required": [
+              "case",
+              "key"
+            ],
+            "additionalProperties": false
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "postcard",
+                  "dispatch",
+                  "ledger",
+                  "telegram"
+                ],
+                "description": "The case the message belongs to"
+              },
+              "ciphertext": {
+                "type": "string",
+                "description": "The intercepted message, uppercase letters and spaces; spaces are not enciphered"
+              },
+              "key": {
+                "type": "string",
+                "description": "The key letter that was tried, as given without surrounding spaces"
+              },
+              "plaintext": {
+                "type": "string",
+                "description": "What the ciphertext reads as under that key; only one key reads as English"
+              }
+            },
+            "required": [
+              "case",
+              "ciphertext",
+              "key",
+              "plaintext"
+            ],
+            "additionalProperties": false
+          },
+          "writes": true
+        }
+      ]
+    },
+    "cases": [
+      {
+        "case_id": "cipher-crack-01",
+        "position": 0,
+        "kind": "answer",
+        "prompt": "Task: crack-cipher; case: telegram.\n\nFind the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"telegram\"]},\"key\":{\"type\":\"string\"},\"plaintext\":{\"type\":\"string\"}},\"required\":[\"case\",\"key\",\"plaintext\"],\"additionalProperties\":false}",
+        "prompt_sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+        "arguments": {
+          "case": "telegram"
+        },
+        "expected_error": null,
+        "content_digest": "315ea844fcefb7b2df0112e291364dda3a1481b1e1e32573b60d4849571c42ca",
+        "fixtures": {
+          "sha256": "f1e694078488d55d38011f57a5d3b43f2eafe6b864dd627c14e8e088e243da4a",
+          "files": {
+            "input.json": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+            "prompt.txt": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00"
+          }
+        }
+      }
+    ]
+  },
+  "publication_verified": true
+}

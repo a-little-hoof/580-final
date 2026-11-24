@@ -1,0 +1,77 @@
+{
+  "session": "e4b4cb31-44c9-47a5-b390-300076d4c9b1",
+  "plugin": "path-probe",
+  "turns": [
+    {
+      "prompt": "Run the find-route task on the quarry case.",
+      "answer": "Ran the find-route task on the quarry case. It found the route A → B → D → E with a cost of 9, which is the cheapest the map allows, so the check passed.",
+      "tools": [
+        {
+          "name": "find-route",
+          "arguments": {
+            "case": "quarry"
+          },
+          "output": "{\"output\": {\"case\": \"quarry\", \"route\": [\"A\", \"B\", \"D\", \"E\"], \"cost\": 9}, \"verdict\": {\"valid\": true, \"score\": 1.0, \"message\": \"A B D E costs 9, which is as cheap as the map allows\", \"details\": {\"nodes\": 4}}}",
+          "isError": false
+        }
+      ],
+      "activity": [
+        {
+          "kind": "thought",
+          "text": "The user wants me to run the find-route task on the quarry case. Let me start exploring the map."
+        },
+        {
+          "kind": "task",
+          "name": "find-route",
+          "steps": [
+            {
+              "name": "read_map",
+              "isError": false
+            },
+            {
+              "name": "neighbours",
+              "isError": false
+            },
+            {
+              "name": "neighbours",
+              "isError": false
+            },
+            {
+              "name": "neighbours",
+              "isError": false
+            },
+            {
+              "name": "submit",
+              "isError": false
+            }
+          ],
+          "thinking": "Let me start by reading the map to understand the task.The map has 6 nodes, start A, goal E. Let me explore neighbours. I'll ask about A first.A connects to B (3), C (3), E (10). Let me explore B, C, E.Now I know:\n- A-B: 3\n- A-C: 3\n- A-E: 10\n- B-D: 4\n- C-D: 4\n- D-E: 2\n- C-F: 1\n\nNodes: A, B, C, D, E, F. That's 6 nodes. I've seen A, B, C, D, E, F. Let me check F's neighbours to be complete. Actually F is a node; I should check its neighbours to make sure I've seen all links. Let me ask about F and D.Now I have the full graph:\n- A-B: 3\n- A-C: 3\n- A-E: 10\n- B-D: 4\n- C-D: 4\n- C-F: 1\n- D-E: 2\n\nAll 6 nodes seen: A, B, C, D, E, F.\n\nNow find cheapest route from A to E:\n- Direct A-E: 10\n- A-B-D-E: 3+4+2 = 9\n- A-C-D-E: 3+4+2 = 9\n- A-C-F... F is a dead end (only C-F). So no.\n- A-C-D-E = 9\n\nCheapest is 9 via A-B-D-E or A-C-D-E. Either works. Let me pick A-B-D-E, cost 9.\n\nSubmit.",
+          "text": "I've now seen all 6 nodes (A, B, C, D, E, F) and all links. The graph is:\n\n- A–B: 3, A–C: 3, A–E: 10\n- B–D: 4, C–D: 4, C–F: 1\n- D–E: 2\n\nCheapest route from A to E: A→B→D→E = 3+4+2 = 9 (equally A→C→D→E = 9).\n\nThe task is complete. I explored the quarry map, found all 6 nodes and all links, and determined the cheapest route from A to E.\n\n**Route:** A → B → D → E\n**Cost:** 3 + 4 + 2 = 9\n\nThis is the cheapest route (A → C → D → E is equally cheap at 9, but A → B → D → E is valid). I submitted this result successfully."
+        },
+        {
+          "kind": "thought",
+          "text": "The task ran successfully. The route found was A → B → D → E with cost 9, which is the cheapest possible. Let me report this briefly."
+        }
+      ],
+      "metrics": {
+        "model": "deepseek/deepseek-v4-flash-0731",
+        "cost": 0.00007695,
+        "usage": {
+          "prompt_tokens": 1245,
+          "completion_tokens": 147,
+          "total_tokens": 1392,
+          "cached_tokens": 512,
+          "cache_write_tokens": 0,
+          "reasoning_tokens": 56
+        },
+        "ttft_s": 0.3176252921111882,
+        "generation_s": 0.6493355827406049,
+        "duration_s": 22.338432250078768,
+        "model_s": 12.967772082891315,
+        "tools_s": 9.369776915758848
+      },
+      "error": null,
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+references/
+remote-handoff.zip
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.env.*
+dist/
+build/
+*.egg-info/
+# The exact metadata was included in the pre-run source freeze.
+!src/comp580_agent.egg-info/
+!src/comp580_agent.egg-info/**
+study/controlled/development/platform-fix/outcome.before.py
+study/controlled/development/platform-fix/outcome.patched.py
+tmp/
+*.lock
+# Local continuation notes and obsolete exploration are not submission sources.
+checks/
+docs/LOCAL_HANDOFF.md
+docs/LOCAL_PROGRESS.md
+docs/RUSH_SETUP.md
+docs/IMPLEMENTATION_DECISIONS_DRAFT.md
+study/observations/historical/
+study/baseline/
+study/task0/summaries/historical-descriptive.*
+output/*.zip

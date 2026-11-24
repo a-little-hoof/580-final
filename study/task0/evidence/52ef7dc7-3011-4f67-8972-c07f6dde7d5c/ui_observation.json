@@ -1,0 +1,13 @@
+{
+  "source": "native Computer Use Graph accessibility and screenshot",
+  "evidence": [
+    "accessibility.txt",
+    "screenshot.png"
+  ],
+  "input_tokens": 6643,
+  "output_tokens": 769,
+  "latency_display": "16 s",
+  "model_time_display": "8.9 s",
+  "tool_time_display": "7.2 s",
+  "cost_display": "$0.0004"
+}

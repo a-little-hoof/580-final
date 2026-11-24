@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "failure": null,
+  "condition": "compact",
+  "model_calls": [
+    {
+      "index": 1,
+      "request": {
+        "path": "model/001.request.json",
+        "bytes": 4807,
+        "sha256": "acefbc5955399210a7af1f0b7f6dd7eca14fc45df379856a1289b10075619aa3",
+        "credential_redacted": false,
+        "original_bytes": 4807,
+        "original_sha256": "acefbc5955399210a7af1f0b7f6dd7eca14fc45df379856a1289b10075619aa3"
+      },
+      "resolved_model": "deepseek/deepseek-v4-flash-0731",
+      "usage": {
+        "prompt_tokens": 1017,
+        "completion_tokens": 54,
+        "total_tokens": 1071,
+        "cost": 0.0001575,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0001575,
+          "upstream_inference_prompt_cost": 0.00014238,
+          "upstream_inference_completions_cost": 1.512e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "status": "completed",
+      "response": {
+        "path": "model/001.response.json",
+        "bytes": 1159,
+        "sha256": "6e1dcd079b14ec737e516f4f4c41b5238c6d4f620f0afa797854122e1ee47585",
+        "credential_redacted": false,
+        "original_bytes": 1159,
+        "original_sha256": "6e1dcd079b14ec737e516f4f4c41b5238c6d4f620f0afa797854122e1ee47585"
+      },
+      "elapsed_seconds": 9.990802046999988
+    },
+    {
+      "index": 2,
+      "request": {
+        "path": "model/002.request.json",
+        "bytes": 5989,
+        "sha256": "a9ad2d3ca0f8bab1db10a3e4bace15d0d1fc26789ce8b049fc65e4b52c39cebb",
+        "credential_redacted": false,
+        "original_bytes": 5989,
+        "original_sha256": "a9ad2d3ca0f8bab1db10a3e4bace15d0d1fc26789ce8b049fc65e4b52c39cebb"
+      },
+      "resolved_model": "deepseek/deepseek-v4-flash-0731",
+      "usage": {
+        "prompt_tokens": 1302,
+        "completion_tokens": 126,
+        "total_tokens": 1428,
+        "cost": 9.936e-05,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 768,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 9.936e-05,
+          "upstream_inference_prompt_cost": 6.534e-05,
+          "upstream_inference_completions_cost": 3.402e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 29,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "status": "completed",
+      "response": {
+        "path": "model/002.response.json",
+        "bytes": 1493,
+        "sha256": "efd2bde360fe1f0b754ac516bc85807893b140eb3706cc75d088b4ed6c694d7f",
+        "credential_redacted": false,
+        "original_bytes": 1493,
+        "original_sha256": "efd2bde360fe1f0b754ac516bc85807893b140eb3706cc75d088b4ed6c694d7f"
+      },
+      "elapsed_seconds": 4.696431502999985
+    }
+  ],
+  "tool_calls": 2,
+  "answer": {
+    "path": "answer.json",
+    "bytes": 159,
+    "sha256": "948318f61bea081677c2f043c2842acbb8ef063c67af1dcc44189498ddfdf6f8"
+  },
+  "elapsed_seconds": 14.71928538200018,
+  "input_integrity": {
+    "initial": {
+      "input.json": {
+        "sha256": "73d636c474274b07fa9ebf161e1db9587552bedaa31344dbbde984ec10111ad1",
+        "bytes": 727
+      },
+      "prompt.txt": {
+        "sha256": "f7ca68a0d5ab767c637d96cdceae2b2ec57fbbb306e9f40b775b0eef750a4dbe",
+        "bytes": 1206
+      }
+    },
+    "final": {
+      "input.json": {
+        "sha256": "73d636c474274b07fa9ebf161e1db9587552bedaa31344dbbde984ec10111ad1",
+        "bytes": 727
+      },
+      "prompt.txt": {
+        "sha256": "f7ca68a0d5ab767c637d96cdceae2b2ec57fbbb306e9f40b775b0eef750a4dbe",
+        "bytes": 1206
+      }
+    },
+    "changed_inputs": [],
+    "new_files_are_not_frozen_inputs": true
+  },
+  "usage_scope": "raw per-call provider usage; missing values remain null; no cost estimate",
+  "task_correctness": "not evaluated by this agent"
+}

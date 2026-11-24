@@ -1,0 +1,9 @@
+{
+  "applied_at_utc": "2026-11-24T04:37:00.765252+00:00",
+  "installed_source": "/Users/wangyifei/Library/Application Support/lab.mochi.lab/app/2026-11-23T03-56-59-663Z-7ac1754/mochi-lab/nanoagent/site/nanoagent/uploaded/outcome.py",
+  "before_sha256": "1aa2d30a6e1099a3954211c9aeb2a2f39c3634a27ab1b1d1e24378833ad70d91",
+  "after_sha256": "7c342f5fac0f6641725c66acec9fd24e73694db0604596edeb9dec7f3bfa2b69",
+  "backup": "outcome.before.py",
+  "restart": "normal RUSH Lab quit/reopen",
+  "scope": "Only enum-only nonempty scalar value sets gain an unfilled null skeleton. No union, reference resolution, verifier, answer, or plugin schema changes."
+}

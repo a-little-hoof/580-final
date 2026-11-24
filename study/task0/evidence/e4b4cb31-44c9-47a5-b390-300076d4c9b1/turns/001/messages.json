@@ -1,0 +1,72 @@
+{
+  "schema_version": "ATIF-v1.8",
+  "session_id": "a97413a0-e58e-4020-a4af-db608989a6bd",
+  "agent": {
+    "name": "nanoagent",
+    "version": "0.7.0",
+    "model_name": "deepseek/deepseek-v4-flash-0731"
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "You are an assistant embedded in a collaborative knowledge application.\nFollow the application's additional instructions and answer the user directly.\n\nYou operate the Path Probe plugin through its tasks: each of your tools is one task. Turn what the user asks into the input of the task that does it, and call that task; ask the user only for what you cannot work out. The page shows the user each task's result and whether it passed its check, so do not repeat the result: say in a sentence or two what you did. Files the tasks save stay in the user's workspace; refer to them by their paths there.",
+      "reasoning_content": null,
+      "tool_calls": null,
+      "observation": null,
+      "metrics": null
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Run the find-route task on the quarry case.",
+      "reasoning_content": null,
+      "tool_calls": null,
+      "observation": null,
+      "metrics": null
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "message": "",
+      "reasoning_content": "The user wants me to run the find-route task on the quarry case. Let me start exploring the map.",
+      "tool_calls": [
+        {
+          "tool_call_id": "chatcmpl-tool-860c1193fe1e2b78",
+          "function_name": "find-route",
+          "arguments": {
+            "case": "quarry"
+          }
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "chatcmpl-tool-860c1193fe1e2b78",
+            "content": "{\"output\": {\"case\": \"quarry\", \"route\": [\"A\", \"B\", \"D\", \"E\"], \"cost\": 9}, \"verdict\": {\"valid\": true, \"score\": 1.0, \"message\": \"A B D E costs 9, which is as cheap as the map allows\", \"details\": {\"nodes\": 4}}}"
+          }
+        ]
+      },
+      "metrics": null
+    },
+    {
+      "step_id": 4,
+      "source": "agent",
+      "message": "Ran the find-route task on the quarry case. It found the route A → B → D → E with a cost of 9, which is the cheapest the map allows, so the check passed.",
+      "reasoning_content": "The task ran successfully. The route found was A → B → D → E with cost 9, which is the cheapest possible. Let me report this briefly.",
+      "tool_calls": null,
+      "observation": null,
+      "metrics": null
+    }
+  ],
+  "final_metrics": {
+    "total_prompt_tokens": 1245,
+    "total_completion_tokens": 147,
+    "total_cached_tokens": 512,
+    "total_steps": 4,
+    "extra": {
+      "cost": 0.00007695,
+      "stop_reason": "answer"
+    }
+  }
+}

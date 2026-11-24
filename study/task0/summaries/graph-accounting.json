@@ -1,0 +1,2555 @@
+{
+  "schema_version": 1,
+  "runtime_context_supplied": "2026-11-23T03-56-59-663Z-7ac1754",
+  "method": "observed node.modelCalls records; supported chat/task ancestor topology; no provider completeness claim",
+  "pending_evidence_directories": [],
+  "sessions": [
+    {
+      "session_id": "52ef7dc7-3011-4f67-8972-c07f6dde7d5c",
+      "plugin": "regex-infer",
+      "sources": {
+        "chat": {
+          "path": "study/task0/evidence/52ef7dc7-3011-4f67-8972-c07f6dde7d5c/chat.json",
+          "sha256": "e9c610b1f90b74358d3af96eb8efcdd6aa17395b1953ea6a607803299fe75b83"
+        },
+        "export": {
+          "path": "study/task0/exports/regex-infer-pilots-completed-2026-11-23.jsonl",
+          "sha256": "04f37878d4fb69b6ba54be3bfd49de598412b4630cf260bf1ffe27d93f367649",
+          "method": "installed_supported_rushlab_nanoagent_export_CLI",
+          "filters": {
+            "plugin": "regex-infer",
+            "since": "2026-11-23"
+          }
+        },
+        "ui": {
+          "path": "study/task0/evidence/52ef7dc7-3011-4f67-8972-c07f6dde7d5c/ui_observation.json",
+          "sha256": "b664e6a63cd50e45b2827d7ab425070b39a1c76f080ee604a782a14183924a15"
+        }
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "plugin_version": "0.1.0",
+          "agent": {
+            "name": "nanoagent",
+            "version": "0.7.0",
+            "model_name": "deepseek/deepseek-v4-flash-0731"
+          },
+          "task_invocations": [
+            {
+              "task": "infer-pattern",
+              "arguments": {
+                "case": "widget-code"
+              },
+              "is_error": false,
+              "valid": true,
+              "score": 1.0
+            }
+          ],
+          "exported_metrics": {
+            "model": "deepseek/deepseek-v4-flash-0731",
+            "cost": 6.975000000000001e-05,
+            "usage": {
+              "prompt_tokens": 1157,
+              "completion_tokens": 119,
+              "total_tokens": 1276,
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "reasoning_tokens": 23
+            },
+            "ttft_s": 0.3061389997601509,
+            "generation_s": 0.6544359591789544,
+            "duration_s": 16.13006304204464,
+            "model_s": 8.902103540953249,
+            "tools_s": 7.226907751057297
+          },
+          "export_error_present": false,
+          "topology": "audited_chat_graph_with_task_ancestors",
+          "totals": {
+            "outer": {
+              "call_records": 2,
+              "completed_records": 2,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 1157,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 119,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 1276,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 2
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 23,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 6.975000000000001e-05,
+                "known_calls": 2,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 1.4796256250701845,
+                "known_calls": 2,
+                "missing_calls": 0
+              }
+            },
+            "nested": {
+              "call_records": 4,
+              "completed_records": 4,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 5486,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 650,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 6136,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 2560,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 4
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 357,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 0.0003393,
+                "known_calls": 4,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 7.422477915883064,
+                "known_calls": 4,
+                "missing_calls": 0
+              }
+            },
+            "all": {
+              "call_records": 6,
+              "completed_records": 6,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 6643,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 769,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 7412,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 2560,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 6
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 380,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 0.00040905000000000005,
+                "known_calls": 6,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 8.902103540953249,
+                "known_calls": 6,
+                "missing_calls": 0
+              }
+            }
+          },
+          "record_locations": [
+            {
+              "node_id": "steps[0]",
+              "record_index": 0,
+              "scope": "outer",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[0]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[1]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[2]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[3]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "steps[1]",
+              "record_index": 0,
+              "scope": "outer",
+              "status": "completed"
+            }
+          ],
+          "unmeasured_model_nodes": [],
+          "nested_data_tool_results": {
+            "records": [
+              {
+                "tool_node": "calls[0]/calls[0]",
+                "tool_name": "sample_examples",
+                "is_error": false,
+                "result_node": "calls[0]/calls[0].output",
+                "raw_utf8_bytes": 535,
+                "raw_text_characters": 535,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[1]",
+                "tool_name": "try_pattern",
+                "is_error": false,
+                "result_node": "calls[0]/calls[1].output",
+                "raw_utf8_bytes": 118,
+                "raw_text_characters": 118,
+                "representation": "raw_text"
+              }
+            ],
+            "known_text_results": 2,
+            "missing_raw_text_results": 0,
+            "known_total_utf8_bytes": 653,
+            "known_max_utf8_bytes": 535,
+            "scope": "nested tool nodes excluding submit, reference and outer task output; exact stored text bytes only"
+          },
+          "coverage": "recorded_calls_only; omitted failed attempts or provider calls cannot be ruled out",
+          "status": "analyzed",
+          "graph_source": {
+            "path": "study/task0/evidence/52ef7dc7-3011-4f67-8972-c07f6dde7d5c/turns/001/graph.json",
+            "sha256": "58d04b3ad7731583f7d66ed45dc222b6bf6dfccb9dc7b9bb0a397d3c5d8d7052"
+          },
+          "export_comparison": {
+            "outer": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1157,
+                  "graph_known_subtotal": 1157,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "completion_tokens": {
+                  "observed": 119,
+                  "graph_known_subtotal": 119,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "total_tokens": {
+                  "observed": 1276,
+                  "graph_known_subtotal": 1276,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cached_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 2,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 23,
+                  "graph_known_subtotal": 23,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                }
+              },
+              "cost": {
+                "observed": 6.975000000000001e-05,
+                "graph_known_subtotal": 6.975000000000001e-05,
+                "missing_graph_calls": 0,
+                "equal": true
+              }
+            },
+            "nested": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1157,
+                  "graph_known_subtotal": 5486,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "completion_tokens": {
+                  "observed": 119,
+                  "graph_known_subtotal": 650,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "total_tokens": {
+                  "observed": 1276,
+                  "graph_known_subtotal": 6136,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cached_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 2560,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 4,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 23,
+                  "graph_known_subtotal": 357,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                }
+              },
+              "cost": {
+                "observed": 6.975000000000001e-05,
+                "graph_known_subtotal": 0.0003393,
+                "missing_graph_calls": 0,
+                "equal": false
+              }
+            },
+            "all": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1157,
+                  "graph_known_subtotal": 6643,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "completion_tokens": {
+                  "observed": 119,
+                  "graph_known_subtotal": 769,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "total_tokens": {
+                  "observed": 1276,
+                  "graph_known_subtotal": 7412,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cached_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 2560,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 6,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 23,
+                  "graph_known_subtotal": 380,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                }
+              },
+              "cost": {
+                "observed": 6.975000000000001e-05,
+                "graph_known_subtotal": 0.00040905000000000005,
+                "missing_graph_calls": 0,
+                "equal": false
+              }
+            }
+          },
+          "messages_equal_export": true,
+          "ui_observation": {
+            "source": "native Computer Use Graph accessibility and screenshot",
+            "evidence": [
+              "accessibility.txt",
+              "screenshot.png"
+            ],
+            "input_tokens": 6643,
+            "output_tokens": 769,
+            "latency_display": "16 s",
+            "model_time_display": "8.9 s",
+            "tool_time_display": "7.2 s",
+            "cost_display": "$0.0004"
+          },
+          "ui_token_comparison": {
+            "input_tokens": {
+              "observed": 6643,
+              "graph_known_subtotal": 6643,
+              "missing_graph_calls": 0,
+              "equal": true
+            },
+            "output_tokens": {
+              "observed": 769,
+              "graph_known_subtotal": 769,
+              "missing_graph_calls": 0,
+              "equal": true
+            },
+            "cached_input_tokens": {
+              "observed": null,
+              "graph_known_subtotal": 2560,
+              "missing_graph_calls": 0,
+              "equal": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "session_id": "68441299-e93a-43e2-a8b4-61bd06864a31",
+      "plugin": "stat-pick",
+      "sources": {
+        "chat": {
+          "path": "study/task0/evidence/68441299-e93a-43e2-a8b4-61bd06864a31/chat.json",
+          "sha256": "6d22491dc8ab5a11ec80e40275ab59beda190d7db4876973d14dfdf233e7568c"
+        },
+        "export": {
+          "path": "study/task0/exports/stat-pick-pilots-completed-2026-11-23.jsonl",
+          "sha256": "bf6a27e0591d31c99340665c2d6f6e1055e9a448f181a2cd989d652b9696a534",
+          "method": "installed_supported_rushlab_nanoagent_export_CLI",
+          "filters": {
+            "plugin": "stat-pick",
+            "since": "2026-11-23"
+          }
+        },
+        "ui": {
+          "path": "study/task0/evidence/68441299-e93a-43e2-a8b4-61bd06864a31/ui_observation.json",
+          "sha256": "a4cf4137504cfb72d729a466f6883bd2347bd06284118498d2e6dc2bde48b2da"
+        }
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "plugin_version": "0.1.0",
+          "agent": {
+            "name": "nanoagent",
+            "version": "0.7.0",
+            "model_name": "deepseek/deepseek-v4-flash-0731"
+          },
+          "task_invocations": [
+            {
+              "task": "answer-question",
+              "arguments": {
+                "case": "sensor-drift"
+              },
+              "is_error": false,
+              "valid": true,
+              "score": 1.0
+            }
+          ],
+          "exported_metrics": {
+            "model": "deepseek/deepseek-v4-flash-0731",
+            "cost": 7.505000000000001e-05,
+            "usage": {
+              "prompt_tokens": 1237,
+              "completion_tokens": 132,
+              "total_tokens": 1369,
+              "cached_tokens": 512,
+              "cache_write_tokens": 0,
+              "reasoning_tokens": 34
+            },
+            "ttft_s": 0.8118150001391768,
+            "generation_s": 1.2914571254514158,
+            "duration_s": 29.166738625150174,
+            "model_s": 21.574385625775903,
+            "tools_s": 7.5914481254294515
+          },
+          "export_error_present": false,
+          "topology": "audited_chat_graph_with_task_ancestors",
+          "totals": {
+            "outer": {
+              "call_records": 2,
+              "completed_records": 2,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 1237,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 132,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 1369,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 512,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 2
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 34,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 7.505000000000001e-05,
+                "known_calls": 2,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 3.965850209351629,
+                "known_calls": 2,
+                "missing_calls": 0
+              }
+            },
+            "nested": {
+              "call_records": 6,
+              "completed_records": 6,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 3556,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 1148,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 4704,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 1536,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 6
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 1047,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 0.0002926,
+                "known_calls": 6,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 17.608535416424274,
+                "known_calls": 6,
+                "missing_calls": 0
+              }
+            },
+            "all": {
+              "call_records": 8,
+              "completed_records": 8,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 4793,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 1280,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 6073,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 2048,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 8
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 1081,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 0.00036765,
+                "known_calls": 8,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 21.574385625775903,
+                "known_calls": 8,
+                "missing_calls": 0
+              }
+            }
+          },
+          "record_locations": [
+            {
+              "node_id": "steps[0]",
+              "record_index": 0,
+              "scope": "outer",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/decisions[0]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/decisions[1]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/decisions[2]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/decisions[3]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/decisions[4]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/decisions[5]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "steps[1]",
+              "record_index": 0,
+              "scope": "outer",
+              "status": "completed"
+            }
+          ],
+          "unmeasured_model_nodes": [],
+          "nested_data_tool_results": {
+            "records": [
+              {
+                "tool_node": "calls[0]/calls[0]",
+                "tool_name": "read_question",
+                "is_error": false,
+                "result_node": "calls[0]/calls[0].output",
+                "raw_utf8_bytes": null,
+                "raw_text_characters": null,
+                "representation": "structured_value_wire_bytes_unknown"
+              },
+              {
+                "tool_node": "calls[0]/calls[1]",
+                "tool_name": "summarise",
+                "is_error": false,
+                "result_node": "calls[0]/calls[1].output",
+                "raw_utf8_bytes": null,
+                "raw_text_characters": null,
+                "representation": "structured_value_wire_bytes_unknown"
+              }
+            ],
+            "known_text_results": 0,
+            "missing_raw_text_results": 2,
+            "known_total_utf8_bytes": null,
+            "known_max_utf8_bytes": null,
+            "scope": "nested tool nodes excluding submit, reference and outer task output; exact stored text bytes only"
+          },
+          "coverage": "recorded_calls_only; omitted failed attempts or provider calls cannot be ruled out",
+          "status": "analyzed",
+          "graph_source": {
+            "path": "study/task0/evidence/68441299-e93a-43e2-a8b4-61bd06864a31/turns/001/graph.json",
+            "sha256": "bd1b0d2f6a000cff2b1dc1dd11615f4703c764fbbbee2338e84b4bd62c016f5c"
+          },
+          "export_comparison": {
+            "outer": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1237,
+                  "graph_known_subtotal": 1237,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "completion_tokens": {
+                  "observed": 132,
+                  "graph_known_subtotal": 132,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "total_tokens": {
+                  "observed": 1369,
+                  "graph_known_subtotal": 1369,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cached_tokens": {
+                  "observed": 512,
+                  "graph_known_subtotal": 512,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 2,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 34,
+                  "graph_known_subtotal": 34,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                }
+              },
+              "cost": {
+                "observed": 7.505000000000001e-05,
+                "graph_known_subtotal": 7.505000000000001e-05,
+                "missing_graph_calls": 0,
+                "equal": true
+              }
+            },
+            "nested": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1237,
+                  "graph_known_subtotal": 3556,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "completion_tokens": {
+                  "observed": 132,
+                  "graph_known_subtotal": 1148,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "total_tokens": {
+                  "observed": 1369,
+                  "graph_known_subtotal": 4704,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cached_tokens": {
+                  "observed": 512,
+                  "graph_known_subtotal": 1536,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 6,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 34,
+                  "graph_known_subtotal": 1047,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                }
+              },
+              "cost": {
+                "observed": 7.505000000000001e-05,
+                "graph_known_subtotal": 0.0002926,
+                "missing_graph_calls": 0,
+                "equal": false
+              }
+            },
+            "all": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1237,
+                  "graph_known_subtotal": 4793,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "completion_tokens": {
+                  "observed": 132,
+                  "graph_known_subtotal": 1280,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "total_tokens": {
+                  "observed": 1369,
+                  "graph_known_subtotal": 6073,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cached_tokens": {
+                  "observed": 512,
+                  "graph_known_subtotal": 2048,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 8,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 34,
+                  "graph_known_subtotal": 1081,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                }
+              },
+              "cost": {
+                "observed": 7.505000000000001e-05,
+                "graph_known_subtotal": 0.00036765,
+                "missing_graph_calls": 0,
+                "equal": false
+              }
+            }
+          },
+          "messages_equal_export": true,
+          "ui_observation": {
+            "source": "native Computer Use Graph accessibility and screenshot",
+            "evidence": [
+              "accessibility.txt",
+              "screenshot.png"
+            ],
+            "input_tokens": 4793,
+            "output_tokens": 1280,
+            "latency_display": "29 s",
+            "model_time_display": "22 s",
+            "tool_time_display": "7.6 s",
+            "cost_display": "$0.0004"
+          },
+          "ui_token_comparison": {
+            "input_tokens": {
+              "observed": 4793,
+              "graph_known_subtotal": 4793,
+              "missing_graph_calls": 0,
+              "equal": true
+            },
+            "output_tokens": {
+              "observed": 1280,
+              "graph_known_subtotal": 1280,
+              "missing_graph_calls": 0,
+              "equal": true
+            },
+            "cached_input_tokens": {
+              "observed": null,
+              "graph_known_subtotal": 2048,
+              "missing_graph_calls": 0,
+              "equal": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "session_id": "ada61e74-781e-4e83-b918-82cc7da14490",
+      "plugin": "log-triage",
+      "sources": {
+        "chat": {
+          "path": "study/task0/evidence/ada61e74-781e-4e83-b918-82cc7da14490/chat.json",
+          "sha256": "cb90e81508b00c2af0ac5ab0c51e43d451a38b79564939193f7c09b728457bec"
+        },
+        "export": {
+          "path": "study/task0/exports/log-triage-pilots-completed-2026-11-23.jsonl",
+          "sha256": "3ef29c3d92f0f8979855ccf81ed24e21d46150c915780e92b00b2caecadf04a8",
+          "method": "installed_supported_rushlab_nanoagent_export_CLI",
+          "filters": {
+            "plugin": "log-triage",
+            "since": "2026-11-23"
+          }
+        },
+        "ui": {
+          "path": "study/task0/evidence/ada61e74-781e-4e83-b918-82cc7da14490/ui_observation.json",
+          "sha256": "1aaae88a5e19354087cc302b15c93abf837f07a87c6d40411718275be11d09e9"
+        }
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "plugin_version": "0.1.0",
+          "agent": {
+            "name": "nanoagent",
+            "version": "0.7.0",
+            "model_name": "deepseek/deepseek-v4-flash-0731"
+          },
+          "task_invocations": [
+            {
+              "task": "triage-log",
+              "arguments": {
+                "case": "edge-proxy"
+              },
+              "is_error": false,
+              "valid": true,
+              "score": 1.0
+            }
+          ],
+          "exported_metrics": {
+            "model": "deepseek/deepseek-v4-flash-0731",
+            "cost": 6.620000000000001e-05,
+            "usage": {
+              "prompt_tokens": 1086,
+              "completion_tokens": 119,
+              "total_tokens": 1205,
+              "cached_tokens": 256,
+              "cache_write_tokens": 0,
+              "reasoning_tokens": 0
+            },
+            "ttft_s": 1.6831665839999914,
+            "generation_s": 0.47002104157581925,
+            "duration_s": 19.997139084152877,
+            "model_s": 13.958802543580532,
+            "tools_s": 6.037488581612706
+          },
+          "export_error_present": false,
+          "topology": "audited_chat_graph_with_task_ancestors",
+          "totals": {
+            "outer": {
+              "call_records": 2,
+              "completed_records": 2,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 1086,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 119,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 1205,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 256,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 2
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 6.620000000000001e-05,
+                "known_calls": 2,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 3.3489573751576245,
+                "known_calls": 2,
+                "missing_calls": 0
+              }
+            },
+            "nested": {
+              "call_records": 4,
+              "completed_records": 4,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 2613,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 675,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 3288,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 768,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 4
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 604,
+                  "known_calls": 4,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 0.00019815000000000002,
+                "known_calls": 4,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 10.609845168422908,
+                "known_calls": 4,
+                "missing_calls": 0
+              }
+            },
+            "all": {
+              "call_records": 6,
+              "completed_records": 6,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 3699,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 794,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 4493,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 1024,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 6
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 604,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 0.00026435,
+                "known_calls": 6,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 13.958802543580532,
+                "known_calls": 6,
+                "missing_calls": 0
+              }
+            }
+          },
+          "record_locations": [
+            {
+              "node_id": "steps[0]",
+              "record_index": 0,
+              "scope": "outer",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/decisions[0]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/decisions[1]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/decisions[2]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/decisions[3]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "steps[1]",
+              "record_index": 0,
+              "scope": "outer",
+              "status": "completed"
+            }
+          ],
+          "unmeasured_model_nodes": [],
+          "nested_data_tool_results": {
+            "records": [
+              {
+                "tool_node": "calls[0]/calls[0]",
+                "tool_name": "read_log",
+                "is_error": false,
+                "result_node": "calls[0]/calls[0].output",
+                "raw_utf8_bytes": null,
+                "raw_text_characters": null,
+                "representation": "structured_value_wire_bytes_unknown"
+              }
+            ],
+            "known_text_results": 0,
+            "missing_raw_text_results": 1,
+            "known_total_utf8_bytes": null,
+            "known_max_utf8_bytes": null,
+            "scope": "nested tool nodes excluding submit, reference and outer task output; exact stored text bytes only"
+          },
+          "coverage": "recorded_calls_only; omitted failed attempts or provider calls cannot be ruled out",
+          "status": "analyzed",
+          "graph_source": {
+            "path": "study/task0/evidence/ada61e74-781e-4e83-b918-82cc7da14490/turns/001/graph.json",
+            "sha256": "df8bf14c76a07b954fa3cce8e0c7b7787c0af0d25428773775c75e1b58ffd52c"
+          },
+          "export_comparison": {
+            "outer": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1086,
+                  "graph_known_subtotal": 1086,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "completion_tokens": {
+                  "observed": 119,
+                  "graph_known_subtotal": 119,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "total_tokens": {
+                  "observed": 1205,
+                  "graph_known_subtotal": 1205,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cached_tokens": {
+                  "observed": 256,
+                  "graph_known_subtotal": 256,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 2,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                }
+              },
+              "cost": {
+                "observed": 6.620000000000001e-05,
+                "graph_known_subtotal": 6.620000000000001e-05,
+                "missing_graph_calls": 0,
+                "equal": true
+              }
+            },
+            "nested": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1086,
+                  "graph_known_subtotal": 2613,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "completion_tokens": {
+                  "observed": 119,
+                  "graph_known_subtotal": 675,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "total_tokens": {
+                  "observed": 1205,
+                  "graph_known_subtotal": 3288,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cached_tokens": {
+                  "observed": 256,
+                  "graph_known_subtotal": 768,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 4,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 604,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                }
+              },
+              "cost": {
+                "observed": 6.620000000000001e-05,
+                "graph_known_subtotal": 0.00019815000000000002,
+                "missing_graph_calls": 0,
+                "equal": false
+              }
+            },
+            "all": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1086,
+                  "graph_known_subtotal": 3699,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "completion_tokens": {
+                  "observed": 119,
+                  "graph_known_subtotal": 794,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "total_tokens": {
+                  "observed": 1205,
+                  "graph_known_subtotal": 4493,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cached_tokens": {
+                  "observed": 256,
+                  "graph_known_subtotal": 1024,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 6,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 604,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                }
+              },
+              "cost": {
+                "observed": 6.620000000000001e-05,
+                "graph_known_subtotal": 0.00026435,
+                "missing_graph_calls": 0,
+                "equal": false
+              }
+            }
+          },
+          "messages_equal_export": true,
+          "ui_observation": {
+            "source": "native Computer Use Graph accessibility and screenshot after resuming saved session",
+            "evidence": [
+              "graph-accessibility.txt",
+              "graph.png"
+            ],
+            "input_tokens": 3699,
+            "output_tokens": 794,
+            "latency_display": "20 s",
+            "model_time_display": "14 s",
+            "tool_time_display": "6.0 s",
+            "cost_display": "$0.0003"
+          },
+          "ui_token_comparison": {
+            "input_tokens": {
+              "observed": 3699,
+              "graph_known_subtotal": 3699,
+              "missing_graph_calls": 0,
+              "equal": true
+            },
+            "output_tokens": {
+              "observed": 794,
+              "graph_known_subtotal": 794,
+              "missing_graph_calls": 0,
+              "equal": true
+            },
+            "cached_input_tokens": {
+              "observed": null,
+              "graph_known_subtotal": 1024,
+              "missing_graph_calls": 0,
+              "equal": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "session_id": "e4b4cb31-44c9-47a5-b390-300076d4c9b1",
+      "plugin": "path-probe",
+      "sources": {
+        "chat": {
+          "path": "study/task0/evidence/e4b4cb31-44c9-47a5-b390-300076d4c9b1/chat.json",
+          "sha256": "b59511d5e759b51a49c2d79f95a6474a0c41b52065bd3678fa79c7667f1bb287"
+        },
+        "export": {
+          "path": "study/task0/exports/path-probe-pilots-completed-2026-11-23.jsonl",
+          "sha256": "d36273c0625b558742e3d0837b83ee8c42b255fc59220e4eab0f113df821d57e",
+          "method": "installed_supported_rushlab_nanoagent_export_CLI",
+          "filters": {
+            "plugin": "path-probe",
+            "since": "2026-11-23"
+          }
+        },
+        "ui": {
+          "path": "study/task0/evidence/e4b4cb31-44c9-47a5-b390-300076d4c9b1/ui_observation.json",
+          "sha256": "c1b130399a18b2b8de563b4b99ce55b404fc444e3f116ca2165a63a8038587cd"
+        }
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "plugin_version": "0.1.0",
+          "agent": {
+            "name": "nanoagent",
+            "version": "0.7.0",
+            "model_name": "deepseek/deepseek-v4-flash-0731"
+          },
+          "task_invocations": [
+            {
+              "task": "find-route",
+              "arguments": {
+                "case": "quarry"
+              },
+              "is_error": false,
+              "valid": true,
+              "score": 1.0
+            }
+          ],
+          "exported_metrics": {
+            "model": "deepseek/deepseek-v4-flash-0731",
+            "cost": 7.695e-05,
+            "usage": {
+              "prompt_tokens": 1245,
+              "completion_tokens": 147,
+              "total_tokens": 1392,
+              "cached_tokens": 512,
+              "cache_write_tokens": 0,
+              "reasoning_tokens": 56
+            },
+            "ttft_s": 0.3176252921111882,
+            "generation_s": 0.6493355827406049,
+            "duration_s": 22.338432250078768,
+            "model_s": 12.967772082891315,
+            "tools_s": 9.369776915758848
+          },
+          "export_error_present": false,
+          "topology": "audited_chat_graph_with_task_ancestors",
+          "totals": {
+            "outer": {
+              "call_records": 2,
+              "completed_records": 2,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 1245,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 147,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 1392,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 512,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 2
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 56,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 7.695e-05,
+                "known_calls": 2,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 3.1806079987436533,
+                "known_calls": 2,
+                "missing_calls": 0
+              }
+            },
+            "nested": {
+              "call_records": 6,
+              "completed_records": 6,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 8933,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 922,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 9855,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 5120,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 6
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 370,
+                  "known_calls": 6,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 0.00053885,
+                "known_calls": 6,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 9.787164084147662,
+                "known_calls": 6,
+                "missing_calls": 0
+              }
+            },
+            "all": {
+              "call_records": 8,
+              "completed_records": 8,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 10178,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 1069,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 11247,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 5632,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 8
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 426,
+                  "known_calls": 8,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 0.0006158000000000001,
+                "known_calls": 8,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 12.967772082891315,
+                "known_calls": 8,
+                "missing_calls": 0
+              }
+            }
+          },
+          "record_locations": [
+            {
+              "node_id": "steps[0]",
+              "record_index": 0,
+              "scope": "outer",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[0]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[1]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[2]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[3]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[4]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[5]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "steps[1]",
+              "record_index": 0,
+              "scope": "outer",
+              "status": "completed"
+            }
+          ],
+          "unmeasured_model_nodes": [],
+          "nested_data_tool_results": {
+            "records": [
+              {
+                "tool_node": "calls[0]/calls[0]",
+                "tool_name": "read_map",
+                "is_error": false,
+                "result_node": "calls[0]/calls[0].output",
+                "raw_utf8_bytes": 57,
+                "raw_text_characters": 57,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[1]",
+                "tool_name": "neighbours",
+                "is_error": false,
+                "result_node": "calls[0]/calls[1].output",
+                "raw_utf8_bytes": 147,
+                "raw_text_characters": 147,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[2]",
+                "tool_name": "neighbours",
+                "is_error": false,
+                "result_node": "calls[0]/calls[2].output",
+                "raw_utf8_bytes": 303,
+                "raw_text_characters": 303,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[3]",
+                "tool_name": "neighbours",
+                "is_error": false,
+                "result_node": "calls[0]/calls[3].output",
+                "raw_utf8_bytes": 185,
+                "raw_text_characters": 185,
+                "representation": "raw_text"
+              }
+            ],
+            "known_text_results": 4,
+            "missing_raw_text_results": 0,
+            "known_total_utf8_bytes": 692,
+            "known_max_utf8_bytes": 303,
+            "scope": "nested tool nodes excluding submit, reference and outer task output; exact stored text bytes only"
+          },
+          "coverage": "recorded_calls_only; omitted failed attempts or provider calls cannot be ruled out",
+          "status": "analyzed",
+          "graph_source": {
+            "path": "study/task0/evidence/e4b4cb31-44c9-47a5-b390-300076d4c9b1/turns/001/graph.json",
+            "sha256": "d375a2fad21dc1a6c996fefb71eb354b360c547d8f2fc79f86554f23783227d7"
+          },
+          "export_comparison": {
+            "outer": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1245,
+                  "graph_known_subtotal": 1245,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "completion_tokens": {
+                  "observed": 147,
+                  "graph_known_subtotal": 147,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "total_tokens": {
+                  "observed": 1392,
+                  "graph_known_subtotal": 1392,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cached_tokens": {
+                  "observed": 512,
+                  "graph_known_subtotal": 512,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 2,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 56,
+                  "graph_known_subtotal": 56,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                }
+              },
+              "cost": {
+                "observed": 7.695e-05,
+                "graph_known_subtotal": 7.695e-05,
+                "missing_graph_calls": 0,
+                "equal": true
+              }
+            },
+            "nested": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1245,
+                  "graph_known_subtotal": 8933,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "completion_tokens": {
+                  "observed": 147,
+                  "graph_known_subtotal": 922,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "total_tokens": {
+                  "observed": 1392,
+                  "graph_known_subtotal": 9855,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cached_tokens": {
+                  "observed": 512,
+                  "graph_known_subtotal": 5120,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 6,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 56,
+                  "graph_known_subtotal": 370,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                }
+              },
+              "cost": {
+                "observed": 7.695e-05,
+                "graph_known_subtotal": 0.00053885,
+                "missing_graph_calls": 0,
+                "equal": false
+              }
+            },
+            "all": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1245,
+                  "graph_known_subtotal": 10178,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "completion_tokens": {
+                  "observed": 147,
+                  "graph_known_subtotal": 1069,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "total_tokens": {
+                  "observed": 1392,
+                  "graph_known_subtotal": 11247,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cached_tokens": {
+                  "observed": 512,
+                  "graph_known_subtotal": 5632,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 8,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 56,
+                  "graph_known_subtotal": 426,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                }
+              },
+              "cost": {
+                "observed": 7.695e-05,
+                "graph_known_subtotal": 0.0006158000000000001,
+                "missing_graph_calls": 0,
+                "equal": false
+              }
+            }
+          },
+          "messages_equal_export": true,
+          "ui_observation": {
+            "source": "native Computer Use Graph accessibility and screenshot",
+            "evidence": [
+              "accessibility.txt",
+              "screenshot.png"
+            ],
+            "input_tokens": 10178,
+            "output_tokens": 1069,
+            "latency_display": "22 s",
+            "model_time_display": "13 s",
+            "tool_time_display": "9.4 s",
+            "cost_display": "$0.0006"
+          },
+          "ui_token_comparison": {
+            "input_tokens": {
+              "observed": 10178,
+              "graph_known_subtotal": 10178,
+              "missing_graph_calls": 0,
+              "equal": true
+            },
+            "output_tokens": {
+              "observed": 1069,
+              "graph_known_subtotal": 1069,
+              "missing_graph_calls": 0,
+              "equal": true
+            },
+            "cached_input_tokens": {
+              "observed": null,
+              "graph_known_subtotal": 5632,
+              "missing_graph_calls": 0,
+              "equal": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "session_id": "fb61b2be-3336-416d-8d1c-7480aae5e544",
+      "plugin": "cipher-crack",
+      "sources": {
+        "chat": {
+          "path": "study/task0/evidence/fb61b2be-3336-416d-8d1c-7480aae5e544/chat.json",
+          "sha256": "cadc31ffa6860efa2502f3b201224ac0588cc071b32cf5a6eb722265f9a41f94"
+        },
+        "export": {
+          "path": "study/task0/exports/cipher-crack-pilots-completed-2026-11-23.jsonl",
+          "sha256": "18e24b107ee5c3d0593cf836b72b8b993bb5ae88d438834c6e5cc7b8c480dca6",
+          "method": "installed_supported_rushlab_nanoagent_export_CLI",
+          "filters": {
+            "plugin": "cipher-crack",
+            "since": "2026-11-23"
+          }
+        },
+        "ui": {
+          "path": "study/task0/evidence/fb61b2be-3336-416d-8d1c-7480aae5e544/ui_observation.json",
+          "sha256": "be5e23dc6416ce77c9b824b16b45b8b25a194a8de547647a4bb5e1f358effef0"
+        }
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "plugin_version": "0.1.0",
+          "agent": {
+            "name": "nanoagent",
+            "version": "0.7.0",
+            "model_name": "deepseek/deepseek-v4-flash-0731"
+          },
+          "task_invocations": [
+            {
+              "task": "crack-cipher",
+              "arguments": {
+                "case": "telegram"
+              },
+              "is_error": false,
+              "valid": true,
+              "score": 1.0
+            }
+          ],
+          "exported_metrics": {
+            "model": "deepseek/deepseek-v4-flash-0731",
+            "cost": 7.15e-05,
+            "usage": {
+              "prompt_tokens": 1224,
+              "completion_tokens": 103,
+              "total_tokens": 1327,
+              "cached_tokens": 512,
+              "cache_write_tokens": 0,
+              "reasoning_tokens": 18
+            },
+            "ttft_s": 0.6934815417043865,
+            "generation_s": 0.21197995822876692,
+            "duration_s": 27.415566791780293,
+            "model_s": 16.573135956656188,
+            "tools_s": 10.841642959043384
+          },
+          "export_error_present": false,
+          "topology": "audited_chat_graph_with_task_ancestors",
+          "totals": {
+            "outer": {
+              "call_records": 2,
+              "completed_records": 2,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 1224,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 103,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 1327,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 512,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 2
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 18,
+                  "known_calls": 2,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 7.15e-05,
+                "known_calls": 2,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 1.2333485828712583,
+                "known_calls": 2,
+                "missing_calls": 0
+              }
+            },
+            "nested": {
+              "call_records": 5,
+              "completed_records": 5,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 10357,
+                  "known_calls": 5,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 1849,
+                  "known_calls": 5,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 12206,
+                  "known_calls": 5,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 6400,
+                  "known_calls": 5,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 5,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 5
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 1205,
+                  "known_calls": 5,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 0.00070275,
+                "known_calls": 5,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 15.33978737378493,
+                "known_calls": 5,
+                "missing_calls": 0
+              }
+            },
+            "all": {
+              "call_records": 7,
+              "completed_records": 7,
+              "failed_records": 0,
+              "unknown_status_records": 0,
+              "usage": {
+                "prompt_tokens": {
+                  "known_subtotal": 11581,
+                  "known_calls": 7,
+                  "missing_calls": 0
+                },
+                "completion_tokens": {
+                  "known_subtotal": 1952,
+                  "known_calls": 7,
+                  "missing_calls": 0
+                },
+                "total_tokens": {
+                  "known_subtotal": 13533,
+                  "known_calls": 7,
+                  "missing_calls": 0
+                },
+                "cached_tokens": {
+                  "known_subtotal": 6912,
+                  "known_calls": 7,
+                  "missing_calls": 0
+                },
+                "cache_write_tokens": {
+                  "known_subtotal": 0,
+                  "known_calls": 7,
+                  "missing_calls": 0
+                },
+                "cache_write_1h_tokens": {
+                  "known_subtotal": null,
+                  "known_calls": 0,
+                  "missing_calls": 7
+                },
+                "reasoning_tokens": {
+                  "known_subtotal": 1223,
+                  "known_calls": 7,
+                  "missing_calls": 0
+                }
+              },
+              "reported_cost_usd": {
+                "known_subtotal": 0.0007742500000000001,
+                "known_calls": 7,
+                "missing_calls": 0
+              },
+              "model_call_seconds": {
+                "known_subtotal": 16.573135956656188,
+                "known_calls": 7,
+                "missing_calls": 0
+              }
+            }
+          },
+          "record_locations": [
+            {
+              "node_id": "steps[0]",
+              "record_index": 0,
+              "scope": "outer",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[0]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[1]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[2]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[3]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "calls[0]/steps[4]",
+              "record_index": 0,
+              "scope": "nested",
+              "status": "completed"
+            },
+            {
+              "node_id": "steps[1]",
+              "record_index": 0,
+              "scope": "outer",
+              "status": "completed"
+            }
+          ],
+          "unmeasured_model_nodes": [],
+          "nested_data_tool_results": {
+            "records": [
+              {
+                "tool_node": "calls[0]/calls[0]",
+                "tool_name": "read_cipher",
+                "is_error": false,
+                "result_node": "calls[0]/calls[0].output",
+                "raw_utf8_bytes": 78,
+                "raw_text_characters": 78,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[1]",
+                "tool_name": "decrypt",
+                "is_error": false,
+                "result_node": "calls[0]/calls[1].output",
+                "raw_utf8_bytes": 147,
+                "raw_text_characters": 147,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[2]",
+                "tool_name": "decrypt",
+                "is_error": false,
+                "result_node": "calls[0]/calls[2].output",
+                "raw_utf8_bytes": 147,
+                "raw_text_characters": 147,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[3]",
+                "tool_name": "decrypt",
+                "is_error": false,
+                "result_node": "calls[0]/calls[3].output",
+                "raw_utf8_bytes": 147,
+                "raw_text_characters": 147,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[4]",
+                "tool_name": "decrypt",
+                "is_error": false,
+                "result_node": "calls[0]/calls[4].output",
+                "raw_utf8_bytes": 147,
+                "raw_text_characters": 147,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[5]",
+                "tool_name": "decrypt",
+                "is_error": false,
+                "result_node": "calls[0]/calls[5].output",
+                "raw_utf8_bytes": 147,
+                "raw_text_characters": 147,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[6]",
+                "tool_name": "decrypt",
+                "is_error": false,
+                "result_node": "calls[0]/calls[6].output",
+                "raw_utf8_bytes": 147,
+                "raw_text_characters": 147,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[7]",
+                "tool_name": "decrypt",
+                "is_error": false,
+                "result_node": "calls[0]/calls[7].output",
+                "raw_utf8_bytes": 147,
+                "raw_text_characters": 147,
+                "representation": "raw_text"
+              },
+              {
+                "tool_node": "calls[0]/calls[8]",
+                "tool_name": "decrypt",
+                "is_error": false,
+                "result_node": "calls[0]/calls[8].output",
+                "raw_utf8_bytes": 147,
+                "raw_text_characters": 147,
+                "representation": "raw_text"
+              }
+            ],
+            "known_text_results": 9,
+            "missing_raw_text_results": 0,
+            "known_total_utf8_bytes": 1254,
+            "known_max_utf8_bytes": 147,
+            "scope": "nested tool nodes excluding submit, reference and outer task output; exact stored text bytes only"
+          },
+          "coverage": "recorded_calls_only; omitted failed attempts or provider calls cannot be ruled out",
+          "status": "analyzed",
+          "graph_source": {
+            "path": "study/task0/evidence/fb61b2be-3336-416d-8d1c-7480aae5e544/turns/001/graph.json",
+            "sha256": "6d8f0b4eaa0690f3793959993b606642a4c2f6b9ae2e60ca22f7070a9446eb7e"
+          },
+          "export_comparison": {
+            "outer": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1224,
+                  "graph_known_subtotal": 1224,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "completion_tokens": {
+                  "observed": 103,
+                  "graph_known_subtotal": 103,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "total_tokens": {
+                  "observed": 1327,
+                  "graph_known_subtotal": 1327,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cached_tokens": {
+                  "observed": 512,
+                  "graph_known_subtotal": 512,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 2,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 18,
+                  "graph_known_subtotal": 18,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                }
+              },
+              "cost": {
+                "observed": 7.15e-05,
+                "graph_known_subtotal": 7.15e-05,
+                "missing_graph_calls": 0,
+                "equal": true
+              }
+            },
+            "nested": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1224,
+                  "graph_known_subtotal": 10357,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "completion_tokens": {
+                  "observed": 103,
+                  "graph_known_subtotal": 1849,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "total_tokens": {
+                  "observed": 1327,
+                  "graph_known_subtotal": 12206,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cached_tokens": {
+                  "observed": 512,
+                  "graph_known_subtotal": 6400,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 5,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 18,
+                  "graph_known_subtotal": 1205,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                }
+              },
+              "cost": {
+                "observed": 7.15e-05,
+                "graph_known_subtotal": 0.00070275,
+                "missing_graph_calls": 0,
+                "equal": false
+              }
+            },
+            "all": {
+              "usage": {
+                "prompt_tokens": {
+                  "observed": 1224,
+                  "graph_known_subtotal": 11581,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "completion_tokens": {
+                  "observed": 103,
+                  "graph_known_subtotal": 1952,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "total_tokens": {
+                  "observed": 1327,
+                  "graph_known_subtotal": 13533,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cached_tokens": {
+                  "observed": 512,
+                  "graph_known_subtotal": 6912,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                },
+                "cache_write_tokens": {
+                  "observed": 0,
+                  "graph_known_subtotal": 0,
+                  "missing_graph_calls": 0,
+                  "equal": true
+                },
+                "cache_write_1h_tokens": {
+                  "observed": null,
+                  "graph_known_subtotal": null,
+                  "missing_graph_calls": 7,
+                  "equal": null
+                },
+                "reasoning_tokens": {
+                  "observed": 18,
+                  "graph_known_subtotal": 1223,
+                  "missing_graph_calls": 0,
+                  "equal": false
+                }
+              },
+              "cost": {
+                "observed": 7.15e-05,
+                "graph_known_subtotal": 0.0007742500000000001,
+                "missing_graph_calls": 0,
+                "equal": false
+              }
+            }
+          },
+          "messages_equal_export": true,
+          "ui_observation": {
+            "source": "native Computer Use Graph accessibility and screenshot",
+            "evidence": [
+              "accessibility.txt",
+              "screenshot.png"
+            ],
+            "input_tokens": 11581,
+            "output_tokens": 1952,
+            "latency_display": "27 s",
+            "model_time_display": "17 s",
+            "tool_time_display": "11 s",
+            "cost_display": "$0.0008"
+          },
+          "ui_token_comparison": {
+            "input_tokens": {
+              "observed": 11581,
+              "graph_known_subtotal": 11581,
+              "missing_graph_calls": 0,
+              "equal": true
+            },
+            "output_tokens": {
+              "observed": 1952,
+              "graph_known_subtotal": 1952,
+              "missing_graph_calls": 0,
+              "equal": true
+            },
+            "cached_input_tokens": {
+              "observed": null,
+              "graph_known_subtotal": 6912,
+              "missing_graph_calls": 0,
+              "equal": null
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

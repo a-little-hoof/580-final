@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "kind": "comp580-one-case-publish-plan",
+  "namespace": "comp580-yw251-compact-v1",
+  "source_manifest": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/fixtures/manifest.json",
+  "source_manifest_sha256": "79249a05a242bccd2980eb4d8a7b041f06f42031dc3e9fb9f275c7f8e2d14df6",
+  "case_id": "stat-pick/sensor-drift",
+  "expected_plugin_version": "0.1.0",
+  "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+  "public_file_sha256": {
+    "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+    "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+  },
+  "payload_sha256": "1aa4409cbaf3ff38aed133c4fc6f7e477dfae8dff3100f54366cfcae1ab6bce3",
+  "payload": {
+    "plugin_id": "stat-pick",
+    "case_file": "{\n  \"plugin\": \"stat-pick\",\n  \"task\": \"answer-question\",\n  \"cases\": [\n    {\n      \"prompt\": \"Task: answer-question; case: sensor-drift.\\n\\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\\n\\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\\n\\nAnswer JSON Schema:\\n{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"case\\\":{\\\"type\\\":\\\"string\\\",\\\"enum\\\":[\\\"sensor-drift\\\"]},\\\"statistic\\\":{\\\"type\\\":\\\"string\\\",\\\"enum\\\":[\\\"mean\\\",\\\"median\\\",\\\"mode\\\",\\\"range\\\",\\\"spread\\\",\\\"smallest\\\",\\\"largest\\\",\\\"total\\\"]},\\\"value\\\":{\\\"type\\\":\\\"number\\\"}},\\\"required\\\":[\\\"case\\\",\\\"statistic\\\",\\\"value\\\"],\\\"additionalProperties\\\":false}\",\n      \"arguments\": {\n        \"case\": \"sensor-drift\"\n      },\n      \"fixtures\": \"public\"\n    }\n  ],\n  \"refuse\": []\n}",
+    "files": {
+      "public/input.json": "ewogICJjYXNlIjogInNlbnNvci1kcmlmdCIsCiAgImNvbHVtbiI6ICJyZWFkaW5nIiwKICAicXVlc3Rpb24iOiAiVGhlIHNlbnNvciBwYXNzZXMgY2FsaWJyYXRpb24gb25seSBpZiBpdHMgcmVhZGluZ3Mgc2l0IHdpdGhpbiAyLjAgdW5pdHMgb2YgdGhlaXIgb3duIGF2ZXJhZ2UuIEhvdyBmYXIgZnJvbSB0aGUgYXZlcmFnZSBkbyB0aGUgcmVhZGluZ3Mgc2l0PyIsCiAgIm51bWJlcnMiOiBbCiAgICA1MCwKICAgIDUyLAogICAgNDgsCiAgICA1MSwKICAgIDQ5LAogICAgNTMsCiAgICA0NywKICAgIDUwLAogICAgNTIsCiAgICA0OCwKICAgIDUwCiAgXQp9Cg==",
+      "public/prompt.txt": "VGFzazogYW5zd2VyLXF1ZXN0aW9uOyBjYXNlOiBzZW5zb3ItZHJpZnQuCgpDaG9vc2UgdGhlIHN0YXRpc3RpYyB0aGF0IGFuc3dlcnMgdGhlIHF1ZXN0aW9uIGluIGlucHV0Lmpzb24gYW5kIGNvbXB1dGUgaXRzIHZhbHVlIGZyb20gdGhlIHJlYWRpbmdzLiBUaGUgYXZhaWxhYmxlIHN0YXRpc3RpY3MgYXJlIG1lYW4gKHN1bSBkaXZpZGVkIGJ5IGNvdW50KSwgbWVkaWFuIChtaWRkbGUgYWZ0ZXIgc29ydGluZywgYXZlcmFnaW5nIHRoZSB0d28gbWlkZGxlIHZhbHVlcyBmb3IgZXZlbiBjb3VudCksIG1vZGUgKHVuaXF1ZSBtb3N0IGZyZXF1ZW50IHZhbHVlKSwgcmFuZ2UgKG1heGltdW0gbWludXMgbWluaW11bSksIHNwcmVhZCAocG9wdWxhdGlvbiBzdGFuZGFyZCBkZXZpYXRpb24sIHdpdGggZGl2aXNvciBlcXVhbCB0byB0aGUgbnVtYmVyIG9mIHJlYWRpbmdzKSwgc21hbGxlc3QsIGxhcmdlc3QsIGFuZCB0b3RhbC4gU3VibWl0IGJvdGggdGhlIGNob3NlbiBzdGF0aXN0aWMgYW5kIGl0cyBudW1lcmljYWwgdmFsdWUuIEdyYWRpbmcgdXNlcyBhIHRvbGVyYW5jZSBvZiAxZS02IHRpbWVzIG1heCgxLCBhYnNvbHV0ZSBleHBlY3RlZCB2YWx1ZSkuIFRoaXMgaXMgYSByYXctZGF0YSBhZGFwdGF0aW9uOiB0aGUgb3JpZ2luYWwgcGx1Z2luIGhpZGVzIHRoZSByZWFkaW5ncyBhbmQgcHJvdmlkZXMgYSBzdW1tYXJpc2UgdG9vbDsgaGVyZSB0aGUgb3JpZ2luYWwgcmVhZGluZ3MgYXJlIHB1YmxpYyBhbmQgeW91IG1heSBjb21wdXRlIGZyZWVseS4KClJlYWQgaW5wdXQuanNvbiB1c2luZyBhbnkgYXZhaWxhYmxlIHRvb2xzLiBXb3JrIGVmZmljaWVudGx5OyBubyBwYXJ0aWN1bGFyIHRvb2wgb3IgZnVsbC1kYXRhIGRpc3BsYXkgaXMgcmVxdWlyZWQuIERvIG5vdCBtb2RpZnkgaW5wdXQuanNvbiBvciBwcm9tcHQudHh0LiBXcml0ZSBvbmx5IHRoZSBmaW5hbCBhbnN3ZXIgb2JqZWN0IHRvIGFuc3dlci5qc29uLCB0aGVuIHN0b3AuIFVzZSB0aGVzZSBleGFjdCBmaWVsZHMgYW5kIHR5cGVzOyBkbyBub3QgYWRkIGZpZWxkcy4KCkFuc3dlciBKU09OIFNjaGVtYToKeyJ0eXBlIjoib2JqZWN0IiwicHJvcGVydGllcyI6eyJjYXNlIjp7InR5cGUiOiJzdHJpbmciLCJlbnVtIjpbInNlbnNvci1kcmlmdCJdfSwic3RhdGlzdGljIjp7InR5cGUiOiJzdHJpbmciLCJlbnVtIjpbIm1lYW4iLCJtZWRpYW4iLCJtb2RlIiwicmFuZ2UiLCJzcHJlYWQiLCJzbWFsbGVzdCIsImxhcmdlc3QiLCJ0b3RhbCJdfSwidmFsdWUiOnsidHlwZSI6Im51bWJlciJ9fSwicmVxdWlyZWQiOlsiY2FzZSIsInN0YXRpc3RpYyIsInZhbHVlIl0sImFkZGl0aW9uYWxQcm9wZXJ0aWVzIjpmYWxzZX0="
+    },
+    "limits": {
+      "wall_time_ms": 180000,
+      "max_model_calls": 12,
+      "max_output_tokens_per_call": 32768,
+      "max_cost_usd": 0.05,
+      "internet_access": false
+    },
+    "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+  },
+  "boundary": "Only public/input.json and public/prompt.txt are uploaded. Source/checkers/references/manifest stay host-side."
+}

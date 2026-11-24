@@ -1,0 +1,705 @@
+{
+  "freeze_sha256": "7301cf30de5307b76458758b5d8c6df778737684024440ca5f163c419374214a",
+  "trials": {
+    "stat-pick/sensor-drift/compact/rep04": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-8242419fdd1f6b5ee255d01ea5f711fa835792e3e779e544b9c20a53d831153b"
+      },
+      "run_id": "fc56d917-91ca-4909-8990-96161658f48e",
+      "captures": [
+        "study/controlled/final/evidence/fc56d917-91ca-4909-8990-96161658f48e/20261124T044031322101Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/fc56d917-91ca-4909-8990-96161658f48e/20261124T044031322101Z/trial-check.json"
+    },
+    "stat-pick/sensor-drift/full/rep04": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-9ce3eac5afff69e38e3dba0751efbb846714d92aea3debd10639db1f22be3fb2"
+      },
+      "run_id": "20e6d073-476d-47cc-97b2-f1fc3feeadc2",
+      "captures": [
+        "study/controlled/final/evidence/20e6d073-476d-47cc-97b2-f1fc3feeadc2/20261124T044103033905Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/20e6d073-476d-47cc-97b2-f1fc3feeadc2/20261124T044103033905Z/trial-check.json"
+    },
+    "log-triage/edge-proxy/compact/rep01": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-6c48e76bd2e8238e4235a2dc3273b69faf55ee8c3823da0a0fb32982a6979dfd"
+      },
+      "run_id": "25204f37-c420-4505-9fa9-603c695fef46",
+      "captures": [
+        "study/controlled/final/evidence/25204f37-c420-4505-9fa9-603c695fef46/20261124T044127936796Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/25204f37-c420-4505-9fa9-603c695fef46/20261124T044127936796Z/trial-check.json"
+    },
+    "log-triage/edge-proxy/full/rep01": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-5716e8052ead90784ff3d7a2fa4d0b4bf0f67f078daf206ccafa258530acc843"
+      },
+      "run_id": "f2a11ff6-0917-4052-92bd-1e1bc7f6bb7d",
+      "captures": [
+        "study/controlled/final/evidence/f2a11ff6-0917-4052-92bd-1e1bc7f6bb7d/20261124T044150063492Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/f2a11ff6-0917-4052-92bd-1e1bc7f6bb7d/20261124T044150063492Z/trial-check.json"
+    },
+    "log-triage/edge-proxy/full/rep05": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-f4241f4fee7426dbb21a297f9e3968edd4d91c5e549d4080b9e0ec327819a016"
+      },
+      "run_id": "364bd5bc-a805-437e-b6d5-8ab14d12b715",
+      "captures": [
+        "study/controlled/final/evidence/364bd5bc-a805-437e-b6d5-8ab14d12b715/20261124T044212219244Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/364bd5bc-a805-437e-b6d5-8ab14d12b715/20261124T044212219244Z/trial-check.json"
+    },
+    "log-triage/edge-proxy/compact/rep05": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-749c7d9a77af48e0d581551b6ffdb455a35fa42ddd79de56a70f672f6b641134"
+      },
+      "run_id": "7d8a4e40-1137-4b05-9223-d247c0cf7597",
+      "captures": [
+        "study/controlled/final/evidence/7d8a4e40-1137-4b05-9223-d247c0cf7597/20261124T044234086976Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/7d8a4e40-1137-4b05-9223-d247c0cf7597/20261124T044234086976Z/trial-check.json"
+    },
+    "log-triage/edge-proxy/full/rep03": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-8ff72820962d2bb99843cc943f45cfb1deb8f2e4f678575bfe756e0e4d5787d0"
+      },
+      "run_id": "05b4d174-7cab-4127-bcae-bc30ad58bd55",
+      "captures": [
+        "study/controlled/final/evidence/05b4d174-7cab-4127-bcae-bc30ad58bd55/20261124T044256113611Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/05b4d174-7cab-4127-bcae-bc30ad58bd55/20261124T044256113611Z/trial-check.json"
+    },
+    "log-triage/edge-proxy/compact/rep03": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-67ce5ce57b14c147652899b52292aa4c2eac079d3157c39941d2781c07a43261"
+      },
+      "run_id": "96e709f1-438e-41ea-b9f3-4a78498f8279",
+      "captures": [
+        "study/controlled/final/evidence/96e709f1-438e-41ea-b9f3-4a78498f8279/20261124T044318043796Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/96e709f1-438e-41ea-b9f3-4a78498f8279/20261124T044318043796Z/trial-check.json"
+    },
+    "path-probe/quarry/compact/rep05": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-670fda504e0ecef2dd455207686f59264905bbdcb1a9006b712319e12f10a5b3"
+      },
+      "run_id": "1f6bfc39-c16e-44aa-8611-e739b2a14b7f",
+      "captures": [
+        "study/controlled/final/evidence/1f6bfc39-c16e-44aa-8611-e739b2a14b7f/20261124T044342432429Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/1f6bfc39-c16e-44aa-8611-e739b2a14b7f/20261124T044342432429Z/trial-check.json"
+    },
+    "path-probe/quarry/full/rep05": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-83b56ebed270134dd90405b53722122fea5cf7bebbb9adc7266dd124ccea1c30"
+      },
+      "run_id": "e6a14383-5402-41ec-b944-5921e86237c5",
+      "captures": [
+        "study/controlled/final/evidence/e6a14383-5402-41ec-b944-5921e86237c5/20261124T044404299394Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/e6a14383-5402-41ec-b944-5921e86237c5/20261124T044404299394Z/trial-check.json"
+    },
+    "regex-infer/widget-code/full/rep04": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-3e7c876513fac126f283fe19990e3ba50ac8b391a0eacc56d31bf12372f6e2aa"
+      },
+      "run_id": "1f64828a-b6f5-4b57-a70f-903a5819573f",
+      "captures": [
+        "study/controlled/final/evidence/1f64828a-b6f5-4b57-a70f-903a5819573f/20261124T044433157424Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/1f64828a-b6f5-4b57-a70f-903a5819573f/20261124T044433157424Z/trial-check.json"
+    },
+    "regex-infer/widget-code/compact/rep04": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-5af7e85e7addb1fd743cea4ee122084887b9bb40d7a5e639d6859ea23c02ec3d"
+      },
+      "run_id": "57a12e67-0666-4476-9b8a-973b094b73b2",
+      "captures": [
+        "study/controlled/final/evidence/57a12e67-0666-4476-9b8a-973b094b73b2/20261124T044459735501Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/57a12e67-0666-4476-9b8a-973b094b73b2/20261124T044459735501Z/trial-check.json"
+    },
+    "stat-pick/sensor-drift/compact/rep01": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-88d6e83d6cd4eeaa6b1372d56bc264be25865f8525bcf712b3ab7d37c0c9e147"
+      },
+      "run_id": "c619ff4b-a4ea-49bb-81a6-793bd9eeb1a7",
+      "captures": [
+        "study/controlled/final/evidence/c619ff4b-a4ea-49bb-81a6-793bd9eeb1a7/20261124T044540662640Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/c619ff4b-a4ea-49bb-81a6-793bd9eeb1a7/20261124T044540662640Z/trial-check.json"
+    },
+    "stat-pick/sensor-drift/full/rep01": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-f0d5d8b5d0b97180ea87342b9edf7a994bc6f0f7d74792b9afcd9a1f266dfb7c"
+      },
+      "run_id": "01360217-ef44-4c85-af9a-67bcb0e33ee0",
+      "captures": [
+        "study/controlled/final/evidence/01360217-ef44-4c85-af9a-67bcb0e33ee0/20261124T044607823924Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/01360217-ef44-4c85-af9a-67bcb0e33ee0/20261124T044607823924Z/trial-check.json"
+    },
+    "regex-infer/widget-code/full/rep01": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a836f0e5cc1c314b64bdf4772ef2d59a8766878a0329733f753f5a3ba39bb038"
+      },
+      "run_id": "31193493-b7a0-4c96-9b33-c6dd3c0876a0",
+      "captures": [
+        "study/controlled/final/evidence/31193493-b7a0-4c96-9b33-c6dd3c0876a0/20261124T044632838771Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/31193493-b7a0-4c96-9b33-c6dd3c0876a0/20261124T044632838771Z/trial-check.json"
+    },
+    "regex-infer/widget-code/compact/rep01": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-6e432e7f03f86649bfb52e7a2090042e675548a11132cb7cf1f16ac757abc3b3"
+      },
+      "run_id": "473d93a9-4424-46c0-9e8f-485cb0bd9057",
+      "captures": [
+        "study/controlled/final/evidence/473d93a9-4424-46c0-9e8f-485cb0bd9057/20261124T044704102183Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/473d93a9-4424-46c0-9e8f-485cb0bd9057/20261124T044704102183Z/trial-check.json"
+    },
+    "cipher-crack/telegram/full/rep01": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-e3c0b2ebfee871323807f2fe98edb820eba9ff11e9677132a6c951265fa8b6c3"
+      },
+      "run_id": "1e610185-75b7-45d6-b699-b7b883b4c966",
+      "captures": [
+        "study/controlled/final/evidence/1e610185-75b7-45d6-b699-b7b883b4c966/20261124T044733142677Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/1e610185-75b7-45d6-b699-b7b883b4c966/20261124T044733142677Z/trial-check.json"
+    },
+    "cipher-crack/telegram/compact/rep01": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a8df8f32c66f112fea32f86d94776b859167cada75714f7fb9a72fa59e5377c2"
+      },
+      "run_id": "32cbd202-f25a-4aba-aa4e-3b812534dd42",
+      "captures": [
+        "study/controlled/final/evidence/32cbd202-f25a-4aba-aa4e-3b812534dd42/20261124T044800156080Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/32cbd202-f25a-4aba-aa4e-3b812534dd42/20261124T044800156080Z/trial-check.json"
+    },
+    "path-probe/quarry/full/rep02": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-8d4cbe3619d3d3035a04857242de8d9f6d0e47283671d2fcc61d70f8bc556122"
+      },
+      "run_id": "5c86730a-1649-4abe-8ce2-fda38a1e882f",
+      "captures": [
+        "study/controlled/final/evidence/5c86730a-1649-4abe-8ce2-fda38a1e882f/20261124T044825147473Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/5c86730a-1649-4abe-8ce2-fda38a1e882f/20261124T044825147473Z/trial-check.json"
+    },
+    "path-probe/quarry/compact/rep02": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-17556bb2b77ad3f8172f48d5d4a251c8656c851176543ae450fabae8bd005309"
+      },
+      "run_id": "d6b7a442-ca52-439a-bea8-f03010574b4e",
+      "captures": [
+        "study/controlled/final/evidence/d6b7a442-ca52-439a-bea8-f03010574b4e/20261124T044851943638Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/d6b7a442-ca52-439a-bea8-f03010574b4e/20261124T044851943638Z/trial-check.json"
+    },
+    "stat-pick/sensor-drift/full/rep03": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-128c94c8709cb272ff89d4341b83d93233604d6b637af095fcfc3d5867e75056"
+      },
+      "run_id": "f4295206-93f3-47d7-aec9-6553a374c038",
+      "captures": [
+        "study/controlled/final/evidence/f4295206-93f3-47d7-aec9-6553a374c038/20261124T044920928479Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/f4295206-93f3-47d7-aec9-6553a374c038/20261124T044920928479Z/trial-check.json"
+    },
+    "stat-pick/sensor-drift/compact/rep03": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-55d5ca49c00dec0805f77db669132ce8aebe6a86d1364783d37c348f4c507e96"
+      },
+      "run_id": "25f0bd3d-288a-4cb9-9beb-e0b80c7e255b",
+      "captures": [
+        "study/controlled/final/evidence/25f0bd3d-288a-4cb9-9beb-e0b80c7e255b/20261124T044954920914Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/25f0bd3d-288a-4cb9-9beb-e0b80c7e255b/20261124T044954920914Z/trial-check.json"
+    },
+    "path-probe/quarry/compact/rep04": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-afe57eef3a46bbc2b115df037409b02f438fd3da45f537dbddcebc56426ee920"
+      },
+      "run_id": "3e69abd2-988a-466c-b130-b79169bca26d",
+      "captures": [
+        "study/controlled/final/evidence/3e69abd2-988a-466c-b130-b79169bca26d/20261124T045017467337Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/3e69abd2-988a-466c-b130-b79169bca26d/20261124T045017467337Z/trial-check.json"
+    },
+    "path-probe/quarry/full/rep04": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-1e0af61b0065bb7d31ae04fd3a790cdabb77f015e57b62fd34d995a6617cd958"
+      },
+      "run_id": "04bcbb4e-490c-4fd2-a7a4-643d7d5c7269",
+      "captures": [
+        "study/controlled/final/evidence/04bcbb4e-490c-4fd2-a7a4-643d7d5c7269/20261124T045041871398Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/04bcbb4e-490c-4fd2-a7a4-643d7d5c7269/20261124T045041871398Z/trial-check.json"
+    },
+    "cipher-crack/telegram/full/rep04": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-4b7ebb877107500f1a12bdb0c4615053c6052b3d2b8b68fde5d161363e1ecbb9"
+      },
+      "run_id": "679156c3-dedd-4bf6-af2c-ea0713bee599",
+      "captures": [
+        "study/controlled/final/evidence/679156c3-dedd-4bf6-af2c-ea0713bee599/20261124T045113051289Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/679156c3-dedd-4bf6-af2c-ea0713bee599/20261124T045113051289Z/trial-check.json"
+    },
+    "cipher-crack/telegram/compact/rep04": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-8ff7f41223fd9a8f401e3760b0440252e4d72cda99e9727e7d3e719283160b37"
+      },
+      "run_id": "eb6f0a89-be1b-40de-b4cb-69c763bb4367",
+      "captures": [
+        "study/controlled/final/evidence/eb6f0a89-be1b-40de-b4cb-69c763bb4367/20261124T045147030986Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/eb6f0a89-be1b-40de-b4cb-69c763bb4367/20261124T045147030986Z/trial-check.json"
+    },
+    "regex-infer/widget-code/full/rep02": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a20f0d92b7746b1b5e396aa2de2fdbdb82ab2592c0d7b4a5a3b25d2ca91f994a"
+      },
+      "run_id": "d911a6b7-107c-4700-960d-1502274ce468",
+      "captures": [
+        "study/controlled/final/evidence/d911a6b7-107c-4700-960d-1502274ce468/20261124T045211863090Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/d911a6b7-107c-4700-960d-1502274ce468/20261124T045211863090Z/trial-check.json"
+    },
+    "regex-infer/widget-code/compact/rep02": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-495c7c56c860a9d48207ae0ba0dd35fbb49ac0ee776a07df8c00902b9016d30d"
+      },
+      "run_id": "ed517f38-054f-449b-ad28-f0f767447478",
+      "captures": [
+        "study/controlled/final/evidence/ed517f38-054f-449b-ad28-f0f767447478/20261124T045238490267Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/ed517f38-054f-449b-ad28-f0f767447478/20261124T045238490267Z/trial-check.json"
+    },
+    "path-probe/quarry/compact/rep03": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a14389a449ed976a32ce9e7027ba284e4bba7f7dd78648fc96b63ec64e146236"
+      },
+      "run_id": "4753af5d-2b72-43ec-b31f-3ba13ea0624d",
+      "captures": [
+        "study/controlled/final/evidence/4753af5d-2b72-43ec-b31f-3ba13ea0624d/20261124T045303305516Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/4753af5d-2b72-43ec-b31f-3ba13ea0624d/20261124T045303305516Z/trial-check.json"
+    },
+    "path-probe/quarry/full/rep03": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-0a7c6bfdebdf2c8ac9cf6124300b4e23471f04a11841854346949f2cc5441ee5"
+      },
+      "run_id": "0f6925fb-762c-4c8c-abb8-44fc67f109ab",
+      "captures": [
+        "study/controlled/final/evidence/0f6925fb-762c-4c8c-abb8-44fc67f109ab/20261124T045325381669Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/0f6925fb-762c-4c8c-abb8-44fc67f109ab/20261124T045325381669Z/trial-check.json"
+    },
+    "log-triage/edge-proxy/full/rep04": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-78ca8f0ec01f3868ba8464baa239bcbcae7675c6d82b4cb4b22db3deb7805174"
+      },
+      "run_id": "8235dea4-8ebd-460c-8c51-7aec3421c852",
+      "captures": [
+        "study/controlled/final/evidence/8235dea4-8ebd-460c-8c51-7aec3421c852/20261124T045349793684Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/8235dea4-8ebd-460c-8c51-7aec3421c852/20261124T045349793684Z/trial-check.json"
+    },
+    "log-triage/edge-proxy/compact/rep04": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-082bf8fc1226c2f4b1e54b7a66c494a748390a05bfb32c75180b9ae2624acc84"
+      },
+      "run_id": "f7fa9960-806f-4624-a2b6-6e2d064d4e64",
+      "captures": [
+        "study/controlled/final/evidence/f7fa9960-806f-4624-a2b6-6e2d064d4e64/20261124T045411802620Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/f7fa9960-806f-4624-a2b6-6e2d064d4e64/20261124T045411802620Z/trial-check.json"
+    },
+    "cipher-crack/telegram/compact/rep03": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-abf9ecb47651aa46d81e6a052b10c8915d119c94d3cc6f38595cd4c105289e9d"
+      },
+      "run_id": "58ed0a60-086d-44ec-81c5-76d8c1a294f3",
+      "captures": [
+        "study/controlled/final/evidence/58ed0a60-086d-44ec-81c5-76d8c1a294f3/20261124T045438262427Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/58ed0a60-086d-44ec-81c5-76d8c1a294f3/20261124T045438262427Z/trial-check.json"
+    },
+    "cipher-crack/telegram/full/rep03": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-b43ed597b40cc65fb5250f564221e2e61700f129ba27f0757d55d3b0c758af08"
+      },
+      "run_id": "509128f3-a8eb-45ea-b75c-9508d0962cff",
+      "captures": [
+        "study/controlled/final/evidence/509128f3-a8eb-45ea-b75c-9508d0962cff/20261124T045505128599Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/509128f3-a8eb-45ea-b75c-9508d0962cff/20261124T045505128599Z/trial-check.json"
+    },
+    "regex-infer/widget-code/full/rep03": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-e0aa1498d11618336529e5b66011b88b4de3ae765ca6054448181a96f2521ec0"
+      },
+      "run_id": "b64b31c3-6e6d-4378-8aca-3a2885ed90ce",
+      "captures": [
+        "study/controlled/final/evidence/b64b31c3-6e6d-4378-8aca-3a2885ed90ce/20261124T045707794254Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/b64b31c3-6e6d-4378-8aca-3a2885ed90ce/20261124T045707794254Z/trial-check.json"
+    },
+    "regex-infer/widget-code/compact/rep03": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-0a00b273f1e4cf1a3d65a3922f8da30af5518c860d62cf74da031e4d758ff134"
+      },
+      "run_id": "e0b8cc21-c409-4a12-94aa-f6a65745e706",
+      "captures": [
+        "study/controlled/final/evidence/e0b8cc21-c409-4a12-94aa-f6a65745e706/20261124T045736978707Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/e0b8cc21-c409-4a12-94aa-f6a65745e706/20261124T045736978707Z/trial-check.json"
+    },
+    "regex-infer/widget-code/compact/rep05": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-ddee54f61dc5c173882be0fdf3d141b4ed2c4bb20657728efb6cee25016eda3d"
+      },
+      "run_id": "d93707af-dab6-48e3-8d72-1c4de3f00d1a",
+      "captures": [
+        "study/controlled/final/evidence/d93707af-dab6-48e3-8d72-1c4de3f00d1a/20261124T045806411843Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/d93707af-dab6-48e3-8d72-1c4de3f00d1a/20261124T045806411843Z/trial-check.json"
+    },
+    "regex-infer/widget-code/full/rep05": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "983cf0ce-205f-496f-885f-2ede3374f98e",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a1a31cd2db4683d6cd92cd8709163b87ff0d5fe258535c1c7bf3c24d9bb19994"
+      },
+      "run_id": "661483a3-9467-4b3b-86a6-e02e6f5af089",
+      "captures": [
+        "study/controlled/final/evidence/661483a3-9467-4b3b-86a6-e02e6f5af089/20261124T045840236852Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/661483a3-9467-4b3b-86a6-e02e6f5af089/20261124T045840236852Z/trial-check.json"
+    },
+    "cipher-crack/telegram/full/rep05": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a00f1cb37e5c4d5d1944ed015d31f890b3fa76d2d1e33e697a42747ae48265ce"
+      },
+      "run_id": "92ca6600-6ae9-4b19-ac16-74bee0ee63b2",
+      "captures": [
+        "study/controlled/final/evidence/92ca6600-6ae9-4b19-ac16-74bee0ee63b2/20261124T045907607815Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/92ca6600-6ae9-4b19-ac16-74bee0ee63b2/20261124T045907607815Z/trial-check.json"
+    },
+    "cipher-crack/telegram/compact/rep05": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-f8bf54be11ed55baf262410e927e5b8692f07f869ef4ceec6b34a80aaa93eea7"
+      },
+      "run_id": "c792fdb0-ae3a-4522-b056-a55345007232",
+      "captures": [
+        "study/controlled/final/evidence/c792fdb0-ae3a-4522-b056-a55345007232/20261124T045935142422Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/c792fdb0-ae3a-4522-b056-a55345007232/20261124T045935142422Z/trial-check.json"
+    },
+    "stat-pick/sensor-drift/full/rep02": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-c390f71643c2258cda13810ee824a0b72de10f604828867889a9aab260771617"
+      },
+      "run_id": "e5c9b91b-6f43-4317-b0e2-72242e88ad94",
+      "captures": [
+        "study/controlled/final/evidence/e5c9b91b-6f43-4317-b0e2-72242e88ad94/20261124T050002426988Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/e5c9b91b-6f43-4317-b0e2-72242e88ad94/20261124T050002426988Z/trial-check.json"
+    },
+    "stat-pick/sensor-drift/compact/rep02": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-5cc632300efabc924d6152815a9d8e3d539bb8ac7ae4ec7a6a36a75596648d95"
+      },
+      "run_id": "852abcf1-7640-414c-9079-482909924197",
+      "captures": [
+        "study/controlled/final/evidence/852abcf1-7640-414c-9079-482909924197/20261124T050035255975Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/852abcf1-7640-414c-9079-482909924197/20261124T050035255975Z/trial-check.json"
+    },
+    "stat-pick/sensor-drift/compact/rep05": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-7407ef271fe6f51136730a703a77116291db2485ee8c6fd939552556de44ed79"
+      },
+      "run_id": "c56472e5-c1a2-40a6-a7a0-9ecae7836489",
+      "captures": [
+        "study/controlled/final/evidence/c56472e5-c1a2-40a6-a7a0-9ecae7836489/20261124T050102643135Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/c56472e5-c1a2-40a6-a7a0-9ecae7836489/20261124T050102643135Z/trial-check.json"
+    },
+    "stat-pick/sensor-drift/full/rep05": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-ea2a08013b7508b9becbe1c6e06f54e81eed28d7c21669f09c3c2e4d75cf7ed9"
+      },
+      "run_id": "83bbc4f5-192e-4add-ad5b-007650eabfd3",
+      "captures": [
+        "study/controlled/final/evidence/83bbc4f5-192e-4add-ad5b-007650eabfd3/20261124T050134963630Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/83bbc4f5-192e-4add-ad5b-007650eabfd3/20261124T050134963630Z/trial-check.json"
+    },
+    "path-probe/quarry/full/rep01": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-89b808a1ed3ad7867263231536e16b9f198c0c6d6a66d03c5b7931a4d23e0871"
+      },
+      "run_id": "885ca8ec-d1e3-4caf-bdc8-d9bce6cf725f",
+      "captures": [
+        "study/controlled/final/evidence/885ca8ec-d1e3-4caf-bdc8-d9bce6cf725f/20261124T050157767912Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/885ca8ec-d1e3-4caf-bdc8-d9bce6cf725f/20261124T050157767912Z/trial-check.json"
+    },
+    "path-probe/quarry/compact/rep01": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-3368c91ccb869257d5d11a35d28f42ed1792b44ffed42c64974d1dc6e8a62aac"
+      },
+      "run_id": "9c38e528-6adf-4406-ad6a-16d7310a774b",
+      "captures": [
+        "study/controlled/final/evidence/9c38e528-6adf-4406-ad6a-16d7310a774b/20261124T050220152543Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/9c38e528-6adf-4406-ad6a-16d7310a774b/20261124T050220152543Z/trial-check.json"
+    },
+    "log-triage/edge-proxy/full/rep02": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-21403a8d7eb115fb0289b21ca398853131fae97796d1e8f68498c40e089aea9f"
+      },
+      "run_id": "af3be455-8524-4e3b-8d51-19808818f59b",
+      "captures": [
+        "study/controlled/final/evidence/af3be455-8524-4e3b-8d51-19808818f59b/20261124T050242642921Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/af3be455-8524-4e3b-8d51-19808818f59b/20261124T050242642921Z/trial-check.json"
+    },
+    "log-triage/edge-proxy/compact/rep02": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "e4969e3f-15e4-4a77-ac1b-4ee3c7274a52",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-7cad3ce7b9f7da6c1665a8840f46713f85f10cdba365f00f3267bd6cbbd502f9"
+      },
+      "run_id": "de786c1f-8c5d-49af-875d-3b05169034d9",
+      "captures": [
+        "study/controlled/final/evidence/de786c1f-8c5d-49af-875d-3b05169034d9/20261124T050307221618Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/de786c1f-8c5d-49af-875d-3b05169034d9/20261124T050307221618Z/trial-check.json"
+    },
+    "cipher-crack/telegram/full/rep02": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-96e10432565c7d8e163d9581097aef2d23cc9fc90fcbc7631a8b75cd197b5fa2"
+      },
+      "run_id": "89c109f9-6010-4e67-a90b-9a04416b0f81",
+      "captures": [
+        "study/controlled/final/evidence/89c109f9-6010-4e67-a90b-9a04416b0f81/20261124T050334276293Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/89c109f9-6010-4e67-a90b-9a04416b0f81/20261124T050334276293Z/trial-check.json"
+    },
+    "cipher-crack/telegram/compact/rep02": {
+      "phase": "captured",
+      "request": {
+        "benchmark_id": "28fc4fca-2700-4dd7-8db5-c4a6153d5af2",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-38a4e21fc782805fd22888223b9c4ef2a33071144c71c061b9151e80697007fd"
+      },
+      "run_id": "271e03d4-c669-4c7c-b444-9c2e720bb531",
+      "captures": [
+        "study/controlled/final/evidence/271e03d4-c669-4c7c-b444-9c2e720bb531/20261124T050401306464Z/capture.json"
+      ],
+      "actual_attempts": 1,
+      "check": "study/controlled/final/evidence/271e03d4-c669-4c7c-b444-9c2e720bb531/20261124T050401306464Z/trial-check.json"
+    }
+  }
+}

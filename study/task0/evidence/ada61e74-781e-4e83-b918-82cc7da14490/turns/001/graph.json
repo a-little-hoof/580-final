@@ -1,0 +1,473 @@
+{
+  "nodes": [
+    {
+      "id": "message",
+      "type": "user_message",
+      "kind": "value",
+      "label": "User message",
+      "value": "Run the triage-log task on the edge-proxy case."
+    },
+    {
+      "id": "system",
+      "type": "system_prompt",
+      "kind": "value",
+      "label": "System prompt",
+      "value": "You are an assistant embedded in a collaborative knowledge application.\nFollow the application's additional instructions and answer the user directly.\n\nYou operate the Log Triage plugin through its tasks: each of your tools is one task. Turn what the user asks into the input of the task that does it, and call that task; ask the user only for what you cannot work out. The page shows the user each task's result and whether it passed its check, so do not repeat the result: say in a sentence or two what you did. Files the tasks save stay in the user's workspace; refer to them by their paths there."
+    },
+    {
+      "id": "steps[0]",
+      "type": "agent_reply",
+      "kind": "call",
+      "label": "Model request",
+      "isError": false,
+      "running": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 1.7773328330367804,
+          "ttft_s": 1.6831491668708622,
+          "generation_s": 0.09418366616591811,
+          "output_tokens_per_second": 637.0531371575762,
+          "usage": {
+            "prompt_tokens": 458,
+            "completion_tokens": 60,
+            "total_tokens": 518,
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 0
+          },
+          "cost": 0.0000289,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "steps[0].content",
+      "type": "assistant",
+      "kind": "value",
+      "label": "Assistant",
+      "value": "I'll run the triage on the edge-proxy case.\n\n"
+    },
+    {
+      "id": "calls[0].arguments",
+      "type": "tool_call",
+      "kind": "value",
+      "label": "triage-log call",
+      "value": {
+        "case": "edge-proxy"
+      },
+      "incomplete": false
+    },
+    {
+      "id": "calls[0]",
+      "type": "task",
+      "kind": "call",
+      "label": "triage-log",
+      "isError": false,
+      "running": false,
+      "duration_s": 16.64622116694227
+    },
+    {
+      "id": "calls[0]/input",
+      "type": "task_input",
+      "kind": "value",
+      "label": "Task input",
+      "value": {
+        "case": "edge-proxy"
+      },
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/reference",
+      "type": "reference",
+      "kind": "call",
+      "label": "incident",
+      "isError": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/reference.output",
+      "type": "reference_output",
+      "kind": "value",
+      "label": "Reference output",
+      "value": {
+        "case": "edge-proxy",
+        "lines": [
+          "2026-03-14 16:45:00 INFO  edge: reloading configuration",
+          "2026-03-14 16:45:00 ERROR edge: unknown directive \"proxy_pas\" in /etc/edge/proxy.conf:42",
+          "2026-03-14 16:45:00 ERROR edge: configuration reload failed, keeping previous generation",
+          "2026-03-14 16:45:09 WARN  edge: no upstream defined for route /v2/orders, refusing connection",
+          "2026-03-14 16:45:10 WARN  edge: connection to 10.2.0.14:8080 refused",
+          "2026-03-14 16:45:12 WARN  edge: connection to 10.2.0.14:8080 refused",
+          "2026-03-14 16:45:30 WARN  edge: health probe for /v2/orders timed out after 10s",
+          "2026-03-14 16:46:00 ERROR edge: 418 requests to /v2/orders failed since reload"
+        ],
+        "fault": "bad-config",
+        "evidence": [
+          "2026-03-14 16:45:00 ERROR edge: unknown directive \"proxy_pas\" in /etc/edge/proxy.conf:42",
+          "2026-03-14 16:45:00 ERROR edge: configuration reload failed, keeping previous generation"
+        ]
+      },
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/decisions[0]",
+      "type": "decision",
+      "kind": "call",
+      "label": "Next: read_log",
+      "isError": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 5.621884666848928,
+          "ttft_s": null,
+          "generation_s": null,
+          "output_tokens_per_second": null,
+          "usage": {
+            "prompt_tokens": 378,
+            "completion_tokens": 64,
+            "total_tokens": 442,
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 52
+          },
+          "cost": 0.000025300000000000005,
+          "error": null
+        }
+      ],
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[0]",
+      "type": "tool",
+      "kind": "call",
+      "label": "read_log",
+      "isError": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[0].arguments",
+      "type": "tool_call",
+      "kind": "value",
+      "label": "read_log call",
+      "value": {
+        "case": "edge-proxy"
+      },
+      "incomplete": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/decisions[1]",
+      "type": "decision",
+      "kind": "call",
+      "label": "Chose case",
+      "isError": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 0.9177765003405511,
+          "ttft_s": null,
+          "generation_s": null,
+          "output_tokens_per_second": null,
+          "usage": {
+            "prompt_tokens": 470,
+            "completion_tokens": 133,
+            "total_tokens": 603,
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 121
+          },
+          "cost": 0.0000368,
+          "error": null
+        }
+      ],
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[0].output",
+      "type": "tool_result",
+      "kind": "value",
+      "label": "read_log result",
+      "value": {
+        "case": "edge-proxy",
+        "lines": [
+          "2026-03-14 16:45:00 INFO  edge: reloading configuration",
+          "2026-03-14 16:45:00 ERROR edge: unknown directive \"proxy_pas\" in /etc/edge/proxy.conf:42",
+          "2026-03-14 16:45:00 ERROR edge: configuration reload failed, keeping previous generation",
+          "2026-03-14 16:45:09 WARN  edge: no upstream defined for route /v2/orders, refusing connection",
+          "2026-03-14 16:45:10 WARN  edge: connection to 10.2.0.14:8080 refused",
+          "2026-03-14 16:45:12 WARN  edge: connection to 10.2.0.14:8080 refused",
+          "2026-03-14 16:45:30 WARN  edge: health probe for /v2/orders timed out after 10s",
+          "2026-03-14 16:46:00 ERROR edge: 418 requests to /v2/orders failed since reload"
+        ],
+        "count": 8
+      },
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/decisions[2]",
+      "type": "decision",
+      "kind": "call",
+      "label": "Next: submit",
+      "isError": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 1.3486401671543717,
+          "ttft_s": null,
+          "generation_s": null,
+          "output_tokens_per_second": null,
+          "usage": {
+            "prompt_tokens": 764,
+            "completion_tokens": 114,
+            "total_tokens": 878,
+            "cached_tokens": 256,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 106
+          },
+          "cost": 0.0000496,
+          "error": null
+        }
+      ],
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/output",
+      "type": "task_output",
+      "kind": "value",
+      "label": "Task output",
+      "value": {
+        "case": "edge-proxy",
+        "fault": "bad-config",
+        "evidence": "2026-03-14 16:45:00 ERROR edge: unknown directive \"proxy_pas\" in /etc/edge/proxy.conf:42"
+      },
+      "incomplete": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/decisions[3]",
+      "type": "decision",
+      "kind": "call",
+      "label": "Chose case, fault, evidence",
+      "isError": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 2.721543834079057,
+          "ttft_s": null,
+          "generation_s": null,
+          "output_tokens_per_second": null,
+          "usage": {
+            "prompt_tokens": 1001,
+            "completion_tokens": 364,
+            "total_tokens": 1365,
+            "cached_tokens": 512,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 325
+          },
+          "cost": 0.00008645,
+          "error": null
+        }
+      ],
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/verify",
+      "type": "verifier",
+      "kind": "call",
+      "label": "Output check",
+      "isError": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/verdict",
+      "type": "verdict",
+      "kind": "value",
+      "label": "Verdict",
+      "value": {
+        "valid": true,
+        "score": 1,
+        "message": "the log shows bad-config, and the line cited shows it",
+        "details": {
+          "lines": 8
+        }
+      },
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0].output",
+      "type": "tool_result",
+      "kind": "value",
+      "label": "triage-log result",
+      "value": "{\"output\": {\"case\": \"edge-proxy\", \"fault\": \"bad-config\", \"evidence\": \"2026-03-14 16:45:00 ERROR edge: unknown directive \\\"proxy_pas\\\" in /etc/edge/proxy.conf:42\"}, \"verdict\": {\"valid\": true, \"score\": 1.0, \"message\": \"the log shows bad-config, and the line cited shows it\", \"details\": {\"lines\": 8}}}"
+    },
+    {
+      "id": "steps[1]",
+      "type": "agent_reply",
+      "kind": "call",
+      "label": "Model request",
+      "isError": false,
+      "running": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 1.5716245421208441,
+          "ttft_s": 1.195787166710943,
+          "generation_s": 0.37583737540990114,
+          "output_tokens_per_second": 156.98279059035195,
+          "usage": {
+            "prompt_tokens": 628,
+            "completion_tokens": 59,
+            "total_tokens": 687,
+            "cached_tokens": 256,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 0
+          },
+          "cost": 0.000037300000000000005,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "steps[1].content",
+      "type": "agent_message",
+      "kind": "value",
+      "label": "Response",
+      "value": "I ran the triage on the edge-proxy case. It identified the fault as **bad-config**, citing line 42 of the log where an unknown directive `proxy_pas` triggered an error in `/etc/edge/proxy.conf`. The check passed with a valid verdict."
+    }
+  ],
+  "edges": [
+    {
+      "from": "system",
+      "to": "steps[0]",
+      "relation": "used"
+    },
+    {
+      "from": "message",
+      "to": "steps[0]",
+      "relation": "used"
+    },
+    {
+      "from": "steps[0]",
+      "to": "steps[0].content",
+      "relation": "generated"
+    },
+    {
+      "from": "steps[0]",
+      "to": "calls[0].arguments",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0].arguments",
+      "to": "calls[0]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/input",
+      "to": "calls[0]/reference",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/reference",
+      "to": "calls[0]/reference.output",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/decisions[0]",
+      "to": "calls[0]/calls[0]",
+      "relation": "chose",
+      "option": "read_log"
+    },
+    {
+      "from": "calls[0]/decisions[1]",
+      "to": "calls[0]/calls[0].arguments",
+      "relation": "chose",
+      "toPath": "case",
+      "option": "edge-proxy"
+    },
+    {
+      "from": "calls[0]/calls[0].arguments",
+      "to": "calls[0]/calls[0]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/calls[0]",
+      "to": "calls[0]/calls[0].output",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/decisions[2]",
+      "to": "calls[0]/output",
+      "relation": "chose",
+      "option": "submit"
+    },
+    {
+      "from": "calls[0]/decisions[3]",
+      "to": "calls[0]/output",
+      "relation": "chose",
+      "toPath": "case",
+      "option": "edge-proxy"
+    },
+    {
+      "from": "calls[0]/decisions[3]",
+      "to": "calls[0]/output",
+      "relation": "chose",
+      "toPath": "fault",
+      "option": "bad-config"
+    },
+    {
+      "from": "calls[0]/calls[0].output",
+      "to": "calls[0]/output",
+      "relation": "copied",
+      "fromPath": "lines[1]",
+      "toPath": "evidence"
+    },
+    {
+      "from": "calls[0]/decisions[3]",
+      "to": "calls[0]/output",
+      "relation": "chose",
+      "toPath": "evidence",
+      "option": "calls[0].output.lines[1]"
+    },
+    {
+      "from": "calls[0]/input",
+      "to": "calls[0]/verify",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/output",
+      "to": "calls[0]/verify",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/reference.output",
+      "to": "calls[0]/verify",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/verify",
+      "to": "calls[0]/verdict",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]",
+      "to": "calls[0].output",
+      "relation": "generated"
+    },
+    {
+      "from": "steps[0]",
+      "to": "steps[1]",
+      "relation": "continued"
+    },
+    {
+      "from": "calls[0].output",
+      "to": "steps[1]",
+      "relation": "used"
+    },
+    {
+      "from": "steps[1]",
+      "to": "steps[1].content",
+      "relation": "generated"
+    }
+  ]
+}

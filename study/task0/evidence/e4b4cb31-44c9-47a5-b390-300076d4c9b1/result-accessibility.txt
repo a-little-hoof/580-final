@@ -1,0 +1,89 @@
+Window: "RUSH Lab", App: RUSH Lab.
+0 standard window RUSH Lab, Secondary Actions: Raise
+	1 scroll area
+		2 HTML content Description: Plugins | RUSH Lab, URL: rush-lab.org/w/comp-480-580/apps?app=path-probe&session=e4b4cb31-44c9-47a5-b390-300076d4c9b1
+			3 link Skip to content, Value: rush-lab.org/w/comp-480-580/apps?app=path-probe&session=e4b4cb31-44c9-47a5-b390-300076d4c9b1#__docusaurus_skipToContent_fallback
+			4 container Skip to main content
+				5 link Skip to main content, Value: rush-lab.org/w/comp-480-580/apps?app=path-probe&session=e4b4cb31-44c9-47a5-b390-300076d4c9b1#__docusaurus_skipToContent_fallback
+			6 container Workspace
+				7 pop up button Switch workspace. Current workspace: COMP 480/580, Help: COMP 480/580: switch workspace
+				8 link Home, Value: rush-lab.org/w/comp-480-580
+				9 link Plugins, Help: Plugins (click to hide or show its side bar), Value: rush-lab.org/w/comp-480-580/apps?app=path-probe
+				10 link Marketplace, Value: rush-lab.org/w/comp-480-580/marketplace
+				11 link Benchmarks, Value: rush-lab.org/w/comp-480-580/benchmarks
+				12 link Filesystem, Value: rush-lab.org/w/comp-480-580/workspace
+				13 button Switch between dark and light mode (currently light mode), Help: light mode
+				14 link Settings, Value: rush-lab.org/w/comp-480-580/settings
+				15 pop up button Account: Yifei Wang, Help: Signed in as Yifei Wang
+			16 container
+				17 text Plugins
+				18 container Plugins
+					19 content list
+						20 link arXiv Search and Source Downloader, Value: rush-lab.org/w/comp-480-580/apps?app=arxiv-source
+						21 link Cipher Crack, Value: rush-lab.org/w/comp-480-580/apps?app=cipher-crack
+						22 link Log Triage, Value: rush-lab.org/w/comp-480-580/apps?app=log-triage
+						23 link Path Probe, Value: rush-lab.org/w/comp-480-580/apps?app=path-probe
+						24 link Regex From Examples, Value: rush-lab.org/w/comp-480-580/apps?app=regex-infer
+						25 link Stat Pick, Value: rush-lab.org/w/comp-480-580/apps?app=stat-pick
+						26 link Browse Marketplace, Value: rush-lab.org/w/comp-480-580/marketplace
+				27 splitter Resize side bar, Help: Drag to resize or fold away, double-click to reset, Value: 50
+				28 scroll area
+					29 HTML content Description: Path Probe, URL: rush-lab.org/api/apps/b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b/ui/f513cf3d-2402-4b49-8d21-3a4b2b5fec5b/218d778774890be6/index.html
+						30 tab group (selectable) Plugin
+							31 tab (selectable) Dashboard
+							32 tab (selected) Session
+							33 tab (selectable) Harness
+						34 container Chat
+							35 container
+								36 container
+									37 text User message › Run the find-route task on the quarry case.
+								38 button (collapsed) Steps › Find route, Secondary Actions: Expand
+								39 container
+									40 text Response › Ran the find-route task on the quarry case. It found the route A → B → D → E with a cost of 9, which is the cheapest the map allows, so the check passed.
+							41 text entry area (settable) Tell Path Probe what you need, Value: [text entry area: Tell Path Probe what you need]
+								42 text Tell Path Probe what you need
+							43 button Send
+						44 container Graph and result
+							45 tab group (selectable)
+								46 tab (selectable) Graph
+								47 tab (selected) Result
+							48 container Result
+								49 container
+									50 heading Explore a map a node at a time and find the cheapest route from its start to its goal, Value: 3
+										51 text Explore a map a node at a time and find the cheapest route from its start to its goal
+									52 text Checked
+								53 description list
+									54 container The map the route crosses, as the task gave it
+										55 text Case
+									56 text quarry
+									57 container The nodes travelled in order, the start first and the goal last, each one named once
+										58 text Route
+									59 content list
+										60 container A
+											61 list marker •
+											62 text A
+										63 container B
+											64 list marker •
+											65 text B
+										66 container D
+											67 list marker •
+											68 text D
+										69 container E
+											70 list marker •
+											71 text E
+									72 container What the whole route costs: the costs of the links it travels, added up
+										73 text Cost
+									74 text 9
+	75 close button
+	76 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	77 minimize button
+	78 text RUSH Lab
+79 menu bar
+	80 RUSH Lab
+	81 File
+	82 Edit
+	83 View
+	84 Window
+	85 Help
+
+The focused UI element is 29 HTML content Description: Path Probe, URL: rush-lab.org/api/apps/b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b/ui/f513cf3d-2402-4b49-8d21-3a4b2b5fec5b/218d778774890be6/index.html

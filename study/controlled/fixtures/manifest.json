@@ -1,0 +1,342 @@
+{
+  "schema_version": 1,
+  "study": "controlled course-task public adaptations",
+  "status": "prepared; no custom-agent runs represented",
+  "cases": [
+    {
+      "id": "log-triage/edge-proxy",
+      "plugin_id": "log-triage",
+      "task": "triage-log",
+      "case": "edge-proxy",
+      "directory": "log-triage/edge-proxy",
+      "source": {
+        "repository": "https://github.com/a-little-hoof/log-triage",
+        "commit": "432a4b9ac4a26487d3350c92a31809e3b4ba93f0",
+        "version": "0.1.0",
+        "files": {
+          "src/plugin/incidents.py": "f0c5d51bc90e683ed600b05e15fcff7b6922de2634916fa347c7d956ed188f6a",
+          "contract.py": "b6e537be5ac52f4e0111499ca1876d94a6c5b1d9e3483e97356c5cb4d85457f2",
+          "nanoagent.yaml": "5b7cd2de60e1398e7a0a6a3c08009856e675c0e5fa21f5ef4320b92ed02eeedd",
+          "LICENSE": "06341ee5d5d068f148b0d655aec15df353c750022160572de0334ae2b5a63871",
+          "verifier/__init__.py": "28002b440ec0748ab9f18bdb88fc1dc8b40501c99141d75b63d4edf9ae8a412a",
+          "verifier/checks.py": "1aeb89e3e1606a49c8bc957add03ed236ac216031a3741853ef1ffaeb764ab3b",
+          "verifier/finding.py": "1625a57e96efe9e16d709ae5cfa9d2f81bd5299142b88083de4b37576448bb43",
+          "verifier/log.py": "d884ffffa3dbe18eb0594a29d91e3c281fbc331d899c2c1249f0b035590df793"
+        }
+      },
+      "extraction": {
+        "method": "explicit AST literal allowlist; no plugin execution",
+        "recipe": "INCIDENTS[Case.EDGE_PROXY].lines only; private fault/evidence/decoy metadata excluded"
+      },
+      "files": {
+        "input.json": {
+          "sha256": "73d636c474274b07fa9ebf161e1db9587552bedaa31344dbbde984ec10111ad1",
+          "bytes": 727
+        },
+        "prompt.txt": {
+          "sha256": "f7ca68a0d5ab767c637d96cdceae2b2ec57fbbb306e9f40b775b0eef750a4dbe",
+          "bytes": 1206
+        }
+      },
+      "answer_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "type": "string",
+            "enum": [
+              "edge-proxy"
+            ]
+          },
+          "fault": {
+            "type": "string",
+            "enum": [
+              "disk-full",
+              "auth-rejected",
+              "timeout",
+              "bad-config",
+              "rate-limited",
+              "out-of-memory"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "case",
+          "fault",
+          "evidence"
+        ],
+        "additionalProperties": false
+      },
+      "adaptation": "public data fixture replaces plugin tool access"
+    },
+    {
+      "id": "cipher-crack/telegram",
+      "plugin_id": "cipher-crack",
+      "task": "crack-cipher",
+      "case": "telegram",
+      "directory": "cipher-crack/telegram",
+      "source": {
+        "repository": "https://github.com/a-little-hoof/cipher-crack",
+        "commit": "6b31efa773128ef9d6469541a15bbca2cac0cc88",
+        "version": "0.1.0",
+        "files": {
+          "src/plugin/cases.py": "d03d598d467c6c0d95c8adf55b49dfbf7a29093258b36e426289f07937cf3e86",
+          "contract.py": "c05e703017089d8c790c451feb8c6ff2aa499ca0e71ff062135d81b2083f49c2",
+          "nanoagent.yaml": "c931fdf8a8fa23eef8d580346758fe4fffc654568bb3f227986b60f74dfdcb11",
+          "LICENSE": "06341ee5d5d068f148b0d655aec15df353c750022160572de0334ae2b5a63871",
+          "verifier/__init__.py": "317e3f2529db046e8469984cd2db31b7c8c7f4a332ac34ead3e1c420279308e6",
+          "verifier/answer.py": "06cdf764a0b69f0ba6b23f8acbf8f0f23693c19423fd0eb9d1df6b3179a06786",
+          "verifier/attempt.py": "0e5dc8dc32087cc809ea5cd9b99ef8556ad3e73db70d58fb6f08293c050a1d1b",
+          "verifier/checks.py": "04350d11078abf119cb12d6c80cfececa9b29eea9bf6ec777ca29c888bc3c98b",
+          "verifier/cipher.py": "f40c91a8cb5b79204910403f2a62ec2136c9bfb55a884dd2df0ac5d1488ce3a5"
+        }
+      },
+      "extraction": {
+        "method": "explicit AST literal allowlist; no plugin execution",
+        "recipe": "derive ciphertext from selected PUZZLES literal by independent Caesar arithmetic; emit case/ciphertext only"
+      },
+      "files": {
+        "input.json": {
+          "sha256": "510787bee3578519690c3bafc21d70065d53fa6e4fb8b22e6a4e720ff351eae3",
+          "bytes": 85
+        },
+        "prompt.txt": {
+          "sha256": "57a2b7d80cd8e834200618cd1273cc612f551329c704f6fb60b3c96be327ab00",
+          "bytes": 996
+        }
+      },
+      "answer_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "type": "string",
+            "enum": [
+              "telegram"
+            ]
+          },
+          "key": {
+            "type": "string"
+          },
+          "plaintext": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "case",
+          "key",
+          "plaintext"
+        ],
+        "additionalProperties": false
+      },
+      "adaptation": "public data fixture replaces plugin tool access"
+    },
+    {
+      "id": "path-probe/quarry",
+      "plugin_id": "path-probe",
+      "task": "find-route",
+      "case": "quarry",
+      "directory": "path-probe/quarry",
+      "source": {
+        "repository": "https://github.com/a-little-hoof/path-probe",
+        "commit": "96b2b4192a9ae6933db834a796553ad868beaaf6",
+        "version": "0.1.0",
+        "files": {
+          "src/plugin/maps.py": "0efc53981156a5f1188271adba536703624af0f7132c7d51cb9003362d27ab2c",
+          "contract.py": "0508dd622e61dc273e03b8afda407808fbcbb2218f33ac40857c0c3024785bc4",
+          "nanoagent.yaml": "4f2229340d5809ed348827df0373e103ff42b2eaa5ae0927bc1c9d773d2633ce",
+          "LICENSE": "06341ee5d5d068f148b0d655aec15df353c750022160572de0334ae2b5a63871",
+          "verifier/__init__.py": "e6bd4b3ac2804ddf0a37049106e1ec3c86837da877fb15f1dfc58e22638c2ce8",
+          "verifier/checks.py": "645f421fa730e930cffc8dbcefb6c9e9dc9e8d690d7884e99f486163f4e55a5b",
+          "verifier/looking.py": "13100621d52e90ebc063725221cf789d855d40fe075a7e4e367e4fe8db1bb26a",
+          "verifier/puzzle.py": "b3ce43371a4a3a93e693bf5cb14acd50867c325dc6cfcc28dd7dd51b0892e8a3",
+          "verifier/route.py": "af94e8b61d59500b9849af36601c0e3dad1867a97c866c771d9d1519cdbfcbfe"
+        }
+      },
+      "extraction": {
+        "method": "explicit AST literal allowlist; no plugin execution",
+        "recipe": "MAPS[Case.QUARRY] start/goal/edge literals; no shortest-route computation or answer included"
+      },
+      "files": {
+        "input.json": {
+          "sha256": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+          "bytes": 541
+        },
+        "prompt.txt": {
+          "sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+          "bytes": 1105
+        }
+      },
+      "answer_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "type": "string",
+            "enum": [
+              "quarry"
+            ]
+          },
+          "route": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cost": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "case",
+          "route",
+          "cost"
+        ],
+        "additionalProperties": false
+      },
+      "adaptation": "full graph replaces partial discovery"
+    },
+    {
+      "id": "regex-infer/widget-code",
+      "plugin_id": "regex-infer",
+      "task": "infer-pattern",
+      "case": "widget-code",
+      "directory": "regex-infer/widget-code",
+      "source": {
+        "repository": "https://github.com/a-little-hoof/regex-infer",
+        "commit": "3fc05876e6e3fc37d3544fe87a15fc3d1f2123da",
+        "version": "0.1.0",
+        "files": {
+          "src/plugin/cases.py": "9e21899dae65b266c9e6741f69f779f72a2570b8ab9f666ec10c153d08d73a89",
+          "contract.py": "d64656c3c1507b16bd658ea0f0247bd52c282500ea9b7472bcc021fca254030e",
+          "nanoagent.yaml": "9f2437a85356e5fc3716722966bdab0c9c4a970641ea0db217a72868c31936e6",
+          "LICENSE": "06341ee5d5d068f148b0d655aec15df353c750022160572de0334ae2b5a63871",
+          "verifier/__init__.py": "ae600c21d55d2db3c4adf5da5f3583bdc1f2f7bbf62f62c4a7dee034cd465c03",
+          "verifier/checks.py": "eba031fe5b0f65a50951d90ad876f2a2369ab4850d534aa64d9191d0a301b2ae",
+          "verifier/examples.py": "83ca6fd838a67e807d45a371bf2e8e9e28d9053850fee553bbe2059e8d53b3d1",
+          "verifier/patterns.py": "734359bb0443efa5d02a644605504d70b50037dc8bfcb85bd0779c84c9ab8be5"
+        }
+      },
+      "extraction": {
+        "method": "explicit AST literal allowlist; no plugin execution",
+        "recipe": "VISIBLE[Case.WIDGET_CODE] only, accepted then rejected; RULES/HOLDOUT excluded from public output"
+      },
+      "files": {
+        "input.json": {
+          "sha256": "b6c0834a4145c03ecb3753c85855db6fc6308e285a976bb986c70d773f0e2772",
+          "bytes": 832
+        },
+        "prompt.txt": {
+          "sha256": "28f9d4f6a27fdea1d8317153d7c1ebe50c1d05a0cc0d1352ad35595197c792bd",
+          "bytes": 1115
+        }
+      },
+      "answer_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "type": "string",
+            "enum": [
+              "widget-code"
+            ]
+          },
+          "pattern": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "case",
+          "pattern"
+        ],
+        "additionalProperties": false
+      },
+      "adaptation": "public data fixture replaces plugin tool access"
+    },
+    {
+      "id": "stat-pick/sensor-drift",
+      "plugin_id": "stat-pick",
+      "task": "answer-question",
+      "case": "sensor-drift",
+      "directory": "stat-pick/sensor-drift",
+      "source": {
+        "repository": "https://github.com/a-little-hoof/stat-pick",
+        "commit": "5fcfedf4507d779e918a87d8aa299ca51f1ae45c",
+        "version": "0.1.0",
+        "files": {
+          "src/plugin/tables.py": "e46198bd94383cef3912b7c9a800394590b67ab49469742b0a07230d98e7d222",
+          "contract.py": "433c0739e8d02e806704f1fa4502b16b6864a67bac1542d1a4c6a54c4fc0a2d1",
+          "nanoagent.yaml": "b5daad5efe0519e17b64572191fdce88603b02cbba96f9fdad0d8fdd916bf3a4",
+          "LICENSE": "06341ee5d5d068f148b0d655aec15df353c750022160572de0334ae2b5a63871",
+          "verifier/__init__.py": "a6337cdb2a7038545d9e053d443180c0b5964fdfc82ec7ced44edd3ce7681745",
+          "verifier/answer.py": "9441f94a68a643c6e99a90b272b1599a3f2b4cd1202eb2e2345f6ffa4c33a109",
+          "verifier/checks.py": "d5cbfc254fe2e6b5f52342fcd754a79d79e1d9b906d1474b31b6408fb2ffd8db",
+          "verifier/question.py": "a87964afce429e72884058cf93e8ce1e43d33c5e6ba2f1bf567ad6f99257ebaf",
+          "verifier/summary.py": "1854761ac29b8040000bf6206fe80aa3b629ab6e345d929e3143ba41226be3b6"
+        }
+      },
+      "extraction": {
+        "method": "explicit AST literal allowlist; no plugin execution",
+        "recipe": "TABLES[Case.SENSOR_DRIFT] tuple fields 0,1,3 (column/question/readings); expected statistic field2 excluded"
+      },
+      "files": {
+        "input.json": {
+          "sha256": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+          "bytes": 316
+        },
+        "prompt.txt": {
+          "sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+          "bytes": 1337
+        }
+      },
+      "answer_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "type": "string",
+            "enum": [
+              "sensor-drift"
+            ]
+          },
+          "statistic": {
+            "type": "string",
+            "enum": [
+              "mean",
+              "median",
+              "mode",
+              "range",
+              "spread",
+              "smallest",
+              "largest",
+              "total"
+            ]
+          },
+          "value": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "case",
+          "statistic",
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "adaptation": "raw readings replace summary-only access"
+    }
+  ],
+  "license": {
+    "file": "LICENSE.upstream-MIT.txt",
+    "sha256": "06341ee5d5d068f148b0d655aec15df353c750022160572de0334ae2b5a63871",
+    "applies_to": "source-derived case inputs from all five plugins"
+  },
+  "generator": {
+    "path": "study/controlled/validators/build_fixtures.py",
+    "sha256": "d63be81c3d6c8d1e6fe37eb431e76c2a49c15adbb3e794d1bc40de0daf2f5272",
+    "serialization": "input JSON indent=2, ensure_ascii=false, final LF; prompt UTF-8 with internal LF and no outer whitespace; allow_nan=false"
+  },
+  "agent_upload_allowlist": [
+    "input.json",
+    "prompt.txt"
+  ],
+  "private_reference_policy": "Only one case directory enters an agent workspace. Never upload validators, tests, references, source checkouts or trace graphs."
+}

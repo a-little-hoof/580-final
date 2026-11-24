@@ -1,0 +1,8 @@
+Task: find-route; case: quarry.
+
+Find a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.
+
+Read input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.
+
+Answer JSON Schema:
+{"type":"object","properties":{"case":{"type":"string","enum":["quarry"]},"route":{"type":"array","items":{"type":"string"}},"cost":{"type":"integer"}},"required":["case","route","cost"],"additionalProperties":false}

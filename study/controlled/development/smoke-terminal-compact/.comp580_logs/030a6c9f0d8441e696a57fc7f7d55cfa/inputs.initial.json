@@ -1,0 +1,10 @@
+{
+  "input.json": {
+    "sha256": "73d636c474274b07fa9ebf161e1db9587552bedaa31344dbbde984ec10111ad1",
+    "bytes": 727
+  },
+  "prompt.txt": {
+    "sha256": "f7ca68a0d5ab767c637d96cdceae2b2ec57fbbb306e9f40b775b0eef750a4dbe",
+    "bytes": 1206
+  }
+}

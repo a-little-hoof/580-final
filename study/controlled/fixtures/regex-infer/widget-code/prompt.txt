@@ -1,0 +1,8 @@
+Task: infer-pattern; case: widget-code.
+
+Infer the hidden string rule from the labelled visible examples in input.json. Return a Python regular expression, evaluated with re.fullmatch, which describes the entire string. Anchors are optional. Do not simply list the accepted examples: grading uses a separate held-out set. You may test a candidate on the visible examples. The pattern must be nonblank, have no surrounding whitespace, and contain at most 120 characters. The verifier also rejects a group containing a quantifier when that group is itself quantified with *, +, or a counted repetition. The hidden rule and held-out examples are not supplied.
+
+Read input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.
+
+Answer JSON Schema:
+{"type":"object","properties":{"case":{"type":"string","enum":["widget-code"]},"pattern":{"type":"string"}},"required":["case","pattern"],"additionalProperties":false}

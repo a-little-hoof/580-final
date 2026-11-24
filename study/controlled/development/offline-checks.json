@@ -1,0 +1,10 @@
+{
+  "phase": "before final trial start",
+  "agent_tests": 37,
+  "controlled_validator_and_runner_tests": 44,
+  "task0_trace_tests": 16,
+  "platform_targeted_tests": 7,
+  "platform_upstream_tests": 20,
+  "all_passed": true,
+  "notes": "Analysis tests added separately after freeze; these checks do not count as experimental trials."
+}

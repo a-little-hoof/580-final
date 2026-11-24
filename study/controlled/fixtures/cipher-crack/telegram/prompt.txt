@@ -1,0 +1,8 @@
+Task: crack-cipher; case: telegram.
+
+Find the Caesar-shift key and English plaintext of the ciphertext in input.json. Letters are uppercase A-Z; spaces were left unchanged. A key is one letter: A shifts by zero, B by one, through Z by twenty-five. Encryption moves letters forward and decryption moves them back with wraparound. Exactly one key gives the intended English message. Submit the key and plaintext that agree with one another. You may compute candidate shifts yourself; no solution is provided.
+
+Read input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.
+
+Answer JSON Schema:
+{"type":"object","properties":{"case":{"type":"string","enum":["telegram"]},"key":{"type":"string"},"plaintext":{"type":"string"}},"required":["case","key","plaintext"],"additionalProperties":false}

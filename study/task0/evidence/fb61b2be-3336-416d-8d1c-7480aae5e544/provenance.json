@@ -1,0 +1,58 @@
+{
+  "session_id": "fb61b2be-3336-416d-8d1c-7480aae5e544",
+  "plugin": "cipher-crack",
+  "captured_at_utc": "2026-11-24T04:06:38.241633+00:00",
+  "export": {
+    "path": "study/task0/exports/cipher-crack-pilots-completed-2026-11-23.jsonl",
+    "sha256": "18e24b107ee5c3d0593cf836b72b8b993bb5ae88d438834c6e5cc7b8c480dca6",
+    "method": "installed_supported_rushlab_nanoagent_export_CLI",
+    "filters": {
+      "plugin": "cipher-crack",
+      "since": "2026-11-23"
+    }
+  },
+  "synced_files": [
+    {
+      "source": "/Users/wangyifei/rushlab/a-little-hoof/comp-480-580/plugins/cipher-crack/chats/2026_11_24_run_the_crack_cipher_task_on_the_telegram_case/chat.json",
+      "copy": "study/task0/evidence/fb61b2be-3336-416d-8d1c-7480aae5e544/chat.json",
+      "sha256": "cadc31ffa6860efa2502f3b201224ac0588cc071b32cf5a6eb722265f9a41f94",
+      "bytes": 6305
+    },
+    {
+      "source": "/Users/wangyifei/rushlab/a-little-hoof/comp-480-580/plugins/cipher-crack/chats/2026_11_24_run_the_crack_cipher_task_on_the_telegram_case/turns/001/graph.json",
+      "copy": "study/task0/evidence/fb61b2be-3336-416d-8d1c-7480aae5e544/turns/001/graph.json",
+      "sha256": "6d8f0b4eaa0690f3793959993b606642a4c2f6b9ae2e60ca22f7070a9446eb7e",
+      "bytes": 30773
+    },
+    {
+      "source": "/Users/wangyifei/rushlab/a-little-hoof/comp-480-580/plugins/cipher-crack/chats/2026_11_24_run_the_crack_cipher_task_on_the_telegram_case/turns/001/messages.json",
+      "copy": "study/task0/evidence/fb61b2be-3336-416d-8d1c-7480aae5e544/turns/001/messages.json",
+      "sha256": "dd47d6ebc262d3bb3b8ae0d5c55d9191aff25c3522a698cbc900aed0bb3fba35",
+      "bytes": 2629
+    }
+  ],
+  "ui_evidence": {
+    "screenshot.png": {
+      "path": "study/task0/evidence/fb61b2be-3336-416d-8d1c-7480aae5e544/screenshot.png",
+      "sha256": "51f2548feacd9671d9983edd5f7204f9db6c01885d8e4c5012ce0cdfdeefff93"
+    },
+    "accessibility.txt": {
+      "path": "study/task0/evidence/fb61b2be-3336-416d-8d1c-7480aae5e544/accessibility.txt",
+      "sha256": "a0c63364810f96b9cf812befd102e43c8dcdd1199bd2154a7f7db82d561b766b"
+    },
+    "result.png": {
+      "path": "study/task0/evidence/fb61b2be-3336-416d-8d1c-7480aae5e544/result.png",
+      "sha256": "7604e87352210ccca7661d013394f526ed92670357692ee99e296893035ebcb1"
+    },
+    "result-accessibility.txt": {
+      "path": "study/task0/evidence/fb61b2be-3336-416d-8d1c-7480aae5e544/result-accessibility.txt",
+      "sha256": "af34c25076b638e8477135e9f6455a26d9c9eca54d631cb41ca5200d449d94c3"
+    },
+    "ui_observation.json": {
+      "path": "study/task0/evidence/fb61b2be-3336-416d-8d1c-7480aae5e544/ui_observation.json",
+      "sha256": "be5e23dc6416ce77c9b824b16b45b8b25a194a8de547647a4bb5e1f358effef0"
+    }
+  },
+  "chat_turns_equal_export_without_messages": true,
+  "researcher_evidence_only": "Graphs can contain hidden reference answers; do not expose to benchmark agents."
+}

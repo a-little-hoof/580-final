@@ -1,0 +1,6 @@
+{
+  "source": "own Harness terminal; public dev-baseline-full workspace only",
+  "wheel_sha256": "12be51e1d896d33ac5738e2adebf4f56acb3e9c95eed70eb5c40a3b9d882486b",
+  "zip_sha256": "7fdfcb269479bda675dd3389d58696974eb04f4e7bf8512348cb1f476c1dcb48",
+  "scope": "unscored development smoke"
+}

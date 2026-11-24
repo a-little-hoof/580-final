@@ -1,0 +1,13 @@
+{
+  "case": "edge-proxy",
+  "lines": [
+    "2026-03-14 16:45:00 INFO  edge: reloading configuration",
+    "2026-03-14 16:45:00 ERROR edge: unknown directive \"proxy_pas\" in /etc/edge/proxy.conf:42",
+    "2026-03-14 16:45:00 ERROR edge: configuration reload failed, keeping previous generation",
+    "2026-03-14 16:45:09 WARN  edge: no upstream defined for route /v2/orders, refusing connection",
+    "2026-03-14 16:45:10 WARN  edge: connection to 10.2.0.14:8080 refused",
+    "2026-03-14 16:45:12 WARN  edge: connection to 10.2.0.14:8080 refused",
+    "2026-03-14 16:45:30 WARN  edge: health probe for /v2/orders timed out after 10s",
+    "2026-03-14 16:46:00 ERROR edge: 418 requests to /v2/orders failed since reload"
+  ]
+}

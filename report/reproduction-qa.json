@@ -1,0 +1,18 @@
+{
+  "freeze_identity": "7301cf30de5307b76458758b5d8c6df778737684024440ca5f163c419374214a",
+  "tested_payload_files": 1835,
+  "clean_extraction_without_dist_or_reference_checkouts": true,
+  "tests": {
+    "discovered": 121,
+    "passed": 120,
+    "skipped": 1,
+    "skip_reason": "Optional byte-identical fixture rebuild needs the ignored pinned upstream checkouts"
+  },
+  "frozen_results_and_paired_summaries_identical": true,
+  "main_plot_regenerated": true,
+  "report_regenerated_pages": 8,
+  "report_extracted_text_identical": true,
+  "wheel_rebuild_then_analysis_passed": true,
+  "dependency_environment": "Pinned project analysis/build requirements; original runtime itself uses only the standard library",
+  "note": "QA record added after the tested payload; no frozen source or trial evidence changed."
+}

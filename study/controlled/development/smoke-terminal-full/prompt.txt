@@ -1,0 +1,8 @@
+Task: triage-log; case: edge-proxy.
+
+Diagnose the cause shown by the log in input.json, rather than merely naming a downstream symptom. Each line is true. Select one fault: disk-full (a write failed because a volume is full), auth-rejected (credentials were refused), timeout (something waited and gave up, with no other cause), bad-config (a service rejected its configuration), rate-limited (a quota or request limit was reached), or out-of-memory (a process exceeded its memory allowance). Cite one diagnostic log line exactly, including timestamp and level. The full original log is supplied as a readable input file.
+
+Read input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.
+
+Answer JSON Schema:
+{"type":"object","properties":{"case":{"type":"string","enum":["edge-proxy"]},"fault":{"type":"string","enum":["disk-full","auth-rejected","timeout","bad-config","rate-limited","out-of-memory"]},"evidence":{"type":"string"}},"required":["case","fault","evidence"],"additionalProperties":false}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "kind": "comp580-one-case-publish-plan",
+  "namespace": "comp580-yw251-compact-v1",
+  "source_manifest": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/fixtures/manifest.json",
+  "source_manifest_sha256": "79249a05a242bccd2980eb4d8a7b041f06f42031dc3e9fb9f275c7f8e2d14df6",
+  "case_id": "path-probe/quarry",
+  "expected_plugin_version": "0.1.0",
+  "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+  "public_file_sha256": {
+    "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+    "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+  },
+  "payload_sha256": "651b14a7292716457469c150bd3a09dc33d277803c20c10d6c72255d1d34898c",
+  "payload": {
+    "plugin_id": "path-probe",
+    "case_file": "{\n  \"plugin\": \"path-probe\",\n  \"task\": \"find-route\",\n  \"cases\": [\n    {\n      \"prompt\": \"Task: find-route; case: quarry.\\n\\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\\n\\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\\n\\nAnswer JSON Schema:\\n{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"case\\\":{\\\"type\\\":\\\"string\\\",\\\"enum\\\":[\\\"quarry\\\"]},\\\"route\\\":{\\\"type\\\":\\\"array\\\",\\\"items\\\":{\\\"type\\\":\\\"string\\\"}},\\\"cost\\\":{\\\"type\\\":\\\"integer\\\"}},\\\"required\\\":[\\\"case\\\",\\\"route\\\",\\\"cost\\\"],\\\"additionalProperties\\\":false}\",\n      \"arguments\": {\n        \"case\": \"quarry\"\n      },\n      \"fixtures\": \"public\"\n    }\n  ],\n  \"refuse\": []\n}",
+    "files": {
+      "public/input.json": "ewogICJjYXNlIjogInF1YXJyeSIsCiAgInN0YXJ0IjogIkEiLAogICJnb2FsIjogIkUiLAogICJsaW5rcyI6IFsKICAgIHsKICAgICAgInN0YXJ0IjogIkEiLAogICAgICAiZW5kIjogIkIiLAogICAgICAiY29zdCI6IDMKICAgIH0sCiAgICB7CiAgICAgICJzdGFydCI6ICJBIiwKICAgICAgImVuZCI6ICJDIiwKICAgICAgImNvc3QiOiAzCiAgICB9LAogICAgewogICAgICAic3RhcnQiOiAiQiIsCiAgICAgICJlbmQiOiAiRCIsCiAgICAgICJjb3N0IjogNAogICAgfSwKICAgIHsKICAgICAgInN0YXJ0IjogIkMiLAogICAgICAiZW5kIjogIkQiLAogICAgICAiY29zdCI6IDQKICAgIH0sCiAgICB7CiAgICAgICJzdGFydCI6ICJEIiwKICAgICAgImVuZCI6ICJFIiwKICAgICAgImNvc3QiOiAyCiAgICB9LAogICAgewogICAgICAic3RhcnQiOiAiQSIsCiAgICAgICJlbmQiOiAiRSIsCiAgICAgICJjb3N0IjogMTAKICAgIH0sCiAgICB7CiAgICAgICJzdGFydCI6ICJDIiwKICAgICAgImVuZCI6ICJGIiwKICAgICAgImNvc3QiOiAxCiAgICB9CiAgXQp9Cg==",
+      "public/prompt.txt": "VGFzazogZmluZC1yb3V0ZTsgY2FzZTogcXVhcnJ5LgoKRmluZCBhIG1pbmltdW0tdG90YWwtY29zdCByb3V0ZSBmcm9tIHN0YXJ0IHRvIGdvYWwgaW4gaW5wdXQuanNvbi4gRWFjaCBsaW5rIGlzIGxpc3RlZCBvbmNlLCBjYW4gYmUgdHJhdmVsbGVkIGluIGVpdGhlciBkaXJlY3Rpb24sIGFuZCBoYXMgcG9zaXRpdmUgaW50ZWdlciBjb3N0LiBTdWJtaXQgdGhlIHJvdXRlIGFzIG5vZGUgbmFtZXMgaW4gdHJhdmVsIG9yZGVyLCBzdGFydGluZyBhdCBzdGFydCBhbmQgZW5kaW5nIGF0IGdvYWwsIHdpdGggbm8gcmVwZWF0ZWQgbm9kZSwgYW5kIGl0cyBleGFjdCBzdW1tZWQgY29zdC4gQW55IG1pbmltdW0tY29zdCByb3V0ZSBpcyBhY2NlcHRhYmxlOyBtYXRjaGluZyBhIHBhcnRpY3VsYXIgcmVmZXJlbmNlIHJvdXRlIGlzIG5vdCByZXF1aXJlZC4gVGhpcyBpcyBhIGZ1bGwtaW5mb3JtYXRpb24gYWRhcHRhdGlvbjogdGhlIGNvbXBsZXRlIGdyYXBoIGlzIGF2YWlsYWJsZSBpbiB0aGUgaW5wdXQgZmlsZSwgaW5zdGVhZCBvZiBkaXNjb3ZlcmluZyBpbmNpZGVudCBlZGdlcyB0aHJvdWdoIHRoZSBvcmlnaW5hbCBwbHVnaW4ncyBuZWlnaGJvdXJzIHRvb2wuCgpSZWFkIGlucHV0Lmpzb24gdXNpbmcgYW55IGF2YWlsYWJsZSB0b29scy4gV29yayBlZmZpY2llbnRseTsgbm8gcGFydGljdWxhciB0b29sIG9yIGZ1bGwtZGF0YSBkaXNwbGF5IGlzIHJlcXVpcmVkLiBEbyBub3QgbW9kaWZ5IGlucHV0Lmpzb24gb3IgcHJvbXB0LnR4dC4gV3JpdGUgb25seSB0aGUgZmluYWwgYW5zd2VyIG9iamVjdCB0byBhbnN3ZXIuanNvbiwgdGhlbiBzdG9wLiBVc2UgdGhlc2UgZXhhY3QgZmllbGRzIGFuZCB0eXBlczsgZG8gbm90IGFkZCBmaWVsZHMuCgpBbnN3ZXIgSlNPTiBTY2hlbWE6CnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiY2FzZSI6eyJ0eXBlIjoic3RyaW5nIiwiZW51bSI6WyJxdWFycnkiXX0sInJvdXRlIjp7InR5cGUiOiJhcnJheSIsIml0ZW1zIjp7InR5cGUiOiJzdHJpbmcifX0sImNvc3QiOnsidHlwZSI6ImludGVnZXIifX0sInJlcXVpcmVkIjpbImNhc2UiLCJyb3V0ZSIsImNvc3QiXSwiYWRkaXRpb25hbFByb3BlcnRpZXMiOmZhbHNlfQ=="
+    },
+    "limits": {
+      "wall_time_ms": 180000,
+      "max_model_calls": 12,
+      "max_output_tokens_per_call": 32768,
+      "max_cost_usd": 0.05,
+      "internet_access": false
+    },
+    "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+  },
+  "boundary": "Only public/input.json and public/prompt.txt are uploaded. Source/checkers/references/manifest stay host-side."
+}

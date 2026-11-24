@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-11-24T05:10:19.424183+00:00",
+  "command": "make test PYTHON=.venv/bin/python",
+  "python": "3.13.7",
+  "agent_tests": 37,
+  "controlled_tests": 68,
+  "task0_trace_tests": 16,
+  "total": 121,
+  "failures": 0,
+  "errors": 0,
+  "skips_in_development_checkout": 0,
+  "optional_test_note": "A fresh clone without the five pinned upstream checkouts skips only test_rebuild_is_byte_identical; all core validator and analysis tests run offline.",
+  "analyzer_sha256": "eceb514c94ff1eb32ad740db1720d901af19770cc70ff2af3a391202511000e0",
+  "platform_compatibility_tests": {
+    "targeted": 7,
+    "upstream": 20,
+    "phase": "before frozen study; see development/platform-fix test evidence"
+  },
+  "test_output_summaries": [
+    "Ran 37 tests in 0.291s",
+    "OK",
+    "Ran 68 tests in 0.724s",
+    "OK",
+    "Ran 16 tests in 0.005s",
+    "OK"
+  ]
+}

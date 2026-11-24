@@ -1,0 +1,137 @@
+{
+  "model": "deepseek/deepseek-v4-flash-0731",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are solving a task in a public workspace. Follow the user's exact request using the available generic tools as needed. Public task data is in input.json; other public files may also be read. If answer.json contains an output schema, use that shape. Do not change input files. Use write_answer to write the final answer object, then stop. Do not claim success based on a hidden verifier: correctness is checked separately. Python is available for computation with the standard library, and is not a host filesystem sandbox. Work efficiently within 12 model calls, 10 seconds per tool, and 180 seconds for the attempt. Full tool results are bounded at 64 KiB; exceeding that limit fails the attempt without truncation."
+    },
+    {
+      "role": "user",
+      "content": "Task: triage-log; case: edge-proxy.\n\nDiagnose the cause shown by the log in input.json, rather than merely naming a downstream symptom. Each line is true. Select one fault: disk-full (a write failed because a volume is full), auth-rejected (credentials were refused), timeout (something waited and gave up, with no other cause), bad-config (a service rejected its configuration), rate-limited (a quota or request limit was reached), or out-of-memory (a process exceeded its memory allowance). Cite one diagnostic log line exactly, including timestamp and level. The full original log is supplied as a readable input file.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"edge-proxy\"]},\"fault\":{\"type\":\"string\",\"enum\":[\"disk-full\",\"auth-rejected\",\"timeout\",\"bad-config\",\"rate-limited\",\"out-of-memory\"]},\"evidence\":{\"type\":\"string\"}},\"required\":[\"case\",\"fault\",\"evidence\"],\"additionalProperties\":false}"
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "type": "function",
+          "index": 0,
+          "id": "call_bb401918946c44b3b6a305b5",
+          "function": {
+            "name": "read_json",
+            "arguments": "{\"path\":\"input.json\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_bb401918946c44b3b6a305b5",
+      "content": "{\"path\":\"input.json\",\"data\":{\"case\":\"edge-proxy\",\"lines\":[\"2026-03-14 16:45:00 INFO  edge: reloading configuration\",\"2026-03-14 16:45:00 ERROR edge: unknown directive \\\"proxy_pas\\\" in /etc/edge/proxy.conf:42\",\"2026-03-14 16:45:00 ERROR edge: configuration reload failed, keeping previous generation\",\"2026-03-14 16:45:09 WARN  edge: no upstream defined for route /v2/orders, refusing connection\",\"2026-03-14 16:45:10 WARN  edge: connection to 10.2.0.14:8080 refused\",\"2026-03-14 16:45:12 WARN  edge: connection to 10.2.0.14:8080 refused\",\"2026-03-14 16:45:30 WARN  edge: health probe for /v2/orders timed out after 10s\",\"2026-03-14 16:46:00 ERROR edge: 418 requests to /v2/orders failed since reload\"]}}"
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "read_json",
+        "description": "Read an entire public JSON file as a structured object, without solving the task.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "read_file",
+        "description": "Read the full UTF-8 text of a public workspace file.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "search_file",
+        "description": "Find a literal string in a public UTF-8 file; return every matching line with its line number.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "literal": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "literal"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "run_python",
+        "description": "Run Python code in the public workspace using only stdlib. Credentials are removed from its environment. This is not a host filesystem sandbox. Output is bounded; do not alter input files.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "code"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "write_answer",
+        "description": "Write the final task answer object to answer.json. This ends the attempt after the current tool calls finish.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "answer": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "answer"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "temperature": 0,
+  "max_tokens": 32768,
+  "stream": false
+}

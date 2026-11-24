@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "kind": "comp580-one-case-publish-plan",
+  "namespace": "comp580-yw251-compact-v1",
+  "source_manifest": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/fixtures/manifest.json",
+  "source_manifest_sha256": "79249a05a242bccd2980eb4d8a7b041f06f42031dc3e9fb9f275c7f8e2d14df6",
+  "case_id": "regex-infer/widget-code",
+  "expected_plugin_version": "0.1.0",
+  "prompt_sha256": "28f9d4f6a27fdea1d8317153d7c1ebe50c1d05a0cc0d1352ad35595197c792bd",
+  "public_file_sha256": {
+    "input.json": "b6c0834a4145c03ecb3753c85855db6fc6308e285a976bb986c70d773f0e2772",
+    "prompt.txt": "28f9d4f6a27fdea1d8317153d7c1ebe50c1d05a0cc0d1352ad35595197c792bd"
+  },
+  "payload_sha256": "81a9dc57be006a8b5d968c7b74d8885649ae96814faec1fef45eb1e43b4b6cdc",
+  "payload": {
+    "plugin_id": "regex-infer",
+    "case_file": "{\n  \"plugin\": \"regex-infer\",\n  \"task\": \"infer-pattern\",\n  \"cases\": [\n    {\n      \"prompt\": \"Task: infer-pattern; case: widget-code.\\n\\nInfer the hidden string rule from the labelled visible examples in input.json. Return a Python regular expression, evaluated with re.fullmatch, which describes the entire string. Anchors are optional. Do not simply list the accepted examples: grading uses a separate held-out set. You may test a candidate on the visible examples. The pattern must be nonblank, have no surrounding whitespace, and contain at most 120 characters. The verifier also rejects a group containing a quantifier when that group is itself quantified with *, +, or a counted repetition. The hidden rule and held-out examples are not supplied.\\n\\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\\n\\nAnswer JSON Schema:\\n{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"case\\\":{\\\"type\\\":\\\"string\\\",\\\"enum\\\":[\\\"widget-code\\\"]},\\\"pattern\\\":{\\\"type\\\":\\\"string\\\"}},\\\"required\\\":[\\\"case\\\",\\\"pattern\\\"],\\\"additionalProperties\\\":false}\",\n      \"arguments\": {\n        \"case\": \"widget-code\"\n      },\n      \"fixtures\": \"public\"\n    }\n  ],\n  \"refuse\": []\n}",
+    "files": {
+      "public/input.json": "ewogICJjYXNlIjogIndpZGdldC1jb2RlIiwKICAiZXhhbXBsZXMiOiBbCiAgICB7CiAgICAgICJ0ZXh0IjogIkFCLTEyMyIsCiAgICAgICJtYXRjaGVzIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiWlotMDAwIiwKICAgICAgIm1hdGNoZXMiOiB0cnVlCiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJRVC00NTYtUiIsCiAgICAgICJtYXRjaGVzIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiTU4tNzg5IiwKICAgICAgIm1hdGNoZXMiOiB0cnVlCiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJYWS0wMDEtUiIsCiAgICAgICJtYXRjaGVzIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiQS0xMjMiLAogICAgICAibWF0Y2hlcyI6IGZhbHNlCiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJBQkMtMTIzIiwKICAgICAgIm1hdGNoZXMiOiBmYWxzZQogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiQUItMTIiLAogICAgICAibWF0Y2hlcyI6IGZhbHNlCiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJBQi0xMjM0IiwKICAgICAgIm1hdGNoZXMiOiBmYWxzZQogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiYWItMTIzIiwKICAgICAgIm1hdGNoZXMiOiBmYWxzZQogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiQUItMTIzLVgiLAogICAgICAibWF0Y2hlcyI6IGZhbHNlCiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJBQjEyMyIsCiAgICAgICJtYXRjaGVzIjogZmFsc2UKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIkFCLTEyMy1SLVIiLAogICAgICAibWF0Y2hlcyI6IGZhbHNlCiAgICB9CiAgXQp9Cg==",
+      "public/prompt.txt": "VGFzazogaW5mZXItcGF0dGVybjsgY2FzZTogd2lkZ2V0LWNvZGUuCgpJbmZlciB0aGUgaGlkZGVuIHN0cmluZyBydWxlIGZyb20gdGhlIGxhYmVsbGVkIHZpc2libGUgZXhhbXBsZXMgaW4gaW5wdXQuanNvbi4gUmV0dXJuIGEgUHl0aG9uIHJlZ3VsYXIgZXhwcmVzc2lvbiwgZXZhbHVhdGVkIHdpdGggcmUuZnVsbG1hdGNoLCB3aGljaCBkZXNjcmliZXMgdGhlIGVudGlyZSBzdHJpbmcuIEFuY2hvcnMgYXJlIG9wdGlvbmFsLiBEbyBub3Qgc2ltcGx5IGxpc3QgdGhlIGFjY2VwdGVkIGV4YW1wbGVzOiBncmFkaW5nIHVzZXMgYSBzZXBhcmF0ZSBoZWxkLW91dCBzZXQuIFlvdSBtYXkgdGVzdCBhIGNhbmRpZGF0ZSBvbiB0aGUgdmlzaWJsZSBleGFtcGxlcy4gVGhlIHBhdHRlcm4gbXVzdCBiZSBub25ibGFuaywgaGF2ZSBubyBzdXJyb3VuZGluZyB3aGl0ZXNwYWNlLCBhbmQgY29udGFpbiBhdCBtb3N0IDEyMCBjaGFyYWN0ZXJzLiBUaGUgdmVyaWZpZXIgYWxzbyByZWplY3RzIGEgZ3JvdXAgY29udGFpbmluZyBhIHF1YW50aWZpZXIgd2hlbiB0aGF0IGdyb3VwIGlzIGl0c2VsZiBxdWFudGlmaWVkIHdpdGggKiwgKywgb3IgYSBjb3VudGVkIHJlcGV0aXRpb24uIFRoZSBoaWRkZW4gcnVsZSBhbmQgaGVsZC1vdXQgZXhhbXBsZXMgYXJlIG5vdCBzdXBwbGllZC4KClJlYWQgaW5wdXQuanNvbiB1c2luZyBhbnkgYXZhaWxhYmxlIHRvb2xzLiBXb3JrIGVmZmljaWVudGx5OyBubyBwYXJ0aWN1bGFyIHRvb2wgb3IgZnVsbC1kYXRhIGRpc3BsYXkgaXMgcmVxdWlyZWQuIERvIG5vdCBtb2RpZnkgaW5wdXQuanNvbiBvciBwcm9tcHQudHh0LiBXcml0ZSBvbmx5IHRoZSBmaW5hbCBhbnN3ZXIgb2JqZWN0IHRvIGFuc3dlci5qc29uLCB0aGVuIHN0b3AuIFVzZSB0aGVzZSBleGFjdCBmaWVsZHMgYW5kIHR5cGVzOyBkbyBub3QgYWRkIGZpZWxkcy4KCkFuc3dlciBKU09OIFNjaGVtYToKeyJ0eXBlIjoib2JqZWN0IiwicHJvcGVydGllcyI6eyJjYXNlIjp7InR5cGUiOiJzdHJpbmciLCJlbnVtIjpbIndpZGdldC1jb2RlIl19LCJwYXR0ZXJuIjp7InR5cGUiOiJzdHJpbmcifX0sInJlcXVpcmVkIjpbImNhc2UiLCJwYXR0ZXJuIl0sImFkZGl0aW9uYWxQcm9wZXJ0aWVzIjpmYWxzZX0="
+    },
+    "limits": {
+      "wall_time_ms": 180000,
+      "max_model_calls": 12,
+      "max_output_tokens_per_call": 32768,
+      "max_cost_usd": 0.05,
+      "internet_access": false
+    },
+    "name": "comp580-yw251-compact-v1-regex-infer-widget-code-f223fcd9077ce88f"
+  },
+  "boundary": "Only public/input.json and public/prompt.txt are uploaded. Source/checkers/references/manifest stay host-side."
+}

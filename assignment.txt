@@ -1,0 +1,115 @@
+Please submit your final report through Canvas as a PDF, following the format below. Only the report PDF should be submitted through Canvas.
+
+You must also check in your code through the repository workflow described below. If that process does not work, you may send a separate ZIP file containing your code, Makefile, instructions for running the code, and a script that generates the main plot in your report.
+
+You will have access to the Rush Lab application to support your development and evaluation.
+
+Final Report Due: December 15, 11:59 p.m. CT
+
+IMPORTANT: The report MUST include the NetIDs of ALL team members.
+
+Final Report Format
+0. Explore and Evaluate the App
+Before developing your improvements, spend time exploring the Rush Lab app. Try it on each of your five selected tasks using different available LLMs to understand how it behaves and where it succeeds or fails.
+
+Include these results in your report, organized by task and model. For each task–model combination, report:
+
+Model used
+
+Cached tokens
+
+Input tokens
+
+Output tokens
+
+Success or failure
+
+For failures: where the execution failed and why
+
+Latency
+
+Present these results in a table so they are easy to compare. Report the results for each task separately rather than providing only an aggregate across all tasks.
+
+1. Task Selection — 1–2 paragraphs
+Describe the five tasks you selected and explain why they are representative of the problem you are studying. Be specific about what each task involves and why it is useful for evaluating your hypothesis.
+
+2. Task Validation
+Explain how you built the validation subroutine for each task. How does it verify correctness without an LLM call? Why can it be trusted to catch all corner cases within the task’s defined scope?
+
+Describe how you developed and checked the validator, and include any prompts you used during that process.
+
+3. Your Idea and Hypothesis — 1–2 paragraphs
+Describe your idea and explain why it should improve agentic efficiency. State a concrete hypothesis and explain the mechanism behind the expected improvement. Be as specific as possible.
+
+Example of a bad description:
+
+“We made the harness more efficient by reducing tokens using randomized algorithms.”
+
+Examples of good descriptions:
+
+a. Financial transaction tasks: “Our hypothesis is that the LLM wastes tokens by repeatedly processing the full task context, even when a subtask requires only a small part of it. We added a search module that retrieves the information relevant to each subtask before the LLM call. We compare token usage and task success against the same harness using the full context.”
+
+If your approach instead uses Bloom filters or minwise hashing to detect redundant information, explain exactly what is stored or compared, where the method runs in the harness, and how it reduces redundant context.
+
+b. Insurance claims tasks: “Our hypothesis is that the agent wastes tokens and time by repeating validations it has already completed, even when the earlier results are available in its context. We added a structured history checker that records completed validations and their inputs, and prevents repeated checks when those inputs have not changed. We compare token usage, latency, and task success against the original harness.”
+
+Your description should make clear what you changed, why it should help, and how you will test that claim.
+
+4. Dataset Design and Variation
+Explain why your dataset is sufficient to test your hypothesis, despite its small size.
+
+What variations are represented across the five tasks? How do they differ in inputs, structure, or complexity? Explain why these differences provide some confidence that your results reflect a meaningful improvement rather than a narrow artifact of the selected tasks.
+
+Describe how you ensured that the evaluation measures the effect of your proposed idea and is not driven by unrelated factors or misleading shortcuts.
+
+5. Baseline and Fair Comparisons
+Clearly identify your baseline and provide links to any baseline codebase you used.
+
+You must report numerical baseline results. Compare your method against a baseline that does not include your proposed modification. Reporting only your method’s results, without a baseline comparison, is not sufficient.
+
+An apples-to-apples comparison of harnesses must use the same underlying LLM. Compare your modified harness with the baseline using the same model and version, the same task inputs, and consistent model settings and evaluation conditions.
+
+You may evaluate multiple LLMs, but compare the harnesses separately within each model. This allows you to assess the effect of the harness change without confounding it with a change in the LLM.
+
+6. Harness Modifications
+If you use the app or harness provided in class as a baseline, or extend it, explain exactly how you used it and what you modified.
+
+Be concrete. For example:
+
+“We added a Bloom filter module and a command-line flag that enables or disables it.”
+
+Explain where your changes fit into the existing harness and how they affect its behavior.
+
+7. Evaluation Metrics
+In addition to reporting all the required measurements in Task 0, identify the 2–3 primary metrics you are focusing on to evaluate your hypothesis. Explain why these metrics are appropriate.
+
+Describe how you checked that the measurements are stable across multiple trials. What other sources of variation could affect the results, and how did you account for them? Make sure your chosen metrics do not hide effects that would undermine your conclusion.
+
+Be specific and brief.
+
+8. Experimental Results — 1–2 paragraphs per use case
+Present the metric comparisons between your method and the baseline, holding the underlying LLM fixed for each harness comparison.
+
+For each use case, provide 1–2 paragraphs summarizing the experimental results and explaining what they show about your hypothesis.
+
+9. Conclusion — 1 paragraph
+Summarize what your experiments demonstrate and why the evidence supports your conclusion.
+
+Using the Rush Lab Application
+Download the app.
+Re-download and install the latest version of the Rush Lab application.
+
+Access the harness environment.
+Navigate to the Harness section of the application to open the terminal environment.
+
+Explore the app and complete Task 0.
+Try the app on each of your selected tasks using different available models. Record the required token counts, outcomes, failure details, and latency before developing your improvements.
+
+Develop or improve a harness.
+You may create your own coding harness using existing open-source implementations, such as Pi, Hermes, or other harnesses available on GitHub, as references. If you develop a new harness, its CLI must be installable and runnable within the Rush Lab terminal. Alternatively, you may improve the existing NanoAgent harness.
+
+Run tasks and evaluate performance.
+Execute the provided tasks (plugins) using your harness and compare its performance against existing harnesses, using the same underlying LLM for each comparison. Identify opportunities to improve efficiency, functionality, or task performance, then implement and test your improvements.
+
+Submit your contributions.
+Fork the relevant GitHub repository, develop your changes locally, and test your implementation. Submit a Pull Request (PR) to the NanoAgent repository or the relevant harness repository, clearly describing your contributions and evaluation results.

@@ -1,0 +1,7 @@
+{
+  "wall_time_ms": 180000,
+  "max_model_calls": 12,
+  "max_output_tokens_per_call": 32768,
+  "max_cost_usd": 0.05,
+  "internet_access": false
+}

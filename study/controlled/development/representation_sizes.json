@@ -1,0 +1,35 @@
+{
+  "scope": "Offline prospective complete read_json payload; not an actual tool call or model token measurement. The model may choose different tools.",
+  "rows": [
+    {
+      "case_id": "log-triage/edge-proxy",
+      "prospective_full_bytes": 788,
+      "prospective_compact_bytes": 703,
+      "ratio_compact_over_full": 0.8921319796954315
+    },
+    {
+      "case_id": "cipher-crack/telegram",
+      "prospective_full_bytes": 128,
+      "prospective_compact_bytes": 104,
+      "ratio_compact_over_full": 0.8125
+    },
+    {
+      "case_id": "path-probe/quarry",
+      "prospective_full_bytes": 660,
+      "prospective_compact_bytes": 311,
+      "ratio_compact_over_full": 0.4712121212121212
+    },
+    {
+      "case_id": "regex-infer/widget-code",
+      "prospective_full_bytes": 981,
+      "prospective_compact_bytes": 510,
+      "ratio_compact_over_full": 0.5198776758409785
+    },
+    {
+      "case_id": "stat-pick/sensor-drift",
+      "prospective_full_bytes": 387,
+      "prospective_compact_bytes": 269,
+      "ratio_compact_over_full": 0.6950904392764858
+    }
+  ]
+}

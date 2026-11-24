@@ -1,0 +1,2 @@
+[console_scripts]
+comp580-agent = comp580_agent.cli:main

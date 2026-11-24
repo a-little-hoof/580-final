@@ -1,0 +1,4621 @@
+{
+  "schema_version": 1,
+  "plan_sha256": "651b14a7292716457469c150bd3a09dc33d277803c20c10d6c72255d1d34898c",
+  "runs": {
+    "comp580-670fda504e0ecef2dd455207686f59264905bbdcb1a9006b712319e12f10a5b3": {
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-670fda504e0ecef2dd455207686f59264905bbdcb1a9006b712319e12f10a5b3"
+      },
+      "replicate": "final-rep05",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "1f6bfc39-c16e-44aa-8611-e739b2a14b7f",
+          "status": "queued",
+          "created_at": "2026-11-24T04:43:21.406Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+            "digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "path-probe",
+              "name": "Path Probe",
+              "version": "0.1.0",
+              "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+            },
+            "task_id": "find-route",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map the route crosses, as the task gave it"
+                  },
+                  "route": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+                  },
+                  "cost": {
+                    "type": "integer",
+                    "description": "What the whole route costs: the costs of the links it travels, added up"
+                  }
+                },
+                "required": [
+                  "case",
+                  "route",
+                  "cost"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_map",
+                  "description": "Read where a route must start and end, and how many nodes the map holds",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this describes"
+                      },
+                      "start": {
+                        "type": "string",
+                        "description": "The node a route starts at"
+                      },
+                      "goal": {
+                        "type": "string",
+                        "description": "The node a route must reach"
+                      },
+                      "nodes": {
+                        "type": "integer",
+                        "description": "How many nodes the map holds in all, so you know when you have seen them"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "start",
+                      "goal",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "neighbours",
+                  "description": "Read every link touching the nodes asked about, and nothing else on the map",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The nodes to look at, one or more; ask about several at once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this comes from"
+                      },
+                      "links": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "description": "One end of the link"
+                            },
+                            "end": {
+                              "type": "string",
+                              "description": "The other end; links can be travelled either way"
+                            },
+                            "cost": {
+                              "type": "integer",
+                              "description": "What travelling this link costs, always more than zero"
+                            }
+                          },
+                          "required": [
+                            "start",
+                            "end",
+                            "cost"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "description": "Every link touching the nodes asked about, each one named once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "links"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "path-probe-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+              "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+              "arguments": {
+                "case": "quarry"
+              },
+              "fixtures": {
+                "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+                "files": {
+                  "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+                  "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+              "latest_attempt_id": "4fd2b553-c232-484b-bd48-7a9506e1c522",
+              "attempts": [
+                {
+                  "attempt_id": "4fd2b553-c232-484b-bd48-7a9506e1c522",
+                  "run_id": "1f6bfc39-c16e-44aa-8611-e739b2a14b7f",
+                  "case_id": "path-probe-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:43:21.406Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "1f6bfc39-c16e-44aa-8611-e739b2a14b7f",
+      "last_observation": {
+        "at": "2026-11-24T04:43:42.429983+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "4fd2b553-c232-484b-bd48-7a9506e1c522",
+            "run_id": "1f6bfc39-c16e-44aa-8611-e739b2a14b7f",
+            "case_id": "path-probe-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 390255291,
+              "elapsed_ms": 7302,
+              "elapsed_ns": 7301889083,
+              "tool_calls": 2,
+              "model_calls": 2,
+              "estimated_ns": null,
+              "input_tokens": 2503,
+              "total_tokens": 2738,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 3939015583,
+              "output_tokens": 235,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 1024,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 24,
+            "high_water_cursor": 24,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:43:21.406Z",
+            "claimed_at": "2026-11-24T04:43:21.562Z",
+            "finalized_at": "2026-11-24T04:43:41.553Z",
+            "workspace": {
+              "bytes": 6382
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/1f6bfc39-c16e-44aa-8611-e739b2a14b7f/20261124T044342432429Z/capture.json"
+      ]
+    },
+    "comp580-83b56ebed270134dd90405b53722122fea5cf7bebbb9adc7266dd124ccea1c30": {
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-83b56ebed270134dd90405b53722122fea5cf7bebbb9adc7266dd124ccea1c30"
+      },
+      "replicate": "final-rep05",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "e6a14383-5402-41ec-b944-5921e86237c5",
+          "status": "queued",
+          "created_at": "2026-11-24T04:43:45.552Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+            "digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "path-probe",
+              "name": "Path Probe",
+              "version": "0.1.0",
+              "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+            },
+            "task_id": "find-route",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map the route crosses, as the task gave it"
+                  },
+                  "route": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+                  },
+                  "cost": {
+                    "type": "integer",
+                    "description": "What the whole route costs: the costs of the links it travels, added up"
+                  }
+                },
+                "required": [
+                  "case",
+                  "route",
+                  "cost"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_map",
+                  "description": "Read where a route must start and end, and how many nodes the map holds",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this describes"
+                      },
+                      "start": {
+                        "type": "string",
+                        "description": "The node a route starts at"
+                      },
+                      "goal": {
+                        "type": "string",
+                        "description": "The node a route must reach"
+                      },
+                      "nodes": {
+                        "type": "integer",
+                        "description": "How many nodes the map holds in all, so you know when you have seen them"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "start",
+                      "goal",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "neighbours",
+                  "description": "Read every link touching the nodes asked about, and nothing else on the map",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The nodes to look at, one or more; ask about several at once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this comes from"
+                      },
+                      "links": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "description": "One end of the link"
+                            },
+                            "end": {
+                              "type": "string",
+                              "description": "The other end; links can be travelled either way"
+                            },
+                            "cost": {
+                              "type": "integer",
+                              "description": "What travelling this link costs, always more than zero"
+                            }
+                          },
+                          "required": [
+                            "start",
+                            "end",
+                            "cost"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "description": "Every link touching the nodes asked about, each one named once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "links"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "path-probe-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+              "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+              "arguments": {
+                "case": "quarry"
+              },
+              "fixtures": {
+                "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+                "files": {
+                  "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+                  "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+              "latest_attempt_id": "621e73aa-44bb-4735-85c6-5eb701e5042d",
+              "attempts": [
+                {
+                  "attempt_id": "621e73aa-44bb-4735-85c6-5eb701e5042d",
+                  "run_id": "e6a14383-5402-41ec-b944-5921e86237c5",
+                  "case_id": "path-probe-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:43:45.552Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "e6a14383-5402-41ec-b944-5921e86237c5",
+      "last_observation": {
+        "at": "2026-11-24T04:44:04.296055+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "621e73aa-44bb-4735-85c6-5eb701e5042d",
+            "run_id": "e6a14383-5402-41ec-b944-5921e86237c5",
+            "case_id": "path-probe-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 387887583,
+              "elapsed_ms": 7546,
+              "elapsed_ns": 7545919208,
+              "tool_calls": 2,
+              "model_calls": 2,
+              "estimated_ns": null,
+              "input_tokens": 2615,
+              "total_tokens": 2836,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 4077156500,
+              "output_tokens": 221,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 2048,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 24,
+            "high_water_cursor": 24,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:43:45.552Z",
+            "claimed_at": "2026-11-24T04:43:45.693Z",
+            "finalized_at": "2026-11-24T04:44:02.275Z",
+            "workspace": {
+              "bytes": 6182
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/e6a14383-5402-41ec-b944-5921e86237c5/20261124T044404299394Z/capture.json"
+      ]
+    },
+    "comp580-8d4cbe3619d3d3035a04857242de8d9f6d0e47283671d2fcc61d70f8bc556122": {
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-8d4cbe3619d3d3035a04857242de8d9f6d0e47283671d2fcc61d70f8bc556122"
+      },
+      "replicate": "final-rep02",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "5c86730a-1649-4abe-8ce2-fda38a1e882f",
+          "status": "queued",
+          "created_at": "2026-11-24T04:48:04.012Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+            "digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "path-probe",
+              "name": "Path Probe",
+              "version": "0.1.0",
+              "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+            },
+            "task_id": "find-route",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map the route crosses, as the task gave it"
+                  },
+                  "route": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+                  },
+                  "cost": {
+                    "type": "integer",
+                    "description": "What the whole route costs: the costs of the links it travels, added up"
+                  }
+                },
+                "required": [
+                  "case",
+                  "route",
+                  "cost"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_map",
+                  "description": "Read where a route must start and end, and how many nodes the map holds",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this describes"
+                      },
+                      "start": {
+                        "type": "string",
+                        "description": "The node a route starts at"
+                      },
+                      "goal": {
+                        "type": "string",
+                        "description": "The node a route must reach"
+                      },
+                      "nodes": {
+                        "type": "integer",
+                        "description": "How many nodes the map holds in all, so you know when you have seen them"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "start",
+                      "goal",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "neighbours",
+                  "description": "Read every link touching the nodes asked about, and nothing else on the map",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The nodes to look at, one or more; ask about several at once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this comes from"
+                      },
+                      "links": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "description": "One end of the link"
+                            },
+                            "end": {
+                              "type": "string",
+                              "description": "The other end; links can be travelled either way"
+                            },
+                            "cost": {
+                              "type": "integer",
+                              "description": "What travelling this link costs, always more than zero"
+                            }
+                          },
+                          "required": [
+                            "start",
+                            "end",
+                            "cost"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "description": "Every link touching the nodes asked about, each one named once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "links"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "path-probe-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+              "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+              "arguments": {
+                "case": "quarry"
+              },
+              "fixtures": {
+                "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+                "files": {
+                  "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+                  "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+              "latest_attempt_id": "3bf93c2c-e7fb-4fbc-9449-d3133715573e",
+              "attempts": [
+                {
+                  "attempt_id": "3bf93c2c-e7fb-4fbc-9449-d3133715573e",
+                  "run_id": "5c86730a-1649-4abe-8ce2-fda38a1e882f",
+                  "case_id": "path-probe-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:48:04.012Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "5c86730a-1649-4abe-8ce2-fda38a1e882f",
+      "last_observation": {
+        "at": "2026-11-24T04:48:25.142842+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "3bf93c2c-e7fb-4fbc-9449-d3133715573e",
+            "run_id": "5c86730a-1649-4abe-8ce2-fda38a1e882f",
+            "case_id": "path-probe-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 404836166,
+              "elapsed_ms": 9398,
+              "elapsed_ns": 9398353041,
+              "tool_calls": 2,
+              "model_calls": 2,
+              "estimated_ns": null,
+              "input_tokens": 2615,
+              "total_tokens": 2865,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 4429948082,
+              "output_tokens": 250,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 2048,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 24,
+            "high_water_cursor": 24,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:48:04.012Z",
+            "claimed_at": "2026-11-24T04:48:04.168Z",
+            "finalized_at": "2026-11-24T04:48:23.114Z",
+            "workspace": {
+              "bytes": 6107
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/5c86730a-1649-4abe-8ce2-fda38a1e882f/20261124T044825147473Z/capture.json"
+      ]
+    },
+    "comp580-17556bb2b77ad3f8172f48d5d4a251c8656c851176543ae450fabae8bd005309": {
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-17556bb2b77ad3f8172f48d5d4a251c8656c851176543ae450fabae8bd005309"
+      },
+      "replicate": "final-rep02",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "d6b7a442-ca52-439a-bea8-f03010574b4e",
+          "status": "queued",
+          "created_at": "2026-11-24T04:48:28.382Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+            "digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "path-probe",
+              "name": "Path Probe",
+              "version": "0.1.0",
+              "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+            },
+            "task_id": "find-route",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map the route crosses, as the task gave it"
+                  },
+                  "route": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+                  },
+                  "cost": {
+                    "type": "integer",
+                    "description": "What the whole route costs: the costs of the links it travels, added up"
+                  }
+                },
+                "required": [
+                  "case",
+                  "route",
+                  "cost"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_map",
+                  "description": "Read where a route must start and end, and how many nodes the map holds",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this describes"
+                      },
+                      "start": {
+                        "type": "string",
+                        "description": "The node a route starts at"
+                      },
+                      "goal": {
+                        "type": "string",
+                        "description": "The node a route must reach"
+                      },
+                      "nodes": {
+                        "type": "integer",
+                        "description": "How many nodes the map holds in all, so you know when you have seen them"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "start",
+                      "goal",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "neighbours",
+                  "description": "Read every link touching the nodes asked about, and nothing else on the map",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The nodes to look at, one or more; ask about several at once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this comes from"
+                      },
+                      "links": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "description": "One end of the link"
+                            },
+                            "end": {
+                              "type": "string",
+                              "description": "The other end; links can be travelled either way"
+                            },
+                            "cost": {
+                              "type": "integer",
+                              "description": "What travelling this link costs, always more than zero"
+                            }
+                          },
+                          "required": [
+                            "start",
+                            "end",
+                            "cost"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "description": "Every link touching the nodes asked about, each one named once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "links"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "path-probe-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+              "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+              "arguments": {
+                "case": "quarry"
+              },
+              "fixtures": {
+                "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+                "files": {
+                  "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+                  "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+              "latest_attempt_id": "4d103833-e2b2-445f-9685-7d6aa50762fe",
+              "attempts": [
+                {
+                  "attempt_id": "4d103833-e2b2-445f-9685-7d6aa50762fe",
+                  "run_id": "d6b7a442-ca52-439a-bea8-f03010574b4e",
+                  "case_id": "path-probe-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:48:28.382Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "d6b7a442-ca52-439a-bea8-f03010574b4e",
+      "last_observation": {
+        "at": "2026-11-24T04:48:51.939199+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "4d103833-e2b2-445f-9685-7d6aa50762fe",
+            "run_id": "d6b7a442-ca52-439a-bea8-f03010574b4e",
+            "case_id": "path-probe-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 398156791,
+              "elapsed_ms": 12924,
+              "elapsed_ns": 12923557583,
+              "tool_calls": 2,
+              "model_calls": 2,
+              "estimated_ns": null,
+              "input_tokens": 2523,
+              "total_tokens": 2766,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 4620147458,
+              "output_tokens": 243,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 1024,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 24,
+            "high_water_cursor": 24,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:48:28.382Z",
+            "claimed_at": "2026-11-24T04:48:28.536Z",
+            "finalized_at": "2026-11-24T04:48:51.141Z",
+            "workspace": {
+              "bytes": 6461
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/d6b7a442-ca52-439a-bea8-f03010574b4e/20261124T044851943638Z/capture.json"
+      ]
+    },
+    "comp580-afe57eef3a46bbc2b115df037409b02f438fd3da45f537dbddcebc56426ee920": {
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-afe57eef3a46bbc2b115df037409b02f438fd3da45f537dbddcebc56426ee920"
+      },
+      "replicate": "final-rep04",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "3e69abd2-988a-466c-b130-b79169bca26d",
+          "status": "queued",
+          "created_at": "2026-11-24T04:49:58.648Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+            "digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "path-probe",
+              "name": "Path Probe",
+              "version": "0.1.0",
+              "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+            },
+            "task_id": "find-route",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map the route crosses, as the task gave it"
+                  },
+                  "route": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+                  },
+                  "cost": {
+                    "type": "integer",
+                    "description": "What the whole route costs: the costs of the links it travels, added up"
+                  }
+                },
+                "required": [
+                  "case",
+                  "route",
+                  "cost"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_map",
+                  "description": "Read where a route must start and end, and how many nodes the map holds",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this describes"
+                      },
+                      "start": {
+                        "type": "string",
+                        "description": "The node a route starts at"
+                      },
+                      "goal": {
+                        "type": "string",
+                        "description": "The node a route must reach"
+                      },
+                      "nodes": {
+                        "type": "integer",
+                        "description": "How many nodes the map holds in all, so you know when you have seen them"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "start",
+                      "goal",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "neighbours",
+                  "description": "Read every link touching the nodes asked about, and nothing else on the map",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The nodes to look at, one or more; ask about several at once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this comes from"
+                      },
+                      "links": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "description": "One end of the link"
+                            },
+                            "end": {
+                              "type": "string",
+                              "description": "The other end; links can be travelled either way"
+                            },
+                            "cost": {
+                              "type": "integer",
+                              "description": "What travelling this link costs, always more than zero"
+                            }
+                          },
+                          "required": [
+                            "start",
+                            "end",
+                            "cost"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "description": "Every link touching the nodes asked about, each one named once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "links"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "path-probe-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+              "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+              "arguments": {
+                "case": "quarry"
+              },
+              "fixtures": {
+                "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+                "files": {
+                  "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+                  "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+              "latest_attempt_id": "8726e2d5-1626-4a40-8fc0-48aa29852b65",
+              "attempts": [
+                {
+                  "attempt_id": "8726e2d5-1626-4a40-8fc0-48aa29852b65",
+                  "run_id": "3e69abd2-988a-466c-b130-b79169bca26d",
+                  "case_id": "path-probe-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:49:58.648Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "3e69abd2-988a-466c-b130-b79169bca26d",
+      "last_observation": {
+        "at": "2026-11-24T04:50:17.461226+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "8726e2d5-1626-4a40-8fc0-48aa29852b65",
+            "run_id": "3e69abd2-988a-466c-b130-b79169bca26d",
+            "case_id": "path-probe-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 399580250,
+              "elapsed_ms": 8988,
+              "elapsed_ns": 8987995292,
+              "tool_calls": 2,
+              "model_calls": 2,
+              "estimated_ns": null,
+              "input_tokens": 2523,
+              "total_tokens": 2740,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 4668322584,
+              "output_tokens": 217,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 1280,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 24,
+            "high_water_cursor": 24,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:49:58.648Z",
+            "claimed_at": "2026-11-24T04:49:58.933Z",
+            "finalized_at": "2026-11-24T04:50:17.153Z",
+            "workspace": {
+              "bytes": 6344
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/3e69abd2-988a-466c-b130-b79169bca26d/20261124T045017467337Z/capture.json"
+      ]
+    },
+    "comp580-1e0af61b0065bb7d31ae04fd3a790cdabb77f015e57b62fd34d995a6617cd958": {
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-1e0af61b0065bb7d31ae04fd3a790cdabb77f015e57b62fd34d995a6617cd958"
+      },
+      "replicate": "final-rep04",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "04bcbb4e-490c-4fd2-a7a4-643d7d5c7269",
+          "status": "queued",
+          "created_at": "2026-11-24T04:50:20.770Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+            "digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "path-probe",
+              "name": "Path Probe",
+              "version": "0.1.0",
+              "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+            },
+            "task_id": "find-route",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map the route crosses, as the task gave it"
+                  },
+                  "route": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+                  },
+                  "cost": {
+                    "type": "integer",
+                    "description": "What the whole route costs: the costs of the links it travels, added up"
+                  }
+                },
+                "required": [
+                  "case",
+                  "route",
+                  "cost"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_map",
+                  "description": "Read where a route must start and end, and how many nodes the map holds",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this describes"
+                      },
+                      "start": {
+                        "type": "string",
+                        "description": "The node a route starts at"
+                      },
+                      "goal": {
+                        "type": "string",
+                        "description": "The node a route must reach"
+                      },
+                      "nodes": {
+                        "type": "integer",
+                        "description": "How many nodes the map holds in all, so you know when you have seen them"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "start",
+                      "goal",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "neighbours",
+                  "description": "Read every link touching the nodes asked about, and nothing else on the map",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The nodes to look at, one or more; ask about several at once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this comes from"
+                      },
+                      "links": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "description": "One end of the link"
+                            },
+                            "end": {
+                              "type": "string",
+                              "description": "The other end; links can be travelled either way"
+                            },
+                            "cost": {
+                              "type": "integer",
+                              "description": "What travelling this link costs, always more than zero"
+                            }
+                          },
+                          "required": [
+                            "start",
+                            "end",
+                            "cost"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "description": "Every link touching the nodes asked about, each one named once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "links"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "path-probe-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+              "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+              "arguments": {
+                "case": "quarry"
+              },
+              "fixtures": {
+                "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+                "files": {
+                  "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+                  "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+              "latest_attempt_id": "516fc357-9345-43d6-9618-2d386e658b35",
+              "attempts": [
+                {
+                  "attempt_id": "516fc357-9345-43d6-9618-2d386e658b35",
+                  "run_id": "04bcbb4e-490c-4fd2-a7a4-643d7d5c7269",
+                  "case_id": "path-probe-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:50:20.770Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "04bcbb4e-490c-4fd2-a7a4-643d7d5c7269",
+      "last_observation": {
+        "at": "2026-11-24T04:50:41.864183+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "516fc357-9345-43d6-9618-2d386e658b35",
+            "run_id": "04bcbb4e-490c-4fd2-a7a4-643d7d5c7269",
+            "case_id": "path-probe-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 384045333,
+              "elapsed_ms": 10836,
+              "elapsed_ns": 10836427833,
+              "tool_calls": 2,
+              "model_calls": 2,
+              "estimated_ns": null,
+              "input_tokens": 2635,
+              "total_tokens": 2866,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 4509147458,
+              "output_tokens": 231,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 1280,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 24,
+            "high_water_cursor": 24,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:50:20.770Z",
+            "claimed_at": "2026-11-24T04:50:20.927Z",
+            "finalized_at": "2026-11-24T04:50:41.202Z",
+            "workspace": {
+              "bytes": 6233
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/04bcbb4e-490c-4fd2-a7a4-643d7d5c7269/20261124T045041871398Z/capture.json"
+      ]
+    },
+    "comp580-a14389a449ed976a32ce9e7027ba284e4bba7f7dd78648fc96b63ec64e146236": {
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-a14389a449ed976a32ce9e7027ba284e4bba7f7dd78648fc96b63ec64e146236"
+      },
+      "replicate": "final-rep03",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "4753af5d-2b72-43ec-b31f-3ba13ea0624d",
+          "status": "queued",
+          "created_at": "2026-11-24T04:52:41.945Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+            "digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "path-probe",
+              "name": "Path Probe",
+              "version": "0.1.0",
+              "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+            },
+            "task_id": "find-route",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map the route crosses, as the task gave it"
+                  },
+                  "route": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+                  },
+                  "cost": {
+                    "type": "integer",
+                    "description": "What the whole route costs: the costs of the links it travels, added up"
+                  }
+                },
+                "required": [
+                  "case",
+                  "route",
+                  "cost"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_map",
+                  "description": "Read where a route must start and end, and how many nodes the map holds",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this describes"
+                      },
+                      "start": {
+                        "type": "string",
+                        "description": "The node a route starts at"
+                      },
+                      "goal": {
+                        "type": "string",
+                        "description": "The node a route must reach"
+                      },
+                      "nodes": {
+                        "type": "integer",
+                        "description": "How many nodes the map holds in all, so you know when you have seen them"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "start",
+                      "goal",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "neighbours",
+                  "description": "Read every link touching the nodes asked about, and nothing else on the map",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The nodes to look at, one or more; ask about several at once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this comes from"
+                      },
+                      "links": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "description": "One end of the link"
+                            },
+                            "end": {
+                              "type": "string",
+                              "description": "The other end; links can be travelled either way"
+                            },
+                            "cost": {
+                              "type": "integer",
+                              "description": "What travelling this link costs, always more than zero"
+                            }
+                          },
+                          "required": [
+                            "start",
+                            "end",
+                            "cost"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "description": "Every link touching the nodes asked about, each one named once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "links"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "path-probe-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+              "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+              "arguments": {
+                "case": "quarry"
+              },
+              "fixtures": {
+                "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+                "files": {
+                  "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+                  "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+              "latest_attempt_id": "8ac898fa-0d1c-4281-a41b-1d010a45bf49",
+              "attempts": [
+                {
+                  "attempt_id": "8ac898fa-0d1c-4281-a41b-1d010a45bf49",
+                  "run_id": "4753af5d-2b72-43ec-b31f-3ba13ea0624d",
+                  "case_id": "path-probe-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:52:41.945Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "4753af5d-2b72-43ec-b31f-3ba13ea0624d",
+      "last_observation": {
+        "at": "2026-11-24T04:53:03.302042+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "8ac898fa-0d1c-4281-a41b-1d010a45bf49",
+            "run_id": "4753af5d-2b72-43ec-b31f-3ba13ea0624d",
+            "case_id": "path-probe-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 395986333,
+              "elapsed_ms": 9796,
+              "elapsed_ns": 9796123875,
+              "tool_calls": 2,
+              "model_calls": 2,
+              "estimated_ns": null,
+              "input_tokens": 2503,
+              "total_tokens": 2732,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 4362780375,
+              "output_tokens": 229,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 1280,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 24,
+            "high_water_cursor": 24,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:52:41.945Z",
+            "claimed_at": "2026-11-24T04:52:42.102Z",
+            "finalized_at": "2026-11-24T04:53:01.495Z",
+            "workspace": {
+              "bytes": 6360
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/4753af5d-2b72-43ec-b31f-3ba13ea0624d/20261124T045303305516Z/capture.json"
+      ]
+    },
+    "comp580-0a7c6bfdebdf2c8ac9cf6124300b4e23471f04a11841854346949f2cc5441ee5": {
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-0a7c6bfdebdf2c8ac9cf6124300b4e23471f04a11841854346949f2cc5441ee5"
+      },
+      "replicate": "final-rep03",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "0f6925fb-762c-4c8c-abb8-44fc67f109ab",
+          "status": "queued",
+          "created_at": "2026-11-24T04:53:06.631Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+            "digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "path-probe",
+              "name": "Path Probe",
+              "version": "0.1.0",
+              "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+            },
+            "task_id": "find-route",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map the route crosses, as the task gave it"
+                  },
+                  "route": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+                  },
+                  "cost": {
+                    "type": "integer",
+                    "description": "What the whole route costs: the costs of the links it travels, added up"
+                  }
+                },
+                "required": [
+                  "case",
+                  "route",
+                  "cost"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_map",
+                  "description": "Read where a route must start and end, and how many nodes the map holds",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this describes"
+                      },
+                      "start": {
+                        "type": "string",
+                        "description": "The node a route starts at"
+                      },
+                      "goal": {
+                        "type": "string",
+                        "description": "The node a route must reach"
+                      },
+                      "nodes": {
+                        "type": "integer",
+                        "description": "How many nodes the map holds in all, so you know when you have seen them"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "start",
+                      "goal",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "neighbours",
+                  "description": "Read every link touching the nodes asked about, and nothing else on the map",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The nodes to look at, one or more; ask about several at once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this comes from"
+                      },
+                      "links": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "description": "One end of the link"
+                            },
+                            "end": {
+                              "type": "string",
+                              "description": "The other end; links can be travelled either way"
+                            },
+                            "cost": {
+                              "type": "integer",
+                              "description": "What travelling this link costs, always more than zero"
+                            }
+                          },
+                          "required": [
+                            "start",
+                            "end",
+                            "cost"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "description": "Every link touching the nodes asked about, each one named once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "links"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "path-probe-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+              "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+              "arguments": {
+                "case": "quarry"
+              },
+              "fixtures": {
+                "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+                "files": {
+                  "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+                  "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+              "latest_attempt_id": "74f48d4a-c6e2-448a-a6f8-b91f1661bd72",
+              "attempts": [
+                {
+                  "attempt_id": "74f48d4a-c6e2-448a-a6f8-b91f1661bd72",
+                  "run_id": "0f6925fb-762c-4c8c-abb8-44fc67f109ab",
+                  "case_id": "path-probe-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:53:06.631Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "0f6925fb-762c-4c8c-abb8-44fc67f109ab",
+      "last_observation": {
+        "at": "2026-11-24T04:53:25.375718+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "74f48d4a-c6e2-448a-a6f8-b91f1661bd72",
+            "run_id": "0f6925fb-762c-4c8c-abb8-44fc67f109ab",
+            "case_id": "path-probe-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 374575625,
+              "elapsed_ms": 7267,
+              "elapsed_ns": 7267026625,
+              "tool_calls": 2,
+              "model_calls": 2,
+              "estimated_ns": null,
+              "input_tokens": 2615,
+              "total_tokens": 2845,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 4128744458,
+              "output_tokens": 230,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 2304,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 24,
+            "high_water_cursor": 24,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:53:06.631Z",
+            "claimed_at": "2026-11-24T04:53:06.795Z",
+            "finalized_at": "2026-11-24T04:53:23.449Z",
+            "workspace": {
+              "bytes": 6202
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/0f6925fb-762c-4c8c-abb8-44fc67f109ab/20261124T045325381669Z/capture.json"
+      ]
+    },
+    "comp580-89b808a1ed3ad7867263231536e16b9f198c0c6d6a66d03c5b7931a4d23e0871": {
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-89b808a1ed3ad7867263231536e16b9f198c0c6d6a66d03c5b7931a4d23e0871"
+      },
+      "replicate": "final-rep01",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "885ca8ec-d1e3-4caf-bdc8-d9bce6cf725f",
+          "status": "queued",
+          "created_at": "2026-11-24T05:01:38.808Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+            "digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "path-probe",
+              "name": "Path Probe",
+              "version": "0.1.0",
+              "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+            },
+            "task_id": "find-route",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map the route crosses, as the task gave it"
+                  },
+                  "route": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+                  },
+                  "cost": {
+                    "type": "integer",
+                    "description": "What the whole route costs: the costs of the links it travels, added up"
+                  }
+                },
+                "required": [
+                  "case",
+                  "route",
+                  "cost"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_map",
+                  "description": "Read where a route must start and end, and how many nodes the map holds",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this describes"
+                      },
+                      "start": {
+                        "type": "string",
+                        "description": "The node a route starts at"
+                      },
+                      "goal": {
+                        "type": "string",
+                        "description": "The node a route must reach"
+                      },
+                      "nodes": {
+                        "type": "integer",
+                        "description": "How many nodes the map holds in all, so you know when you have seen them"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "start",
+                      "goal",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "neighbours",
+                  "description": "Read every link touching the nodes asked about, and nothing else on the map",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The nodes to look at, one or more; ask about several at once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this comes from"
+                      },
+                      "links": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "description": "One end of the link"
+                            },
+                            "end": {
+                              "type": "string",
+                              "description": "The other end; links can be travelled either way"
+                            },
+                            "cost": {
+                              "type": "integer",
+                              "description": "What travelling this link costs, always more than zero"
+                            }
+                          },
+                          "required": [
+                            "start",
+                            "end",
+                            "cost"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "description": "Every link touching the nodes asked about, each one named once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "links"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "path-probe-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+              "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+              "arguments": {
+                "case": "quarry"
+              },
+              "fixtures": {
+                "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+                "files": {
+                  "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+                  "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+              "latest_attempt_id": "689c3e6a-a7af-40c7-9e52-6c14bab4d819",
+              "attempts": [
+                {
+                  "attempt_id": "689c3e6a-a7af-40c7-9e52-6c14bab4d819",
+                  "run_id": "885ca8ec-d1e3-4caf-bdc8-d9bce6cf725f",
+                  "case_id": "path-probe-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T05:01:38.808Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "885ca8ec-d1e3-4caf-bdc8-d9bce6cf725f",
+      "last_observation": {
+        "at": "2026-11-24T05:01:57.758011+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "689c3e6a-a7af-40c7-9e52-6c14bab4d819",
+            "run_id": "885ca8ec-d1e3-4caf-bdc8-d9bce6cf725f",
+            "case_id": "path-probe-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 371322250,
+              "elapsed_ms": 7965,
+              "elapsed_ns": 7964514667,
+              "tool_calls": 2,
+              "model_calls": 2,
+              "estimated_ns": null,
+              "input_tokens": 2615,
+              "total_tokens": 2838,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 4292931833,
+              "output_tokens": 223,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 2304,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 24,
+            "high_water_cursor": 24,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T05:01:38.808Z",
+            "claimed_at": "2026-11-24T05:01:38.974Z",
+            "finalized_at": "2026-11-24T05:01:57.034Z",
+            "workspace": {
+              "bytes": 6140
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/885ca8ec-d1e3-4caf-bdc8-d9bce6cf725f/20261124T050157767912Z/capture.json"
+      ]
+    },
+    "comp580-3368c91ccb869257d5d11a35d28f42ed1792b44ffed42c64974d1dc6e8a62aac": {
+      "request": {
+        "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-3368c91ccb869257d5d11a35d28f42ed1792b44ffed42c64974d1dc6e8a62aac"
+      },
+      "replicate": "final-rep01",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "9c38e528-6adf-4406-ad6a-16d7310a774b",
+          "status": "queued",
+          "created_at": "2026-11-24T05:02:01.110Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+            "digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "path-probe",
+              "name": "Path Probe",
+              "version": "0.1.0",
+              "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+            },
+            "task_id": "find-route",
+            "task": {
+              "kind": "agent",
+              "egress_hosts": [],
+              "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "orchard",
+                      "quarry",
+                      "foundry",
+                      "harbour"
+                    ],
+                    "description": "The map the route crosses, as the task gave it"
+                  },
+                  "route": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+                  },
+                  "cost": {
+                    "type": "integer",
+                    "description": "What the whole route costs: the costs of the links it travels, added up"
+                  }
+                },
+                "required": [
+                  "case",
+                  "route",
+                  "cost"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_map",
+                  "description": "Read where a route must start and end, and how many nodes the map holds",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this describes"
+                      },
+                      "start": {
+                        "type": "string",
+                        "description": "The node a route starts at"
+                      },
+                      "goal": {
+                        "type": "string",
+                        "description": "The node a route must reach"
+                      },
+                      "nodes": {
+                        "type": "integer",
+                        "description": "How many nodes the map holds in all, so you know when you have seen them"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "start",
+                      "goal",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "neighbours",
+                  "description": "Read every link touching the nodes asked about, and nothing else on the map",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "Which map to work on; the map is never shown whole, only a node at a time"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The nodes to look at, one or more; ask about several at once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "orchard",
+                          "quarry",
+                          "foundry",
+                          "harbour"
+                        ],
+                        "description": "The map this comes from"
+                      },
+                      "links": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "description": "One end of the link"
+                            },
+                            "end": {
+                              "type": "string",
+                              "description": "The other end; links can be travelled either way"
+                            },
+                            "cost": {
+                              "type": "integer",
+                              "description": "What travelling this link costs, always more than zero"
+                            }
+                          },
+                          "required": [
+                            "start",
+                            "end",
+                            "cost"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "description": "Every link touching the nodes asked about, each one named once"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "links"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "path-probe-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+              "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+              "arguments": {
+                "case": "quarry"
+              },
+              "fixtures": {
+                "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+                "files": {
+                  "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+                  "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+              "latest_attempt_id": "d438a40c-01d6-498d-adea-fda4bc8ee94f",
+              "attempts": [
+                {
+                  "attempt_id": "d438a40c-01d6-498d-adea-fda4bc8ee94f",
+                  "run_id": "9c38e528-6adf-4406-ad6a-16d7310a774b",
+                  "case_id": "path-probe-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T05:02:01.110Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "9c38e528-6adf-4406-ad6a-16d7310a774b",
+      "last_observation": {
+        "at": "2026-11-24T05:02:20.144177+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "d438a40c-01d6-498d-adea-fda4bc8ee94f",
+            "run_id": "9c38e528-6adf-4406-ad6a-16d7310a774b",
+            "case_id": "path-probe-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 380217875,
+              "elapsed_ms": 8582,
+              "elapsed_ns": 8582264542,
+              "tool_calls": 2,
+              "model_calls": 2,
+              "estimated_ns": null,
+              "input_tokens": 2503,
+              "total_tokens": 2762,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 4497856292,
+              "output_tokens": 259,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 2304,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 24,
+            "high_water_cursor": 24,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T05:02:01.110Z",
+            "claimed_at": "2026-11-24T05:02:01.277Z",
+            "finalized_at": "2026-11-24T05:02:19.521Z",
+            "workspace": {
+              "bytes": 6395
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/9c38e528-6adf-4406-ad6a-16d7310a774b/20261124T050220152543Z/capture.json"
+      ]
+    }
+  },
+  "prefix": "/api/workspaces/qsicB5hMcRxdFG3km2ix3FSSIDhgslIa",
+  "publication_request": {
+    "payload_sha256": "651b14a7292716457469c150bd3a09dc33d277803c20c10d6c72255d1d34898c",
+    "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238"
+  },
+  "publication_response": {
+    "created": true,
+    "benchmark": {
+      "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+      "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+      "plugin": {
+        "id": "path-probe",
+        "name": "Path Probe",
+        "version": "0.1.0",
+        "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+      },
+      "task_id": "find-route",
+      "task_kind": "agent",
+      "publisher": {
+        "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+        "name": "Yifei Wang",
+        "github": "a-little-hoof"
+      },
+      "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+      "case_set_digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+      "digest": "7c215de59ef25b3dadbb917a9f7eff6c1e92c2ebca265c7689bfef120614acb6",
+      "model": "deepseek/deepseek-v4-flash-0731",
+      "endpoint_profile": "openrouter",
+      "providers": [
+        "deepinfra",
+        "nebius"
+      ],
+      "limits": {
+        "cpus": 1,
+        "pids": 256,
+        "memory_mb": 1024,
+        "tmp_bytes": 67108864,
+        "build_files": 100000,
+        "max_cost_usd": 0.05,
+        "wall_time_ms": 180000,
+        "build_wall_ms": 600000,
+        "build_memory_mb": 3072,
+        "build_tmp_bytes": 536870912,
+        "internet_access": false,
+        "max_model_calls": 12,
+        "workspace_bytes": 268435456,
+        "workspace_files": 20000,
+        "build_output_bytes": 1073741824,
+        "max_output_tokens_per_call": 32768
+      },
+      "published_at": "2026-11-24T04:39:01.010Z",
+      "case_count": 1,
+      "answer_count": 1,
+      "refuse_count": 0
+    }
+  },
+  "benchmark": {
+    "benchmark_id": "ca073963-bf33-42cc-bd75-80ec84d90a13",
+    "name": "comp580-yw251-compact-v1-path-probe-quarry-122a06b44a80e238",
+    "plugin": {
+      "id": "path-probe",
+      "name": "Path Probe",
+      "version": "0.1.0",
+      "sha256": "b03749f7874388e026c271f5170dc6245610b286bb7c289f1527f255f5a3bb2b"
+    },
+    "task_id": "find-route",
+    "task_kind": "agent",
+    "publisher": {
+      "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+      "name": "Yifei Wang",
+      "github": "a-little-hoof"
+    },
+    "case_set_id": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+    "case_set_digest": "000fecd7120552b55a7a0730e8c95e99626c2703a0067ef0fbc0d691a0959a35",
+    "digest": "7c215de59ef25b3dadbb917a9f7eff6c1e92c2ebca265c7689bfef120614acb6",
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "endpoint_profile": "openrouter",
+    "providers": [
+      "deepinfra",
+      "nebius"
+    ],
+    "limits": {
+      "cpus": 1,
+      "pids": 256,
+      "memory_mb": 1024,
+      "tmp_bytes": 67108864,
+      "build_files": 100000,
+      "max_cost_usd": 0.05,
+      "wall_time_ms": 180000,
+      "build_wall_ms": 600000,
+      "build_memory_mb": 3072,
+      "build_tmp_bytes": 536870912,
+      "internet_access": false,
+      "max_model_calls": 12,
+      "workspace_bytes": 268435456,
+      "workspace_files": 20000,
+      "build_output_bytes": 1073741824,
+      "max_output_tokens_per_call": 32768
+    },
+    "published_at": "2026-11-24T04:39:01.010Z",
+    "case_count": 1,
+    "answer_count": 1,
+    "refuse_count": 0,
+    "task": {
+      "kind": "agent",
+      "egress_hosts": [],
+      "description": "Explore a map a node at a time and find the cheapest route from its start to its goal",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "enum": [
+              "orchard",
+              "quarry",
+              "foundry",
+              "harbour"
+            ],
+            "description": "Which map to work on; the map is never shown whole, only a node at a time"
+          }
+        },
+        "required": [
+          "case"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "enum": [
+              "orchard",
+              "quarry",
+              "foundry",
+              "harbour"
+            ],
+            "description": "The map the route crosses, as the task gave it"
+          },
+          "route": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+          },
+          "cost": {
+            "type": "integer",
+            "description": "What the whole route costs: the costs of the links it travels, added up"
+          }
+        },
+        "required": [
+          "case",
+          "route",
+          "cost"
+        ],
+        "additionalProperties": false
+      },
+      "tools": [
+        {
+          "name": "read_map",
+          "description": "Read where a route must start and end, and how many nodes the map holds",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "orchard",
+                  "quarry",
+                  "foundry",
+                  "harbour"
+                ],
+                "description": "Which map to work on; the map is never shown whole, only a node at a time"
+              }
+            },
+            "required": [
+              "case"
+            ],
+            "additionalProperties": false
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "orchard",
+                  "quarry",
+                  "foundry",
+                  "harbour"
+                ],
+                "description": "The map this describes"
+              },
+              "start": {
+                "type": "string",
+                "description": "The node a route starts at"
+              },
+              "goal": {
+                "type": "string",
+                "description": "The node a route must reach"
+              },
+              "nodes": {
+                "type": "integer",
+                "description": "How many nodes the map holds in all, so you know when you have seen them"
+              }
+            },
+            "required": [
+              "case",
+              "start",
+              "goal",
+              "nodes"
+            ],
+            "additionalProperties": false
+          },
+          "writes": true
+        },
+        {
+          "name": "neighbours",
+          "description": "Read every link touching the nodes asked about, and nothing else on the map",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "orchard",
+                  "quarry",
+                  "foundry",
+                  "harbour"
+                ],
+                "description": "Which map to work on; the map is never shown whole, only a node at a time"
+              },
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The nodes to look at, one or more; ask about several at once"
+              }
+            },
+            "required": [
+              "case",
+              "nodes"
+            ],
+            "additionalProperties": false
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "orchard",
+                  "quarry",
+                  "foundry",
+                  "harbour"
+                ],
+                "description": "The map this comes from"
+              },
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "start": {
+                      "type": "string",
+                      "description": "One end of the link"
+                    },
+                    "end": {
+                      "type": "string",
+                      "description": "The other end; links can be travelled either way"
+                    },
+                    "cost": {
+                      "type": "integer",
+                      "description": "What travelling this link costs, always more than zero"
+                    }
+                  },
+                  "required": [
+                    "start",
+                    "end",
+                    "cost"
+                  ],
+                  "additionalProperties": false
+                },
+                "description": "Every link touching the nodes asked about, each one named once"
+              }
+            },
+            "required": [
+              "case",
+              "links"
+            ],
+            "additionalProperties": false
+          },
+          "writes": true
+        }
+      ]
+    },
+    "cases": [
+      {
+        "case_id": "path-probe-01",
+        "position": 0,
+        "kind": "answer",
+        "prompt": "Task: find-route; case: quarry.\n\nFind a minimum-total-cost route from start to goal in input.json. Each link is listed once, can be travelled in either direction, and has positive integer cost. Submit the route as node names in travel order, starting at start and ending at goal, with no repeated node, and its exact summed cost. Any minimum-cost route is acceptable; matching a particular reference route is not required. This is a full-information adaptation: the complete graph is available in the input file, instead of discovering incident edges through the original plugin's neighbours tool.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"quarry\"]},\"route\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"cost\":{\"type\":\"integer\"}},\"required\":[\"case\",\"route\",\"cost\"],\"additionalProperties\":false}",
+        "prompt_sha256": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992",
+        "arguments": {
+          "case": "quarry"
+        },
+        "expected_error": null,
+        "content_digest": "aeec5ddcd9264a6cd2b0abd577248ffc12f8ba35fe9f57c718f00eb300ea4625",
+        "fixtures": {
+          "sha256": "e7941be3094c4dcf6f84452c73bef26c8888dd054878705ccb198691d6d4ef04",
+          "files": {
+            "input.json": "03f7c17b4a7939f81d1e1527893265d02fa053480fccc9571bc02caebe144233",
+            "prompt.txt": "4915c54e6a5e4e6435af6bdc8013326e82c9aec46a3c11251bd1695d28c70992"
+          }
+        }
+      }
+    ]
+  },
+  "publication_verified": true
+}

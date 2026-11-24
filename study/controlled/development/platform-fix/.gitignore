@@ -1,0 +1,4 @@
+# Local licensed runtime copies; never publish them with the original agent.
+outcome.before.py
+outcome.patched.py
+__pycache__/

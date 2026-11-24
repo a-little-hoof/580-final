@@ -1,0 +1,24 @@
+--- a/nanoagent/site/nanoagent/uploaded/outcome.py
++++ b/nanoagent/site/nanoagent/uploaded/outcome.py
+@@ -7,6 +7,7 @@
+ from __future__ import annotations
+ 
+ import json
++import math
+ from pathlib import Path
+ from typing import Any, Mapping
+ 
+@@ -59,6 +60,13 @@
+         return []
+     if kind in SCALARS:
+         return None
++    if kind is None and "enum" in schema:
++        values = schema["enum"]
++        if isinstance(values, list) and values and all(
++            value is None or type(value) in (str, int, bool) or (type(value) is float and math.isfinite(value))
++            for value in values
++        ):
++            return None  # An unfilled scalar, never an enum member chosen as an answer.
+     raise ContractError("output_schema_unsupported", f"{path}: the schema's type {kind!r} has no skeleton")
+ 
+ 

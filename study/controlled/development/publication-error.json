@@ -1,0 +1,1 @@
+{"status": 422, "code": "pin_failed", "error": "task triage-log: output_schema_unsupported: $.case: the schema's type None has no skeleton"}

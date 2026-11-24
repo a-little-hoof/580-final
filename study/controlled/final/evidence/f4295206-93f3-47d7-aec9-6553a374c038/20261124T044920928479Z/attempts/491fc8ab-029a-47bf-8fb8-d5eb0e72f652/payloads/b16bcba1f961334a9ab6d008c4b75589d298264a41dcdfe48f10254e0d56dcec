@@ -1,0 +1,171 @@
+{
+  "model": "deepseek/deepseek-v4-flash-0731",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are solving a task in a public workspace. Follow the user's exact request using the available generic tools as needed. Public task data is in input.json; other public files may also be read. If answer.json contains an output schema, use that shape. Do not change input files. Use write_answer to write the final answer object, then stop. Do not claim success based on a hidden verifier: correctness is checked separately. Python is available for computation with the standard library, and is not a host filesystem sandbox. Work efficiently within 12 model calls, 10 seconds per tool, and 180 seconds for the attempt. Full tool results are bounded at 64 KiB; exceeding that limit fails the attempt without truncation."
+    },
+    {
+      "role": "user",
+      "content": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}"
+    },
+    {
+      "role": "assistant",
+      "content": "\n\n",
+      "tool_calls": [
+        {
+          "type": "function",
+          "index": 0,
+          "id": "call_f67642a1125e4f2f895c9420",
+          "function": {
+            "name": "read_json",
+            "arguments": "{\"path\":\"input.json\"}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 1,
+          "id": "call_6cb913b84f6c40908bae6e1f",
+          "function": {
+            "name": "read_file",
+            "arguments": "{\"path\":\"answer.json\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_f67642a1125e4f2f895c9420",
+      "content": "{\n  \"path\": \"input.json\",\n  \"data\": {\n    \"case\": \"sensor-drift\",\n    \"column\": \"reading\",\n    \"question\": \"The sensor passes calibration only if its readings sit within 2.0 units of their own average. How far from the average do the readings sit?\",\n    \"numbers\": [\n      50,\n      52,\n      48,\n      51,\n      49,\n      53,\n      47,\n      50,\n      52,\n      48,\n      50\n    ]\n  }\n}"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_6cb913b84f6c40908bae6e1f",
+      "content": "{\n  \"path\": \"answer.json\",\n  \"text\": \"{\\n  \\\"case\\\": null,\\n  \\\"statistic\\\": null,\\n  \\\"value\\\": null\\n}\\n\"\n}"
+    },
+    {
+      "role": "assistant",
+      "content": "\n\n",
+      "tool_calls": [
+        {
+          "type": "function",
+          "index": 0,
+          "id": "call_c7306b2cab034e0d8b34f2ad",
+          "function": {
+            "name": "run_python",
+            "arguments": "{\"code\":\"import statistics\\nnums=[50,52,48,51,49,53,47,50,52,48,50]\\nprint(statistics.pstdev(nums))\\nprint(statistics.mean(nums))\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_c7306b2cab034e0d8b34f2ad",
+      "content": "{\n  \"stdout\": \"1.8090680674665818\\n50\\n\",\n  \"stderr\": \"\",\n  \"exit_code\": 0\n}"
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "read_json",
+        "description": "Read an entire public JSON file as a structured object, without solving the task.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "read_file",
+        "description": "Read the full UTF-8 text of a public workspace file.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "search_file",
+        "description": "Find a literal string in a public UTF-8 file; return every matching line with its line number.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "literal": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "literal"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "run_python",
+        "description": "Run Python code in the public workspace using only stdlib. Credentials are removed from its environment. This is not a host filesystem sandbox. Output is bounded; do not alter input files.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "code"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "write_answer",
+        "description": "Write the final task answer object to answer.json. This ends the attempt after the current tool calls finish.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "answer": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "answer"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "temperature": 0,
+  "max_tokens": 32768,
+  "stream": false
+}

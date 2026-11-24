@@ -1,0 +1,1 @@
+{"answer":{"case":"edge-proxy","evidence":"2026-03-14 16:45:00 ERROR edge: unknown directive \"proxy_pas\" in /etc/edge/proxy.conf:42","fault":"bad-config"},"present":true}

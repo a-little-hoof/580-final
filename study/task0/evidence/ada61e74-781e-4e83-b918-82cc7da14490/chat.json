@@ -1,0 +1,53 @@
+{
+  "session": "ada61e74-781e-4e83-b918-82cc7da14490",
+  "plugin": "log-triage",
+  "turns": [
+    {
+      "prompt": "Run the triage-log task on the edge-proxy case.",
+      "answer": "I ran the triage on the edge-proxy case. It identified the fault as **bad-config**, citing line 42 of the log where an unknown directive `proxy_pas` triggered an error in `/etc/edge/proxy.conf`. The check passed with a valid verdict.",
+      "tools": [
+        {
+          "name": "triage-log",
+          "arguments": {
+            "case": "edge-proxy"
+          },
+          "output": "{\"output\": {\"case\": \"edge-proxy\", \"fault\": \"bad-config\", \"evidence\": \"2026-03-14 16:45:00 ERROR edge: unknown directive \\\"proxy_pas\\\" in /etc/edge/proxy.conf:42\"}, \"verdict\": {\"valid\": true, \"score\": 1.0, \"message\": \"the log shows bad-config, and the line cited shows it\", \"details\": {\"lines\": 8}}}",
+          "isError": false
+        }
+      ],
+      "activity": [
+        {
+          "kind": "task",
+          "name": "triage-log",
+          "steps": [
+            {
+              "name": "read_log",
+              "isError": false
+            }
+          ],
+          "thinking": "",
+          "text": ""
+        }
+      ],
+      "metrics": {
+        "model": "deepseek/deepseek-v4-flash-0731",
+        "cost": 0.00006620000000000001,
+        "usage": {
+          "prompt_tokens": 1086,
+          "completion_tokens": 119,
+          "total_tokens": 1205,
+          "cached_tokens": 256,
+          "cache_write_tokens": 0,
+          "reasoning_tokens": 0
+        },
+        "ttft_s": 1.6831665839999914,
+        "generation_s": 0.47002104157581925,
+        "duration_s": 19.997139084152877,
+        "model_s": 13.958802543580532,
+        "tools_s": 6.037488581612706
+      },
+      "error": null,
+      "version": "0.1.0"
+    }
+  ]
+}

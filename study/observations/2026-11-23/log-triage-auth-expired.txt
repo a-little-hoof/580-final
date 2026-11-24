@@ -1,0 +1,66 @@
+Window: "RUSH Lab", App: RUSH Lab.
+0 standard window RUSH Lab, Secondary Actions: Raise
+	1 scroll area
+		2 HTML content Description: Plugins | RUSH Lab, URL: rush-lab.org/w/comp-480-580/apps?app=log-triage&session=9e89c81d-4e2e-41ee-bdec-16e36ff4c9b0
+			3 link Skip to content, Value: rush-lab.org/w/comp-480-580/apps?app=log-triage&session=9e89c81d-4e2e-41ee-bdec-16e36ff4c9b0#__docusaurus_skipToContent_fallback
+			4 container Skip to main content
+				5 link Skip to main content, Value: rush-lab.org/w/comp-480-580/apps?app=log-triage&session=9e89c81d-4e2e-41ee-bdec-16e36ff4c9b0#__docusaurus_skipToContent_fallback
+			6 container Workspace
+				7 pop up button Switch workspace. Current workspace: COMP 480/580, Help: COMP 480/580: switch workspace
+				8 link Home, Value: rush-lab.org/w/comp-480-580
+				9 link Plugins, Help: Plugins (click to hide or show its side bar), Value: rush-lab.org/w/comp-480-580/apps?app=log-triage
+				10 link Marketplace, Value: rush-lab.org/w/comp-480-580/marketplace
+				11 link Benchmarks, Value: rush-lab.org/w/comp-480-580/benchmarks
+				12 link Filesystem, Value: rush-lab.org/w/comp-480-580/workspace
+				13 button Switch between dark and light mode (currently light mode), Help: light mode
+				14 link Settings, Value: rush-lab.org/w/comp-480-580/settings
+				15 pop up button Account: Yifei Wang, Help: Signed in as Yifei Wang
+			16 container
+				17 text Plugins
+				18 container Plugins
+					19 content list
+						20 link arXiv Search and Source Downloader, Value: rush-lab.org/w/comp-480-580/apps?app=arxiv-source
+						21 link Cipher Crack, Value: rush-lab.org/w/comp-480-580/apps?app=cipher-crack
+						22 link Log Triage, Value: rush-lab.org/w/comp-480-580/apps?app=log-triage
+						23 link Path Probe, Value: rush-lab.org/w/comp-480-580/apps?app=path-probe
+						24 link Regex From Examples, Value: rush-lab.org/w/comp-480-580/apps?app=regex-infer
+						25 link Stat Pick, Value: rush-lab.org/w/comp-480-580/apps?app=stat-pick
+						26 link Browse Marketplace, Value: rush-lab.org/w/comp-480-580/marketplace
+				27 splitter Resize side bar, Help: Drag to resize or fold away, double-click to reset, Value: 50
+				28 scroll area
+					29 HTML content Description: Log Triage, URL: rush-lab.org/api/apps/80bf25bc65eb72c4cd31fefb4dc98c78ddbad2cd474ea16b5e3c9ce11cb8219f/ui/98de317c-7ec9-4393-a78d-335c57f0d4db/218d778774890be6/index.html
+						30 tab group (selectable) Plugin
+							31 tab (selectable) Dashboard
+							32 tab (selected) Session
+							33 tab (selectable) Harness
+						34 container Chat
+							35 container
+								36 container
+									37 text User message › Run the triage-log task with input {"case":"edge-proxy”}.
+								38 container
+									39 button (expanded) Steps › 1 part, Secondary Actions: Collapse
+									40 button (collapsed) Secondary Actions: Expand, System prompt › You are an assistant embedded in a collaborative knowledge application. Follow the application's additional instructions and answer the user directly. You operate the Log Triage plugin through its tasks: each of your tools is one task. Turn what the user asks into the input of the task that does it, and call that task; ask the user only for what you cannot work out. The page shows the user each task's result and whether it passed its check, so do not repeat the result: say in a sentence or t
+								41 text Error code: 401 - {'error': {'message': 'API key expired.', 'code': 401, 'metadata': {'headers': {'WWW-Authenticate': 'Bearer error="invalid_token", error_description="API key expired"'}}}}
+							42 text entry area (settable) Tell Log Triage what you need, Value: [text entry area: Tell Log Triage what you need]
+								43 text Tell Log Triage what you need
+							44 button Send
+						45 container Graph and result
+							46 tab group (selectable)
+								47 tab (selected) Graph
+								48 tab (selectable) Result
+							49 container Graph
+								50 toggle button User message Run the triage-log task with input {"case":"edg…, Help: User message, Value: off
+								51 toggle button System prompt You are an assistant embedded in a collaborativ…, Help: System prompt, Value: off
+	52 close button
+	53 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	54 minimize button
+	55 text RUSH Lab
+56 menu bar
+	57 RUSH Lab
+	58 File
+	59 Edit
+	60 View
+	61 Window
+	62 Help
+
+The focused UI element is 29 HTML content Description: Log Triage, URL: rush-lab.org/api/apps/80bf25bc65eb72c4cd31fefb4dc98c78ddbad2cd474ea16b5e3c9ce11cb8219f/ui/98de317c-7ec9-4393-a78d-335c57f0d4db/218d778774890be6/index.html

@@ -1,0 +1,4819 @@
+{
+  "schema_version": 1,
+  "plan_sha256": "1aa4409cbaf3ff38aed133c4fc6f7e477dfae8dff3100f54366cfcae1ab6bce3",
+  "runs": {
+    "comp580-8242419fdd1f6b5ee255d01ea5f711fa835792e3e779e544b9c20a53d831153b": {
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-8242419fdd1f6b5ee255d01ea5f711fa835792e3e779e544b9c20a53d831153b"
+      },
+      "replicate": "final-rep04",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "fc56d917-91ca-4909-8990-96161658f48e",
+          "status": "queued",
+          "created_at": "2026-11-24T04:39:58.126Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+            "digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "stat-pick",
+              "name": "Stat Pick",
+              "version": "0.1.0",
+              "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+            },
+            "task_id": "answer-question",
+            "task": {
+              "kind": "decide",
+              "egress_hosts": [],
+              "description": "Choose which summary of a column answers a question asked in words, and give its value",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case answered, as the task gave it"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "The summary that answers the question"
+                  },
+                  "value": {
+                    "type": "number",
+                    "description": "What that summary comes to for that column"
+                  }
+                },
+                "required": [
+                  "case",
+                  "statistic",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_question",
+                  "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case this question belongs to"
+                      },
+                      "question": {
+                        "type": "string",
+                        "description": "What is being asked, in words; the readings themselves are not shown"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings the column holds"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "question",
+                      "column",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "summarise",
+                  "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case the column belongs to"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column summarised, as given"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "The summary that was worked out"
+                      },
+                      "value": {
+                        "type": "number",
+                        "description": "What that summary comes to for that column"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings went into it"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic",
+                      "value",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "stat-pick-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+              "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+              "arguments": {
+                "case": "sensor-drift"
+              },
+              "fixtures": {
+                "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+                "files": {
+                  "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+                  "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+              "latest_attempt_id": "a47c97af-fd7f-4e00-a57e-9d49c1c3a022",
+              "attempts": [
+                {
+                  "attempt_id": "a47c97af-fd7f-4e00-a57e-9d49c1c3a022",
+                  "run_id": "fc56d917-91ca-4909-8990-96161658f48e",
+                  "case_id": "stat-pick-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:39:58.126Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "fc56d917-91ca-4909-8990-96161658f48e",
+      "last_observation": {
+        "at": "2026-11-24T04:40:31.318070+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "a47c97af-fd7f-4e00-a57e-9d49c1c3a022",
+            "run_id": "fc56d917-91ca-4909-8990-96161658f48e",
+            "case_id": "stat-pick-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 477866083,
+              "elapsed_ms": 17356,
+              "elapsed_ns": 17355644541,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4058,
+              "total_tokens": 4639,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5007633125,
+              "output_tokens": 581,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 2304,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:39:58.126Z",
+            "claimed_at": "2026-11-24T04:39:58.282Z",
+            "finalized_at": "2026-11-24T04:40:30.453Z",
+            "workspace": {
+              "bytes": 7635
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/fc56d917-91ca-4909-8990-96161658f48e/20261124T044031322101Z/capture.json"
+      ]
+    },
+    "comp580-9ce3eac5afff69e38e3dba0751efbb846714d92aea3debd10639db1f22be3fb2": {
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-9ce3eac5afff69e38e3dba0751efbb846714d92aea3debd10639db1f22be3fb2"
+      },
+      "replicate": "final-rep04",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "20e6d073-476d-47cc-97b2-f1fc3feeadc2",
+          "status": "queued",
+          "created_at": "2026-11-24T04:40:35.030Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+            "digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "stat-pick",
+              "name": "Stat Pick",
+              "version": "0.1.0",
+              "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+            },
+            "task_id": "answer-question",
+            "task": {
+              "kind": "decide",
+              "egress_hosts": [],
+              "description": "Choose which summary of a column answers a question asked in words, and give its value",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case answered, as the task gave it"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "The summary that answers the question"
+                  },
+                  "value": {
+                    "type": "number",
+                    "description": "What that summary comes to for that column"
+                  }
+                },
+                "required": [
+                  "case",
+                  "statistic",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_question",
+                  "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case this question belongs to"
+                      },
+                      "question": {
+                        "type": "string",
+                        "description": "What is being asked, in words; the readings themselves are not shown"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings the column holds"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "question",
+                      "column",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "summarise",
+                  "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case the column belongs to"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column summarised, as given"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "The summary that was worked out"
+                      },
+                      "value": {
+                        "type": "number",
+                        "description": "What that summary comes to for that column"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings went into it"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic",
+                      "value",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "stat-pick-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+              "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+              "arguments": {
+                "case": "sensor-drift"
+              },
+              "fixtures": {
+                "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+                "files": {
+                  "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+                  "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+              "latest_attempt_id": "6d3a40db-2c54-4ae8-a7ba-67d658faf5f4",
+              "attempts": [
+                {
+                  "attempt_id": "6d3a40db-2c54-4ae8-a7ba-67d658faf5f4",
+                  "run_id": "20e6d073-476d-47cc-97b2-f1fc3feeadc2",
+                  "case_id": "stat-pick-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:40:35.030Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "20e6d073-476d-47cc-97b2-f1fc3feeadc2",
+      "last_observation": {
+        "at": "2026-11-24T04:41:03.029598+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "6d3a40db-2c54-4ae8-a7ba-67d658faf5f4",
+            "run_id": "20e6d073-476d-47cc-97b2-f1fc3feeadc2",
+            "case_id": "stat-pick-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 443056166,
+              "elapsed_ms": 16595,
+              "elapsed_ns": 16594831041,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4129,
+              "total_tokens": 4796,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 6025953500,
+              "output_tokens": 667,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 2048,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:40:35.030Z",
+            "claimed_at": "2026-11-24T04:40:35.184Z",
+            "finalized_at": "2026-11-24T04:41:02.456Z",
+            "workspace": {
+              "bytes": 7555
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/20e6d073-476d-47cc-97b2-f1fc3feeadc2/20261124T044103033905Z/capture.json"
+      ]
+    },
+    "comp580-88d6e83d6cd4eeaa6b1372d56bc264be25865f8525bcf712b3ab7d37c0c9e147": {
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-88d6e83d6cd4eeaa6b1372d56bc264be25865f8525bcf712b3ab7d37c0c9e147"
+      },
+      "replicate": "final-rep01",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "c619ff4b-a4ea-49bb-81a6-793bd9eeb1a7",
+          "status": "queued",
+          "created_at": "2026-11-24T04:45:03.047Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+            "digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "stat-pick",
+              "name": "Stat Pick",
+              "version": "0.1.0",
+              "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+            },
+            "task_id": "answer-question",
+            "task": {
+              "kind": "decide",
+              "egress_hosts": [],
+              "description": "Choose which summary of a column answers a question asked in words, and give its value",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case answered, as the task gave it"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "The summary that answers the question"
+                  },
+                  "value": {
+                    "type": "number",
+                    "description": "What that summary comes to for that column"
+                  }
+                },
+                "required": [
+                  "case",
+                  "statistic",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_question",
+                  "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case this question belongs to"
+                      },
+                      "question": {
+                        "type": "string",
+                        "description": "What is being asked, in words; the readings themselves are not shown"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings the column holds"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "question",
+                      "column",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "summarise",
+                  "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case the column belongs to"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column summarised, as given"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "The summary that was worked out"
+                      },
+                      "value": {
+                        "type": "number",
+                        "description": "What that summary comes to for that column"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings went into it"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic",
+                      "value",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "stat-pick-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+              "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+              "arguments": {
+                "case": "sensor-drift"
+              },
+              "fixtures": {
+                "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+                "files": {
+                  "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+                  "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+              "latest_attempt_id": "5a2ce9b7-a63d-4a5e-aadf-ca98c47741e3",
+              "attempts": [
+                {
+                  "attempt_id": "5a2ce9b7-a63d-4a5e-aadf-ca98c47741e3",
+                  "run_id": "c619ff4b-a4ea-49bb-81a6-793bd9eeb1a7",
+                  "case_id": "stat-pick-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:45:03.047Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "c619ff4b-a4ea-49bb-81a6-793bd9eeb1a7",
+      "last_observation": {
+        "at": "2026-11-24T04:45:40.657375+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "5a2ce9b7-a63d-4a5e-aadf-ca98c47741e3",
+            "run_id": "c619ff4b-a4ea-49bb-81a6-793bd9eeb1a7",
+            "case_id": "stat-pick-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 482687000,
+              "elapsed_ms": 24047,
+              "elapsed_ns": 24047114625,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4045,
+              "total_tokens": 4757,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5142441416,
+              "output_tokens": 712,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3584,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:45:03.047Z",
+            "claimed_at": "2026-11-24T04:45:03.203Z",
+            "finalized_at": "2026-11-24T04:45:38.464Z",
+            "workspace": {
+              "bytes": 7710
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/c619ff4b-a4ea-49bb-81a6-793bd9eeb1a7/20261124T044540662640Z/capture.json"
+      ]
+    },
+    "comp580-f0d5d8b5d0b97180ea87342b9edf7a994bc6f0f7d74792b9afcd9a1f266dfb7c": {
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-f0d5d8b5d0b97180ea87342b9edf7a994bc6f0f7d74792b9afcd9a1f266dfb7c"
+      },
+      "replicate": "final-rep01",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "01360217-ef44-4c85-af9a-67bcb0e33ee0",
+          "status": "queued",
+          "created_at": "2026-11-24T04:45:44.352Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+            "digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "stat-pick",
+              "name": "Stat Pick",
+              "version": "0.1.0",
+              "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+            },
+            "task_id": "answer-question",
+            "task": {
+              "kind": "decide",
+              "egress_hosts": [],
+              "description": "Choose which summary of a column answers a question asked in words, and give its value",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case answered, as the task gave it"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "The summary that answers the question"
+                  },
+                  "value": {
+                    "type": "number",
+                    "description": "What that summary comes to for that column"
+                  }
+                },
+                "required": [
+                  "case",
+                  "statistic",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_question",
+                  "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case this question belongs to"
+                      },
+                      "question": {
+                        "type": "string",
+                        "description": "What is being asked, in words; the readings themselves are not shown"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings the column holds"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "question",
+                      "column",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "summarise",
+                  "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case the column belongs to"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column summarised, as given"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "The summary that was worked out"
+                      },
+                      "value": {
+                        "type": "number",
+                        "description": "What that summary comes to for that column"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings went into it"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic",
+                      "value",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "stat-pick-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+              "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+              "arguments": {
+                "case": "sensor-drift"
+              },
+              "fixtures": {
+                "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+                "files": {
+                  "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+                  "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+              "latest_attempt_id": "85f0bc37-e85a-4697-aa19-fd7b9d7f5646",
+              "attempts": [
+                {
+                  "attempt_id": "85f0bc37-e85a-4697-aa19-fd7b9d7f5646",
+                  "run_id": "01360217-ef44-4c85-af9a-67bcb0e33ee0",
+                  "case_id": "stat-pick-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:45:44.352Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "01360217-ef44-4c85-af9a-67bcb0e33ee0",
+      "last_observation": {
+        "at": "2026-11-24T04:46:07.819526+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "85f0bc37-e85a-4697-aa19-fd7b9d7f5646",
+            "run_id": "01360217-ef44-4c85-af9a-67bcb0e33ee0",
+            "case_id": "stat-pick-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 455280166,
+              "elapsed_ms": 11171,
+              "elapsed_ns": 11171219667,
+              "tool_calls": 4,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4901,
+              "total_tokens": 5465,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 4817090751,
+              "output_tokens": 564,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 2560,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:45:44.352Z",
+            "claimed_at": "2026-11-24T04:45:44.505Z",
+            "finalized_at": "2026-11-24T04:46:07.024Z",
+            "workspace": {
+              "bytes": 7735
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/01360217-ef44-4c85-af9a-67bcb0e33ee0/20261124T044607823924Z/capture.json"
+      ]
+    },
+    "comp580-128c94c8709cb272ff89d4341b83d93233604d6b637af095fcfc3d5867e75056": {
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-128c94c8709cb272ff89d4341b83d93233604d6b637af095fcfc3d5867e75056"
+      },
+      "replicate": "final-rep03",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "f4295206-93f3-47d7-aec9-6553a374c038",
+          "status": "queued",
+          "created_at": "2026-11-24T04:48:55.290Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+            "digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "stat-pick",
+              "name": "Stat Pick",
+              "version": "0.1.0",
+              "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+            },
+            "task_id": "answer-question",
+            "task": {
+              "kind": "decide",
+              "egress_hosts": [],
+              "description": "Choose which summary of a column answers a question asked in words, and give its value",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case answered, as the task gave it"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "The summary that answers the question"
+                  },
+                  "value": {
+                    "type": "number",
+                    "description": "What that summary comes to for that column"
+                  }
+                },
+                "required": [
+                  "case",
+                  "statistic",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_question",
+                  "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case this question belongs to"
+                      },
+                      "question": {
+                        "type": "string",
+                        "description": "What is being asked, in words; the readings themselves are not shown"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings the column holds"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "question",
+                      "column",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "summarise",
+                  "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case the column belongs to"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column summarised, as given"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "The summary that was worked out"
+                      },
+                      "value": {
+                        "type": "number",
+                        "description": "What that summary comes to for that column"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings went into it"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic",
+                      "value",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "stat-pick-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+              "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+              "arguments": {
+                "case": "sensor-drift"
+              },
+              "fixtures": {
+                "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+                "files": {
+                  "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+                  "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+              "latest_attempt_id": "491fc8ab-029a-47bf-8fb8-d5eb0e72f652",
+              "attempts": [
+                {
+                  "attempt_id": "491fc8ab-029a-47bf-8fb8-d5eb0e72f652",
+                  "run_id": "f4295206-93f3-47d7-aec9-6553a374c038",
+                  "case_id": "stat-pick-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:48:55.290Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "f4295206-93f3-47d7-aec9-6553a374c038",
+      "last_observation": {
+        "at": "2026-11-24T04:49:20.921776+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "491fc8ab-029a-47bf-8fb8-d5eb0e72f652",
+            "run_id": "f4295206-93f3-47d7-aec9-6553a374c038",
+            "case_id": "stat-pick-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 479843458,
+              "elapsed_ms": 13055,
+              "elapsed_ns": 13054547333,
+              "tool_calls": 4,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4276,
+              "total_tokens": 4991,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5451111376,
+              "output_tokens": 715,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3328,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:48:55.290Z",
+            "claimed_at": "2026-11-24T04:48:55.447Z",
+            "finalized_at": "2026-11-24T04:49:19.267Z",
+            "workspace": {
+              "bytes": 7813
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/f4295206-93f3-47d7-aec9-6553a374c038/20261124T044920928479Z/capture.json"
+      ]
+    },
+    "comp580-55d5ca49c00dec0805f77db669132ce8aebe6a86d1364783d37c348f4c507e96": {
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-55d5ca49c00dec0805f77db669132ce8aebe6a86d1364783d37c348f4c507e96"
+      },
+      "replicate": "final-rep03",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "25f0bd3d-288a-4cb9-9beb-e0b80c7e255b",
+          "status": "queued",
+          "created_at": "2026-11-24T04:49:24.647Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+            "digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "stat-pick",
+              "name": "Stat Pick",
+              "version": "0.1.0",
+              "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+            },
+            "task_id": "answer-question",
+            "task": {
+              "kind": "decide",
+              "egress_hosts": [],
+              "description": "Choose which summary of a column answers a question asked in words, and give its value",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case answered, as the task gave it"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "The summary that answers the question"
+                  },
+                  "value": {
+                    "type": "number",
+                    "description": "What that summary comes to for that column"
+                  }
+                },
+                "required": [
+                  "case",
+                  "statistic",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_question",
+                  "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case this question belongs to"
+                      },
+                      "question": {
+                        "type": "string",
+                        "description": "What is being asked, in words; the readings themselves are not shown"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings the column holds"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "question",
+                      "column",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "summarise",
+                  "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case the column belongs to"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column summarised, as given"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "The summary that was worked out"
+                      },
+                      "value": {
+                        "type": "number",
+                        "description": "What that summary comes to for that column"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings went into it"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic",
+                      "value",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "stat-pick-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+              "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+              "arguments": {
+                "case": "sensor-drift"
+              },
+              "fixtures": {
+                "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+                "files": {
+                  "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+                  "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+              "latest_attempt_id": "7a926c3f-77fa-460f-8d21-cd4df54eeb52",
+              "attempts": [
+                {
+                  "attempt_id": "7a926c3f-77fa-460f-8d21-cd4df54eeb52",
+                  "run_id": "25f0bd3d-288a-4cb9-9beb-e0b80c7e255b",
+                  "case_id": "stat-pick-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:49:24.647Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "25f0bd3d-288a-4cb9-9beb-e0b80c7e255b",
+      "last_observation": {
+        "at": "2026-11-24T04:49:54.913643+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "7a926c3f-77fa-460f-8d21-cd4df54eeb52",
+            "run_id": "25f0bd3d-288a-4cb9-9beb-e0b80c7e255b",
+            "case_id": "stat-pick-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 487987666,
+              "elapsed_ms": 18372,
+              "elapsed_ns": 18372405917,
+              "tool_calls": 4,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4801,
+              "total_tokens": 5456,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5197708084,
+              "output_tokens": 655,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3584,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:49:24.647Z",
+            "claimed_at": "2026-11-24T04:49:24.802Z",
+            "finalized_at": "2026-11-24T04:49:54.107Z",
+            "workspace": {
+              "bytes": 8078
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/25f0bd3d-288a-4cb9-9beb-e0b80c7e255b/20261124T044954920914Z/capture.json"
+      ]
+    },
+    "comp580-c390f71643c2258cda13810ee824a0b72de10f604828867889a9aab260771617": {
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-c390f71643c2258cda13810ee824a0b72de10f604828867889a9aab260771617"
+      },
+      "replicate": "final-rep02",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "e5c9b91b-6f43-4317-b0e2-72242e88ad94",
+          "status": "queued",
+          "created_at": "2026-11-24T04:59:38.934Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+            "digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "stat-pick",
+              "name": "Stat Pick",
+              "version": "0.1.0",
+              "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+            },
+            "task_id": "answer-question",
+            "task": {
+              "kind": "decide",
+              "egress_hosts": [],
+              "description": "Choose which summary of a column answers a question asked in words, and give its value",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case answered, as the task gave it"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "The summary that answers the question"
+                  },
+                  "value": {
+                    "type": "number",
+                    "description": "What that summary comes to for that column"
+                  }
+                },
+                "required": [
+                  "case",
+                  "statistic",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_question",
+                  "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case this question belongs to"
+                      },
+                      "question": {
+                        "type": "string",
+                        "description": "What is being asked, in words; the readings themselves are not shown"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings the column holds"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "question",
+                      "column",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "summarise",
+                  "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case the column belongs to"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column summarised, as given"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "The summary that was worked out"
+                      },
+                      "value": {
+                        "type": "number",
+                        "description": "What that summary comes to for that column"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings went into it"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic",
+                      "value",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "stat-pick-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+              "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+              "arguments": {
+                "case": "sensor-drift"
+              },
+              "fixtures": {
+                "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+                "files": {
+                  "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+                  "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+              "latest_attempt_id": "1c7c624a-b075-4adb-a614-370cbc86e8b4",
+              "attempts": [
+                {
+                  "attempt_id": "1c7c624a-b075-4adb-a614-370cbc86e8b4",
+                  "run_id": "e5c9b91b-6f43-4317-b0e2-72242e88ad94",
+                  "case_id": "stat-pick-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T04:59:38.934Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "e5c9b91b-6f43-4317-b0e2-72242e88ad94",
+      "last_observation": {
+        "at": "2026-11-24T05:00:02.417779+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "1c7c624a-b075-4adb-a614-370cbc86e8b4",
+            "run_id": "e5c9b91b-6f43-4317-b0e2-72242e88ad94",
+            "case_id": "stat-pick-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 432315250,
+              "elapsed_ms": 11405,
+              "elapsed_ns": 11405350834,
+              "tool_calls": 4,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4903,
+              "total_tokens": 5494,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5651749584,
+              "output_tokens": 591,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3584,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T04:59:38.934Z",
+            "claimed_at": "2026-11-24T04:59:39.089Z",
+            "finalized_at": "2026-11-24T05:00:01.460Z",
+            "workspace": {
+              "bytes": 7788
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/e5c9b91b-6f43-4317-b0e2-72242e88ad94/20261124T050002426988Z/capture.json"
+      ]
+    },
+    "comp580-5cc632300efabc924d6152815a9d8e3d539bb8ac7ae4ec7a6a36a75596648d95": {
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-5cc632300efabc924d6152815a9d8e3d539bb8ac7ae4ec7a6a36a75596648d95"
+      },
+      "replicate": "final-rep02",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "852abcf1-7640-414c-9079-482909924197",
+          "status": "queued",
+          "created_at": "2026-11-24T05:00:07.031Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+            "digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "stat-pick",
+              "name": "Stat Pick",
+              "version": "0.1.0",
+              "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+            },
+            "task_id": "answer-question",
+            "task": {
+              "kind": "decide",
+              "egress_hosts": [],
+              "description": "Choose which summary of a column answers a question asked in words, and give its value",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case answered, as the task gave it"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "The summary that answers the question"
+                  },
+                  "value": {
+                    "type": "number",
+                    "description": "What that summary comes to for that column"
+                  }
+                },
+                "required": [
+                  "case",
+                  "statistic",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_question",
+                  "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case this question belongs to"
+                      },
+                      "question": {
+                        "type": "string",
+                        "description": "What is being asked, in words; the readings themselves are not shown"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings the column holds"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "question",
+                      "column",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "summarise",
+                  "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case the column belongs to"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column summarised, as given"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "The summary that was worked out"
+                      },
+                      "value": {
+                        "type": "number",
+                        "description": "What that summary comes to for that column"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings went into it"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic",
+                      "value",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "stat-pick-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+              "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+              "arguments": {
+                "case": "sensor-drift"
+              },
+              "fixtures": {
+                "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+                "files": {
+                  "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+                  "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+              "latest_attempt_id": "e2e6105f-7c3e-4513-af9f-6d79183e8379",
+              "attempts": [
+                {
+                  "attempt_id": "e2e6105f-7c3e-4513-af9f-6d79183e8379",
+                  "run_id": "852abcf1-7640-414c-9079-482909924197",
+                  "case_id": "stat-pick-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T05:00:07.031Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "852abcf1-7640-414c-9079-482909924197",
+      "last_observation": {
+        "at": "2026-11-24T05:00:35.247649+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "e2e6105f-7c3e-4513-af9f-6d79183e8379",
+            "run_id": "852abcf1-7640-414c-9079-482909924197",
+            "case_id": "stat-pick-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 450268791,
+              "elapsed_ms": 16072,
+              "elapsed_ns": 16072458375,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4097,
+              "total_tokens": 4789,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5578683375,
+              "output_tokens": 692,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 2304,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T05:00:07.031Z",
+            "claimed_at": "2026-11-24T05:00:07.199Z",
+            "finalized_at": "2026-11-24T05:00:34.644Z",
+            "workspace": {
+              "bytes": 7789
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/852abcf1-7640-414c-9079-482909924197/20261124T050035255975Z/capture.json"
+      ]
+    },
+    "comp580-7407ef271fe6f51136730a703a77116291db2485ee8c6fd939552556de44ed79": {
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-7407ef271fe6f51136730a703a77116291db2485ee8c6fd939552556de44ed79"
+      },
+      "replicate": "final-rep05",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "c56472e5-c1a2-40a6-a7a0-9ecae7836489",
+          "status": "queued",
+          "created_at": "2026-11-24T05:00:39.063Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition compact --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+            "digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "stat-pick",
+              "name": "Stat Pick",
+              "version": "0.1.0",
+              "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+            },
+            "task_id": "answer-question",
+            "task": {
+              "kind": "decide",
+              "egress_hosts": [],
+              "description": "Choose which summary of a column answers a question asked in words, and give its value",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case answered, as the task gave it"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "The summary that answers the question"
+                  },
+                  "value": {
+                    "type": "number",
+                    "description": "What that summary comes to for that column"
+                  }
+                },
+                "required": [
+                  "case",
+                  "statistic",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_question",
+                  "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case this question belongs to"
+                      },
+                      "question": {
+                        "type": "string",
+                        "description": "What is being asked, in words; the readings themselves are not shown"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings the column holds"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "question",
+                      "column",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "summarise",
+                  "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case the column belongs to"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column summarised, as given"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "The summary that was worked out"
+                      },
+                      "value": {
+                        "type": "number",
+                        "description": "What that summary comes to for that column"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings went into it"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic",
+                      "value",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "stat-pick-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+              "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+              "arguments": {
+                "case": "sensor-drift"
+              },
+              "fixtures": {
+                "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+                "files": {
+                  "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+                  "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+              "latest_attempt_id": "05d24de5-07e1-4f27-811b-c0e61883ee76",
+              "attempts": [
+                {
+                  "attempt_id": "05d24de5-07e1-4f27-811b-c0e61883ee76",
+                  "run_id": "c56472e5-c1a2-40a6-a7a0-9ecae7836489",
+                  "case_id": "stat-pick-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T05:00:39.063Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "c56472e5-c1a2-40a6-a7a0-9ecae7836489",
+      "last_observation": {
+        "at": "2026-11-24T05:01:02.637035+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "05d24de5-07e1-4f27-811b-c0e61883ee76",
+            "run_id": "c56472e5-c1a2-40a6-a7a0-9ecae7836489",
+            "case_id": "stat-pick-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 444838291,
+              "elapsed_ms": 11018,
+              "elapsed_ns": 11017639333,
+              "tool_calls": 3,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4034,
+              "total_tokens": 4519,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5398308332,
+              "output_tokens": 485,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3328,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T05:00:39.063Z",
+            "claimed_at": "2026-11-24T05:00:39.231Z",
+            "finalized_at": "2026-11-24T05:01:01.343Z",
+            "workspace": {
+              "bytes": 7417
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/c56472e5-c1a2-40a6-a7a0-9ecae7836489/20261124T050102643135Z/capture.json"
+      ]
+    },
+    "comp580-ea2a08013b7508b9becbe1c6e06f54e81eed28d7c21669f09c3c2e4d75cf7ed9": {
+      "request": {
+        "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+        "harness": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b",
+        "idempotency_key": "comp580-ea2a08013b7508b9becbe1c6e06f54e81eed28d7c21669f09c3c2e4d75cf7ed9"
+      },
+      "replicate": "final-rep05",
+      "start_response": {
+        "replayed": false,
+        "run": {
+          "run_id": "83bbc4f5-192e-4add-ad5b-007650eabfd3",
+          "status": "queued",
+          "created_at": "2026-11-24T05:01:06.819Z",
+          "canceled_at": null,
+          "benchmark": {
+            "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+          },
+          "harness": {
+            "name": "rush comp580-agent --condition full --code-sha256 b3c217bb78ca06df3a6090030f1ecbcdb8ba65c2688ca8bd1fae7c11ee89ab9b"
+          },
+          "model": "deepseek/deepseek-v4-flash-0731",
+          "endpoint_profile": "openrouter",
+          "providers": [
+            "deepinfra",
+            "nebius"
+          ],
+          "limits": {
+            "cpus": 1,
+            "pids": 256,
+            "memory_mb": 1024,
+            "tmp_bytes": 67108864,
+            "build_files": 100000,
+            "max_cost_usd": 0.05,
+            "wall_time_ms": 180000,
+            "build_wall_ms": 600000,
+            "build_memory_mb": 3072,
+            "build_tmp_bytes": 536870912,
+            "internet_access": false,
+            "max_model_calls": 12,
+            "workspace_bytes": 268435456,
+            "workspace_files": 20000,
+            "build_output_bytes": 1073741824,
+            "max_output_tokens_per_call": 32768
+          },
+          "egress_hosts": [],
+          "unverified_egress": false,
+          "case_set": {
+            "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+            "digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+            "publisher": {
+              "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+              "name": "Yifei Wang",
+              "github": "a-little-hoof"
+            },
+            "plugin": {
+              "id": "stat-pick",
+              "name": "Stat Pick",
+              "version": "0.1.0",
+              "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+            },
+            "task_id": "answer-question",
+            "task": {
+              "kind": "decide",
+              "egress_hosts": [],
+              "description": "Choose which summary of a column answers a question asked in words, and give its value",
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "Which question to answer"
+                  }
+                },
+                "required": [
+                  "case"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "enum": [
+                      "delivery-delays",
+                      "class-sizes",
+                      "sensor-drift",
+                      "rainfall"
+                    ],
+                    "description": "The case answered, as the task gave it"
+                  },
+                  "statistic": {
+                    "enum": [
+                      "mean",
+                      "median",
+                      "mode",
+                      "range",
+                      "spread",
+                      "smallest",
+                      "largest",
+                      "total"
+                    ],
+                    "description": "The summary that answers the question"
+                  },
+                  "value": {
+                    "type": "number",
+                    "description": "What that summary comes to for that column"
+                  }
+                },
+                "required": [
+                  "case",
+                  "statistic",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "tools": [
+                {
+                  "name": "read_question",
+                  "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case this question belongs to"
+                      },
+                      "question": {
+                        "type": "string",
+                        "description": "What is being asked, in words; the readings themselves are not shown"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings the column holds"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "question",
+                      "column",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                },
+                {
+                  "name": "summarise",
+                  "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+                  "input_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "Which question to answer"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column of readings the question is about"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "output_schema": {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "enum": [
+                          "delivery-delays",
+                          "class-sizes",
+                          "sensor-drift",
+                          "rainfall"
+                        ],
+                        "description": "The case the column belongs to"
+                      },
+                      "column": {
+                        "type": "string",
+                        "description": "The column summarised, as given"
+                      },
+                      "statistic": {
+                        "enum": [
+                          "mean",
+                          "median",
+                          "mode",
+                          "range",
+                          "spread",
+                          "smallest",
+                          "largest",
+                          "total"
+                        ],
+                        "description": "The summary that was worked out"
+                      },
+                      "value": {
+                        "type": "number",
+                        "description": "What that summary comes to for that column"
+                      },
+                      "readings": {
+                        "type": "integer",
+                        "description": "How many readings went into it"
+                      }
+                    },
+                    "required": [
+                      "case",
+                      "column",
+                      "statistic",
+                      "value",
+                      "readings"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "writes": true
+                }
+              ]
+            }
+          },
+          "cases": [
+            {
+              "case_id": "stat-pick-01",
+              "position": 0,
+              "kind": "answer",
+              "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+              "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+              "arguments": {
+                "case": "sensor-drift"
+              },
+              "fixtures": {
+                "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+                "files": {
+                  "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+                  "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+                }
+              },
+              "expected_error": null,
+              "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+              "latest_attempt_id": "f25e37d2-a2da-479c-8119-f8c3da4f1798",
+              "attempts": [
+                {
+                  "attempt_id": "f25e37d2-a2da-479c-8119-f8c3da4f1798",
+                  "run_id": "83bbc4f5-192e-4add-ad5b-007650eabfd3",
+                  "case_id": "stat-pick-01",
+                  "attempt_no": 1,
+                  "rerun_of": null,
+                  "state": "queued",
+                  "execution": null,
+                  "verdict": null,
+                  "explanation": null,
+                  "verifier_error": null,
+                  "checks": null,
+                  "coverage": null,
+                  "metrics": null,
+                  "sealed": false,
+                  "final_cursor": null,
+                  "high_water_cursor": 0,
+                  "cancel_requested": false,
+                  "created_at": "2026-11-24T05:01:06.819Z",
+                  "claimed_at": null,
+                  "finalized_at": null,
+                  "workspace": null
+                }
+              ]
+            }
+          ],
+          "score": {
+            "value": null,
+            "passed": 0,
+            "scored": 0,
+            "total": 1,
+            "unscored": 1,
+            "verifier_errors": 0,
+            "complete": false,
+            "unavailable_reason": "scoring_pending"
+          },
+          "metrics": {
+            "total_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "input_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "output_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_read_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "cache_write_tokens": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "elapsed_ms": {
+              "total": 0,
+              "missing_attempts": 1
+            },
+            "tool_calls": {
+              "total": 0,
+              "missing_attempts": 1
+            }
+          }
+        }
+      },
+      "run_id": "83bbc4f5-192e-4add-ad5b-007650eabfd3",
+      "last_observation": {
+        "at": "2026-11-24T05:01:34.954117+00:00",
+        "status": "complete",
+        "attempts": [
+          {
+            "attempt_id": "f25e37d2-a2da-479c-8119-f8c3da4f1798",
+            "run_id": "83bbc4f5-192e-4add-ad5b-007650eabfd3",
+            "case_id": "stat-pick-01",
+            "attempt_no": 1,
+            "rerun_of": null,
+            "state": "final",
+            "execution": {
+              "status": "answered",
+              "reason": null
+            },
+            "verdict": "pass",
+            "explanation": null,
+            "verifier_error": null,
+            "checks": null,
+            "coverage": {
+              "status": "complete",
+              "reasons": [],
+              "redacted": [],
+              "rejected": [],
+              "truncated": [],
+              "loss_reasons": [],
+              "missing_sources": [],
+              "expected_sources": [
+                "worker",
+                "gateway",
+                "process"
+              ],
+              "observed_sources": [
+                "gateway",
+                "process",
+                "worker"
+              ],
+              "collector_complete": true
+            },
+            "metrics": {
+              "cpu_ns": 441572875,
+              "elapsed_ms": 14724,
+              "elapsed_ns": 14724103084,
+              "tool_calls": 4,
+              "model_calls": 3,
+              "estimated_ns": null,
+              "input_tokens": 4390,
+              "total_tokens": 5081,
+              "missing_calls": {
+                "input": 0,
+                "total": 0,
+                "output": 0,
+                "cache_read": 0,
+                "cache_write": 0
+              },
+              "no_request_ns": 5276252668,
+              "output_tokens": 691,
+              "timing_method": {
+                "id": "rush-timing/1",
+                "clock_tolerance_ns": 1000000,
+                "reference_tokens_per_second": 100
+              },
+              "usage_complete": true,
+              "outside_waits_ns": null,
+              "cache_read_tokens": 3328,
+              "cache_write_tokens": 0,
+              "tool_calls_complete": true,
+              "estimated_ns_unknown": "dependency evidence is incomplete",
+              "outside_waits_ns_unknown": "wait or branch coverage is incomplete"
+            },
+            "sealed": true,
+            "final_cursor": 30,
+            "high_water_cursor": 30,
+            "cancel_requested": false,
+            "created_at": "2026-11-24T05:01:06.819Z",
+            "claimed_at": "2026-11-24T05:01:06.996Z",
+            "finalized_at": "2026-11-24T05:01:33.282Z",
+            "workspace": {
+              "bytes": 7798
+            }
+          }
+        ]
+      },
+      "captures": [
+        "study/controlled/final/evidence/83bbc4f5-192e-4add-ad5b-007650eabfd3/20261124T050134963630Z/capture.json"
+      ]
+    }
+  },
+  "prefix": "/api/workspaces/qsicB5hMcRxdFG3km2ix3FSSIDhgslIa",
+  "publication_request": {
+    "payload_sha256": "1aa4409cbaf3ff38aed133c4fc6f7e477dfae8dff3100f54366cfcae1ab6bce3",
+    "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018"
+  },
+  "publication_response": {
+    "created": true,
+    "benchmark": {
+      "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+      "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+      "plugin": {
+        "id": "stat-pick",
+        "name": "Stat Pick",
+        "version": "0.1.0",
+        "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+      },
+      "task_id": "answer-question",
+      "task_kind": "decide",
+      "publisher": {
+        "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+        "name": "Yifei Wang",
+        "github": "a-little-hoof"
+      },
+      "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+      "case_set_digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+      "digest": "aed96b21b785f975804c6c0e5fd0d1dcf42e3cd31aec23beb36a681f1974c7d1",
+      "model": "deepseek/deepseek-v4-flash-0731",
+      "endpoint_profile": "openrouter",
+      "providers": [
+        "deepinfra",
+        "nebius"
+      ],
+      "limits": {
+        "cpus": 1,
+        "pids": 256,
+        "memory_mb": 1024,
+        "tmp_bytes": 67108864,
+        "build_files": 100000,
+        "max_cost_usd": 0.05,
+        "wall_time_ms": 180000,
+        "build_wall_ms": 600000,
+        "build_memory_mb": 3072,
+        "build_tmp_bytes": 536870912,
+        "internet_access": false,
+        "max_model_calls": 12,
+        "workspace_bytes": 268435456,
+        "workspace_files": 20000,
+        "build_output_bytes": 1073741824,
+        "max_output_tokens_per_call": 32768
+      },
+      "published_at": "2026-11-24T04:39:11.088Z",
+      "case_count": 1,
+      "answer_count": 1,
+      "refuse_count": 0
+    }
+  },
+  "benchmark": {
+    "benchmark_id": "846fb18a-0425-440a-84fb-7221653dff46",
+    "name": "comp580-yw251-compact-v1-stat-pick-sensor-drift-7a52af8fbb228018",
+    "plugin": {
+      "id": "stat-pick",
+      "name": "Stat Pick",
+      "version": "0.1.0",
+      "sha256": "942c9579f26be20f34e2cc913a45bf1f467256b0672242d833b5ff1332550204"
+    },
+    "task_id": "answer-question",
+    "task_kind": "decide",
+    "publisher": {
+      "id": "mDfe10PSKutAHFEEHFpqREG0q83ku2Bi",
+      "name": "Yifei Wang",
+      "github": "a-little-hoof"
+    },
+    "case_set_id": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+    "case_set_digest": "e1ecab6f2b7733980c9cc3aa7ef9554483162988625b0c8595abf7b09a59fcfa",
+    "digest": "aed96b21b785f975804c6c0e5fd0d1dcf42e3cd31aec23beb36a681f1974c7d1",
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "endpoint_profile": "openrouter",
+    "providers": [
+      "deepinfra",
+      "nebius"
+    ],
+    "limits": {
+      "cpus": 1,
+      "pids": 256,
+      "memory_mb": 1024,
+      "tmp_bytes": 67108864,
+      "build_files": 100000,
+      "max_cost_usd": 0.05,
+      "wall_time_ms": 180000,
+      "build_wall_ms": 600000,
+      "build_memory_mb": 3072,
+      "build_tmp_bytes": 536870912,
+      "internet_access": false,
+      "max_model_calls": 12,
+      "workspace_bytes": 268435456,
+      "workspace_files": 20000,
+      "build_output_bytes": 1073741824,
+      "max_output_tokens_per_call": 32768
+    },
+    "published_at": "2026-11-24T04:39:11.088Z",
+    "case_count": 1,
+    "answer_count": 1,
+    "refuse_count": 0,
+    "task": {
+      "kind": "decide",
+      "egress_hosts": [],
+      "description": "Choose which summary of a column answers a question asked in words, and give its value",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "enum": [
+              "delivery-delays",
+              "class-sizes",
+              "sensor-drift",
+              "rainfall"
+            ],
+            "description": "Which question to answer"
+          }
+        },
+        "required": [
+          "case"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "enum": [
+              "delivery-delays",
+              "class-sizes",
+              "sensor-drift",
+              "rainfall"
+            ],
+            "description": "The case answered, as the task gave it"
+          },
+          "statistic": {
+            "enum": [
+              "mean",
+              "median",
+              "mode",
+              "range",
+              "spread",
+              "smallest",
+              "largest",
+              "total"
+            ],
+            "description": "The summary that answers the question"
+          },
+          "value": {
+            "type": "number",
+            "description": "What that summary comes to for that column"
+          }
+        },
+        "required": [
+          "case",
+          "statistic",
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "tools": [
+        {
+          "name": "read_question",
+          "description": "Read a case's question and the column of readings it is about, without the readings themselves",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "delivery-delays",
+                  "class-sizes",
+                  "sensor-drift",
+                  "rainfall"
+                ],
+                "description": "Which question to answer"
+              }
+            },
+            "required": [
+              "case"
+            ],
+            "additionalProperties": false
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "delivery-delays",
+                  "class-sizes",
+                  "sensor-drift",
+                  "rainfall"
+                ],
+                "description": "The case this question belongs to"
+              },
+              "question": {
+                "type": "string",
+                "description": "What is being asked, in words; the readings themselves are not shown"
+              },
+              "column": {
+                "type": "string",
+                "description": "The column of readings the question is about"
+              },
+              "readings": {
+                "type": "integer",
+                "description": "How many readings the column holds"
+              }
+            },
+            "required": [
+              "case",
+              "question",
+              "column",
+              "readings"
+            ],
+            "additionalProperties": false
+          },
+          "writes": true
+        },
+        {
+          "name": "summarise",
+          "description": "Work out one named summary of a case's column, whether or not it is the one that answers the question",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "delivery-delays",
+                  "class-sizes",
+                  "sensor-drift",
+                  "rainfall"
+                ],
+                "description": "Which question to answer"
+              },
+              "column": {
+                "type": "string",
+                "description": "The column of readings the question is about"
+              },
+              "statistic": {
+                "enum": [
+                  "mean",
+                  "median",
+                  "mode",
+                  "range",
+                  "spread",
+                  "smallest",
+                  "largest",
+                  "total"
+                ],
+                "description": "Which summary answers the question. mean: the readings added up and divided by how many. median: the middle reading once they are in order. mode: the reading that occurs most often. range: the largest less the smallest. spread: how far the readings sit from their mean, as a population standard deviation. smallest, largest, total: what they say."
+              }
+            },
+            "required": [
+              "case",
+              "column",
+              "statistic"
+            ],
+            "additionalProperties": false
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "case": {
+                "enum": [
+                  "delivery-delays",
+                  "class-sizes",
+                  "sensor-drift",
+                  "rainfall"
+                ],
+                "description": "The case the column belongs to"
+              },
+              "column": {
+                "type": "string",
+                "description": "The column summarised, as given"
+              },
+              "statistic": {
+                "enum": [
+                  "mean",
+                  "median",
+                  "mode",
+                  "range",
+                  "spread",
+                  "smallest",
+                  "largest",
+                  "total"
+                ],
+                "description": "The summary that was worked out"
+              },
+              "value": {
+                "type": "number",
+                "description": "What that summary comes to for that column"
+              },
+              "readings": {
+                "type": "integer",
+                "description": "How many readings went into it"
+              }
+            },
+            "required": [
+              "case",
+              "column",
+              "statistic",
+              "value",
+              "readings"
+            ],
+            "additionalProperties": false
+          },
+          "writes": true
+        }
+      ]
+    },
+    "cases": [
+      {
+        "case_id": "stat-pick-01",
+        "position": 0,
+        "kind": "answer",
+        "prompt": "Task: answer-question; case: sensor-drift.\n\nChoose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.\n\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\n\nAnswer JSON Schema:\n{\"type\":\"object\",\"properties\":{\"case\":{\"type\":\"string\",\"enum\":[\"sensor-drift\"]},\"statistic\":{\"type\":\"string\",\"enum\":[\"mean\",\"median\",\"mode\",\"range\",\"spread\",\"smallest\",\"largest\",\"total\"]},\"value\":{\"type\":\"number\"}},\"required\":[\"case\",\"statistic\",\"value\"],\"additionalProperties\":false}",
+        "prompt_sha256": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0",
+        "arguments": {
+          "case": "sensor-drift"
+        },
+        "expected_error": null,
+        "content_digest": "490afba49c1da43d19e0d3d9cbd5faeff3cfc3812a62d347e40e1a48630ad562",
+        "fixtures": {
+          "sha256": "06e9271af72ea00c6fbfc88ea3d96bf3fc08ed9fb3fac878a933c2610e6b5460",
+          "files": {
+            "input.json": "39f77ce049c81f36a4414331871fdc13955845f11a3c122e38e67e7f5d43f966",
+            "prompt.txt": "10c2095c318ce91235166c77d416da414b793a7143d3f8ef0587ef4226766cb0"
+          }
+        }
+      }
+    ]
+  },
+  "publication_verified": true
+}

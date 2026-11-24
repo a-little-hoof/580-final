@@ -1,0 +1,58 @@
+{
+  "session_id": "68441299-e93a-43e2-a8b4-61bd06864a31",
+  "plugin": "stat-pick",
+  "captured_at_utc": "2026-11-24T04:06:38.378053+00:00",
+  "export": {
+    "path": "study/task0/exports/stat-pick-pilots-completed-2026-11-23.jsonl",
+    "sha256": "bf6a27e0591d31c99340665c2d6f6e1055e9a448f181a2cd989d652b9696a534",
+    "method": "installed_supported_rushlab_nanoagent_export_CLI",
+    "filters": {
+      "plugin": "stat-pick",
+      "since": "2026-11-23"
+    }
+  },
+  "synced_files": [
+    {
+      "source": "/Users/wangyifei/rushlab/a-little-hoof/comp-480-580/plugins/stat-pick/chats/2026_11_24_run_the_answer_question_task_on_the_sensor_drift_case/chat.json",
+      "copy": "study/task0/evidence/68441299-e93a-43e2-a8b4-61bd06864a31/chat.json",
+      "sha256": "6d22491dc8ab5a11ec80e40275ab59beda190d7db4876973d14dfdf233e7568c",
+      "bytes": 2053
+    },
+    {
+      "source": "/Users/wangyifei/rushlab/a-little-hoof/comp-480-580/plugins/stat-pick/chats/2026_11_24_run_the_answer_question_task_on_the_sensor_drift_case/turns/001/graph.json",
+      "copy": "study/task0/evidence/68441299-e93a-43e2-a8b4-61bd06864a31/turns/001/graph.json",
+      "sha256": "bd1b0d2f6a000cff2b1dc1dd11615f4703c764fbbbee2338e84b4bd62c016f5c",
+      "bytes": 15506
+    },
+    {
+      "source": "/Users/wangyifei/rushlab/a-little-hoof/comp-480-580/plugins/stat-pick/chats/2026_11_24_run_the_answer_question_task_on_the_sensor_drift_case/turns/001/messages.json",
+      "copy": "study/task0/evidence/68441299-e93a-43e2-a8b4-61bd06864a31/turns/001/messages.json",
+      "sha256": "8c97dfcb31420d01244afabed85532e9222da4c5354a3dc8645a049645195697",
+      "bytes": 2807
+    }
+  ],
+  "ui_evidence": {
+    "screenshot.png": {
+      "path": "study/task0/evidence/68441299-e93a-43e2-a8b4-61bd06864a31/screenshot.png",
+      "sha256": "e69efac55a9c3910ca24fa2e2b0ce0cb3d8f5f1a0475a25859eba93da11f2bae"
+    },
+    "accessibility.txt": {
+      "path": "study/task0/evidence/68441299-e93a-43e2-a8b4-61bd06864a31/accessibility.txt",
+      "sha256": "22d761618bd0fbf9d26b91bfeaa0e467ad08e2d256b2e5d45050ba167ce5b0ed"
+    },
+    "result.png": {
+      "path": "study/task0/evidence/68441299-e93a-43e2-a8b4-61bd06864a31/result.png",
+      "sha256": "31f785f54fb87afa84bc8fbf7353229b95aad678815abd7e473692254a24ee8b"
+    },
+    "result-accessibility.txt": {
+      "path": "study/task0/evidence/68441299-e93a-43e2-a8b4-61bd06864a31/result-accessibility.txt",
+      "sha256": "297890eeaceda41c0999d3c025f9081087064d70eddfb7484b494af92e256aa1"
+    },
+    "ui_observation.json": {
+      "path": "study/task0/evidence/68441299-e93a-43e2-a8b4-61bd06864a31/ui_observation.json",
+      "sha256": "a4cf4137504cfb72d729a466f6883bd2347bd06284118498d2e6dc2bde48b2da"
+    }
+  },
+  "chat_turns_equal_export_without_messages": true,
+  "researcher_evidence_only": "Graphs can contain hidden reference answers; do not expose to benchmark agents."
+}

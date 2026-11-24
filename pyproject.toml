@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "comp580-agent"
+version = "0.2.0"
+description = "Original CLI with full and lossless compact JSON conditions for COMP580"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+comp580-agent = "comp580_agent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

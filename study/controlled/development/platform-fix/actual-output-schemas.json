@@ -1,0 +1,205 @@
+{
+  "source": "Public pinned plugin contracts loaded by the currently installed NanoAgent manifest/schema compiler; no tools or verifiers executed",
+  "compiler_outcome_path": "/Users/wangyifei/Library/Application Support/lab.mochi.lab/app/2026-11-23T03-56-59-663Z-7ac1754/mochi-lab/nanoagent/site/nanoagent/uploaded/outcome.py",
+  "schemas": [
+    {
+      "plugin": "log-triage",
+      "version": "0.1.0",
+      "task": "triage-log",
+      "contract_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/references/log-triage/contract.py",
+      "contract_sha256": "b6e537be5ac52f4e0111499ca1876d94a6c5b1d9e3483e97356c5cb4d85457f2",
+      "source_commit": "432a4b9ac4a26487d3350c92a31809e3b4ba93f0",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "enum": [
+              "night-batch",
+              "api-gateway",
+              "report-worker",
+              "edge-proxy"
+            ],
+            "description": "The incident triaged, as the task gave it"
+          },
+          "fault": {
+            "enum": [
+              "disk-full",
+              "auth-rejected",
+              "timeout",
+              "bad-config",
+              "rate-limited",
+              "out-of-memory"
+            ],
+            "description": "What actually went wrong. disk-full: a write failed because the volume is full. auth-rejected: credentials were refused. timeout: something waited and gave up, and nothing else explains why. bad-config: the service was given a configuration it could not accept. rate-limited: a quota or request limit was reached. out-of-memory: the process grew past what it was allowed and was stopped."
+          },
+          "evidence": {
+            "type": "string",
+            "description": "The one log line that shows the fault, copied exactly as read_log returned it"
+          }
+        },
+        "required": [
+          "case",
+          "fault",
+          "evidence"
+        ],
+        "additionalProperties": false
+      },
+      "before_error": "output_schema_unsupported: $.case: the schema's type None has no skeleton"
+    },
+    {
+      "plugin": "cipher-crack",
+      "version": "0.1.0",
+      "task": "crack-cipher",
+      "contract_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/references/cipher-crack/contract.py",
+      "contract_sha256": "c05e703017089d8c790c451feb8c6ff2aa499ca0e71ff062135d81b2083f49c2",
+      "source_commit": "6b31efa773128ef9d6469541a15bbca2cac0cc88",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "enum": [
+              "postcard",
+              "dispatch",
+              "ledger",
+              "telegram"
+            ],
+            "description": "The case the message belongs to, as the task gave it"
+          },
+          "key": {
+            "type": "string",
+            "description": "The key letter, A to Z: A leaves a letter alone, B moves it on by one, and so on"
+          },
+          "plaintext": {
+            "type": "string",
+            "description": "The message the key turns the ciphertext into, uppercase letters and spaces"
+          }
+        },
+        "required": [
+          "case",
+          "key",
+          "plaintext"
+        ],
+        "additionalProperties": false
+      },
+      "before_error": "output_schema_unsupported: $.case: the schema's type None has no skeleton"
+    },
+    {
+      "plugin": "path-probe",
+      "version": "0.1.0",
+      "task": "find-route",
+      "contract_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/references/path-probe/contract.py",
+      "contract_sha256": "0508dd622e61dc273e03b8afda407808fbcbb2218f33ac40857c0c3024785bc4",
+      "source_commit": "96b2b4192a9ae6933db834a796553ad868beaaf6",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "enum": [
+              "orchard",
+              "quarry",
+              "foundry",
+              "harbour"
+            ],
+            "description": "The map the route crosses, as the task gave it"
+          },
+          "route": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The nodes travelled in order, the start first and the goal last, each one named once"
+          },
+          "cost": {
+            "type": "integer",
+            "description": "What the whole route costs: the costs of the links it travels, added up"
+          }
+        },
+        "required": [
+          "case",
+          "route",
+          "cost"
+        ],
+        "additionalProperties": false
+      },
+      "before_error": "output_schema_unsupported: $.case: the schema's type None has no skeleton"
+    },
+    {
+      "plugin": "regex-infer",
+      "version": "0.1.0",
+      "task": "infer-pattern",
+      "contract_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/references/regex-infer/contract.py",
+      "contract_sha256": "d64656c3c1507b16bd658ea0f0247bd52c282500ea9b7472bcc021fca254030e",
+      "source_commit": "3fc05876e6e3fc37d3544fe87a15fc3d1f2123da",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "enum": [
+              "widget-code",
+              "shelf-tag",
+              "batch-ref",
+              "seat-label"
+            ],
+            "description": "The case the pattern is for, as the task gave it"
+          },
+          "pattern": {
+            "type": "string",
+            "description": "A Python regular expression for the case's hidden rule, matched whole with re.fullmatch, e.g. [A-Z]{2}-[0-9]{3}"
+          }
+        },
+        "required": [
+          "case",
+          "pattern"
+        ],
+        "additionalProperties": false
+      },
+      "before_error": "output_schema_unsupported: $.case: the schema's type None has no skeleton"
+    },
+    {
+      "plugin": "stat-pick",
+      "version": "0.1.0",
+      "task": "answer-question",
+      "contract_path": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/references/stat-pick/contract.py",
+      "contract_sha256": "433c0739e8d02e806704f1fa4502b16b6864a67bac1542d1a4c6a54c4fc0a2d1",
+      "source_commit": "5fcfedf4507d779e918a87d8aa299ca51f1ae45c",
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "enum": [
+              "delivery-delays",
+              "class-sizes",
+              "sensor-drift",
+              "rainfall"
+            ],
+            "description": "The case answered, as the task gave it"
+          },
+          "statistic": {
+            "enum": [
+              "mean",
+              "median",
+              "mode",
+              "range",
+              "spread",
+              "smallest",
+              "largest",
+              "total"
+            ],
+            "description": "The summary that answers the question"
+          },
+          "value": {
+            "type": "number",
+            "description": "What that summary comes to for that column"
+          }
+        },
+        "required": [
+          "case",
+          "statistic",
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "before_error": "output_schema_unsupported: $.case: the schema's type None has no skeleton"
+    }
+  ]
+}

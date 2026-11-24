@@ -1,0 +1,11 @@
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1795494094-dW4xyFUTbge58BzKrvZy","object":"chat.completion","created":1795494094,"model":"deepseek/deepseek-v4-flash-0731","provider":"Nebius","system_fingerprint":null,"service_tier":null,"choices":[{"index":0,"logprobs":null,"finish_reason":"tool_calls","native_finish_reason":"tool_calls","message":{"role":"assistant","content":null,"refusal":null,"reasoning":"The fault is bad-config: \"unknown directive proxy_pas\" - service rejected its configuration. Evidence line: \"2026-03-14 16:45:00 ERROR edge: unknown directive \\\"proxy_pas\\\" in /etc/edge/proxy.conf:42\".","tool_calls":[{"type":"function","index":0,"id":"call_b5a7fd2e8a794c6280cc7721","function":{"name":"write_answer","arguments":"{\"answer\": {\"case\": \"edge-proxy\", \"fault\": \"bad-config\", \"evidence\": \"2026-03-14 16:45:00 ERROR edge: unknown directive \\\"proxy_pas\\\" in /etc/edge/proxy.conf:42\"}}"}}],"reasoning_details":[{"type":"reasoning.text","text":"The fault is bad-config: \"unknown directive proxy_pas\" - service rejected its configuration. Evidence line: \"2026-03-14 16:45:00 ERROR edge: unknown directive \\\"proxy_pas\\\" in /etc/edge/proxy.conf:42\".","format":"unknown","index":0}]}}],"usage":{"prompt_tokens":1353,"completion_tokens":153,"total_tokens":1506,"cost":0.00023226,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"cache_write_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":0.00023226,"upstream_inference_prompt_cost":0.00018942,"upstream_inference_completions_cost":0.00004284},"completion_tokens_details":{"reasoning_tokens":57,"image_tokens":0,"audio_tokens":0}}}

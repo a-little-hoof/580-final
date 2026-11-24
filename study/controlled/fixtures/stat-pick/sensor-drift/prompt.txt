@@ -1,0 +1,8 @@
+Task: answer-question; case: sensor-drift.
+
+Choose the statistic that answers the question in input.json and compute its value from the readings. The available statistics are mean (sum divided by count), median (middle after sorting, averaging the two middle values for even count), mode (unique most frequent value), range (maximum minus minimum), spread (population standard deviation, with divisor equal to the number of readings), smallest, largest, and total. Submit both the chosen statistic and its numerical value. Grading uses a tolerance of 1e-6 times max(1, absolute expected value). This is a raw-data adaptation: the original plugin hides the readings and provides a summarise tool; here the original readings are public and you may compute freely.
+
+Read input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.
+
+Answer JSON Schema:
+{"type":"object","properties":{"case":{"type":"string","enum":["sensor-drift"]},"statistic":{"type":"string","enum":["mean","median","mode","range","spread","smallest","largest","total"]},"value":{"type":"number"}},"required":["case","statistic","value"],"additionalProperties":false}

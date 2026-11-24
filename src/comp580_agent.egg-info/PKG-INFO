@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: comp580-agent
+Version: 0.2.0
+Summary: Original CLI with full and lossless compact JSON conditions for COMP580
+Requires-Python: >=3.12

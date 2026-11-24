@@ -1,0 +1,42 @@
+{
+  "case": "quarry",
+  "start": "A",
+  "goal": "E",
+  "links": [
+    {
+      "start": "A",
+      "end": "B",
+      "cost": 3
+    },
+    {
+      "start": "A",
+      "end": "C",
+      "cost": 3
+    },
+    {
+      "start": "B",
+      "end": "D",
+      "cost": 4
+    },
+    {
+      "start": "C",
+      "end": "D",
+      "cost": 4
+    },
+    {
+      "start": "D",
+      "end": "E",
+      "cost": 2
+    },
+    {
+      "start": "A",
+      "end": "E",
+      "cost": 10
+    },
+    {
+      "start": "C",
+      "end": "F",
+      "cost": 1
+    }
+  ]
+}

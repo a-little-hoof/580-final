@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "case_id": "log-triage/edge-proxy",
+  "validator": "local-controlled-v1",
+  "integrity": {
+    "valid": true,
+    "errors": []
+  },
+  "answer_schema": {
+    "valid": true,
+    "error": null
+  },
+  "task_verdict": {
+    "valid": true,
+    "score": 1.0,
+    "code": "fault_and_citation_match"
+  },
+  "valid": true,
+  "status": "passed"
+}

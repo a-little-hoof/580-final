@@ -1,0 +1,13 @@
+{
+  "source": "native Computer Use Graph accessibility and screenshot after resuming saved session",
+  "evidence": [
+    "graph-accessibility.txt",
+    "graph.png"
+  ],
+  "input_tokens": 3699,
+  "output_tokens": 794,
+  "latency_display": "20 s",
+  "model_time_display": "14 s",
+  "tool_time_display": "6.0 s",
+  "cost_display": "$0.0003"
+}

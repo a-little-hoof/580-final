@@ -1,0 +1,864 @@
+{
+  "nodes": [
+    {
+      "id": "message",
+      "type": "user_message",
+      "kind": "value",
+      "label": "User message",
+      "value": "Run the find-route task on the quarry case."
+    },
+    {
+      "id": "system",
+      "type": "system_prompt",
+      "kind": "value",
+      "label": "System prompt",
+      "value": "You are an assistant embedded in a collaborative knowledge application.\nFollow the application's additional instructions and answer the user directly.\n\nYou operate the Path Probe plugin through its tasks: each of your tools is one task. Turn what the user asks into the input of the task that does it, and call that task; ask the user only for what you cannot work out. The page shows the user each task's result and whether it passed its check, so do not repeat the result: say in a sentence or two what you did. Files the tasks save stay in the user's workspace; refer to them by their paths there."
+    },
+    {
+      "id": "steps[0]",
+      "type": "agent_reply",
+      "kind": "call",
+      "label": "Model request",
+      "isError": false,
+      "running": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 0.5194543329998851,
+          "ttft_s": 0.3176143332384527,
+          "generation_s": 0.2018399997614324,
+          "output_tokens_per_second": 346.8093543536339,
+          "usage": {
+            "prompt_tokens": 543,
+            "completion_tokens": 70,
+            "total_tokens": 613,
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 23
+          },
+          "cost": 0.00003415,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "steps[0].reasoning",
+      "type": "thinking",
+      "kind": "value",
+      "label": "Thinking",
+      "value": "The user wants me to run the find-route task on the quarry case. Let me start exploring the map."
+    },
+    {
+      "id": "calls[0].arguments",
+      "type": "tool_call",
+      "kind": "value",
+      "label": "find-route call",
+      "value": {
+        "case": "quarry"
+      },
+      "incomplete": false
+    },
+    {
+      "id": "calls[0]",
+      "type": "task",
+      "kind": "call",
+      "label": "find-route",
+      "isError": false,
+      "running": false,
+      "duration_s": 19.156194292008877
+    },
+    {
+      "id": "calls[0]/input",
+      "type": "task_input",
+      "kind": "value",
+      "label": "Task input",
+      "value": {
+        "case": "quarry"
+      },
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/reference",
+      "type": "reference",
+      "kind": "call",
+      "label": "best_route",
+      "isError": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/reference.output",
+      "type": "reference_output",
+      "kind": "value",
+      "label": "Reference output",
+      "value": {
+        "case": "quarry",
+        "start": "A",
+        "goal": "E",
+        "links": [
+          {
+            "start": "A",
+            "end": "B",
+            "cost": 3
+          },
+          {
+            "start": "A",
+            "end": "C",
+            "cost": 3
+          },
+          {
+            "start": "B",
+            "end": "D",
+            "cost": 4
+          },
+          {
+            "start": "C",
+            "end": "D",
+            "cost": 4
+          },
+          {
+            "start": "D",
+            "end": "E",
+            "cost": 2
+          },
+          {
+            "start": "A",
+            "end": "E",
+            "cost": 10
+          },
+          {
+            "start": "C",
+            "end": "F",
+            "cost": 1
+          }
+        ],
+        "route": [
+          "A",
+          "C",
+          "D",
+          "E"
+        ],
+        "cost": 9
+      },
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/system",
+      "type": "system_prompt",
+      "kind": "value",
+      "label": "System prompt",
+      "value": "You work one task with the Path Probe plugin's tools. Every file a tool saves goes into your workspace; paths you pass to tools are relative to it.\n\nTask: Explore a map a node at a time and find the cheapest route from its start to its goal.\nThe map is never shown whole. read_map gives the start, the goal and how many nodes there are; neighbours gives every link touching the nodes you ask about, and nothing else. Links can be travelled either way and every one costs more than zero.\nStart from the start node and widen out: ask neighbours about several newly found nodes at once rather than one at a time, and keep going until you have seen every node the map said it has, or until no unexplored node could lead anywhere cheaper.\nWork out the cheapest route from the start to the goal, then submit the case as the task gave it, the route as a list of nodes with the start first and the goal last, and its cost. Do not guess a cost: add up the links you travel.\nThe route is judged on what it costs, not on matching one particular answer, so where two routes are equally cheap either will do. A route that is real but dearer than the map allows is a wrong answer.\n\nWhen the task is done, call submit with its result.",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[0]",
+      "type": "agent_reply",
+      "kind": "call",
+      "label": "Model request",
+      "isError": false,
+      "running": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 4.678766749799252,
+          "ttft_s": 4.523524667136371,
+          "generation_s": 0.15524208266288042,
+          "output_tokens_per_second": 373.61003540484097,
+          "usage": {
+            "prompt_tokens": 1005,
+            "completion_tokens": 58,
+            "total_tokens": 1063,
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 12
+          },
+          "cost": 0.00005605,
+          "error": null
+        }
+      ],
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[0].reasoning",
+      "type": "thinking",
+      "kind": "value",
+      "label": "Thinking",
+      "value": "Let me start by reading the map to understand the task.",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[0].arguments",
+      "type": "tool_call",
+      "kind": "value",
+      "label": "read_map call",
+      "value": {
+        "case": "quarry"
+      },
+      "incomplete": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[0]",
+      "type": "tool",
+      "kind": "call",
+      "label": "read_map",
+      "isError": false,
+      "running": false,
+      "parent": "calls[0]",
+      "duration_s": 1.0717291249893606
+    },
+    {
+      "id": "calls[0]/calls[0].output",
+      "type": "tool_result",
+      "kind": "value",
+      "label": "read_map result",
+      "value": "{\"case\": \"quarry\", \"start\": \"A\", \"goal\": \"E\", \"nodes\": 6}",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[1]",
+      "type": "agent_reply",
+      "kind": "call",
+      "label": "Model request",
+      "isError": false,
+      "running": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 0.6594895417802036,
+          "ttft_s": 0.2918220837600529,
+          "generation_s": 0.36766745802015066,
+          "output_tokens_per_second": 244.78641782615256,
+          "usage": {
+            "prompt_tokens": 1100,
+            "completion_tokens": 90,
+            "total_tokens": 1190,
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 25
+          },
+          "cost": 0.000064,
+          "error": null
+        }
+      ],
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[1].reasoning",
+      "type": "thinking",
+      "kind": "value",
+      "label": "Thinking",
+      "value": "The map has 6 nodes, start A, goal E. Let me explore neighbours. I'll ask about A first.",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[1].arguments",
+      "type": "tool_call",
+      "kind": "value",
+      "label": "neighbours call",
+      "value": {
+        "case": "quarry",
+        "nodes": [
+          "A"
+        ]
+      },
+      "incomplete": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[1]",
+      "type": "tool",
+      "kind": "call",
+      "label": "neighbours",
+      "isError": false,
+      "running": false,
+      "parent": "calls[0]",
+      "duration_s": 1.0618798341602087
+    },
+    {
+      "id": "calls[0]/calls[1].output",
+      "type": "tool_result",
+      "kind": "value",
+      "label": "neighbours result",
+      "value": "{\"case\": \"quarry\", \"links\": [{\"start\": \"A\", \"end\": \"B\", \"cost\": 3}, {\"start\": \"A\", \"end\": \"C\", \"cost\": 3}, {\"start\": \"A\", \"end\": \"E\", \"cost\": 10}]}",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[2]",
+      "type": "agent_reply",
+      "kind": "call",
+      "label": "Model request",
+      "isError": false,
+      "running": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 0.6844937093555927,
+          "ttft_s": 0.37325391732156277,
+          "generation_s": 0.31123979203402996,
+          "output_tokens_per_second": 305.2308940934294,
+          "usage": {
+            "prompt_tokens": 1266,
+            "completion_tokens": 95,
+            "total_tokens": 1361,
+            "cached_tokens": 1024,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 24
+          },
+          "cost": 0.00007280000000000001,
+          "error": null
+        }
+      ],
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[2].reasoning",
+      "type": "thinking",
+      "kind": "value",
+      "label": "Thinking",
+      "value": "A connects to B (3), C (3), E (10). Let me explore B, C, E.",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[2].arguments",
+      "type": "tool_call",
+      "kind": "value",
+      "label": "neighbours call",
+      "value": {
+        "case": "quarry",
+        "nodes": [
+          "B",
+          "C",
+          "E"
+        ]
+      },
+      "incomplete": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[2]",
+      "type": "tool",
+      "kind": "call",
+      "label": "neighbours",
+      "isError": false,
+      "running": false,
+      "parent": "calls[0]",
+      "duration_s": 1.068997707683593
+    },
+    {
+      "id": "calls[0]/calls[2].output",
+      "type": "tool_result",
+      "kind": "value",
+      "label": "neighbours result",
+      "value": "{\"case\": \"quarry\", \"links\": [{\"start\": \"A\", \"end\": \"B\", \"cost\": 3}, {\"start\": \"A\", \"end\": \"C\", \"cost\": 3}, {\"start\": \"B\", \"end\": \"D\", \"cost\": 4}, {\"start\": \"C\", \"end\": \"D\", \"cost\": 4}, {\"start\": \"D\", \"end\": \"E\", \"cost\": 2}, {\"start\": \"A\", \"end\": \"E\", \"cost\": 10}, {\"start\": \"C\", \"end\": \"F\", \"cost\": 1}]}",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[3]",
+      "type": "agent_reply",
+      "kind": "call",
+      "label": "Model request",
+      "isError": false,
+      "running": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 1.0211393749341369,
+          "ttft_s": 0.31746712466701865,
+          "generation_s": 0.7036722502671182,
+          "output_tokens_per_second": 275.69653333118714,
+          "usage": {
+            "prompt_tokens": 1509,
+            "completion_tokens": 194,
+            "total_tokens": 1703,
+            "cached_tokens": 1024,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 126
+          },
+          "cost": 0.00009485000000000002,
+          "error": null
+        }
+      ],
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[3].reasoning",
+      "type": "thinking",
+      "kind": "value",
+      "label": "Thinking",
+      "value": "Now I know:\n- A-B: 3\n- A-C: 3\n- A-E: 10\n- B-D: 4\n- C-D: 4\n- D-E: 2\n- C-F: 1\n\nNodes: A, B, C, D, E, F. That's 6 nodes. I've seen A, B, C, D, E, F. Let me check F's neighbours to be complete. Actually F is a node; I should check its neighbours to make sure I've seen all links. Let me ask about F and D.",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[3].arguments",
+      "type": "tool_call",
+      "kind": "value",
+      "label": "neighbours call",
+      "value": {
+        "case": "quarry",
+        "nodes": [
+          "D",
+          "F"
+        ]
+      },
+      "incomplete": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[3]",
+      "type": "tool",
+      "kind": "call",
+      "label": "neighbours",
+      "isError": false,
+      "running": false,
+      "parent": "calls[0]",
+      "duration_s": 1.0673191249370575
+    },
+    {
+      "id": "calls[0]/calls[3].output",
+      "type": "tool_result",
+      "kind": "value",
+      "label": "neighbours result",
+      "value": "{\"case\": \"quarry\", \"links\": [{\"start\": \"B\", \"end\": \"D\", \"cost\": 4}, {\"start\": \"C\", \"end\": \"D\", \"cost\": 4}, {\"start\": \"D\", \"end\": \"E\", \"cost\": 2}, {\"start\": \"C\", \"end\": \"F\", \"cost\": 1}]}",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[4]",
+      "type": "agent_reply",
+      "kind": "call",
+      "label": "Model request",
+      "isError": false,
+      "running": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 1.8536718753166497,
+          "ttft_s": 0.3718584170565009,
+          "generation_s": 1.4818134582601488,
+          "output_tokens_per_second": 263.19102301710313,
+          "usage": {
+            "prompt_tokens": 1797,
+            "completion_tokens": 390,
+            "total_tokens": 2187,
+            "cached_tokens": 1280,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 183
+          },
+          "cost": 0.00012885000000000001,
+          "error": null
+        }
+      ],
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[4].reasoning",
+      "type": "thinking",
+      "kind": "value",
+      "label": "Thinking",
+      "value": "Now I have the full graph:\n- A-B: 3\n- A-C: 3\n- A-E: 10\n- B-D: 4\n- C-D: 4\n- C-F: 1\n- D-E: 2\n\nAll 6 nodes seen: A, B, C, D, E, F.\n\nNow find cheapest route from A to E:\n- Direct A-E: 10\n- A-B-D-E: 3+4+2 = 9\n- A-C-D-E: 3+4+2 = 9\n- A-C-F... F is a dead end (only C-F). So no.\n- A-C-D-E = 9\n\nCheapest is 9 via A-B-D-E or A-C-D-E. Either works. Let me pick A-B-D-E, cost 9.\n\nSubmit.",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[4].content",
+      "type": "assistant",
+      "kind": "value",
+      "label": "Assistant",
+      "value": "I've now seen all 6 nodes (A, B, C, D, E, F) and all links. The graph is:\n\n- A–B: 3, A–C: 3, A–E: 10\n- B–D: 4, C–D: 4, C–F: 1\n- D–E: 2\n\nCheapest route from A to E: A→B→D→E = 3+4+2 = 9 (equally A→C→D→E = 9).\n\n",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[4].arguments",
+      "type": "task_output",
+      "kind": "value",
+      "label": "Task output (submitted)",
+      "value": {
+        "case": "quarry",
+        "route": [
+          "A",
+          "B",
+          "D",
+          "E"
+        ],
+        "cost": 9
+      },
+      "incomplete": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/calls[4]",
+      "type": "tool",
+      "kind": "call",
+      "label": "submit",
+      "isError": false,
+      "running": false,
+      "parent": "calls[0]",
+      "duration_s": 0.0005497909151017666
+    },
+    {
+      "id": "calls[0]/calls[4].output",
+      "type": "tool_result",
+      "kind": "value",
+      "label": "submit result",
+      "value": "Submitted.",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[5]",
+      "type": "agent_reply",
+      "kind": "call",
+      "label": "Model request",
+      "isError": false,
+      "running": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 0.8896028329618275,
+          "ttft_s": 0.3536522500216961,
+          "generation_s": 0.5359505829401314,
+          "output_tokens_per_second": 177.25514818707086,
+          "usage": {
+            "prompt_tokens": 2256,
+            "completion_tokens": 95,
+            "total_tokens": 2351,
+            "cached_tokens": 1792,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 0
+          },
+          "cost": 0.00012230000000000002,
+          "error": null
+        }
+      ],
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/steps[5].content",
+      "type": "agent_message",
+      "kind": "value",
+      "label": "Response",
+      "value": "The task is complete. I explored the quarry map, found all 6 nodes and all links, and determined the cheapest route from A to E.\n\n**Route:** A → B → D → E\n**Cost:** 3 + 4 + 2 = 9\n\nThis is the cheapest route (A → C → D → E is equally cheap at 9, but A → B → D → E is valid). I submitted this result successfully.",
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/verify",
+      "type": "verifier",
+      "kind": "call",
+      "label": "Output check",
+      "isError": false,
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0]/verdict",
+      "type": "verdict",
+      "kind": "value",
+      "label": "Verdict",
+      "value": {
+        "valid": true,
+        "score": 1,
+        "message": "A B D E costs 9, which is as cheap as the map allows",
+        "details": {
+          "nodes": 4
+        }
+      },
+      "parent": "calls[0]"
+    },
+    {
+      "id": "calls[0].output",
+      "type": "tool_result",
+      "kind": "value",
+      "label": "find-route result",
+      "value": "{\"output\": {\"case\": \"quarry\", \"route\": [\"A\", \"B\", \"D\", \"E\"], \"cost\": 9}, \"verdict\": {\"valid\": true, \"score\": 1.0, \"message\": \"A B D E costs 9, which is as cheap as the map allows\", \"details\": {\"nodes\": 4}}}"
+    },
+    {
+      "id": "steps[1]",
+      "type": "agent_reply",
+      "kind": "call",
+      "label": "Model request",
+      "isError": false,
+      "running": false,
+      "modelCalls": [
+        {
+          "kind": "agent",
+          "duration_s": 2.661153665743768,
+          "ttft_s": 2.2136580827645957,
+          "generation_s": 0.44749558297917247,
+          "output_tokens_per_second": 172.06873749988225,
+          "usage": {
+            "prompt_tokens": 702,
+            "completion_tokens": 77,
+            "total_tokens": 779,
+            "cached_tokens": 512,
+            "cache_write_tokens": 0,
+            "reasoning_tokens": 33
+          },
+          "cost": 0.000042800000000000004,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "steps[1].reasoning",
+      "type": "thinking",
+      "kind": "value",
+      "label": "Thinking",
+      "value": "The task ran successfully. The route found was A → B → D → E with cost 9, which is the cheapest possible. Let me report this briefly."
+    },
+    {
+      "id": "steps[1].content",
+      "type": "agent_message",
+      "kind": "value",
+      "label": "Response",
+      "value": "Ran the find-route task on the quarry case. It found the route A → B → D → E with a cost of 9, which is the cheapest the map allows, so the check passed."
+    }
+  ],
+  "edges": [
+    {
+      "from": "system",
+      "to": "steps[0]",
+      "relation": "used"
+    },
+    {
+      "from": "message",
+      "to": "steps[0]",
+      "relation": "used"
+    },
+    {
+      "from": "steps[0]",
+      "to": "steps[0].reasoning",
+      "relation": "generated"
+    },
+    {
+      "from": "steps[0]",
+      "to": "calls[0].arguments",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0].arguments",
+      "to": "calls[0]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/input",
+      "to": "calls[0]/reference",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/reference",
+      "to": "calls[0]/reference.output",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/system",
+      "to": "calls[0]/steps[0]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/input",
+      "to": "calls[0]/steps[0]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/steps[0]",
+      "to": "calls[0]/steps[0].reasoning",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/steps[0]",
+      "to": "calls[0]/calls[0].arguments",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/calls[0].arguments",
+      "to": "calls[0]/calls[0]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/calls[0]",
+      "to": "calls[0]/calls[0].output",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/steps[0]",
+      "to": "calls[0]/steps[1]",
+      "relation": "continued"
+    },
+    {
+      "from": "calls[0]/calls[0].output",
+      "to": "calls[0]/steps[1]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/steps[1]",
+      "to": "calls[0]/steps[1].reasoning",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/steps[1]",
+      "to": "calls[0]/calls[1].arguments",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/calls[1].arguments",
+      "to": "calls[0]/calls[1]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/calls[1]",
+      "to": "calls[0]/calls[1].output",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/steps[1]",
+      "to": "calls[0]/steps[2]",
+      "relation": "continued"
+    },
+    {
+      "from": "calls[0]/calls[1].output",
+      "to": "calls[0]/steps[2]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/steps[2]",
+      "to": "calls[0]/steps[2].reasoning",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/steps[2]",
+      "to": "calls[0]/calls[2].arguments",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/calls[2].arguments",
+      "to": "calls[0]/calls[2]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/calls[2]",
+      "to": "calls[0]/calls[2].output",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/steps[2]",
+      "to": "calls[0]/steps[3]",
+      "relation": "continued"
+    },
+    {
+      "from": "calls[0]/calls[2].output",
+      "to": "calls[0]/steps[3]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/steps[3]",
+      "to": "calls[0]/steps[3].reasoning",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/steps[3]",
+      "to": "calls[0]/calls[3].arguments",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/calls[3].arguments",
+      "to": "calls[0]/calls[3]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/calls[3]",
+      "to": "calls[0]/calls[3].output",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/steps[3]",
+      "to": "calls[0]/steps[4]",
+      "relation": "continued"
+    },
+    {
+      "from": "calls[0]/calls[3].output",
+      "to": "calls[0]/steps[4]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/steps[4]",
+      "to": "calls[0]/steps[4].reasoning",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/steps[4]",
+      "to": "calls[0]/steps[4].content",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/steps[4]",
+      "to": "calls[0]/calls[4].arguments",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/calls[4].arguments",
+      "to": "calls[0]/calls[4]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/calls[4]",
+      "to": "calls[0]/calls[4].output",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/steps[4]",
+      "to": "calls[0]/steps[5]",
+      "relation": "continued"
+    },
+    {
+      "from": "calls[0]/calls[4].output",
+      "to": "calls[0]/steps[5]",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/steps[5]",
+      "to": "calls[0]/steps[5].content",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]/input",
+      "to": "calls[0]/verify",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/calls[4].arguments",
+      "to": "calls[0]/verify",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/reference.output",
+      "to": "calls[0]/verify",
+      "relation": "used"
+    },
+    {
+      "from": "calls[0]/verify",
+      "to": "calls[0]/verdict",
+      "relation": "generated"
+    },
+    {
+      "from": "calls[0]",
+      "to": "calls[0].output",
+      "relation": "generated"
+    },
+    {
+      "from": "steps[0]",
+      "to": "steps[1]",
+      "relation": "continued"
+    },
+    {
+      "from": "calls[0].output",
+      "to": "steps[1]",
+      "relation": "used"
+    },
+    {
+      "from": "steps[1]",
+      "to": "steps[1].reasoning",
+      "relation": "generated"
+    },
+    {
+      "from": "steps[1]",
+      "to": "steps[1].content",
+      "relation": "generated"
+    }
+  ]
+}

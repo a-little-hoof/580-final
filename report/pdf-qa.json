@@ -1,0 +1,12 @@
+{
+  "pdf": "output/pdf/comp580-yw251-report.pdf",
+  "sha256": "e29213dd43d345fa519b7d871e5a3c2d381112ff232e84ead64751c09550b965",
+  "pages": 8,
+  "page_size": "US Letter",
+  "sections_0_through_9": true,
+  "author_netid_present": true,
+  "main_figure_present": true,
+  "visual_qa": "All 8 rendered pages inspected; table condition pairs remain together, repeated headers, no clipping or unreadable glyphs observed.",
+  "text_extraction_checks": true,
+  "renderer_sha256": "4b4f0a3c7716617747254868e30eb63c13c529df3132a7b55ad3c8c82382ae2f"
+}

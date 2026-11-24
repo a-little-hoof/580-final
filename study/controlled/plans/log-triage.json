@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "kind": "comp580-one-case-publish-plan",
+  "namespace": "comp580-yw251-compact-v1",
+  "source_manifest": "/Users/wangyifei/Downloads/comp580_assignment/rush_lab_project/study/controlled/fixtures/manifest.json",
+  "source_manifest_sha256": "79249a05a242bccd2980eb4d8a7b041f06f42031dc3e9fb9f275c7f8e2d14df6",
+  "case_id": "log-triage/edge-proxy",
+  "expected_plugin_version": "0.1.0",
+  "prompt_sha256": "f7ca68a0d5ab767c637d96cdceae2b2ec57fbbb306e9f40b775b0eef750a4dbe",
+  "public_file_sha256": {
+    "input.json": "73d636c474274b07fa9ebf161e1db9587552bedaa31344dbbde984ec10111ad1",
+    "prompt.txt": "f7ca68a0d5ab767c637d96cdceae2b2ec57fbbb306e9f40b775b0eef750a4dbe"
+  },
+  "payload_sha256": "5db979fa4c0db2ce259dc2d561a10413b3cbecc973a491c8f39ad5f995cbd234",
+  "payload": {
+    "plugin_id": "log-triage",
+    "case_file": "{\n  \"plugin\": \"log-triage\",\n  \"task\": \"triage-log\",\n  \"cases\": [\n    {\n      \"prompt\": \"Task: triage-log; case: edge-proxy.\\n\\nDiagnose the cause shown by the log in input.json, rather than merely naming a downstream symptom. Each line is true. Select one fault: disk-full (a write failed because a volume is full), auth-rejected (credentials were refused), timeout (something waited and gave up, with no other cause), bad-config (a service rejected its configuration), rate-limited (a quota or request limit was reached), or out-of-memory (a process exceeded its memory allowance). Cite one diagnostic log line exactly, including timestamp and level. The full original log is supplied as a readable input file.\\n\\nRead input.json using any available tools. Work efficiently; no particular tool or full-data display is required. Do not modify input.json or prompt.txt. Write only the final answer object to answer.json, then stop. Use these exact fields and types; do not add fields.\\n\\nAnswer JSON Schema:\\n{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"case\\\":{\\\"type\\\":\\\"string\\\",\\\"enum\\\":[\\\"edge-proxy\\\"]},\\\"fault\\\":{\\\"type\\\":\\\"string\\\",\\\"enum\\\":[\\\"disk-full\\\",\\\"auth-rejected\\\",\\\"timeout\\\",\\\"bad-config\\\",\\\"rate-limited\\\",\\\"out-of-memory\\\"]},\\\"evidence\\\":{\\\"type\\\":\\\"string\\\"}},\\\"required\\\":[\\\"case\\\",\\\"fault\\\",\\\"evidence\\\"],\\\"additionalProperties\\\":false}\",\n      \"arguments\": {\n        \"case\": \"edge-proxy\"\n      },\n      \"fixtures\": \"public\"\n    }\n  ],\n  \"refuse\": []\n}",
+    "files": {
+      "public/input.json": "ewogICJjYXNlIjogImVkZ2UtcHJveHkiLAogICJsaW5lcyI6IFsKICAgICIyMDI2LTAzLTE0IDE2OjQ1OjAwIElORk8gIGVkZ2U6IHJlbG9hZGluZyBjb25maWd1cmF0aW9uIiwKICAgICIyMDI2LTAzLTE0IDE2OjQ1OjAwIEVSUk9SIGVkZ2U6IHVua25vd24gZGlyZWN0aXZlIFwicHJveHlfcGFzXCIgaW4gL2V0Yy9lZGdlL3Byb3h5LmNvbmY6NDIiLAogICAgIjIwMjYtMDMtMTQgMTY6NDU6MDAgRVJST1IgZWRnZTogY29uZmlndXJhdGlvbiByZWxvYWQgZmFpbGVkLCBrZWVwaW5nIHByZXZpb3VzIGdlbmVyYXRpb24iLAogICAgIjIwMjYtMDMtMTQgMTY6NDU6MDkgV0FSTiAgZWRnZTogbm8gdXBzdHJlYW0gZGVmaW5lZCBmb3Igcm91dGUgL3YyL29yZGVycywgcmVmdXNpbmcgY29ubmVjdGlvbiIsCiAgICAiMjAyNi0wMy0xNCAxNjo0NToxMCBXQVJOICBlZGdlOiBjb25uZWN0aW9uIHRvIDEwLjIuMC4xNDo4MDgwIHJlZnVzZWQiLAogICAgIjIwMjYtMDMtMTQgMTY6NDU6MTIgV0FSTiAgZWRnZTogY29ubmVjdGlvbiB0byAxMC4yLjAuMTQ6ODA4MCByZWZ1c2VkIiwKICAgICIyMDI2LTAzLTE0IDE2OjQ1OjMwIFdBUk4gIGVkZ2U6IGhlYWx0aCBwcm9iZSBmb3IgL3YyL29yZGVycyB0aW1lZCBvdXQgYWZ0ZXIgMTBzIiwKICAgICIyMDI2LTAzLTE0IDE2OjQ2OjAwIEVSUk9SIGVkZ2U6IDQxOCByZXF1ZXN0cyB0byAvdjIvb3JkZXJzIGZhaWxlZCBzaW5jZSByZWxvYWQiCiAgXQp9Cg==",
+      "public/prompt.txt": "VGFzazogdHJpYWdlLWxvZzsgY2FzZTogZWRnZS1wcm94eS4KCkRpYWdub3NlIHRoZSBjYXVzZSBzaG93biBieSB0aGUgbG9nIGluIGlucHV0Lmpzb24sIHJhdGhlciB0aGFuIG1lcmVseSBuYW1pbmcgYSBkb3duc3RyZWFtIHN5bXB0b20uIEVhY2ggbGluZSBpcyB0cnVlLiBTZWxlY3Qgb25lIGZhdWx0OiBkaXNrLWZ1bGwgKGEgd3JpdGUgZmFpbGVkIGJlY2F1c2UgYSB2b2x1bWUgaXMgZnVsbCksIGF1dGgtcmVqZWN0ZWQgKGNyZWRlbnRpYWxzIHdlcmUgcmVmdXNlZCksIHRpbWVvdXQgKHNvbWV0aGluZyB3YWl0ZWQgYW5kIGdhdmUgdXAsIHdpdGggbm8gb3RoZXIgY2F1c2UpLCBiYWQtY29uZmlnIChhIHNlcnZpY2UgcmVqZWN0ZWQgaXRzIGNvbmZpZ3VyYXRpb24pLCByYXRlLWxpbWl0ZWQgKGEgcXVvdGEgb3IgcmVxdWVzdCBsaW1pdCB3YXMgcmVhY2hlZCksIG9yIG91dC1vZi1tZW1vcnkgKGEgcHJvY2VzcyBleGNlZWRlZCBpdHMgbWVtb3J5IGFsbG93YW5jZSkuIENpdGUgb25lIGRpYWdub3N0aWMgbG9nIGxpbmUgZXhhY3RseSwgaW5jbHVkaW5nIHRpbWVzdGFtcCBhbmQgbGV2ZWwuIFRoZSBmdWxsIG9yaWdpbmFsIGxvZyBpcyBzdXBwbGllZCBhcyBhIHJlYWRhYmxlIGlucHV0IGZpbGUuCgpSZWFkIGlucHV0Lmpzb24gdXNpbmcgYW55IGF2YWlsYWJsZSB0b29scy4gV29yayBlZmZpY2llbnRseTsgbm8gcGFydGljdWxhciB0b29sIG9yIGZ1bGwtZGF0YSBkaXNwbGF5IGlzIHJlcXVpcmVkLiBEbyBub3QgbW9kaWZ5IGlucHV0Lmpzb24gb3IgcHJvbXB0LnR4dC4gV3JpdGUgb25seSB0aGUgZmluYWwgYW5zd2VyIG9iamVjdCB0byBhbnN3ZXIuanNvbiwgdGhlbiBzdG9wLiBVc2UgdGhlc2UgZXhhY3QgZmllbGRzIGFuZCB0eXBlczsgZG8gbm90IGFkZCBmaWVsZHMuCgpBbnN3ZXIgSlNPTiBTY2hlbWE6CnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiY2FzZSI6eyJ0eXBlIjoic3RyaW5nIiwiZW51bSI6WyJlZGdlLXByb3h5Il19LCJmYXVsdCI6eyJ0eXBlIjoic3RyaW5nIiwiZW51bSI6WyJkaXNrLWZ1bGwiLCJhdXRoLXJlamVjdGVkIiwidGltZW91dCIsImJhZC1jb25maWciLCJyYXRlLWxpbWl0ZWQiLCJvdXQtb2YtbWVtb3J5Il19LCJldmlkZW5jZSI6eyJ0eXBlIjoic3RyaW5nIn19LCJyZXF1aXJlZCI6WyJjYXNlIiwiZmF1bHQiLCJldmlkZW5jZSJdLCJhZGRpdGlvbmFsUHJvcGVydGllcyI6ZmFsc2V9"
+    },
+    "limits": {
+      "wall_time_ms": 180000,
+      "max_model_calls": 12,
+      "max_output_tokens_per_call": 32768,
+      "max_cost_usd": 0.05,
+      "internet_access": false
+    },
+    "name": "comp580-yw251-compact-v1-log-triage-edge-proxy-90a4eaebd1ea29b4"
+  },
+  "boundary": "Only public/input.json and public/prompt.txt are uploaded. Source/checkers/references/manifest stay host-side."
+}

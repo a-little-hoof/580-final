@@ -1,0 +1,10 @@
+{
+  "case": "quarry",
+  "route": [
+    "A",
+    "B",
+    "D",
+    "E"
+  ],
+  "cost": 9
+}
