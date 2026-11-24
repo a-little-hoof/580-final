@@ -1,0 +1,34 @@
+{
+  "source": "report/report.md",
+  "source_sha256": "6efbe5acd18a126deb035c0791b6de6685f03279fe83e1cac87a373a90bab27c",
+  "main_tex_sha256": "2bba4ddd522f23bb8d54bf36177e91d42f0a2c9723a6134fe34133df943222ae",
+  "figure_sha256": "69101f417883313428a65d463009efa83b26964396efd579811d03b8e1f3a1df",
+  "sections": [
+    "0. Explore and Evaluate the App",
+    "1. Task Selection",
+    "2. Task Validation",
+    "3. Your Idea and Hypothesis",
+    "4. Dataset Design and Variation",
+    "5. Baseline and Fair Comparisons",
+    "6. Harness Modifications",
+    "7. Evaluation Metrics",
+    "8. Experimental Results",
+    "9. Conclusion"
+  ],
+  "prompt_quotes": [
+    {
+      "text": "User approved lossless compact formatting. Implement public fixtures + private deterministic validators and meaningful tests, exclusively under study/controlled/{fixtures,validators,tests} and docs/ADAPTERS.md. Read draft and contracts. Use AST literal extraction explicit allowlist; no plugin execution or model calls. Each case directory input.json plus prompt.txt with public task definitions/schema/case exact data. Same tasks/cases as pilots; clearly fullgraph/rawstats adaptation. Keep private validator reference data outside publicfixtures/package. Validate typed answer and integrity, reproduce upstream acceptance nuances. Need manifest input hashes/source versions/extraction provenance/license. Do not edit projectroot plan/README. Communicate interface/files for baselineagent. Do not include known answer/hiddenlabels in prompts or fixture files.",
+      "sha256": "fa90dd491ac2009333ca750c6606989f33cad18ecaf7c9e7580f47b99c5a2a67"
+    },
+    {
+      "text": "Interface approved. Coordinate manifest shape with inspect_path_stat_regex agent implementing dryrun benchmarkhelper. Fixtureprompt identical conditions; original Session caseprompt difference declared. Need do not force full outputs or use read_json specifically; natural prompt says input file. Ensure license source notices and private truthisolated.",
+      "sha256": "1d36838fc1d301dafd7976192faad7c5eff347e0f0dec020474a857b0444fbd6"
+    },
+    {
+      "text": "Early validatorreview looks good. Please test huge integer stat.value (e.g10**1000) causing OverflowError subtractfloat; should deterministicreject false notuncaughtcrash. Sourceinterface metadata/hashesgood. Root wrote study/controlled/prepare_workspace.py twofileallowlist newdironly, noconflict. Final testsinclude missing/modifiedpromptinput, extra fields andtypeboolcost, syntacticinvalidduplicate/NaN/overflowJSON.",
+      "sha256": "a06f6a298fcd65e4031a07ad49c42e2588c3d2db03d72c4170b0003a2dc36a30"
+    }
+  ],
+  "conversion": "All report blocks retained; relative artifact links resolve to the GitHub main branch; vector PDF replaces the identical plot PNG.",
+  "compile_target": "pdfLaTeX on Overleaf; local validation may use cached Tectonic"
+}

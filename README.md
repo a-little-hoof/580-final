@@ -17,6 +17,8 @@ Five cases and one available model limit generalization.
 
 - [Final report PDF](output/pdf/comp580-yw251-report.pdf)
 - [Report source](report/report.md)
+- [Editable Overleaf project](https://www.overleaf.com/project/6b051ec3b81f0800eab0c10f)
+- [LaTeX source](report/overleaf/main.tex) and [conversion/compile record](report/overleaf/sync-qa.json)
 - [Main comparison figure](report/figures/main-comparison.png)
 - [Final results and failures](study/controlled/final/analysis/results_summary.md)
 - [Reproduction instructions](docs/REPRODUCE.md)
